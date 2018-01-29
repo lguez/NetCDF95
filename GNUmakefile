@@ -3,9 +3,8 @@
 
 # 1. Source files
 
-makefile_dir = .
-VPATH = ${makefile_dir}/Sources
-sources := $(shell cat ${makefile_dir}/file_list)
+VPATH = .
+sources := $(shell cat ${VPATH}/file_list)
 
 # 2. Objects and libraries
 
@@ -27,12 +26,12 @@ all: ${lib_stat} log
 ##${lib_dyn}
 
 ${lib_dyn}: ${objects}
-	$(FC) $(LDFLAGS) $(ldflags_lib_dyn) $^ -o $@
+	$(FC) $(LDFLAGS) ${ldflags_lib_dyn} $^ -o $@
 
 ${lib_stat}: ${lib_stat}(${objects})
 
-depend ${makefile_dir}/depend.mk:
-	makedepf90 -free -Wmissing -Wconfused -I${VPATH} -nosrc $(addprefix -u , netcdf typesizes) ${sources} >${makefile_dir}/depend.mk
+depend ${VPATH}/depend.mk:
+	makedepf90 -free -Wmissing -Wconfused -I${VPATH} -nosrc $(addprefix -u , netcdf typesizes) ${sources} >${VPATH}/depend.mk
 
 TAGS: ${sources}
 	ctags -e --language-force=fortran $^
@@ -41,7 +40,7 @@ clean:
 	rm -f ${lib_dyn} ${lib_stat} ${objects} log
 
 clobber: clean
-	rm -f *.mod ${makefile_dir}/depend.mk TAGS
+	rm -f *.mod ${VPATH}/depend.mk TAGS
 
 log:
 	hostname >$@
@@ -49,5 +48,5 @@ log:
 	echo -e "\nFC = ${FC}\n\nFFLAGS = ${FFLAGS}\n\nLDFLAGS = ${LDFLAGS}" >>$@
 
 ifneq ($(MAKECMDGOALS), clobber)
-include ${makefile_dir}/depend.mk
+include ${VPATH}/depend.mk
 endif
