@@ -17,7 +17,8 @@ module nf95_gw_var_m
      module procedure nf95_gw_var_real_1d, nf95_gw_var_real_2d, &
           nf95_gw_var_real_3d, nf95_gw_var_real_4d, nf95_gw_var_real_5d, &
           nf95_gw_var_dble_1d, nf95_gw_var_dble_2d, nf95_gw_var_dble_3d, &
-          nf95_gw_var_dble_4d, nf95_gw_var_int_1d, nf95_gw_var_int_3d
+          nf95_gw_var_dble_4d, nf95_gw_var_int_1d, nf95_gw_var_int_2d, &
+          nf95_gw_var_int_3d
   end interface
 
   private
@@ -118,7 +119,8 @@ contains
     call nf95_inquire_dimension(ncid, dimids(3), nclen=nclen3)
 
     allocate(values(nclen1, nclen2, nclen3))
-    if (nclen1 * nclen2 * nclen3 /= 0) call NF95_GET_VAR(ncid, varid, values)
+    if (nclen1 /= 0 .and. nclen2 /= 0 .and. nclen3 /= 0) &
+         call NF95_GET_VAR(ncid, varid, values)
 
   end subroutine nf95_gw_var_real_3d
 
@@ -285,7 +287,8 @@ contains
     call nf95_inquire_dimension(ncid, dimids(3), nclen=nclen3)
 
     allocate(values(nclen1, nclen2, nclen3))
-    if (nclen1 * nclen2 * nclen3 /= 0) call NF95_GET_VAR(ncid, varid, values)
+    if (nclen1 /= 0 .and. nclen2 /= 0 .and. nclen3 /= 0) &
+         call NF95_GET_VAR(ncid, varid, values)
 
   end subroutine nf95_gw_var_dble_3d
 
@@ -357,6 +360,39 @@ contains
 
   !************************************
 
+  subroutine nf95_gw_var_int_2d(ncid, varid, values)
+
+    ! Integer type, the array has rank 2.
+
+    integer, intent(in):: ncid
+    integer, intent(in):: varid
+    integer, allocatable, intent(out):: values(:, :)
+
+    ! Variables local to the procedure:
+    integer nclen1, nclen2
+    integer, allocatable:: dimids(:)
+
+    !---------------------
+
+    call nf95_inquire_variable(ncid, varid, dimids=dimids)
+
+    if (size(dimids) /= 2) then
+       print *, "nf95_gw_var_int_2d:"
+       print *, "varid = ", varid
+       print *, "rank of NetCDF variable is ", size(dimids), ", not 2"
+       stop 1
+    end if
+
+    call nf95_inquire_dimension(ncid, dimids(1), nclen=nclen1)
+    call nf95_inquire_dimension(ncid, dimids(2), nclen=nclen2)
+
+    allocate(values(nclen1, nclen2))
+    if (nclen1 /= 0 .and. nclen2 /= 0) call NF95_GET_VAR(ncid, varid, values)
+
+  end subroutine nf95_gw_var_int_2d
+
+  !************************************
+
   subroutine nf95_gw_var_int_3d(ncid, varid, values)
 
     ! Integer type, the array has rank 3.
@@ -385,7 +421,8 @@ contains
     call nf95_inquire_dimension(ncid, dimids(3), nclen=nclen3)
 
     allocate(values(nclen1, nclen2, nclen3))
-    if (nclen1 * nclen2 * nclen3 /= 0) call NF95_GET_VAR(ncid, varid, values)
+    if (nclen1 /= 0 .and. nclen2 /= 0 .and. nclen3 /= 0) &
+         call NF95_GET_VAR(ncid, varid, values)
 
   end subroutine nf95_gw_var_int_3d
 
