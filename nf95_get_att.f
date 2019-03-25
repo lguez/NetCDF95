@@ -8,7 +8,7 @@ module nf95_get_att_m
 
   interface nf95_get_att
      module procedure nf95_get_att_text, nf95_get_att_one_FourByteInt, &
-          nf95_get_att_one_FourByteReal
+          nf95_get_att_one_FourByteReal, nf95_get_att_one_eightByteReal
 
      ! The difference between the specific procedures is the type of
      ! argument "values".
@@ -144,5 +144,46 @@ contains
     end if
 
   end subroutine nf95_get_att_one_Fourbytereal
+
+  !***********************
+
+  subroutine nf95_get_att_one_EightByteReal(ncid, varid, name, values, ncerr)
+
+    use typesizes, only: EightByteReal
+
+    integer, intent(in):: ncid, varid
+    character(len = *), intent(in):: name
+    real (kind = EightByteReal), intent(out):: values
+    integer, intent(out), optional:: ncerr
+
+    ! Variables local to the procedure:
+    integer ncerr_not_opt
+    integer att_len
+
+    !-------------------
+
+    ! Check that the attribute contains a single value:
+    call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
+         ncerr=ncerr_not_opt)
+    if (ncerr_not_opt == nf90_noerr) then
+       if (att_len /= 1) then
+          print *, "nf95_get_att_one_Eightbytereal"
+          print *, "varid = ", varid
+          print *, "attribute name: ", name
+          print *, 'the attribute does not contain a single value'
+          print *, "number of values in attribute: ", att_len
+          stop 1
+       end if
+    end if
+
+    ncerr_not_opt = nf90_get_att(ncid, varid, name, values)
+    if (present(ncerr)) then
+       ncerr = ncerr_not_opt
+    else
+       call handle_err("nf95_get_att_one_Eightbytereal " // trim(name), &
+            ncerr_not_opt, ncid, varid)
+    end if
+
+  end subroutine nf95_get_att_one_Eightbytereal
 
 end module nf95_get_att_m

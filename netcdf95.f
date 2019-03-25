@@ -11,6 +11,7 @@ module netcdf95
   use nf95_def_var_m
   use nf95_enddef_m
   use nf95_get_att_m
+  use nf95_get_missing_m
   use nf95_get_var_m
   use nf95_gw_var_m
   use nf95_inq_dimid_m

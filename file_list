@@ -9,6 +9,7 @@ nf95_def_dim.f
 nf95_def_var.f
 nf95_enddef.f
 nf95_get_att.f
+nf95_get_missing.f
 nf95_get_var.f
 nf95_gw_var.f
 nf95_inq_dimid.f
