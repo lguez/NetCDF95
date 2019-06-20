@@ -3,36 +3,27 @@
 
 # 1. Source files
 
-makefile_dir = .
-VPATH = ${makefile_dir}
-sources := $(shell cat ${VPATH}/file_list)
+sources := $(shell cat file_list)
 
-# 2. Objects and libraries
+# 2. Objects and library
 
 objects := $(sources:.f=.o)
-lib_dyn = libnetcdf95.so
-lib_stat = libnetcdf95.a
+lib = libnetcdf95.a
 
 # 3. Compiler-dependent part
 
-include ${general_compiler_options_dir}/settings.mk
+include Compiler_options/${FC}.mk
 
 # 4. Rules
 
-all: ${lib_stat} log
-##${lib_dyn}
+.PHONY: all clean depend
+all: ${lib}
+${lib}: ${lib}(${objects})
 
-${lib_dyn}: ${objects}
-	$(FC) $(LDFLAGS) ${ldflags_lib_dyn} $^ -o $@
-
-${lib_stat}: ${lib_stat}(${objects})
-
-depend ${VPATH}/depend.mk:
-	makedepf90 -free -Wmissing -Wconfused -I${VPATH} -nosrc $(addprefix -u , netcdf typesizes) ${sources} >${VPATH}/depend.mk
+depend depend.mk:
+	makedepf90 -free -Wmissing -Wconfused -nosrc $(addprefix -u , netcdf typesizes) ${sources} >depend.mk
 
 clean:
-	rm -f ${lib_dyn} ${lib_stat} ${objects} log
+	rm -f ${lib} ${objects}
 
-ifneq ($(MAKECMDGOALS), clobber)
-include ${VPATH}/depend.mk
-endif
+include depend.mk
