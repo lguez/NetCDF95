@@ -7,21 +7,27 @@ sources := $(shell cat file_list)
 
 # 2. Objects and library
 
-objects := $(sources:.f=.o)
+objects := $(sources:.f90=.o)
 lib = libnetcdf95.a
+ARFLAGS = rvU
 
 # 3. Compiler-dependent part
 
-include Compiler_options/${FC}.mk
+netcdf_include_dir = /usr/include
+FC = gfortran
+FFLAGS = -O2 -I${netcdf_include_dir}
 
 # 4. Rules
+
+%.o: %.f90
+	$(COMPILE.f) $(OUTPUT_OPTION) $<
 
 .PHONY: all clean depend
 all: ${lib}
 ${lib}: ${lib}(${objects})
 
 depend depend.mk:
-	makedepf90 -free -Wmissing -Wconfused -nosrc $(addprefix -u , netcdf typesizes) ${sources} >depend.mk
+	makedepf90 -free -Wmissing -Wconfused -nosrc -u netcdf -u typesizes ${sources} >depend.mk
 
 clean:
 	rm -f ${lib} ${objects}

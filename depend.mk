@@ -9,7 +9,7 @@ nf95_def_var.o : handle_err.o
 nf95_enddef.o : handle_err.o 
 nf95_get_att.o : nf95_inquire_attribute.o handle_err.o 
 nf95_get_missing.o : nf95_get_att.o 
-nf95_get_var.o : nf95_get_var_array.h nf95_get_var_scalar.h check_start_count.o handle_err.o 
+nf95_get_var.o : nf95_get_var_array.h nf95_get_var_scalar.h nf95_get_missing.o check_start_count.o handle_err.o 
 nf95_gw_var.o : nf95_inquire_dimension.o nf95_inquire_variable.o nf95_get_var.o 
 nf95_inq_dimid.o : handle_err.o 
 nf95_inquire_attribute.o : handle_err.o 
