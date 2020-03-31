@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 project(NetCDF95 Fortran)
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
 
 file(STRINGS file_list file_list_var)
 add_library(netcdf95 ${file_list_var})
@@ -20,7 +21,6 @@ find_package(NetCDF REQUIRED)
 target_include_directories(netcdf95 PRIVATE ${netcdff_INCLUDE_DIR})
 target_link_libraries(netcdf95 PUBLIC ${netcdff_LIBRARY} NetCDF::NetCDF)
 
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
 include(ConfigureCompilerFlags)
 
 include(CMakePackageConfigHelpers)
