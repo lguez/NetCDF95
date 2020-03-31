@@ -31,10 +31,10 @@ contains
 
     use typesizes, only: FourByteReal
 
-    integer, intent(in) :: ncid, varid
-    real(kind = FourByteReal), intent(out) :: values
-    integer, dimension(:), optional, intent(in) :: start
-    real(kind = FourByteReal), optional, intent(in) :: new_missing
+    integer, intent(in):: ncid, varid
+    real(kind = FourByteReal), intent(out):: values
+    integer, dimension(:), optional, intent(in):: start
+    real(kind = FourByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -54,10 +54,10 @@ contains
 
     use typesizes, only: FourByteInt
 
-    integer, intent(in) :: ncid, varid
-    integer(kind = FourByteInt), intent(out) :: values
-    integer, dimension(:), optional, intent(in) :: start
-    integer(kind = FourByteInt), optional, intent(in) :: new_missing
+    integer, intent(in):: ncid, varid
+    integer(kind = FourByteInt), intent(out):: values
+    integer, dimension(:), optional, intent(in):: start
+    integer(kind = FourByteInt), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -77,10 +77,10 @@ contains
 
     use typesizes, only: FourByteReal
 
-    integer,                         intent(in) :: ncid, varid
-    real(kind = FourByteReal), intent(out) :: values(:)
+    integer,                         intent(in):: ncid, varid
+    real(kind = FourByteReal), intent(out):: values(:)
     integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
-    real(kind = FourByteReal), optional, intent(in) :: new_missing
+    real(kind = FourByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -102,10 +102,10 @@ contains
 
     use typesizes, only: FourByteInt
 
-    integer,                         intent(in) :: ncid, varid
-    integer(kind = FourByteInt), intent(out) :: values(:)
-    integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
-    integer(kind = FourByteInt), optional, intent(in) :: new_missing
+    integer,                         intent(in):: ncid, varid
+    integer(kind = FourByteInt), intent(out):: values(:)
+    integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+    integer(kind = FourByteInt), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -127,10 +127,10 @@ contains
 
     use typesizes, only: eightByteReal
 
-    integer,                         intent(in) :: ncid, varid
-    real(kind = EightByteReal),     intent(out) :: values(:)
+    integer,                         intent(in):: ncid, varid
+    real(kind = EightByteReal),     intent(out):: values(:)
     integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
-    real(kind = EightByteReal), optional, intent(in) :: new_missing
+    real(kind = EightByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -152,10 +152,10 @@ contains
 
     use typesizes, only: FourByteReal
 
-    integer,                         intent(in) :: ncid, varid
-    real(kind = FourByteReal), intent(out) :: values(:, :)
-    integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
-    real(kind = FourByteReal), optional, intent(in) :: new_missing
+    integer,                         intent(in):: ncid, varid
+    real(kind = FourByteReal), intent(out):: values(:, :)
+    integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+    real(kind = FourByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -177,10 +177,10 @@ contains
 
     use typesizes, only: EightByteReal
 
-    integer,                         intent(in) :: ncid, varid
-    real(kind = EightByteReal), intent(out) :: values(:, :)
-    integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
-    real(kind = EightByteReal), optional, intent(in) :: new_missing
+    integer,                         intent(in):: ncid, varid
+    real(kind = EightByteReal), intent(out):: values(:, :)
+    integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+    real(kind = EightByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -205,7 +205,7 @@ contains
     integer, intent(in):: ncid, varid
     integer(kind = FourByteInt), intent(out):: values(:, :)
     integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
-    integer(kind = FourByteInt), optional, intent(in) :: new_missing
+    integer(kind = FourByteInt), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -230,7 +230,7 @@ contains
     integer, intent(in):: ncid, varid
     integer(kind = FourByteInt), intent(out):: values(:, :, :)
     integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
-    integer(kind = FourByteInt), optional, intent(in) :: new_missing
+    integer(kind = FourByteInt), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -252,10 +252,10 @@ contains
 
     use typesizes, only: FourByteReal
 
-    integer,                         intent(in) :: ncid, varid
-    real(kind = FourByteReal), intent(out) :: values(:, :, :)
-    integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
-    real(kind = FourByteReal), optional, intent(in) :: new_missing
+    integer,                         intent(in):: ncid, varid
+    real(kind = FourByteReal), intent(out):: values(:, :, :)
+    integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+    real(kind = FourByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -277,10 +277,10 @@ contains
 
     use typesizes, only: eightByteReal
 
-    integer,                         intent(in) :: ncid, varid
-    real(kind = EightByteReal),     intent(out) :: values(:, :, :)
-    integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
-    real(kind = EightByteReal), optional, intent(in) :: new_missing
+    integer,                         intent(in):: ncid, varid
+    real(kind = EightByteReal),     intent(out):: values(:, :, :)
+    integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+    real(kind = EightByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -302,10 +302,10 @@ contains
 
     use typesizes, only: FourByteReal
 
-    integer,                         intent(in) :: ncid, varid
-    real(kind = FourByteReal), intent(out) :: values(:, :, :, :)
-    integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
-    real(kind = FourByteReal), optional, intent(in) :: new_missing
+    integer,                         intent(in):: ncid, varid
+    real(kind = FourByteReal), intent(out):: values(:, :, :, :)
+    integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+    real(kind = FourByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -330,7 +330,7 @@ contains
     integer, intent(in):: ncid, varid
     real(kind = EightByteReal), intent(out):: values(:, :, :, :)
     integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
-    real(kind = EightByteReal), optional, intent(in) :: new_missing
+    real(kind = EightByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -355,7 +355,7 @@ contains
     integer, intent(in):: ncid, varid
     real(kind = FourByteReal), intent(out):: values(:, :, :, :, :)
     integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
-    real(kind = FourByteReal), optional, intent(in) :: new_missing
+    real(kind = FourByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -380,7 +380,7 @@ contains
     integer, intent(in):: ncid, varid
     real(kind = EightByteReal), intent(out):: values(:, :, :, :, :)
     integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
-    real(kind = EightByteReal), optional, intent(in) :: new_missing
+    real(kind = EightByteReal), optional, intent(in):: new_missing
     integer, intent(out), optional:: ncerr
 
     ! Local:

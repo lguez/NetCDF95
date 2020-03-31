@@ -14,21 +14,21 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   target_include_directories(netcdf95 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
-include(ConfigureCompilerFlags)
-
 find_path(netcdff_INCLUDE_DIR netcdf.mod)
 find_library(netcdff_LIBRARY netcdff)
 find_package(NetCDF REQUIRED)
 target_include_directories(netcdf95 PRIVATE ${netcdff_INCLUDE_DIR})
-target_link_libraries(netcdf95 ${netcdff_LIBRARY} NetCDF::NetCDF)
+target_link_libraries(netcdf95 PUBLIC ${netcdff_LIBRARY} NetCDF::NetCDF)
+
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
+include(ConfigureCompilerFlags)
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
+if(CMAKE_Fortran_COMPILER_ID MATCHES NAG|Intel)
   set(install_include_dir include/${PROJECT_NAME})
   install(DIRECTORY ${PROJECT_BINARY_DIR}/modules/ DESTINATION
     ${install_include_dir})
