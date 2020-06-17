@@ -15,13 +15,15 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   target_include_directories(netcdf95 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-find_path(netcdff_INCLUDE_DIR netcdf.mod)
-find_library(netcdff_LIBRARY netcdff)
 find_package(NetCDF REQUIRED)
-target_include_directories(netcdf95 PRIVATE ${netcdff_INCLUDE_DIR})
-target_link_libraries(netcdf95 PUBLIC ${netcdff_LIBRARY} NetCDF::NetCDF)
+include(FindPkgConfig)
+pkg_check_modules(netcdf-fortran IMPORTED_TARGET netcdf-fortran)
+
+target_link_libraries(netcdf95 PUBLIC PkgConfig::netcdf-fortran
+  PRIVATE NetCDF::NetCDF)
 
 include(ConfigureCompilerFlags)
+add_subdirectory(Test)
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(Config.cmake.in
