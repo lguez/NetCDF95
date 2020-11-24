@@ -17,7 +17,7 @@ endif()
 
 find_package(NetCDF REQUIRED)
 include(FindPkgConfig)
-pkg_check_modules(netcdf-fortran IMPORTED_TARGET netcdf-fortran)
+pkg_check_modules(netcdf-fortran REQUIRED IMPORTED_TARGET netcdf-fortran)
 
 target_link_libraries(netcdf95 PUBLIC PkgConfig::netcdf-fortran
   PRIVATE NetCDF::NetCDF)
