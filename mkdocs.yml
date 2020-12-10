@@ -3,10 +3,10 @@ site_url: https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html
 repo_url: https://github.com/lguez/NetCDF95
 site_author: Lionel GUEZ
 nav:
-   - Home: 'https://www.lmd.jussieu.fr/~lguez/'
-   - 'index.md'
-   - 'introduction.md'
-   - 'installation.md'
+   - Home:
+      - 'index.md'
+      - 'introduction.md'
+      - 'installation.md'
    - 'Usage':
       - 'Usage/index.md'
       - 'Usage/datasets.md'
@@ -14,7 +14,8 @@ nav:
       - 'Usage/variables.md'
       - 'Usage/attributes.md'
       - 'Usage/errors.md'
-   - 'changes.md'
+   - Notes:
+      - 'changes.md'
 markdown_extensions:
    - def_list
    - smarty
