@@ -8,7 +8,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
   string(APPEND CMAKE_Fortran_FLAGS
     " -fmax-errors=1 -pedantic -Wall -Wcharacter-truncation -Wunused-parameter"
     " -Wno-conversion -Wimplicit-interface -Wimplicit-procedure"
-    " -Wno-integer-division")
+    " -Wno-integer-division -Wno-maybe-uninitialized")
   ## -Wrealloc-lhs-all
   
   # Debugging options:
@@ -27,7 +27,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
   string(APPEND CMAKE_Fortran_FLAGS_RELEASE " -mcmodel=medium")
 elseif(CMAKE_Fortran_COMPILER_ID MATCHES Intel)
   # Language:
-
+  
   string(APPEND CMAKE_Fortran_FLAGS
     " -noaltparam -stand f03 -standard-semantics -assume nostd_mod_proc_name")
   # -standard-semantics by itself implies -assume std_mod_proc_name, and
