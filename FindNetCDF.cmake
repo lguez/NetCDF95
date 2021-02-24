@@ -31,6 +31,7 @@ find_package(PkgConfig QUIET)
 if (PkgConfig_FOUND)
   pkg_check_modules(_NetCDF QUIET netcdf IMPORTED_TARGET)
   if (_NetCDF_FOUND)
+    unset(netCDF_DIR CACHE)
     # Forward the variables in a consistent way.
     set(NetCDF_FOUND "${_NetCDF_FOUND}")
     set(NetCDF_INCLUDE_DIRS "${_NetCDF_INCLUDE_DIRS}")
@@ -57,6 +58,7 @@ find_library(NetCDF_LIBRARY
 ##mark_as_advanced(NetCDF_LIBRARY)
 
 if (NetCDF_INCLUDE_DIR)
+  unset(netCDF_DIR CACHE)
   file(STRINGS "${NetCDF_INCLUDE_DIR}/netcdf_meta.h" _netcdf_version_lines
     REGEX "#define[ \t]+NC_VERSION_(MAJOR|MINOR|PATCH|NOTE)")
   string(REGEX REPLACE ".*NC_VERSION_MAJOR *\([0-9]*\).*" "\\1" _netcdf_version_major "${_netcdf_version_lines}")
