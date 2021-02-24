@@ -22,8 +22,6 @@ pkg_check_modules(netcdf-fortran REQUIRED IMPORTED_TARGET netcdf-fortran)
 target_link_libraries(netcdf95 PUBLIC PkgConfig::netcdf-fortran
   PRIVATE NetCDF::NetCDF)
 
-target_include_directories(netcdf95 PUBLIC ${netcdf-fortran_INCLUDEDIR})
-  
 include(ConfigureCompilerFlags)
 add_subdirectory(Test)
 
