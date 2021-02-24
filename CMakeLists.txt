@@ -12,7 +12,7 @@ target_include_directories(netcdf95 PUBLIC
   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/modules>)
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
-  target_include_directories(netcdf95 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+  target_include_directories(netcdf95 PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
 find_package(NetCDF REQUIRED)
