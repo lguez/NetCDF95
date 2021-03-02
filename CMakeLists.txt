@@ -16,11 +16,8 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
 endif()
 
 find_package(NetCDF REQUIRED)
-include(FindPkgConfig)
-pkg_check_modules(netcdf-fortran REQUIRED IMPORTED_TARGET netcdf-fortran)
-
-target_link_libraries(netcdf95 PUBLIC PkgConfig::netcdf-fortran
-  PRIVATE NetCDF::NetCDF)
+find_package(NetCDF_Fortran REQUIRED)
+target_link_libraries(netcdf95 PUBLIC NetCDF_Fortran::NetCDF_Fortran)
 
 include(ConfigureCompilerFlags)
 add_subdirectory(Test)
