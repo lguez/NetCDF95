@@ -22,6 +22,7 @@ target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::NetCDF_Fortran)
 include(ConfigureCompilerFlags)
 add_subdirectory(Test)
 
+add_library(NetCDF95::netcdf95 ALIAS netcdf95)
 include(CMakePackageConfigHelpers)
 configure_package_config_file(Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
