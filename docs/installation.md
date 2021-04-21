@@ -89,15 +89,13 @@ This is the (old) less automated way, not recommended.
 4.  Optionally, you may choose additional compiler options by adding to
     the variable `FFLAGS`. For example, you could modify the
     optimization option `-O2`.
-5.  On MacOS, remove the letter U in the value of the variable
-    `ARFLAGS`, in `GNUmakefile`.
-6.  The makefile is written for GNU make. The command invoking GNU make
+5.  The makefile is written for GNU make. The command invoking GNU make
     may be `make` or `gmake` (or `sxgmake` if you want to cross-compile
     for NEC SX). So, for example, type:
 
         make
 
-7.  With most compilers, `libnetcdf95.a` and `netcdf95.mod` are the only
+6.  With most compilers, `libnetcdf95.a` and `netcdf95.mod` are the only
     files you will need, but with some compilers, you may need all the
     `.mod` files produced by the compilation of NetCDF95. (Keep them all
     to be on the safe side, or experiment with your compiler to see what

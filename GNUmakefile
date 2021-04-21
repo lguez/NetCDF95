@@ -9,7 +9,6 @@ sources := $(shell cat file_list)
 
 objects := $(sources:.f90=.o)
 lib = libnetcdf95.a
-ARFLAGS = rvU
 
 # 3. Compiler-dependent part
 
