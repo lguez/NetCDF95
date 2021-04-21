@@ -12,9 +12,9 @@ lib = libnetcdf95.a
 
 # 3. Compiler-dependent part
 
-netcdf_include_dir = /usr/include
+netcdff_include_dir = /usr/include
 FC = gfortran
-FFLAGS = -O2 -I${netcdf_include_dir}
+FFLAGS = -O2 -I${netcdff_include_dir}
 
 # 4. Rules
 
