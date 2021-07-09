@@ -74,3 +74,6 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   #  without that option, and is not compatible with calling C code
   #  via a BIND(C) interface.
 endif()
+
+set(CMAKE_Fortran_FLAGS_PROFILE "-p -g -O2")
+set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-p -g -O2")
