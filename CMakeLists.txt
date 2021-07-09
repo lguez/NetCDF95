@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 project(NetCDF95 Fortran)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
-
 file(STRINGS file_list file_list_var)
 add_library(netcdf95 ${file_list_var})
 
