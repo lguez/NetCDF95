@@ -10,7 +10,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
     " -Wno-conversion -Wimplicit-interface -Wimplicit-procedure"
     " -Wno-integer-division -Wno-maybe-uninitialized")
   ## -Wrealloc-lhs-all
-  
+
   # Debugging options:
   set(CMAKE_Fortran_FLAGS_DEBUG
     "-fbacktrace -g -ffpe-trap=invalid,zero,overflow")

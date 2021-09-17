@@ -31,6 +31,7 @@ if (NOT TARGET NetCDF_Fortran::NetCDF_Fortran)
       "pkg_netcdf_fortran_includedir: ${pkg_netcdf_fortran_includedir}")
   endif()
 
+  target_link_libraries(PkgConfig::NetCDF_Fortran INTERFACE NetCDF::NetCDF)
   add_library(NetCDF_Fortran::NetCDF_Fortran ALIAS PkgConfig::NetCDF_Fortran)
 endif()
 
