@@ -4,7 +4,9 @@ project(NetCDF95 Fortran)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 file(STRINGS file_list file_list_var)
-add_library(netcdf95 ${file_list_var})
+
+add_library(netcdf95 ${file_list_var} nf95_get_var_scalar.h
+  nf95_get_var_array.h)
 
 set_target_properties(netcdf95 PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)
