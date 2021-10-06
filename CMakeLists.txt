@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 list(APPEND CMAKE_MESSAGE_CONTEXT NetCDF95)
-project(NetCDF95 Fortran)
+project(NetCDF95 LANGUAGES Fortran)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 
@@ -27,20 +27,24 @@ endif()
 find_package(NetCDF REQUIRED)
 find_package(NetCDF_Fortran REQUIRED)
 target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::NetCDF_Fortran)
-
 include(ConfigureCompilerFlags)
 add_subdirectory(Test)
-
 add_library(NetCDF95::netcdf95 ALIAS netcdf95)
+
+# Start installation part
+
 include(CMakePackageConfigHelpers)
+
 configure_package_config_file(Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES NAG|Intel|PGI)
   set(install_include_dir include/${PROJECT_NAME})
+
   install(DIRECTORY ${PROJECT_BINARY_DIR}/modules/ DESTINATION
     ${install_include_dir})
+
 else()
   set(install_include_dir include)
   install(FILES ${PROJECT_BINARY_DIR}/modules/netcdf95.mod TYPE INCLUDE)
@@ -48,10 +52,13 @@ endif()
 
 install(TARGETS netcdf95 EXPORT ${PROJECT_NAME}Targets LIBRARY
   INCLUDES DESTINATION ${install_include_dir})
+
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   DESTINATION lib/cmake/${PROJECT_NAME})
 
 install(EXPORT ${PROJECT_NAME}Targets DESTINATION
   lib/cmake/${PROJECT_NAME} NAMESPACE NetCDF95::)
+
+# End installation part
 
 export(EXPORT ${PROJECT_NAME}Targets NAMESPACE NetCDF95::)
