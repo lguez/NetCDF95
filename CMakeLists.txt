@@ -26,7 +26,7 @@ endif()
 
 find_package(NetCDF REQUIRED)
 find_package(NetCDF_Fortran REQUIRED)
-target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::NetCDF_Fortran)
+target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::netcdff)
 add_subdirectory(Test)
 add_library(NetCDF95::netcdf95 ALIAS netcdf95)
 
