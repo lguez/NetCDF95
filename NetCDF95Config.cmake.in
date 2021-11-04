@@ -1,1 +1,3 @@
+include(CMakeFindDependencyMacro)
+find_dependency(NetCDF_Fortran)
 include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
