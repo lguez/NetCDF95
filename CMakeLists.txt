@@ -48,8 +48,8 @@ else()
   install(FILES ${PROJECT_BINARY_DIR}/modules/netcdf95.mod TYPE INCLUDE)
 endif()
 
-install(TARGETS netcdf95 EXPORT ${PROJECT_NAME}Targets LIBRARY
-  INCLUDES DESTINATION ${install_include_dir})
+install(TARGETS netcdf95 EXPORT ${PROJECT_NAME}Targets INCLUDES
+  DESTINATION ${install_include_dir})
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   DESTINATION lib/cmake/${PROJECT_NAME})
