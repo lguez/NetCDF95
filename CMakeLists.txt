@@ -27,7 +27,7 @@ endif()
 find_package(NetCDF_Fortran REQUIRED)
 target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::netcdff)
 add_subdirectory(Test)
-add_library(NetCDF95::netcdf95 ALIAS netcdf95)
+add_library(${PROJECT_NAME}::netcdf95 ALIAS netcdf95)
 configure_file(Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
 
 # Start installation part
@@ -50,8 +50,8 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   DESTINATION lib/cmake/${PROJECT_NAME})
 
 install(EXPORT ${PROJECT_NAME}Targets DESTINATION
-  lib/cmake/${PROJECT_NAME} NAMESPACE NetCDF95::)
+  lib/cmake/${PROJECT_NAME} NAMESPACE ${PROJECT_NAME}::)
 
 # End installation part
 
-export(EXPORT ${PROJECT_NAME}Targets NAMESPACE NetCDF95::)
+export(EXPORT ${PROJECT_NAME}Targets NAMESPACE ${PROJECT_NAME}::)
