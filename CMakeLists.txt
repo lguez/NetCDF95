@@ -24,7 +24,6 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   target_include_directories(netcdf95 PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
-find_package(NetCDF REQUIRED)
 find_package(NetCDF_Fortran REQUIRED)
 target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::netcdff)
 add_subdirectory(Test)
