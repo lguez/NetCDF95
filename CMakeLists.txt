@@ -28,10 +28,9 @@ find_package(NetCDF_Fortran REQUIRED)
 target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::netcdff)
 add_subdirectory(Test)
 add_library(NetCDF95::netcdf95 ALIAS netcdf95)
+configure_file(Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
 
 # Start installation part
-
-configure_file(Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES NAG|Intel|PGI)
   set(install_include_dir include/${PROJECT_NAME})
