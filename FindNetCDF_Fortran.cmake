@@ -3,7 +3,10 @@ list(APPEND CMAKE_MESSAGE_CONTEXT FindNetCDF_Fortran)
 if(TARGET NetCDF_Fortran::netcdff)
   set(NetCDF_Fortran_FOUND True)
 else()
-  # Find NetCDF dependency: 
+  # Find NetCDF dependency:
+  
+  option(use_find_netcdf_module "Use the find module for NetCDF")
+    
   unset(extraArgs)
 
   if(${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
@@ -14,10 +17,15 @@ else()
     list(APPEND extraArgs REQUIRED)
   endif()
   
-  find_package(NetCDF ${extraArgs})
+  if(use_find_netcdf_module)
+    find_package(netCDF ${extraArgs})
+  else()
+    find_package(netCDF CONFIG ${extraArgs})
+  endif()
+  
   #-
 
-  if(NetCDF_FOUND)
+  if(netCDF_FOUND)
     find_package(PkgConfig REQUIRED)
 
     pkg_check_modules(netcdff REQUIRED IMPORTED_TARGET GLOBAL
@@ -48,7 +56,7 @@ else()
 	"pkg_netcdf_fortran_includedir: ${pkg_netcdf_fortran_includedir}")
     endif()
 
-    target_link_libraries(PkgConfig::netcdff INTERFACE NetCDF::NetCDF)
+    target_link_libraries(PkgConfig::netcdff INTERFACE netCDF::netcdf)
     add_library(NetCDF_Fortran::netcdff ALIAS PkgConfig::netcdff)
     set(NetCDF_Fortran_FOUND True)
   else()
