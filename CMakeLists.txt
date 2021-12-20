@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 list(APPEND CMAKE_MESSAGE_CONTEXT NetCDF95)
 project(NetCDF95 LANGUAGES Fortran)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 
 add_library(netcdf95 check_start_count.f90 find_coord.f90
