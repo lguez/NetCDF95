@@ -1,10 +1,8 @@
 ---
 date: '2019-06-20'
-title: NetCDF95
 ---
 
-What is it?
-===========
+# What is it?
 
 NetCDF95 is a Fortran interface to the
 [NetCDF](http://www.unidata.ucar.edu/software/netcdf/index.html)
@@ -13,3 +11,5 @@ interface](https://www.unidata.ucar.edu/software/netcdf/docs-fortran/f90_The-Net
 the NetCDF95 interface is meant to be friendlier and more secure.
 Notably, it frees you of the cumbersome task of handling the error
 status.
+
+Author: [Lionel GUEZ](https://www.lmd.jussieu.fr/~lguez)
