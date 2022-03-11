@@ -13,9 +13,13 @@ installed using the same Fortran compiler than the one you are going to
 use for `NetCDF95`. (Note that the NetCDF Fortran library itself
 requires prior installation of the NetCDF C library.)
 
-Get [NetCDF95 from Github](https://github.com/lguez/NetCDF95). The
-directory you get could be called NetCDF95 or NetCDF95-master (depending
-on whether you cloned or downloaded a ZIP file).
+Get [NetCDF95 from Github](https://github.com/lguez/NetCDF95). As the
+Git repository contains a submodule, the easiest way is to type:
+
+		git clone --recurse-submodules https://github.com/lguez/NetCDF95.git
+
+If you prefer to download a ZIP file then you will also have to
+download the [cmake subdirectory](https://github.com/lguez/cmake).
 
 Installation with CMake
 ---
