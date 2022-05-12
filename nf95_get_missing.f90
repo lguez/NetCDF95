@@ -7,7 +7,7 @@ module nf95_get_missing_m
 
   interface nf95_get_missing
      module procedure nf95_get_missing_real, nf95_get_missing_dble, &
-          nf95_get_missing_int
+          nf95_get_missing_int, nf95_get_missing_char
   end interface nf95_get_missing
 
   private
@@ -87,5 +87,32 @@ contains
     end if
 
   end subroutine nf95_get_missing_int
+
+  !**************************************************************************
+
+  subroutine nf95_get_missing_char(ncid, varid, missing)
+
+    use netcdf, only: NF90_FILL_char
+
+    integer, intent(in)::  ncid, varid
+
+    character, intent(out):: missing
+    ! Missing or fill value. Note that the missing_value attribute for
+    ! a NetCDF character variable should be a single character
+
+    ! Local:
+    integer ncerr
+
+    !-------------------------------------------------------------------
+
+    call nf95_get_att(ncid, varid, name = "missing_value", values = missing, &
+         ncerr = ncerr)
+    if (ncerr /= nf90_noerr) then
+       call nf95_get_att(ncid, varid, name = "_FillValue", values = missing, &
+            ncerr = ncerr)
+       if (ncerr /= nf90_noerr) missing = NF90_FILL_char
+    end if
+
+  end subroutine nf95_get_missing_char
 
 end module nf95_get_missing_m
