@@ -49,8 +49,8 @@ contains
 
   !***********************
 
-  subroutine nf95_get_var_FourByteInt(ncid, varid, values, start, &
-       new_missing, ncerr)
+  subroutine nf95_get_var_FourByteInt(ncid, varid, values, start, new_missing, &
+       ncerr)
 
     use typesizes, only: FourByteInt
 
