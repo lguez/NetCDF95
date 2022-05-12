@@ -28,10 +28,12 @@ contains
        print *, message, ":"
        if (present(varid)) print *, "varid = ", varid
        print *, trim(nf90_strerror(ncerr))
+
        if (present(ncid)) then
           ! Try to close, to leave the file in a consistent state:
           ncerr_close = nf90_close(ncid)
           ! (do not call "nf95_close", we do not want to recurse)
+
           if (ncerr_close /= nf90_noerr) then
              print *, "nf90_close:"
              print *, trim(nf90_strerror(ncerr_close))

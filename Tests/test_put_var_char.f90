@@ -1,15 +1,14 @@
 program test_put_var_char
   
-  use netcdf
+  use netcdf, only: nf90_noclobber, nf90_put_var, nf90_char, nf90_noerr
   use netcdf95, only: handle_err, nf95_close, nf95_create, nf95_def_dim, &
        nf95_def_var, nf95_enddef
 
   implicit none
 
-  integer status
-  integer                           :: ncid, oceanStrLenID, oceanId
-  integer, parameter                :: MaxOceanNameLen = 20
-  character(len = maxoceannamelen):: ocean
+  integer status, ncid, oceanStrLenID, oceanId
+  integer, parameter:: MaxOceanNameLen = 20
+  character(len = maxoceannamelen) ocean
 
   !----------------------------------------------------------------------
   
