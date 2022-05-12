@@ -57,6 +57,8 @@ explanation of the mnemonics \"basic change\", \"interface change\",
         integer, intent(inout), optional:: chunksize
         integer, intent(out), optional:: ncerr
 
+See [`nf90_open`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_datasets.html#f90-nf90_open).
+
 `nf95_redef`
 ---
 

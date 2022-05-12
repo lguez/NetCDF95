@@ -83,6 +83,8 @@ the missing value from the NetCDF variable is replaced by
 you need the missing value to be `ieee_value(0., IEEE_QUIET_NAN)`
 rather than `NF90_FILL_REAL`.
 
+See [`nf90_get_var`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-reading-data-values-nf90_get_var).
+
 `nf95_gw_var`
 ---
 
