@@ -1,4 +1,4 @@
-program test_char
+program test_put_var_char
   
   use netcdf
   use netcdf95, only: handle_err, nf95_close, nf95_create, nf95_def_dim, &
@@ -26,4 +26,4 @@ program test_char
   if(status /= nf90_noerr) call handle_err("test_char", status)
   call nf95_close(ncid)
 
-end program test_char
+end program test_put_var_char
