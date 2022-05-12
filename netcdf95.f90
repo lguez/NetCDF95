@@ -25,5 +25,6 @@ module netcdf95
   use nf95_put_var_m
   use nf95_redef_m
   use nf95_sync_m
+  use nf95_create_single_m
 
 end module netcdf95

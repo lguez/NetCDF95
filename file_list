@@ -5,6 +5,7 @@ netcdf95.f90
 nf95_close.f90
 nf95_copy_att.f90
 nf95_create.f90
+nf95_create_single.f90
 nf95_def_dim.f90
 nf95_def_var.f90
 nf95_enddef.f90
