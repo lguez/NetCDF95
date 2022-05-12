@@ -9,3 +9,8 @@ target_link_libraries(test_handle_err PRIVATE netcdf95)
 # test_char
 add_executable(test_char test_char.f90)
 target_link_libraries(test_char PRIVATE NetCDF_Fortran::netcdff netcdf95)
+
+# test_get_missing_char
+add_executable(test_get_missing_char test_get_missing_char.f90)
+target_link_libraries(test_get_missing_char PRIVATE NetCDF_Fortran::netcdff
+  netcdf95)
