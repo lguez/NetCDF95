@@ -1,8 +1,8 @@
 [
     {
 	"title": "Get_missing_char",
-	"symlink": ["$src_dir/Test/test_get_missing_char.nc"],
-	"command": "$build_dir/Test/test_get_missing_char"
+	"symlink": ["$src_dir/Tests/test_get_missing_char.nc"],
+	"command": "$build_dir/Tests/test_get_missing_char"
     },
-    {"title": "Put_var_char", "command": "$build_dir/Test/test_char"}
+    {"title": "Put_var_char", "command": "$build_dir/Tests/test_char"}
 ]
