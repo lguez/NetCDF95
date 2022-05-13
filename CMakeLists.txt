@@ -12,7 +12,8 @@ add_library(netcdf95 check_start_count.f90 find_coord.f90
   nf95_inquire_dimension.f90 nf95_inquire.f90
   nf95_inquire_variable.f90 nf95_inq_varid.f90 nf95_open.f90
   nf95_put_att.f90 nf95_put_var.f90 nf95_redef.f90 nf95_sync.f90
-  nf95_get_var_scalar.h nf95_get_var_array.h nf95_create_single.f90)
+  nf95_get_var_scalar.h nf95_get_var_array.h nf95_create_single.f90
+  nf95_inq_grp_full_ncid.f90)
 
 set_target_properties(netcdf95 PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)

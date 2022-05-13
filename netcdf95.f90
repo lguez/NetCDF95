@@ -15,6 +15,7 @@ module netcdf95
   use nf95_get_var_m
   use nf95_gw_var_m
   use nf95_inq_dimid_m
+  use nf95_inq_grp_full_ncid_m
   use nf95_inq_varid_m
   use nf95_inquire_attribute_m
   use nf95_inquire_dimension_m

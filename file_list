@@ -14,6 +14,7 @@ nf95_get_missing.f90
 nf95_get_var.f90
 nf95_gw_var.f90
 nf95_inq_dimid.f90
+nf95_inq_grp_full_ncid.f90
 nf95_inquire_attribute.f90
 nf95_inquire_dimension.f90
 nf95_inquire.f90
