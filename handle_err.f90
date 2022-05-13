@@ -20,7 +20,7 @@ contains
     integer, intent(in), optional :: varid
 
     ! Variable local to the procedure:
-    integer ncerr_close
+    integer ncerr_local
 
     !-------------------
 
@@ -31,12 +31,12 @@ contains
 
        if (present(ncid)) then
           ! Try to close, to leave the file in a consistent state:
-          ncerr_close = nf90_close(ncid)
+          ncerr_local = nf90_close(ncid)
           ! (do not call "nf95_close", we do not want to recurse)
 
-          if (ncerr_close /= nf90_noerr) then
+          if (ncerr_local /= nf90_noerr) then
              print *, "nf90_close:"
-             print *, trim(nf90_strerror(ncerr_close))
+             print *, trim(nf90_strerror(ncerr_local))
           end if
        end if
        stop 1
