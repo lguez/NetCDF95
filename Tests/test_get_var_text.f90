@@ -11,9 +11,22 @@ program test_get_var_text
   !------------------------------------------------
 
   call nf95_open("test_char.nc", nf90_nowrite, ncid)
+
+  ! Read from a scalar variable:
   call nf95_inq_varid(ncid, "aa", varid)
   call nf95_get_var(ncid, varid, c)
-  call nf95_close(ncid)
   print *, 'c = "', c, '"'
+
+  ! Read from a one-dimensional variable:
+  call nf95_inq_varid(ncid, "x", varid)
+  call nf95_get_var(ncid, varid, c, start = [2])
+  print *, 'c = "', c, '"'
+
+  ! Read from a two-dimensional variable:
+  call nf95_inq_varid(ncid, "bidim_array", varid)
+  call nf95_get_var(ncid, varid, c, start = [3,2])
+  print *, 'c = "', c, '"'
+
+  call nf95_close(ncid)
 
 end program test_get_var_text
