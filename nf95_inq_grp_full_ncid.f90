@@ -9,8 +9,8 @@ contains
     use handle_err_m, only: handle_err
     use netcdf, only: nf90_inq_grp_full_ncid
 
-    integer, intent(in):: ncid
-    character(len = *), intent(in):: full_name
+    integer, intent(in):: ncid ! can be the file id or a group id
+    character(len = *), intent(in):: full_name ! should be a relative path
     integer, intent(out):: grpid
     integer, intent(out), optional:: ncerr
 
