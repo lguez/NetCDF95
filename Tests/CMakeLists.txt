@@ -20,3 +20,8 @@ target_link_libraries(test_get_missing_char PRIVATE NetCDF_Fortran::netcdff
 add_executable(test_get_var_text test_get_var_text.f90)
 target_link_libraries(test_get_var_text PRIVATE NetCDF_Fortran::netcdff
   netcdf95)
+
+# test_inq_grp_full_ncid
+add_executable(test_inq_grp_full_ncid test_inq_grp_full_ncid.f90)
+target_link_libraries(test_inq_grp_full_ncid PRIVATE NetCDF_Fortran::netcdff
+  netcdf95)
