@@ -10,7 +10,7 @@ program test_get_missing_char
 
   !-------------------------------------------------------------------
 
-  call nf95_open("test_get_missing_char.nc", nf90_nowrite, ncid)
+  call nf95_open("test_char.nc", nf90_nowrite, ncid)
 
   ! Global:
   call nf95_get_missing(ncid, nf90_global, missing)
