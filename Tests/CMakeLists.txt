@@ -15,3 +15,8 @@ target_link_libraries(test_put_var_char PRIVATE NetCDF_Fortran::netcdff
 add_executable(test_get_missing_char test_get_missing_char.f90)
 target_link_libraries(test_get_missing_char PRIVATE NetCDF_Fortran::netcdff
   netcdf95)
+
+# test_get_var_text
+add_executable(test_get_var_text test_get_var_text.f90)
+target_link_libraries(test_get_var_text PRIVATE NetCDF_Fortran::netcdff
+  netcdf95)
