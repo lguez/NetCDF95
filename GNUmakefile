@@ -7,7 +7,7 @@ sources := $(shell cat file_list)
 
 # 2. Objects and library
 
-objects := $(sources:.f90=.o)
+objects := $(addsuffix .o, $(basename ${sources}))
 lib = libnetcdf95.a
 
 # 3. Compiler-dependent part

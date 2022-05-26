@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 list(APPEND CMAKE_MESSAGE_CONTEXT NetCDF95)
-project(NetCDF95 LANGUAGES Fortran)
+project(NetCDF95 LANGUAGES Fortran C)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 add_library(netcdf95 check_start_count.f90 find_coord.f90
@@ -12,7 +12,8 @@ add_library(netcdf95 check_start_count.f90 find_coord.f90
   nf95_inquire_variable.f90 nf95_inq_varid.f90 nf95_open.f90
   nf95_put_att.f90 nf95_put_var.f90 nf95_redef.f90 nf95_sync.f90
   nf95_get_var_scalar.h nf95_get_var_array.h nf95_create_single.f90
-  nf95_inq_grp_full_ncid.f90 nf95_inq_grpname_full.f90)
+  nf95_inq_grp_full_ncid.f90 nf95_inq_grpname_full.f90
+  nf95_inq_grps.f90 inq_numgrps.c)
 set_target_properties(netcdf95 PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)
 target_include_directories(netcdf95 PUBLIC
@@ -22,8 +23,9 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   target_include_directories(netcdf95 PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
+find_package(netCDF REQUIRED)
 find_package(NetCDF_Fortran REQUIRED)
-target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::netcdff)
+target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::netcdff netCDF::netcdf)
 add_subdirectory(Tests)
 add_library(${PROJECT_NAME}::netcdf95 ALIAS netcdf95)
 configure_file(${PROJECT_NAME}Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)

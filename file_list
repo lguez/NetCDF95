@@ -1,6 +1,7 @@
 check_start_count.f90
 find_coord.f90
 handle_err.f90
+inq_numgrps.c
 netcdf95.f90
 nf95_close.f90
 nf95_copy_att.f90
@@ -16,6 +17,7 @@ nf95_gw_var.f90
 nf95_inq_dimid.f90
 nf95_inq_grp_full_ncid.f90
 nf95_inq_grpname_full.f90
+nf95_inq_grps.f90
 nf95_inquire_attribute.f90
 nf95_inquire_dimension.f90
 nf95_inquire.f90
