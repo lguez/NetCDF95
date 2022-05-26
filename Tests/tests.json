@@ -14,5 +14,9 @@
 	"title": "Inq_grp_full_ncid",
 	"symlink": ["$src_dir/Tests/aerosol_optics.nc"],
 	"command": "$build_dir/Tests/test_inq_grp_full_ncid"
+    },
+    {
+	"title": "Inq_grps", "command": "$build_dir/Tests/test_inq_grps",
+	"symlink": ["$src_dir/Tests/aerosol_optics.nc"]
     }
 ]
