@@ -13,17 +13,19 @@ program test_inq_grp_full_ncid
 
   call nf95_open("aerosol_optics.nc", nf90_nowrite, ncid)
 
-  print *, "Absolute from root..."
+  print *, "Absolute from root should work..."
   call nf95_inq_grp_full_ncid(ncid, "/Hydrophilic/SW_bands", grpid)
   call nf95_inq_grpname_full(grpid, name)
   print *, "name = ", name
 
-  print *, "Relative from root..."
+  print *
+  print *, "Relative from root should work..."
   call nf95_inq_grp_full_ncid(ncid, "Hydrophilic/SW_bands", grpid)
   call nf95_inq_grpname_full(grpid, name)
   print *, "name = ", name
 
-  print *, "Relative ambiguous from root..."
+  print *
+  print *, "Relative to subgroup (hence ambiguous) from root should not work..."
 
   call nf95_inq_grp_full_ncid(ncid, "SW_bands", grpid, ncerr)
 
@@ -34,7 +36,8 @@ program test_inq_grp_full_ncid
      print *, "name = ", name
   end if
 
-  print *, "Absolute from subgroup..."
+  print *
+  print *, "Absolute from subgroup should not work..."
 
   call nf95_inq_grp_full_ncid(grpid, "/Hydrophilic/SW_bands", grpid_2, ncerr)
 
@@ -45,7 +48,8 @@ program test_inq_grp_full_ncid
      print *, "name = ", name
   end if
 
-  print *, "Relative from subgroup..."
+  print *
+  print *, "Relative to subgroup from subgroup should work..."
   call nf95_inq_grp_full_ncid(ncid, "Hydrophilic", grpid)
   call nf95_inq_grp_full_ncid(grpid, "SW_bands", grpid_2, ncerr)
 
@@ -56,7 +60,8 @@ program test_inq_grp_full_ncid
      print *, "name = ", name
   end if
 
-  print *, "Bad relative from subgroup..."
+  print *
+  print *, "Bad relative from subgroup should not work, of course..."
 
   call nf95_inq_grp_full_ncid(grpid, "Hydrophilic/SW_bands", grpid_2, ncerr)
 

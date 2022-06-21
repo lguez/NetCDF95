@@ -10,7 +10,12 @@ contains
     use netcdf, only: nf90_inq_grp_full_ncid
 
     integer, intent(in):: ncid ! can be the file id or a group id
-    character(len = *), intent(in):: full_name ! should be a relative path
+
+    character(len = *), intent(in):: full_name
+    ! Should be a path relative to ncid (which can correspond to the
+    ! root group or a subgroup). Can be an immediate subgroup or a
+    ! deeper subgroup.
+
     integer, intent(out):: grpid
     integer, intent(out), optional:: ncerr
 

@@ -10,7 +10,7 @@ contains
     use netcdf, only: nf90_inq_grpname_full, NF90_MAX_NAME, nf90_noerr
 
     integer, intent(in):: grpid
-    character(len = :), allocatable, intent(out):: name
+    character(len = :), allocatable, intent(out):: name ! absolute path
     integer, intent(out), optional:: ncerr
 
     ! Local:
