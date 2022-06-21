@@ -14,6 +14,7 @@ lib = libnetcdf95.a
 
 netcdff_include_dir = /usr/include
 FC = gfortran
+CFLAGS = -O2
 FFLAGS = -O2 -I${netcdff_include_dir}
 
 # 4. Rules
