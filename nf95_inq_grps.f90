@@ -17,7 +17,7 @@ contains
 
     ! Local:
 
-    Integer(C_INT) numgrps, cstatus
+    Integer(C_INT) numgrps, cstatus, cncid
     integer(C_INT), allocatable:: cncids(:)
 
     Interface
@@ -37,12 +37,13 @@ contains
 
     !------------------------------------------------------------
 
-    cstatus = inq_numgrps(int(ncid, c_int), numgrps)
+    cncid = int(ncid, c_int)
+    cstatus = inq_numgrps(cncid, numgrps)
     call handle_err("nf95_inq_grps -- inq_numgrps", int(cstatus), ncid)
 
     if (numgrps >= 1) then
        allocate(cncids(numgrps))
-       cstatus = nc_inq_grps(int(ncid, c_int), numgrps, cncids)
+       cstatus = nc_inq_grps(cncid, numgrps, cncids)
 
        if (present(ncerr)) then
           ncerr = cstatus
