@@ -28,5 +28,4 @@ target_link_libraries(test_inq_grp_full_ncid PRIVATE NetCDF_Fortran::netcdff
 
 # test_inq_grps
 add_executable(test_inq_grps test_inq_grps.f90)
-target_link_libraries(test_inq_grps PRIVATE NetCDF_Fortran::netcdff netcdf95
-  netCDF::netcdf)
+target_link_libraries(test_inq_grps PRIVATE NetCDF_Fortran::netcdff netcdf95)
