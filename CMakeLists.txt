@@ -3,17 +3,12 @@ list(APPEND CMAKE_MESSAGE_CONTEXT NetCDF95)
 project(NetCDF95 LANGUAGES Fortran C)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
-add_library(netcdf95 check_start_count.f90 find_coord.f90
-  handle_err.f90 netcdf95.f90 nf95_close.f90 nf95_copy_att.f90
-  nf95_create.f90 nf95_def_dim.f90 nf95_def_var.f90 nf95_enddef.f90
-  nf95_get_att.f90 nf95_get_missing.f90 nf95_get_var.f90
-  nf95_gw_var.f90 nf95_inq_dimid.f90 nf95_inquire_attribute.f90
-  nf95_inquire_dimension.f90 nf95_inquire.f90
-  nf95_inquire_variable.f90 nf95_inq_varid.f90 nf95_open.f90
-  nf95_put_att.f90 nf95_put_var.f90 nf95_redef.f90 nf95_sync.f90
-  nf95_get_var_scalar.h nf95_get_var_array.h nf95_create_single.f90
-  nf95_inq_grp_full_ncid.f90 nf95_inq_grpname_full.f90
-  nf95_inq_grps.f90 inq_numgrps.c nf95_inq_grpname.f90)
+add_library(netcdf95 handle_err.f90 netcdf95.f90 nf95_def_dim.f90
+  nf95_inq_dimid.f90 nf95_inquire_dimension.f90)
+add_subdirectory(Attributes)
+add_subdirectory(Datasets)
+add_subdirectory(Groups)
+add_subdirectory(Variables)
 set_target_properties(netcdf95 PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)
 target_include_directories(netcdf95 PUBLIC

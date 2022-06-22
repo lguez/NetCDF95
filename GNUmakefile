@@ -3,6 +3,7 @@
 
 # 1. Source files
 
+VPATH = Attributes Datasets Groups Variables
 sources := $(shell cat file_list)
 
 # 2. Objects and library
