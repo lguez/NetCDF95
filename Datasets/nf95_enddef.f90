@@ -19,6 +19,7 @@ contains
     !-------------------
 
     ncerr_not_opt = nf90_enddef(ncid, h_minfree, v_align, v_minfree, r_align)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else

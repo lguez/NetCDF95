@@ -18,6 +18,7 @@ contains
     !-------------------
 
     ncerr_not_opt = nf90_redef(ncid)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else

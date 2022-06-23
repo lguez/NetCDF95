@@ -21,6 +21,7 @@ contains
     !-------------------
 
     ncerr_not_opt = nf90_open(path, mode, ncid, chunksize)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else

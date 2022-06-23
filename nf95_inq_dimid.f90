@@ -20,6 +20,7 @@ contains
     !-------------------
 
     ncerr_not_opt = nf90_inq_dimid(ncid, name, dimid)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else

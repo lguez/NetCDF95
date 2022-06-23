@@ -23,6 +23,7 @@ contains
 
     ncerr_not_opt = nf90_inquire(ncid, nDimensions, nVariables, nAttributes, &
          unlimitedDimId, formatNum)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
