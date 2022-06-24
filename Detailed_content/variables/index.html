@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lionel GUEZ">
+  <link rel="canonical" href="https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html/Detailed_content/variables/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Variables - NetCDF95 documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Variables";
+    var mkdocs_page_input_path = "Detailed_content/variables.md";
+    var mkdocs_page_url = "/~lguez/NetCDF95_site/index.html/Detailed_content/variables/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> NetCDF95 documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../usage/">Usage</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Detailed content</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../improvements/">The four types of improvements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../datasets/">Datasets & co</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dimensions/">Dimensions</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Variables</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#reminder-on-allocatable-arguments">Reminder on allocatable arguments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_def_var-and-nf95_def_var_scalar">nf95_def_var and nf95_def_var_scalar</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_get_var">nf95_get_var</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_gw_var">nf95_gw_var</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_varid">nf95_inq_varid</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inquire_variable">nf95_inquire_variable</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_put_var">nf95_put_var</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../groups/">Groups</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../errors/">Handling of errors</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Notes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../changes/">Changes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">NetCDF95 documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Detailed content &raquo;</li>
+        
+      
+    
+    <li>Variables</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/lguez/NetCDF95/edit/master/docs/Detailed_content/variables.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="variables">Variables</h1>
+<p>This page describles procedures handling NetCDF variables.</p>
+<p>See the <a href="../improvements/">improvements page</a> for an explanation of
+the mnemonics &ldquo;basic change&rdquo;, &ldquo;interface change&rdquo;, &ldquo;functionality
+change&rdquo;, &ldquo;additional procedure&rdquo;.</p>
+<h2 id="reminder-on-allocatable-arguments">Reminder on allocatable arguments</h2>
+<p>Some NetCDF95 procedures below have a dummy argument with attributes
+allocatable and <code>intent(out)</code>. Recall that in this case the associated
+actual argument must also have the allocatable attribute. If it is
+allocated before the call, it will automatically be deallocated and
+reallocated in the NetCDF95 procedure.</p>
+<h2 id="nf95_def_var-and-nf95_def_var_scalar"><code>nf95_def_var</code> and <code>nf95_def_var_scalar</code></h2>
+<p>(interface change)</p>
+<pre><code>subroutine nf95_def_var_scalar(ncid, name, xtype, varid, ncerr)
+  integer,               intent( in) :: ncid
+  character (len = *),   intent( in) :: name
+  integer,               intent( in) :: xtype
+  integer,               intent(out) :: varid
+ integer, intent(out), optional:: ncerr
+</code></pre>
+
+<pre><code>subroutine nf95_def_var(ncid, name, xtype, dimids, varid, ncerr)
+  integer,               intent( in) :: ncid
+  character (len = *),   intent( in) :: name
+  integer,               intent( in) :: xtype
+  integer[, dimension(:)], intent( in) :: dimids
+  integer,               intent(out) :: varid
+  integer, intent(out), optional:: ncerr
+</code></pre>
+
+<p>(<code>dimids</code> may be either a scalar or a rank 1 array.)</p>
+<p>Because of the additional optional argument <code>ncerr</code>, the generic
+procedure name <code>nf95_def_var</code> cannot include the case of a scalar
+variable. So there is a specific public procedure <code>nf95_def_var_scalar</code>
+for this case.</p>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-create-a-variable-nf90_def_var"><code>nf90_def_var</code></a></p>
+<h2 id="nf95_get_var"><code>nf95_get_var</code></h2>
+<p>(functionality change)</p>
+<pre><code>subroutine nf95_get_var(ncid, varid, values, start, &amp;
+     new_missing, ncerr)
+
+  integer, intent(in) :: ncid, varid
+  any type, intent(out):: values
+  integer, dimension(:), optional, intent(in):: start
+  same type as values, optional, intent(in):: new_missing
+  integer, intent(out), optional:: ncerr
+</code></pre>
+
+<p>(argument <code>values</code> is a scalar then arguments <code>count_nc</code>, stride and map
+must not be present)</p>
+<p>or</p>
+<pre><code>subroutine nf95_get_var(ncid, varid, values, start, &amp;
+     count_nc, stride, map, new_missing, ncerr)
+
+  integer, intent(in) :: ncid, varid
+  any type and any rank &gt;= 1, intent(out):: values
+  integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+  same type as values, optional, intent(in):: new_missing
+  integer, intent(out), optional:: ncerr
+</code></pre>
+
+<p>(argument <code>values</code> is an array then arguments <code>count_nc</code>, stride and
+map may be present)</p>
+<p>The argument for the number of indices selected along each dimension is
+called <code>count_nc</code> in <code>nf95_get_var</code>, instead of <code>count</code> in
+<code>nf90_get_var</code>. <code>count</code> is not a good choice for a variable name because
+it is the name of a Fortran intrinsic procedure.</p>
+<p><code>nf95_get_var</code> checks that :</p>
+<ul>
+<li>the size of arguments <code>start</code> and <code>count_nc</code> equals the rank of the
+    NetCDF variable ;</li>
+<li>if <code>count_nc</code> is absent, the rank of argument <code>values</code> is lower than
+    or equal to the rank of the NetCDF variable.</li>
+</ul>
+<p>There is an optional argument, <code>new_missing</code>, which is not in the
+<a href="https://www.unidata.ucar.edu/software/netcdf/docs-fortran/f90_The-NetCDF-Fortran-90-Interface-Guide.html">Fortran 90 NetCDF
+interface</a>. If
+the argument <code>new_missing</code> is present then, in the returned <code>values</code>,
+the missing value from the NetCDF variable is replaced by
+<code>new_missing</code>.  This may be useful for example if, in your program,
+you need the missing value to be <code>ieee_value(0., IEEE_QUIET_NAN)</code>
+rather than <code>NF90_FILL_REAL</code>.</p>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-reading-data-values-nf90_get_var"><code>nf90_get_var</code></a></p>
+<h2 id="nf95_gw_var"><code>nf95_gw_var</code></h2>
+<p>(additional procedure)</p>
+<pre><code>  subroutine nf95_gw_var(ncid, varid, values)
+    integer, intent(in):: ncid
+    integer, intent(in):: varid
+    any type and kind, any rank, allocatable, intent(out):: values
+</code></pre>
+<p><code>nf95_gw_var</code> stands for &ldquo;NetCDF95 get whole variable&rdquo;. This
+procedure reads a whole NetCDF variable into an array. When you want all
+the values of the NetCDF variable, this procedure is a shortcut to:
+inquiring about the dimension IDs of the variable, inquiring about the
+length of each dimension found, allocating the Fortran variable, reading
+the values from the NetCDF variable.</p>
+<p>The procedure checks that the rank of the argument <code>values</code> equals the
+rank of the NetCDF variable. The procedure does not require nor check
+that the type of <code>values</code> corresponds to the type of the NetCDF
+variable: conversion will occur if necessary.</p>
+<p>See <a href="#reminder-on-allocatable-arguments">reminder on allocatable arguments</a>.</p>
+<h2 id="nf95_inq_varid"><code>nf95_inq_varid</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_inq_varid(ncid, name, varid, ncerr)
+    integer,             intent(in) :: ncid
+    character (len = *), intent(in) :: name
+    integer,             intent(out) :: varid
+    integer, intent(out), optional:: ncerr
+</code></pre>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-the-id-of-a-variable-from-the-name-nf90_inq_varid"><code>nf90_inq_varid</code></a></p>
+<h2 id="nf95_inquire_variable"><code>nf95_inquire_variable</code></h2>
+<p>(functionality change)</p>
+<pre><code>  subroutine nf95_inquire_variable(ncid, varid, name, xtype, ndims, dimids, &amp;
+       nAtts, ncerr)
+    integer, intent(in):: ncid, varid
+    character(len = *), optional, intent(out):: name
+    integer, optional, intent(out) :: xtype, ndims
+    integer, dimension(:), optional, allocatable, intent(out) :: dimids
+    integer, optional, intent(out) :: nAtts
+    integer, intent(out), optional :: ncerr
+</code></pre>
+<p>In the &ldquo;new&rdquo; <code>nf95_inquire_variable</code>, the argument <code>dimids</code> has the
+allocatable attribute. The procedure <code>nf95_inquire_variable</code> allocates
+and defines <code>dimids</code> if the argument is present. <code>dimids</code> is defined as
+a zero-sized array if the NetCDF variable is a scalar with no dimension.</p>
+<p>In the &ldquo;old&rdquo; <code>nf90_inquire_variable</code>, <code>dimids</code> was an assumed-size
+array. This was Fortran 77 style, not optimal. You had to allocate
+<code>dimids</code> in the calling procedure with a maximum possible number of
+dimensions. You also needed to call <code>nf90_inquire_variable</code> with the
+argument <code>ndims</code> present, to tell you which part of <code>dimids</code> was
+defined.</p>
+<p>See <a href="#reminder-on-allocatable-arguments">reminder on allocatable arguments</a>.</p>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-information-about-a-variable-from-its-id-nf90_inquire_variable"><code>nf90_inquire_variable</code></a></p>
+<h2 id="nf95_put_var"><code>nf95_put_var</code></h2>
+<p>(functionality change)</p>
+<pre><code>subroutine nf95_put_var(ncid, varid, values, start, &amp;
+     ncerr)
+  integer,                         intent(in) :: ncid, varid
+  any type and any kind, intent(in) :: values
+  integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
+  integer, intent(out), optional:: ncerr
+</code></pre>
+
+<p>(argument <code>values</code> is a scalar then arguments <code>count_nc</code>, stride and map
+must not be present)</p>
+<p>or</p>
+<pre><code>subroutine nf95_put_var(ncid, varid, values, start, &amp;
+     count_nc, stride, map, ncerr)
+  integer,                         intent(in) :: ncid, varid
+  any type and any kind, any rank &gt;= 1, intent(in) :: values
+  integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
+  integer, intent(out), optional:: ncerr
+</code></pre>
+
+<p>(argument <code>values</code> is an array then arguments <code>count_nc</code>, stride and
+map may be present)</p>
+<p>The argument for the number of indices selected along each dimension is
+called <code>count_nc</code> in <code>nf95_put_var</code>, instead of <code>count</code> in
+<code>nf90_put_var</code>. <code>count</code> is not a good choice for a variable name because
+it is the name of a Fortran intrinsic procedure.</p>
+<p><code>nf95_put_var</code> checks that :</p>
+<ul>
+<li>the size of arguments <code>start</code> and <code>count_nc</code> equals the rank of the
+    NetCDF variable ;</li>
+<li>if <code>count_nc</code> is absent, the rank of argument <code>values</code> is lower than
+    or equal to the rank of the NetCDF variable.</li>
+</ul>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-writing-data-values-nf90_put_var"><code>nf90_put_var</code></a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../attributes/" class="btn btn-neutral float-right" title="Attributes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../dimensions/" class="btn btn-neutral" title="Dimensions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../dimensions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../attributes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

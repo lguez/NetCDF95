@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lionel GUEZ">
+  <link rel="canonical" href="https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html/Detailed_content/attributes/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Attributes - NetCDF95 documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Attributes";
+    var mkdocs_page_input_path = "Detailed_content/attributes.md";
+    var mkdocs_page_url = "/~lguez/NetCDF95_site/index.html/Detailed_content/attributes/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> NetCDF95 documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../usage/">Usage</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Detailed content</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../improvements/">The four types of improvements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../datasets/">Datasets & co</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dimensions/">Dimensions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../variables/">Variables</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Attributes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_copy_att">nf95_copy_att</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_get_att">nf95_get_att</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_get_missing">nf95_get_missing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inquire_attribute">nf95_inquire_attribute</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_put_att">nf95_put_att</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../groups/">Groups</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../errors/">Handling of errors</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Notes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../changes/">Changes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">NetCDF95 documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Detailed content &raquo;</li>
+        
+      
+    
+    <li>Attributes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/lguez/NetCDF95/edit/master/docs/Detailed_content/attributes.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="attributes">Attributes</h1>
+<p>This page describles procedures handling NetCDF attributes.</p>
+<p>See the <a href="../improvements/">improvements page</a> for an explanation of
+the mnemonics &ldquo;basic change&rdquo;, &ldquo;interface change&rdquo;, &ldquo;functionality
+change&rdquo;, &ldquo;additional procedure&rdquo;.</p>
+<h2 id="nf95_copy_att"><code>nf95_copy_att</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_copy_att(ncid_in, varid_in, name, ncid_out, varid_out, ncerr)
+    integer, intent( in):: ncid_in,  varid_in
+    character(len=*), intent( in):: name
+    integer, intent( in):: ncid_out, varid_out
+    integer, intent(out), optional:: ncerr
+</code></pre>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-copy-attribute-from-one-netcdf-to-another-nf90_copy_att"><code>nf90_copy_att</code></a></p>
+<h2 id="nf95_get_att"><code>nf95_get_att</code></h2>
+<p>(functionality change)</p>
+<pre><code>  subroutine nf95_get_att(ncid, varid, name, values, ncerr)
+    integer,                          intent( in) :: ncid, varid
+    character(len = *),               intent( in) :: name
+    character(len = *), integer or real(any kind), intent(out) :: values
+    integer, intent(out), optional:: ncerr
+</code></pre>
+<p><code>nf95_get_att</code> is more secure than <code>nf90_get_att</code>. For an argument
+<code>values</code> of type <code>character</code>, <code>nf95_get_att</code> checks that the <code>values</code>
+argument is long enough and removes the null terminator, if any. For a
+numeric scalar <code>values</code> argument, <code>nf95_get_att</code> checks that the
+attribute contains a single value.</p>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-attributes-values-nf90_get_att"><code>nf90_get_att</code></a></p>
+<h2 id="nf95_get_missing"><code>nf95_get_missing</code></h2>
+<p>(additional procedure)</p>
+<pre><code>subroutine nf95_get_missing(ncid, varid, missing)
+
+  integer, intent(in)::  ncid, varid
+
+  real or double precision or integer or character, intent(out):: missing
+  ! missing or fill value
+</code></pre>
+
+<p>Returns the <code>missing_value</code> attribute if present, else the <code>_FillValue</code>
+if present, else <code>nf90_fill_real</code> or <code>nf90_fill_double</code>.</p>
+<h2 id="nf95_inquire_attribute"><code>nf95_inquire_attribute</code></h2>
+<p>(interface change)</p>
+<pre><code>subroutine nf95_inquire_attribute(ncid, varid, name, xtype, nclen, attnum, &amp;
+     ncerr)
+
+  integer, intent( in)     :: ncid, varid
+  character (len = *), intent( in)     :: name
+  integer, intent(out), optional :: xtype, nclen, attnum
+  integer, intent(out), optional:: ncerr
+</code></pre>
+
+<p>The argument for the number of values or characters of the attribute is
+called <code>nclen</code> in <code>nf95_inquire_attribute</code>, instead of <code>len</code> in
+<code>nf90_inquire_attribute</code>. <code>len</code> is not a good choice for a variable name
+because it is the name of a Fortran intrinsic procedure.</p>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-information-about-an-attribute-nf90_inquire_attribute-and-nf90_inq_attname"><code>nf90_inquire_attribute</code></a></p>
+<h2 id="nf95_put_att"><code>nf95_put_att</code></h2>
+<p>(basic change)</p>
+<pre><code>subroutine nf95_put_att(ncid, varid, name, values, ncerr)
+  integer, intent(in) :: ncid, varid
+  character(len = *), intent(in) :: name
+  character(len = *) or integer(any kind) or real(any kind), intent(in) :: values
+  integer, intent(out), optional:: ncerr
+</code></pre>
+
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-create-an-attribute-nf90_put_att"><code>nf90_put_att</code></a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../groups/" class="btn btn-neutral float-right" title="Groups">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../variables/" class="btn btn-neutral" title="Variables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../variables/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../groups/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

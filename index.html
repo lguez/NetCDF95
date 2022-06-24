@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lionel GUEZ">
+  <link rel="canonical" href="https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html/">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Introduction - NetCDF95 documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/~lguez/NetCDF95_site/index.html/";
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> NetCDF95 documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Introduction</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-it">What is it?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-an-alternative-interface">Why an alternative interface?</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="usage/">Usage</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Detailed content</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="Detailed_content/improvements/">The four types of improvements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="Detailed_content/datasets/">Datasets & co</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="Detailed_content/dimensions/">Dimensions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="Detailed_content/variables/">Variables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="Detailed_content/attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="Detailed_content/groups/">Groups</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="Detailed_content/errors/">Handling of errors</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Notes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="changes/">Changes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">NetCDF95 documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Home &raquo;</li>
+        
+      
+    
+    <li>Introduction</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/lguez/NetCDF95/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="introduction">Introduction</h1>
+<h2 id="what-is-it">What is it?</h2>
+<p>NetCDF95 is an alternative Fortran interface to the
+<a href="http://www.unidata.ucar.edu/software/netcdf/index.html">NetCDF</a>
+library. The official Fortran interface is the <a href="https://www.unidata.ucar.edu/software/netcdf/docs-fortran/f90_The-NetCDF-Fortran-90-Interface-Guide.html">Fortran 90 NetCDF
+interface</a>.</p>
+<p>The name NetCDF95 was at first a reference to the Fortran 95 standard
+but NetCDF95 now uses Fortran 2003 features.</p>
+<p>Author: <a href="https://www.lmd.jussieu.fr/~lguez">Lionel GUEZ</a></p>
+<h2 id="why-an-alternative-interface">Why an alternative interface?</h2>
+<p>Compared to the the <a href="https://www.unidata.ucar.edu/software/netcdf/docs-fortran/f90_The-NetCDF-Fortran-90-Interface-Guide.html">Fortran 90 NetCDF
+interface</a>,
+NetCDF95 is meant to be friendlier and more secure. Notably:</p>
+<ul>
+<li>NetCDF95 frees you of the cumbersome task of handling the error
+status.  NetCDF95 procedures behave like the Fortran input/output
+statements. That is, the error status is an optional output
+argument. Consider, for example, the Fortran formatted <code>read</code>
+statement:</li>
+</ul>
+<pre><code>read([unit=]u, [fmt=]fmt [,iostat=ios] [, err=error-label] &amp;
+[,end=end-label]) [list]
+</code></pre>
+
+<p>If the <code>err</code>, <code>end</code> and <code>iostat</code> keywords are not provided, and there
+is a problem in the execution of the <code>read</code> statement, then execution
+of the program stops (with an informative error message from the
+compiler). Similarly, NetCDF95 procedures have an optional argument
+for error status. If the optional argument is absent and there is an
+error, then the NetCDF95 procedure produces an error message and stops
+the program. (The official Fortran 90 interface looks like it has been
+made to mimic the C interface, and this is not optimal in Fortran.)</p>
+<ul>
+<li>
+<p>NetCDF95 frees you of assumptions on the size of arrays and the size
+  of character strings when you call several inquiry procedures. (It
+  does so by making use of allocatable arguments, a Fortran 2003
+  feature.) See <code>nf95_inquire_variable</code>, <code>nf95_inq_grpname</code>,
+  <code>nf95_inq_grps</code>, <code>nf95_inq_grpname_full</code>.</p>
+</li>
+<li>
+<p>NetCDF95 offers procedures that have no counterpart in the official
+  interface. These combine several calls to other NetCDF95 procedures
+  for common higher-level tasks. See <code>nf95_gw_var</code>, <code>find_coord</code>,
+  <code>nf95_create_single</code>, <code>nf95_get_missing</code>.</p>
+</li>
+<li>
+<p>NetCDF95 replaces functions by subroutines. Procedures of the
+official Fortran 90 interface are all functions, and they are all with
+side effects. First, they have <code>intent(out)</code> arguments. Furthermore,
+there is obviously data transfer inside the procedures. Any data
+transfer inside a function is considered as a side effect. In this
+respect, the Fortran 90 interface mimics the C interface. But Fortran
+has a different programming style than C and frowns upon side-effects
+in functions. See for example Metcalf and Reid (Fortran 90/95
+Explained, 1999, §§ 5.10 and 6.10).</p>
+</li>
+<li>
+<p>They are other improvements such as securing the call to
+  <code>nf95_get_var</code> by checking the arguments start and <code>count_nc</code>, and
+  renaming badly chosen argument names len and count to nclen and <code>count_nc</code>.</p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installation/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+      <span><a href="installation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

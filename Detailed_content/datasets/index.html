@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lionel GUEZ">
+  <link rel="canonical" href="https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html/Detailed_content/datasets/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Datasets & co - NetCDF95 documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Datasets & co";
+    var mkdocs_page_input_path = "Detailed_content/datasets.md";
+    var mkdocs_page_url = "/~lguez/NetCDF95_site/index.html/Detailed_content/datasets/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> NetCDF95 documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../usage/">Usage</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Detailed content</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../improvements/">The four types of improvements</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Datasets & co</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#find_coord">find_coord</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_close">nf95_close</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_create">nf95_create</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_enddef">nf95_enddef</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inquire">nf95_inquire</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_open">nf95_open</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_redef">nf95_redef</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_sync">nf95_sync</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dimensions/">Dimensions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../variables/">Variables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../groups/">Groups</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../errors/">Handling of errors</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Notes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../changes/">Changes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">NetCDF95 documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Detailed content &raquo;</li>
+        
+      
+    
+    <li>Datasets & co</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/lguez/NetCDF95/edit/master/docs/Detailed_content/datasets.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="datasets-co">Datasets &amp; co</h1>
+<p>This page describles procedures handling a whole dataset, or handling
+a combination of NetCDF variables and dimensions.</p>
+<p>See the <a href="../improvements/">improvements page</a> for an
+explanation of the mnemonics "basic change", "interface change",
+"functionality change", "additional procedure".</p>
+<h2 id="find_coord"><code>find_coord</code></h2>
+<p>(additional procedure)</p>
+<pre><code>  subroutine find_coord(ncid, name, dimid, varid, std_name)
+
+    integer, intent(in):: ncid
+
+    character(len=*), intent(out), optional:: name ! blanks if not found
+    ! The actual character argument should normally have the length
+    ! "NF90_MAX_NAME".
+
+    integer, intent(out), optional:: dimid ! 0 if not found
+    integer, intent(out), optional:: varid ! 0 if not found
+
+    character(len=*), intent(in):: std_name
+    ! standard name : "plev", "latitude", "longitude" or "time"
+</code></pre>
+<p>This procedure returns the name, dimension id or variable id of the
+NetCDF coordinate with standard name <code>std_name</code>, if such a coordinate
+exists. The standard name is only used to know what to search, it is not
+used for the search itself. The search itself is done via a string match
+on the attribute "units". So the NetCDF variable one looks for does
+not need to have the attribute <code>std_name</code>.</p>
+<h2 id="nf95_close"><code>nf95_close</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_close(ncid, ncerr)
+    integer, intent( in) :: ncid
+    integer, intent(out), optional :: ncerr
+</code></pre>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_datasets.html#f90-nf90_close"><code>nf90_close</code></a></p>
+<h2 id="nf95_create"><code>nf95_create</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_create(path, cmode, ncid, initialsize, chunksize, ncerr)
+    character (len = *), intent(in   ) :: path
+    integer,             intent(in   ) :: cmode
+    integer,             intent(  out) :: ncid
+    integer, optional,   intent(in   ) :: initialsize
+    integer, optional,   intent(inout) :: chunksize
+    integer, intent(out), optional :: ncerr
+</code></pre>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_datasets.html#f90-nf90_create"><code>nf90_create</code></a></p>
+<h2 id="nf95_enddef"><code>nf95_enddef</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_enddef(ncid, h_minfree, v_align, v_minfree, r_align, ncerr)
+    integer,           intent( in) :: ncid
+    integer, optional, intent( in) :: h_minfree, v_align, v_minfree, r_align
+    integer, intent(out), optional :: ncerr
+</code></pre>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_datasets.html#f90-nf90_enddef"><code>nf90_enddef</code></a></p>
+<h2 id="nf95_inquire"><code>nf95_inquire</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_inquire(ncid, nDimensions, nVariables, nAttributes, &amp;
+       unlimitedDimId, formatNum, ncerr)
+
+    integer,           intent( in) :: ncid
+    integer, optional, intent(out) :: nDimensions, nVariables, nAttributes
+    integer, optional, intent(out) :: unlimitedDimId, formatNum
+    integer, intent(out), optional:: ncerr
+</code></pre>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_datasets.html#f90-nf90_inquire-family"><code>nf90_inquire</code></a></p>
+<h2 id="nf95_open"><code>nf95_open</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_open(path, mode, ncid, chunksize, ncerr)
+    character(len=*), intent(in):: path
+    integer, intent(in):: mode
+    integer, intent(out):: ncid
+    integer, intent(inout), optional:: chunksize
+    integer, intent(out), optional:: ncerr
+</code></pre>
+<p>Reference:
+<a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_datasets.html#f90-nf90_open"><code>nf90_open</code></a></p>
+<h2 id="nf95_redef"><code>nf95_redef</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_redef(ncid, ncerr)
+    integer, intent( in) :: ncid
+    integer, intent(out), optional :: ncerr
+</code></pre>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_datasets.html#f90-nf90_redef"><code>nf90_redef</code></a></p>
+<h2 id="nf95_sync"><code>nf95_sync</code></h2>
+<p>(basic change)</p>
+<pre><code>subroutine nf95_sync(ncid, ncerr)
+
+    integer, intent( in) :: ncid
+    integer, intent(out), optional :: ncerr
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dimensions/" class="btn btn-neutral float-right" title="Dimensions">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../improvements/" class="btn btn-neutral" title="The four types of improvements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../improvements/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dimensions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

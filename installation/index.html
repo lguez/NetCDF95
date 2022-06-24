@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lionel GUEZ">
+  <link rel="canonical" href="https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html/installation/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Installation - NetCDF95 documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Installation";
+    var mkdocs_page_input_path = "installation.md";
+    var mkdocs_page_url = "/~lguez/NetCDF95_site/index.html/installation/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> NetCDF95 documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Installation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation-with-cmake">Installation with CMake</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation-directly-with-make">Installation directly with make</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Detailed content</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Detailed_content/improvements/">The four types of improvements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Detailed_content/datasets/">Datasets & co</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Detailed_content/dimensions/">Dimensions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Detailed_content/variables/">Variables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Detailed_content/attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Detailed_content/groups/">Groups</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Detailed_content/errors/">Handling of errors</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Notes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../changes/">Changes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">NetCDF95 documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Home &raquo;</li>
+        
+      
+    
+    <li>Installation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/lguez/NetCDF95/edit/master/docs/installation.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="installation">Installation</h1>
+<p><code>NetCDF95</code> is written in Fortran 2003 so you need a Fortran 2003
+compiler on your machine. Moreover, you need to have the <a href="https://www.unidata.ucar.edu/downloads/netcdf/index.jsp">NetCDF Fortran
+library</a>
+installed using the same Fortran compiler than the one you are going to
+use for <code>NetCDF95</code>. (Note that the NetCDF Fortran library itself
+requires prior installation of the NetCDF C library.)</p>
+<p>Get <a href="https://github.com/lguez/NetCDF95">NetCDF95 from Github</a>. As the
+Git repository contains a submodule, the easiest way is to type:</p>
+<pre><code>    git clone --recurse-submodules https://github.com/lguez/NetCDF95.git
+</code></pre>
+<p>If you prefer to download a ZIP file then you will also have to
+download the <a href="https://github.com/lguez/cmake">cmake subdirectory</a>.</p>
+<h2 id="installation-with-cmake">Installation with CMake</h2>
+<p>This is the recommended way.</p>
+<p>Dependencies: you must first install <a href="https://cmake.org/download">CMake</a>
+(version ≥ 3.13).</p>
+<ol>
+<li>
+<p>Type:</p>
+<pre><code>cd /path/to/NetCDF95
+mkdir build
+cd build
+</code></pre>
+</li>
+<li>
+<p>Choose the installation directory <code>CMAKE_INSTALL_PREFIX</code> and type
+    the command below with your choice after <code>-DCMAKE_INSTALL_PREFIX=</code>
+    (enter an absolute path). For example, you could choose
+    <code>-DCMAKE_INSTALL_PREFIX=~/.local</code>.</p>
+<pre><code>cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/.local
+</code></pre>
+</li>
+<li>
+<p>Type:</p>
+<pre><code>make install
+</code></pre>
+</li>
+</ol>
+<h2 id="installation-directly-with-make">Installation directly with make</h2>
+<p>This is the (old) less automated way, not recommended.</p>
+<ol>
+<li>
+<p>If you want to use a Fortran 2003 compiler other than GNU Fortran
+    then, in the file GNUmakefile, locate the line:</p>
+<pre><code>FC = gfortran
+</code></pre>
+<p>Replace gfortran by the command name for your compiler. Remember
+that you need the NetCDF Fortran library installed with the chosen
+compiler. If you have version 4.2 or later of the NetCDF Fortran
+library installed, then the program <code>nf-config</code> should have been
+installed with the library. This program will tell you the compiler
+you need to use with your NetCDF Fortran library. Just type:</p>
+<pre><code>nf-config --fc
+</code></pre>
+</li>
+<li>
+<p>If the NetCDF Fortran library installed with the chosen compiler is
+    not in standard locations, you have to provide the locations. In
+    GNUmakefile, locate the line defining the variable
+    netcdf_include_dir :</p>
+<pre><code>netcdf_include_dir = /usr/include
+</code></pre>
+<p>Replace <code>/usr/include</code> by the path to the compiled NetCDF module
+interfaces (usually <code>netcdf.mod</code> and <code>typesizes.mod</code>). Note that
+NetCDF95 does not need <code>netcdf.inc</code>. If you have the command
+<code>nf-config</code>, type:</p>
+<pre><code>nf-config --includedir
+</code></pre>
+<p>to find out the path you need.</p>
+</li>
+<li>
+<p>If you want to cross-compile, you may need to choose the archiver
+    program, by setting the variable <code>AR</code>. For example, cross-compiling
+    for a NEC SX machine:</p>
+<pre><code>export AR=sxar
+</code></pre>
+</li>
+<li>
+<p>Optionally, you may choose additional compiler options by adding to
+    the variable <code>FFLAGS</code>. For example, you could modify the
+    optimization option <code>-O2</code>.</p>
+</li>
+<li>
+<p>The makefile is written for GNU make. The command invoking GNU make
+    may be <code>make</code> or <code>gmake</code> (or <code>sxgmake</code> if you want to cross-compile
+    for NEC SX). So, for example, type:</p>
+<pre><code>make
+</code></pre>
+</li>
+<li>
+<p>With most compilers, <code>libnetcdf95.a</code> and <code>netcdf95.mod</code> are the only
+    files you will need, but with some compilers, you may need all the
+    <code>.mod</code> files produced by the compilation of NetCDF95. (Keep them all
+    to be on the safe side, or experiment with your compiler to see what
+    you need to keep (see <a href="../usage/">usage</a>).) You
+    can trash everything else (<code>.o</code> files, Fortran source files, etc.)
+    if you want.</p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../usage/" class="btn btn-neutral float-right" title="Usage">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../usage/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
