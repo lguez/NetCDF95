@@ -1,1 +1,1 @@
-See [NetCDF95 homepage](http://www.lmd.jussieu.fr/~lguez/NetCDF95_site).
+See [NetCDF95 documentation](https://lguez.github.io/NetCDF95).
