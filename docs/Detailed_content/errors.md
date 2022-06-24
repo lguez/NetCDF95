@@ -6,7 +6,7 @@ Handling of errors
 ===
 
 If you call a NetCDF95 procedure without the optional `ncerr`
-argument,and some error occurs, then the NetCDF95 procedure will :
+argument, and some error occurs, then the NetCDF95 procedure will:
 
 -   write to standard output all the information it has, including the
     string produced by `nf90_strerror`;

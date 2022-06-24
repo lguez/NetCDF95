@@ -103,6 +103,6 @@ This is the (old) less automated way, not recommended.
     files you will need, but with some compilers, you may need all the
     `.mod` files produced by the compilation of NetCDF95. (Keep them all
     to be on the safe side, or experiment with your compiler to see what
-    you need to keep (see [usage](Usage/index.md)).) You
+    you need to keep (see [usage](usage.md)).) You
     can trash everything else (`.o` files, Fortran source files, etc.)
     if you want.

@@ -5,15 +5,16 @@ site_author: Lionel GUEZ
 nav:
    - Home:
       - 'index.md'
-      - 'introduction.md'
       - 'installation.md'
-   - 'Usage':
-      - 'Usage/index.md'
-      - 'Usage/datasets.md'
-      - 'Usage/dimensions.md'
-      - 'Usage/variables.md'
-      - 'Usage/attributes.md'
-      - 'Usage/errors.md'
+      - 'usage.md'
+   - 'Detailed content':
+      - 'Detailed_content/improvements.md'
+      - 'Detailed_content/datasets.md'
+      - 'Detailed_content/dimensions.md'
+      - 'Detailed_content/variables.md'
+      - 'Detailed_content/attributes.md'
+      - 'Detailed_content/groups.md'
+      - 'Detailed_content/errors.md'
    - Notes:
       - 'changes.md'
 markdown_extensions:

@@ -3,17 +3,15 @@ date: '2020-1-15'
 title: 'Variables'
 ---
 
-Variables
-===
+# Variables
 
 This page describles procedures handling NetCDF variables.
 
-See the [introduction page](../introduction.md) for an explanation of
+See the [improvements page](improvements.md) for an explanation of
 the mnemonics "basic change", "interface change", "functionality
 change", "additional procedure".
 
-Reminder on allocatable arguments
----
+## Reminder on allocatable arguments
 
 Some NetCDF95 procedures below have a dummy argument with attributes
 allocatable and `intent(out)`. Recall that in this case the associated
@@ -21,25 +19,28 @@ actual argument must also have the allocatable attribute. If it is
 allocated before the call, it will automatically be deallocated and
 reallocated in the NetCDF95 procedure.
 
-`nf95_def_var` and `nf95_def_var_scalar`
----
+## `nf95_def_var` and `nf95_def_var_scalar`
 
 (interface change)
 
-      subroutine nf95_def_var_scalar(ncid, name, xtype, varid, ncerr)
-        integer,               intent( in) :: ncid
-        character (len = *),   intent( in) :: name
-        integer,               intent( in) :: xtype
-        integer,               intent(out) :: varid
-        integer, intent(out), optional:: ncerr
+```
+subroutine nf95_def_var_scalar(ncid, name, xtype, varid, ncerr)
+  integer,               intent( in) :: ncid
+  character (len = *),   intent( in) :: name
+  integer,               intent( in) :: xtype
+  integer,               intent(out) :: varid
+ integer, intent(out), optional:: ncerr
+```
 
-      subroutine nf95_def_var(ncid, name, xtype, dimids, varid, ncerr)
-        integer,               intent( in) :: ncid
-        character (len = *),   intent( in) :: name
-        integer,               intent( in) :: xtype
-        integer[, dimension(:)], intent( in) :: dimids
-        integer,               intent(out) :: varid
-        integer, intent(out), optional:: ncerr
+```
+subroutine nf95_def_var(ncid, name, xtype, dimids, varid, ncerr)
+  integer,               intent( in) :: ncid
+  character (len = *),   intent( in) :: name
+  integer,               intent( in) :: xtype
+  integer[, dimension(:)], intent( in) :: dimids
+  integer,               intent(out) :: varid
+  integer, intent(out), optional:: ncerr
+```
 
 (`dimids` may be either a scalar or a rank 1 array.)
 
@@ -48,19 +49,42 @@ procedure name `nf95_def_var` cannot include the case of a scalar
 variable. So there is a specific public procedure `nf95_def_var_scalar`
 for this case.
 
-`nf95_get_var`
----
+Reference:
+[`nf90_def_var`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-create-a-variable-nf90_def_var)
+
+## `nf95_get_var`
 
 (functionality change)
 
-      subroutine nf95_get_var(ncid, varid, values, start, &
-           count_nc, stride, map, new_missing, ncerr)
+```
+subroutine nf95_get_var(ncid, varid, values, start, &
+     new_missing, ncerr)
 
-        integer, intent(in) :: ncid, varid
-        any type and any rank, intent(out):: values
-        integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
-        same type as values, optional, intent(in):: new_missing
-        integer, intent(out), optional:: ncerr
+  integer, intent(in) :: ncid, varid
+  any type, intent(out):: values
+  integer, dimension(:), optional, intent(in):: start
+  same type as values, optional, intent(in):: new_missing
+  integer, intent(out), optional:: ncerr
+```
+
+(argument `values` is a scalar then arguments `count_nc`, stride and map
+must not be present)
+
+or
+
+```
+subroutine nf95_get_var(ncid, varid, values, start, &
+     count_nc, stride, map, new_missing, ncerr)
+
+  integer, intent(in) :: ncid, varid
+  any type and any rank >= 1, intent(out):: values
+  integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+  same type as values, optional, intent(in):: new_missing
+  integer, intent(out), optional:: ncerr
+```
+
+(argument `values` is an array then arguments `count_nc`, stride and
+map may be present)
 
 The argument for the number of indices selected along each dimension is
 called `count_nc` in `nf95_get_var`, instead of `count` in
@@ -83,10 +107,10 @@ the missing value from the NetCDF variable is replaced by
 you need the missing value to be `ieee_value(0., IEEE_QUIET_NAN)`
 rather than `NF90_FILL_REAL`.
 
-See [`nf90_get_var`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-reading-data-values-nf90_get_var).
+Reference:
+[`nf90_get_var`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-reading-data-values-nf90_get_var)
 
-`nf95_gw_var`
----
+## `nf95_gw_var`
 
 (additional procedure)
 
@@ -95,7 +119,7 @@ See [`nf90_get_var`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-va
         integer, intent(in):: varid
         any type and kind, any rank, allocatable, intent(out):: values
 
-`nf95_gw_var` stands for "NetCDF 1995 get whole variable". This
+`nf95_gw_var` stands for "NetCDF95 get whole variable". This
 procedure reads a whole NetCDF variable into an array. When you want all
 the values of the NetCDF variable, this procedure is a shortcut to:
 inquiring about the dimension IDs of the variable, inquiring about the
@@ -109,8 +133,7 @@ variable: conversion will occur if necessary.
 
 See [reminder on allocatable arguments](#reminder-on-allocatable-arguments).
 
-`nf95_inq_varid`
----
+## `nf95_inq_varid`
 
 (basic change)
 
@@ -120,8 +143,10 @@ See [reminder on allocatable arguments](#reminder-on-allocatable-arguments).
         integer,             intent(out) :: varid
         integer, intent(out), optional:: ncerr
 
-`nf95_inquire_variable`
----
+Reference:
+[`nf90_inq_varid`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-the-id-of-a-variable-from-the-name-nf90_inq_varid)
+
+## `nf95_inquire_variable`
 
 (functionality change)
 
@@ -148,17 +173,38 @@ defined.
 
 See [reminder on allocatable arguments](#reminder-on-allocatable-arguments).
 
-`nf95_put_var`
----
+Reference:
+[`nf90_inquire_variable`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-information-about-a-variable-from-its-id-nf90_inquire_variable)
+
+## `nf95_put_var`
 
 (functionality change)
 
-      subroutine nf95_put_var(ncid, varid, values, start, &
-           count_nc, stride, map, ncerr)
-        integer,                         intent(in) :: ncid, varid
-        any type and any kind, any rank, intent(in) :: values
-        integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
-        integer, intent(out), optional:: ncerr
+```
+subroutine nf95_put_var(ncid, varid, values, start, &
+     ncerr)
+  integer,                         intent(in) :: ncid, varid
+  any type and any kind, intent(in) :: values
+  integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
+  integer, intent(out), optional:: ncerr
+```
+
+(argument `values` is a scalar then arguments `count_nc`, stride and map
+must not be present)
+
+or
+
+```
+subroutine nf95_put_var(ncid, varid, values, start, &
+     count_nc, stride, map, ncerr)
+  integer,                         intent(in) :: ncid, varid
+  any type and any kind, any rank >= 1, intent(in) :: values
+  integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
+  integer, intent(out), optional:: ncerr
+```
+
+(argument `values` is an array then arguments `count_nc`, stride and
+map may be present)
 
 The argument for the number of indices selected along each dimension is
 called `count_nc` in `nf95_put_var`, instead of `count` in
@@ -171,3 +217,6 @@ it is the name of a Fortran intrinsic procedure.
     NetCDF variable ;
 -   if `count_nc` is absent, the rank of argument `values` is lower than
     or equal to the rank of the NetCDF variable.
+
+Reference:
+[`nf90_put_var`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-writing-data-values-nf90_put_var)
