@@ -168,7 +168,6 @@ attribute contains a single value.</p>
   real or double precision or integer or character, intent(out):: missing
   ! missing or fill value
 </code></pre>
-
 <p>Returns the <code>missing_value</code> attribute if present, else the <code>_FillValue</code>
 if present, else <code>nf90_fill_real</code> or <code>nf90_fill_double</code>.</p>
 <h2 id="nf95_inquire_attribute"><code>nf95_inquire_attribute</code></h2>
@@ -181,7 +180,6 @@ if present, else <code>nf90_fill_real</code> or <code>nf90_fill_double</code>.</
   integer, intent(out), optional :: xtype, nclen, attnum
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>The argument for the number of values or characters of the attribute is
 called <code>nclen</code> in <code>nf95_inquire_attribute</code>, instead of <code>len</code> in
 <code>nf90_inquire_attribute</code>. <code>len</code> is not a good choice for a variable name
@@ -196,7 +194,6 @@ because it is the name of a Fortran intrinsic procedure.</p>
   character(len = *) or integer(any kind) or real(any kind), intent(in) :: values
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>Reference:
 <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-create-an-attribute-nf90_put_att"><code>nf90_put_att</code></a></p>
               

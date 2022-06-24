@@ -153,7 +153,6 @@ reallocated in the NetCDF95 procedure.</p>
   integer,               intent(out) :: varid
  integer, intent(out), optional:: ncerr
 </code></pre>
-
 <pre><code>subroutine nf95_def_var(ncid, name, xtype, dimids, varid, ncerr)
   integer,               intent( in) :: ncid
   character (len = *),   intent( in) :: name
@@ -162,7 +161,6 @@ reallocated in the NetCDF95 procedure.</p>
   integer,               intent(out) :: varid
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>(<code>dimids</code> may be either a scalar or a rank 1 array.)</p>
 <p>Because of the additional optional argument <code>ncerr</code>, the generic
 procedure name <code>nf95_def_var</code> cannot include the case of a scalar
@@ -181,7 +179,6 @@ for this case.</p>
   same type as values, optional, intent(in):: new_missing
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>(argument <code>values</code> is a scalar then arguments <code>count_nc</code>, stride and map
 must not be present)</p>
 <p>or</p>
@@ -194,7 +191,6 @@ must not be present)</p>
   same type as values, optional, intent(in):: new_missing
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>(argument <code>values</code> is an array then arguments <code>count_nc</code>, stride and
 map may be present)</p>
 <p>The argument for the number of indices selected along each dimension is
@@ -279,7 +275,6 @@ defined.</p>
   integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>(argument <code>values</code> is a scalar then arguments <code>count_nc</code>, stride and map
 must not be present)</p>
 <p>or</p>
@@ -290,7 +285,6 @@ must not be present)</p>
   integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>(argument <code>values</code> is an array then arguments <code>count_nc</code>, stride and
 map may be present)</p>
 <p>The argument for the number of indices selected along each dimension is

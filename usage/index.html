@@ -142,7 +142,6 @@ find_package(NetCDF95 CONFIG REQUIRED)
 target_link_libraries(my_program PRIVATE NetCDF95::netcdf95
   NetCDF_Fortran::netcdff)
 </code></pre>
-
 <p>(replace <code>my_program</code> by the name of your target).</p>
 <h2 id="building-the-consumer-program-without-cmake">Building the consumer program without CMake</h2>
 <p>If you do not build the consumer program with CMake, take into account
