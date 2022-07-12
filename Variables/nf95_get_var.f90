@@ -2,9 +2,10 @@ module nf95_get_var_m
 
   use netcdf, only: nf90_get_var, NF90_NOERR
   
-  use handle_err_m, only: handle_err
+  use nf95_abort_m, only: nf95_abort
   use check_start_count_m, only: check_start_count
   use nf95_get_missing_m, only: nf95_get_missing
+  use nf95_constants, only: nf95_noerr
 
   implicit none
 

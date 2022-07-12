@@ -8,7 +8,7 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
-    use handle_err_m, only: handle_err
+    use nf95_abort_m, only: nf95_abort
 
     integer, intent(in):: ncid ! can be the file id or a group id
     character(len = :), allocatable, intent(out):: name ! without path
@@ -46,7 +46,8 @@ contains
     
     cncid = int(ncid, c_int)
     cstatus = nc_inq_grpname_len(cncid, lenp)
-    call handle_err("nf95_inq_grpname -- nc_inq_grpname_len", int(cstatus), &
+    if (cstatus /= nc_noerr) call &
+         nf95_abort("nf95_inq_grpname -- nc_inq_grpname_len", int(cstatus), &
          ncid)
     allocate(character(lenp + 1):: name)
     cstatus = nc_inq_grpname(cncid, name)
@@ -54,7 +55,8 @@ contains
     if (present(ncerr)) then
        ncerr = cstatus
     else
-       call handle_err("nf95_inq_grps -- nc_inq_grpname", int(cstatus), ncid)
+       if (cstatus /= nc_noerr) call &
+            nf95_abort("nf95_inq_grps -- nc_inq_grpname", int(cstatus), ncid)
     end if
 
     if (cstatus == nc_noerr) then

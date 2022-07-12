@@ -1,8 +1,9 @@
 module nf95_put_var_m
 
   use netcdf, only: nf90_put_var
-  use handle_err_m, only: handle_err
+  use nf95_abort_m, only: nf95_abort
   use check_start_count_m, only: check_start_count
+  use nf95_constants, only: nf95_noerr
 
   implicit none
 
@@ -41,8 +42,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_FourByteReal", ncerr_not_opt, ncid, &
-            varid)
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_FourByteReal", ncerr_not_opt, ncid, varid)
     end if
 
   end subroutine nf95_put_var_FourByteReal
@@ -70,8 +71,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_FourByteInt", ncerr_not_opt, ncid, &
-            varid)
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_FourByteInt", ncerr_not_opt, ncid, varid)
     end if
 
   end subroutine nf95_put_var_FourByteInt
@@ -101,7 +102,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_1D_FourByteReal", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_1D_FourByteReal", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -132,7 +134,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_1D_FourByteInt", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_1D_FourByteInt", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -163,7 +166,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_1D_eightByteReal", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_1D_eightByteReal", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -194,7 +198,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_2D_FourByteReal", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_2D_FourByteReal", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -225,7 +230,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_2D_FourByteInt", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_2D_FourByteInt", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -256,7 +262,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_2D_EightByteReal", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_2D_EightByteReal", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -287,7 +294,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_3D_FourByteReal", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_3D_FourByteReal", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -318,7 +326,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_3D_eightByteReal", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_3D_eightByteReal", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -349,7 +358,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_4D_FourByteReal", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_4D_FourByteReal", ncerr_not_opt, ncid, &
             varid)
     end if
 
@@ -380,7 +390,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_put_var_4D_EightByteReal", ncerr_not_opt, ncid, &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_4D_EightByteReal", ncerr_not_opt, ncid, &
             varid)
     end if
 

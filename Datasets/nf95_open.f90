@@ -6,8 +6,9 @@ contains
 
   subroutine nf95_open(path, mode, ncid, chunksize, ncerr)
 
-    use handle_err_m, only: handle_err
+    use nf95_abort_m, only: nf95_abort
     use netcdf, only: nf90_open
+    use nf95_constants, only: nf95_noerr
 
     character(len=*), intent(in):: path
     integer, intent(in):: mode
@@ -25,7 +26,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_open " // path, ncerr_not_opt)
+       if (ncerr_not_opt /= nf95_noerr) call nf95_abort("nf95_open " // path, &
+            ncerr_not_opt)
     end if
 
   end subroutine nf95_open

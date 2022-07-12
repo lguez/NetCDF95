@@ -14,8 +14,9 @@ contains
     ! Here we use a better solution: an allocatable argument array.
     ! This procedure allocates and defines "dimids" if it is present.
 
-    use handle_err_m, only: handle_err
+    use nf95_abort_m, only: nf95_abort
     use netcdf, only: nf90_inquire_variable, nf90_max_var_dims
+    use nf95_constants, only: nf95_noerr
 
     integer, intent(in):: ncid, varid
     character(len = *), optional, intent(out):: name
@@ -44,7 +45,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_inquire_variable", ncerr_not_opt, ncid, varid)
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_inquire_variable", ncerr_not_opt, ncid, varid)
     end if
 
   end subroutine nf95_inquire_variable

@@ -9,7 +9,9 @@ contains
     use, intrinsic:: ISO_C_BINDING
 
     use netcdf, only: nf90_noerr
-    use handle_err_m, only: handle_err
+
+    use nc_constants, only: nc_noerr
+    use nf95_abort_m, only: nf95_abort
 
     integer, intent(in):: ncid ! can be the file id or a group id
     integer, allocatable, intent(out):: ncids(:)
@@ -39,7 +41,8 @@ contains
 
     cncid = int(ncid, c_int)
     cstatus = inq_numgrps(cncid, numgrps)
-    call handle_err("nf95_inq_grps -- inq_numgrps", int(cstatus), ncid)
+    if (cstatus /= nc_noerr) call nf95_abort("nf95_inq_grps -- inq_numgrps", &
+         int(cstatus), ncid)
 
     if (numgrps >= 1) then
        allocate(cncids(numgrps))
@@ -48,7 +51,8 @@ contains
        if (present(ncerr)) then
           ncerr = cstatus
        else
-          call handle_err("nf95_inq_grps -- nc_inq_grps", int(cstatus), ncid)
+          if (cstatus /= nc_noerr) call &
+               nf95_abort("nf95_inq_grps -- nc_inq_grps", int(cstatus), ncid)
        end if
 
        if (cstatus == nf90_noerr) ncids = cncids

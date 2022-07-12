@@ -6,8 +6,9 @@ contains
 
   subroutine nf95_inq_grpname_full(grpid, name, ncerr)
 
-    use handle_err_m, only: handle_err
+    use nf95_abort_m, only: nf95_abort
     use netcdf, only: nf90_inq_grpname_full, NF90_INQ_GRPNAME_LEN
+    use nf95_constants, only: nf95_noerr
 
     integer, intent(in):: grpid
     character(len = :), allocatable, intent(out):: name ! absolute path
@@ -19,7 +20,8 @@ contains
     !-------------------------------------------------------------------
 
     ncerr_not_opt = NF90_INQ_GRPNAME_LEN(grpid, nclen)
-    call handle_err("nf95_inq_grpname_full -- NF90_INQ_GRPNAME_LEN", &
+    if (ncerr_not_opt /= nf95_noerr) call &
+         nf95_abort("nf95_inq_grpname_full -- NF90_INQ_GRPNAME_LEN", &
          ncerr_not_opt, grpid)
     allocate(character(len = nclen):: name)
     ncerr_not_opt = nf90_inq_grpname_full(grpid, nclen, name)
@@ -27,7 +29,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_inq_grpname_full", ncerr_not_opt, grpid)
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_inq_grpname_full", ncerr_not_opt, grpid)
     end if
 
   end subroutine nf95_inq_grpname_full

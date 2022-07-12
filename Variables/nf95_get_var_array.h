@@ -11,7 +11,8 @@
   if (present(ncerr)) then
      ncerr = ncerr_not_opt
   else
-     call handle_err(procedure_name, ncerr_not_opt, ncid, varid)
+     if (ncerr_not_opt /= nf95_noerr) call nf95_abort(procedure_name, &
+          ncerr_not_opt, ncid, varid)
   end if
 
   if (ncerr_not_opt == NF90_NOERR .and. present(new_missing)) then

@@ -1,8 +1,9 @@
 module nf95_get_att_m
 
-  use handle_err_m, only: handle_err
+  use nf95_abort_m, only: nf95_abort
   use netcdf, only: nf90_get_att, nf90_noerr
   use nf95_inquire_attribute_m, only: nf95_inquire_attribute
+  use nf95_constants, only: nf95_noerr
 
   implicit none
 
@@ -52,8 +53,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_get_att_text " // trim(name), ncerr_not_opt, &
-            ncid, varid)
+       if (ncerr_not_opt /= nf95_noerr) call nf95_abort("nf95_get_att_text " &
+            // trim(name), ncerr_not_opt, ncid, varid)
     end if
 
     if (att_len >= 1 .and. ncerr_not_opt == nf90_noerr) then
@@ -98,7 +99,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_get_att_one_FourByteInt " // trim(name), &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_get_att_one_FourByteInt " // trim(name), &
             ncerr_not_opt, ncid, varid)
     end if
 
@@ -139,7 +141,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_get_att_one_Fourbytereal " // trim(name), &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_get_att_one_Fourbytereal " // trim(name), &
             ncerr_not_opt, ncid, varid)
     end if
 
@@ -180,7 +183,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_get_att_one_Eightbytereal " // trim(name), &
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_get_att_one_Eightbytereal " // trim(name), &
             ncerr_not_opt, ncid, varid)
     end if
 
