@@ -6,8 +6,9 @@ contains
 
   subroutine nf95_close(ncid, ncerr)
 
-    use handle_err_m, only: handle_err
     use netcdf, only: nf90_close
+
+    use handle_err_m, only: handle_err
 
     integer, intent( in) :: ncid
     integer, intent(out), optional :: ncerr
