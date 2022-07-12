@@ -22,7 +22,7 @@ program test_put_var_char
   ! Using trim removes trailing blanks, prefill provides null
   ! termination, so C programs can later get intended string.
   status = nf90_put_var(ncid, oceanid, trim(ocean))
-  if(status /= nf95_noerr) call nf95_abort("test_char", status)
+  if (status /= nf95_noerr) call nf95_abort("test_char", status)
   call nf95_close(ncid)
 
 end program test_put_var_char

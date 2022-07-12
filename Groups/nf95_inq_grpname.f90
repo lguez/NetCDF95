@@ -24,7 +24,7 @@ contains
     Interface
        Integer(C_INT) Function nc_inq_grpname_len(ncid, lenp) BIND(C)
          import c_int, C_SIZE_T
-         Integer(C_INT), VALUE:: ncid
+         Integer(C_INT), VALUE, Intent(IN):: ncid
 
          Integer(C_SIZE_T), Intent(OUT):: lenp
          ! does not include NULL terminator
@@ -32,7 +32,7 @@ contains
        
        Integer(C_INT) Function nc_inq_grpname(ncid, name) BIND(C)
          import c_int, C_CHAR
-         Integer(C_INT), VALUE:: ncid
+         Integer(C_INT), VALUE, Intent(IN):: ncid
          CHARACTER(kind=C_CHAR), Intent(OUT):: name(*)
        End Function nc_inq_grpname
     End Interface
