@@ -1,5 +1,8 @@
 module nf95_put_att_m
 
+  use netcdf, only: nf90_put_att
+  use handle_err_m, only: handle_err
+
   implicit none
 
   interface nf95_put_att
@@ -13,9 +16,6 @@ module nf95_put_att_m
 contains
 
   subroutine nf95_put_att_text(ncid, varid, name, values, ncerr)
-
-    use netcdf, only: nf90_put_att
-    use handle_err_m, only: handle_err
 
     integer, intent(in) :: ncid, varid
     character(len = *), intent(in) :: name
@@ -41,8 +41,6 @@ contains
 
   subroutine nf95_put_att_one_FourByteInt(ncid, varid, name, values, ncerr)
 
-    use netcdf, only: nf90_put_att
-    use handle_err_m, only: handle_err
     use typesizes, only: FourByteInt
 
     integer, intent(in) :: ncid, varid
@@ -69,8 +67,6 @@ contains
 
   subroutine nf95_put_att_one_FourByteReal(ncid, varid, name, values, ncerr)
 
-    use netcdf, only: nf90_put_att
-    use handle_err_m, only: handle_err
     use typesizes, only: FourByteReal
 
     integer, intent(in) :: ncid, varid

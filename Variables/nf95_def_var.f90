@@ -6,6 +6,9 @@ module nf95_def_var_m
   ! optional argument.
   ! "nf95_def_var_scalar" cannot be distinguished from "nf95_def_var_oneDim".
 
+  use netcdf, only: nf90_def_var
+  use handle_err_m, only: handle_err
+
   implicit none
 
   interface nf95_def_var
@@ -18,9 +21,6 @@ module nf95_def_var_m
 contains
 
   subroutine nf95_def_var_scalar(ncid, name, xtype, varid, ncerr)
-
-    use netcdf, only: nf90_def_var
-    use handle_err_m, only: handle_err
 
     integer,               intent( in) :: ncid
     character (len = *),   intent( in) :: name
@@ -47,9 +47,6 @@ contains
 
   subroutine nf95_def_var_oneDim(ncid, name, xtype, dimids, varid, ncerr)
 
-    use netcdf, only: nf90_def_var
-    use handle_err_m, only: handle_err
-
     integer,               intent( in) :: ncid
     character (len = *),   intent( in) :: name
     integer,               intent( in) :: xtype
@@ -75,9 +72,6 @@ contains
   !***********************
 
   subroutine nf95_def_var_ManyDims(ncid, name, xtype, dimids, varid, ncerr)
-
-    use netcdf, only: nf90_def_var
-    use handle_err_m, only: handle_err
 
     integer,               intent( in) :: ncid
     character (len = *),   intent( in) :: name
