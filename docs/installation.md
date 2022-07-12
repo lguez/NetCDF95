@@ -27,7 +27,7 @@ Installation with CMake
 This is the recommended way.
 
 Dependencies: you must first install [CMake](https://cmake.org/download)
-(version ≥ 3.13).
+(version ≥ 3.16).
 
 1.  Type:
 
