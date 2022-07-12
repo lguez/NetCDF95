@@ -3,7 +3,6 @@ module netcdf95
   ! Author: Lionel GUEZ
 
   use find_coord_m
-  use handle_err_m
   use nf95_abort_m
   use nf95_close_m
   use nf95_constants
