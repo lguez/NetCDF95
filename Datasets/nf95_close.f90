@@ -6,9 +6,10 @@ contains
 
   subroutine nf95_close(ncid, ncerr)
 
-    use netcdf, only: nf90_close
 
-    use handle_err_m, only: handle_err
+    use netcdf, only: nf90_close, nf90_strerror
+
+    use nf95_constants, only: nf95_noerr
 
     integer, intent( in) :: ncid
     integer, intent(out), optional :: ncerr
@@ -23,7 +24,11 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
-       call handle_err("nf95_close", ncerr_not_opt)
+       if (ncerr_not_opt /= nf95_noerr) then
+          print *, "nf95_close:"
+          print *, trim(nf90_strerror(ncerr_not_opt))
+          stop 1
+       end if
     end if
 
   end subroutine nf95_close
