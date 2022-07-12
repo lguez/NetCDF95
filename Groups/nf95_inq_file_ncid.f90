@@ -6,6 +6,10 @@ contains
 
   subroutine nf95_inq_file_ncid(ncid_file, grpid, ncerr)
 
+    ! Find the ncid of the file (that is, the root group), knowing the
+    ! ncid of a group in the file. Note that this procedure is called
+    ! by nf95_abort, so it cannot call it.
+
     use netcdf, only: nf90_strerror
 
     use nf95_constants, only: Nf95_ENOGRP, nf95_noerr

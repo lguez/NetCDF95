@@ -9,7 +9,7 @@ module nf95_put_att_m
   interface nf95_put_att
      module procedure nf95_put_att_text, nf95_put_att_one_FourByteInt, &
           nf95_put_att_one_FourByteReal
-  end interface
+  end interface nf95_put_att
 
   private
   public nf95_put_att

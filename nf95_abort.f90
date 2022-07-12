@@ -19,7 +19,7 @@ contains
 
     integer, intent(in), optional :: ncid
     ! This can be the file ncid or a group ncid. Provide this argument
-    ! if you want "nf95_abort" to try to close the file.
+    ! if you want nf95_abort to try to close the file.
 
     integer, intent(in), optional :: varid
 

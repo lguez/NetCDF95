@@ -6,6 +6,9 @@ contains
 
   subroutine nf95_inq_grp_parent(ncid, parent_ncid, ncerr)
 
+    ! Note that this procedure is indirectly called by nf95_abort, so
+    ! it cannot call it.
+
     use, intrinsic:: ISO_C_BINDING
 
     use netcdf, only: nf90_strerror

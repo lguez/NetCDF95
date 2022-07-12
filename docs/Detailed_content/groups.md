@@ -10,6 +10,21 @@ See the [improvements page](improvements.md) for an
 explanation of the mnemonics \"basic change\", \"interface change\",
 \"functionality change\", \"additional procedure\".
 
+## `nf95_inq_file_ncid`
+
+(additional procedure)
+
+```
+subroutine nf95_inq_file_ncid(ncid_file, grpid, ncerr)
+
+  ! Find the ncid of the file (that is, the root group), knowing the
+  ! ncid of a group in the file.
+
+  integer, intent(out):: ncid_file
+  integer, intent(in):: grpid
+  integer, intent(out), optional:: ncerr
+```
+
 ## `nf95_inq_grp_full_ncid`
 
 (basic change)
@@ -71,6 +86,13 @@ associate to name.
 
 Reference:
 [`nf90_inq_grpname_full`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_groups.html#f90-find-a-groups-full-name-nf90_inq_grpname_full)
+
+## `nf95_inq_grp_parent`
+
+(basic change)
+
+You know the ncid of a group and you want the ncid of the parent
+group.
 
 ## `nf95_inq_grps`
 

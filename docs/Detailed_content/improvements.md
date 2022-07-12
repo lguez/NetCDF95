@@ -4,10 +4,9 @@ date: '2019-11-27'
 
 # The four types of improvements
 
-In the following documentation, we give a [description of the
-interface of each NetCDF95 procedure](improvements.md). We will label
-each NetCDF95 procedure with one of the following four (mutually
-exclusive) mnemonics:
+In the following documentation, we give a description of the interface
+of each NetCDF95 procedure. We will label each NetCDF95 procedure with
+one of the following four (mutually exclusive) mnemonics:
 
 basic change
 : Means that there is a corresponding procedure in the Fortran 90
@@ -41,7 +40,11 @@ Procedures with basic change: [`nf95_copy_att`](attributes.md),
 [`nf95_redef`](datasets.md), [`nf95_sync`](datasets.md),
 [`nf95_inq_grp_full_ncid`](groups.md),
 [`nf95_inq_dimid`](dimensions.md),
-[`nf95_inq_varid`](variables.md)
+[`nf95_inq_varid`](variables.md), [`nf95_inq_grp_parent`](groups.md)
+
+If you call a NetCDF95 procedure with the optional argument ncerr, you
+can test the resulting value of ncerr against the constant `nf95_noerr`,
+in the module netcdf95.
 
 interface change
 : Means that there is a corresponding procedure in the Fortran 90
@@ -73,8 +76,9 @@ Procedures with functionality change:
 additional procedure
 : Means there is no corresponding procedure in the Fortran 90 interface.
 
-Additional procedures: [`handle_err`](datasets.md),
+Additional procedures: [`handle_err`](errors.md),
 [`nf95_gw_var`](variables.md),
 [`find_coord`](datasets.md),
 [`nf95_get_missing`](attributes.md),
-[`nf95_create_single`](datasets.md)
+[`nf95_create_single`](datasets.md),
+[`nf95_inq_file_ncid`](groups.md), [`nf95_abort`](errors.md)
