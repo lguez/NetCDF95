@@ -9,6 +9,7 @@ contains
     use, intrinsic:: ISO_C_BINDING
 
     use nf95_abort_m, only: nf95_abort
+    use nc_constants, only: NC_NOERR
 
     integer, intent(in):: ncid ! can be the file id or a group id
     character(len = :), allocatable, intent(out):: name ! without path
@@ -16,7 +17,6 @@ contains
 
     ! Local:
 
-    Integer(C_INT), Parameter :: NC_NOERR =  0
     Integer(C_INT) cstatus, cncid
     Integer(C_SIZE_T) lenp
     integer inull
