@@ -8,7 +8,9 @@ module nc_inq_grpname_len_m
        Integer(C_INT), VALUE, intent(in):: ncid
 
        Integer(C_SIZE_T), Intent(OUT):: lenp
-       ! does not include NULL terminator
+       ! This is the length of the full name (the absolute path), not
+       ! just the length of the basename. It does not count the NULL
+       ! terminator.
      End Function nc_inq_grpname_len
   End Interface
 

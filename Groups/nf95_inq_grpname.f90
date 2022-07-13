@@ -8,9 +8,9 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
-    use nf95_abort_m, only: nf95_abort
     use nc_constants, only: NC_NOERR
     use nc_inq_grpname_len_m, only: nc_inq_grpname_len
+    use nf95_abort_m, only: nf95_abort
 
     integer, intent(in):: ncid ! can be the file id or a group id
     character(len = :), allocatable, intent(out):: name ! without path
