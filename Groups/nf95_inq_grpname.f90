@@ -45,6 +45,9 @@ contains
          nf95_abort("nf95_inq_grpname -- nc_inq_grpname_len", int(cstatus), &
          ncid)
     allocate(character(lenp + 1):: name)
+
+    ! We assume that the C character kind is the same as the default
+    ! character kind:
     cstatus = nc_inq_grpname(cncid, name)
 
     if (present(ncerr)) then

@@ -1,7 +1,8 @@
 program test_c_char
 
   ! We assume (and do not check) that the C character kind is the same
-  ! as the default character kind in nf95_inq_grpname.
+  ! as the default character kind in nf95_inq_grpname and
+  ! nf95_inq_grp_full_ncid.
 
   use, intrinsic:: ISO_C_BINDING
 

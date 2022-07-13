@@ -48,6 +48,12 @@ Dependencies: you must first install [CMake](https://cmake.org/download)
 
         make install
             
+NetCDF95 assumes that the Fortran default character kind is the same
+as the C character kind (the official NetCDF-Fortran interface makes
+the same assumption). You can test this by running the command `ctest`
+in the build directory. If this test fails then the procedures
+`nf95_inq_grpname` and `nf95_inq_grp_full_ncid` are not reliable.
+
 
 Installation directly with make
 ---
