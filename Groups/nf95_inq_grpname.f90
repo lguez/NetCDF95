@@ -10,6 +10,7 @@ contains
 
     use nf95_abort_m, only: nf95_abort
     use nc_constants, only: NC_NOERR
+    use nc_inq_grpname_len_m, only: nc_inq_grpname_len
 
     integer, intent(in):: ncid ! can be the file id or a group id
     character(len = :), allocatable, intent(out):: name ! without path
@@ -22,14 +23,6 @@ contains
     integer inull
 
     Interface
-       Integer(C_INT) Function nc_inq_grpname_len(ncid, lenp) BIND(C)
-         import c_int, C_SIZE_T
-         Integer(C_INT), VALUE, Intent(IN):: ncid
-
-         Integer(C_SIZE_T), Intent(OUT):: lenp
-         ! does not include NULL terminator
-       End Function nc_inq_grpname_len
-       
        Integer(C_INT) Function nc_inq_grpname(ncid, name) BIND(C)
          import c_int, C_CHAR
          Integer(C_INT), VALUE, Intent(IN):: ncid
