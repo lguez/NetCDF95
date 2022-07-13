@@ -4,7 +4,7 @@ module nf95_inq_grp_full_ncid_m
 
 contains
 
-  subroutine nf95_inq_grp_full_ncid(ncid, full_name, grpid, ncerr)
+  subroutine nf95_inq_grp_full_ncid(ncid, full_name, grp_ncid, ncerr)
 
     use, intrinsic:: ISO_C_BINDING
 
@@ -19,7 +19,7 @@ contains
     ! root group or a subgroup). Can be an immediate subgroup or a
     ! deeper subgroup.
 
-    integer, intent(out):: grpid
+    integer, intent(out):: grp_ncid
     integer, intent(out), optional:: ncerr
 
     ! Local:
@@ -43,7 +43,7 @@ contains
          cgrp_ncid)
 
     if (cncerr == NC_NOERR) then
-       grpid = cgrp_ncid
+       grp_ncid = cgrp_ncid
        if (present(ncerr)) ncerr = nf95_noerr
     else
        if (present(ncerr)) then
