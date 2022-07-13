@@ -18,7 +18,7 @@ contains
 
     ! Local:
 
-    Integer(C_INT) cstatus, cncid
+    Integer(C_INT) cncerr, cncid
     Integer(C_SIZE_T) lenp
     integer inull
 
@@ -33,24 +33,24 @@ contains
     !------------------------------------------------------------
 
     cncid = int(ncid, c_int)
-    cstatus = nc_inq_grpname_len(cncid, lenp)
-    if (cstatus /= nc_noerr) call &
-         nf95_abort("nf95_inq_grpname -- nc_inq_grpname_len", int(cstatus), &
+    cncerr = nc_inq_grpname_len(cncid, lenp)
+    if (cncerr /= nc_noerr) call &
+         nf95_abort("nf95_inq_grpname -- nc_inq_grpname_len", int(cncerr), &
          ncid)
     allocate(character(lenp + 1):: name)
 
     ! We assume that the C character kind is the same as the default
     ! character kind:
-    cstatus = nc_inq_grpname(cncid, name)
+    cncerr = nc_inq_grpname(cncid, name)
 
     if (present(ncerr)) then
-       ncerr = cstatus
+       ncerr = cncerr
     else
-       if (cstatus /= nc_noerr) call &
-            nf95_abort("nf95_inq_grps -- nc_inq_grpname", int(cstatus), ncid)
+       if (cncerr /= nc_noerr) call &
+            nf95_abort("nf95_inq_grps -- nc_inq_grpname", int(cncerr), ncid)
     end if
 
-    if (cstatus == nc_noerr) then
+    if (cncerr == nc_noerr) then
        inull = SCAN(name, C_NULL_CHAR)
        if (inull /= 0) name = name(:inull - 1)
     end if
