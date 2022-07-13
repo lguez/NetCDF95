@@ -39,11 +39,6 @@ contains
 
     !------------------------------------------------------------
 
-    if (kind("a") /= c_char) then
-       print *, "Bad assumption: default character kind is not C character kind"
-       stop 1
-    end if
-    
     cncid = int(ncid, c_int)
     cstatus = nc_inq_grpname_len(cncid, lenp)
     if (cstatus /= nc_noerr) call &
