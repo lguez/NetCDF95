@@ -71,15 +71,24 @@ Reference:
 
 (functionality change)
 
+```
+subroutine nf95_inq_grpname_full(ncid, full_name, ncerr)
+
+  integer, intent(in):: ncid
+  character(len = :), allocatable, intent(out):: full_name ! absolute path
+  integer, intent(out), optional:: ncerr
+```
+
 You know the ncid of a group (which can be the root group) and you
 want the absolute path of the group.
 
-The functionality change is that the argument `name` has dynamic,
-deferred length, and there is no argument len. Since `name` is allocated
-to the exact length of the path, the argument len is useless, you can
-just query the length of the actual argument after the call.
+The functionality change is that the argument `full_name` has dynamic,
+deferred length, and there is no length argument. Since `full_name` is
+allocated to the exact length of the path, the length argument is
+useless, you can just query the length of the actual argument after
+the call.
 
-The problem with the Fortran 90 interface: `name` has assumed length
+The problem with the Fortran 90 interface: the name argument has assumed length
 in the Fortran 90 interface. You have to call `nf90_inq_grpname_len`
 first to know the length of the actual argument that you will
 associate to name.
