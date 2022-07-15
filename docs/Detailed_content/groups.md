@@ -30,7 +30,7 @@ subroutine nf95_inq_file_ncid(ncid_file, grpid, ncerr)
 (basic change)
 
 ```
-subroutine nf95_inq_grp_full_ncid(ncid, full_name, grpid, ncerr)
+subroutine nf95_inq_grp_full_ncid(ncid, full_name, grp_ncid, ncerr)
 
   integer, intent(in):: ncid ! can be the file id or a group id
 
@@ -39,9 +39,11 @@ subroutine nf95_inq_grp_full_ncid(ncid, full_name, grpid, ncerr)
   ! root group or a subgroup). Can be an immediate subgroup or a
   ! deeper subgroup.
 
-  integer, intent(out):: grpid
+  integer, intent(out):: grp_ncid
   integer, intent(out), optional:: ncerr
 ```
+
+You know the relative path of a group and you want its ncid.
 
 Reference:
 [`nc_inq_grp_full_ncid`](https://docs.unidata.ucar.edu/netcdf-c/current/group__groups.html#ga41d2e214f1a880493ed8ea3fbddab806)
@@ -49,6 +51,14 @@ Reference:
 ## `nf95_inq_grpname`
 
 (functionality change)
+
+```
+subroutine nf95_inq_grpname(ncid, name, ncerr)
+
+  integer, intent(in):: ncid ! can be the file id or a group id
+  character(len = :), allocatable, intent(out):: name ! without path
+  integer, intent(out), optional:: ncerr
+```
 
 You know the ncid of a group (which can be the root group) and you
 want the basename of this group. The basename of the group is the last
@@ -100,12 +110,28 @@ Reference:
 
 (basic change)
 
+```
+subroutine nf95_inq_grp_parent(ncid, parent_ncid, ncerr)
+
+  integer, intent(in):: ncid
+  integer, intent(out):: parent_ncid
+  integer, intent(out), optional:: ncerr
+```
+
 You know the ncid of a group and you want the ncid of the parent
 group.
 
 ## `nf95_inq_grps`
 
 (functionality change)
+
+```
+subroutine nf95_inq_grps(ncid, ncids, ncerr)
+
+  integer, intent(in):: ncid ! can be the file id or a group id
+  integer, allocatable, intent(out):: ncids(:)
+  integer, intent(out), optional:: ncerr
+```
 
 You know the ncid of a group (which can be the root group) and you
 want the ncids of its immediate subgroups.
