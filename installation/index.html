@@ -162,6 +162,12 @@ cd build
 </code></pre>
 </li>
 </ol>
+<p>NetCDF95 assumes that the Fortran default character kind is the same
+as the C character kind (the official NetCDF-Fortran interface makes
+the same assumption). You can test this by running the command <code>ctest</code>
+in the build directory. If this test fails then the procedures
+<code>nf95_inq_grpname</code>, <code>nf95_inq_grpname_full</code> and
+<code>nf95_inq_grp_full_ncid</code> are not reliable.</p>
 <h2 id="installation-directly-with-make">Installation directly with make</h2>
 <p>This is the (old) less automated way, not recommended.</p>
 <ol>

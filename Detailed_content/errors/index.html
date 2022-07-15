@@ -71,7 +71,7 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Handling of errors</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#handle_err">handle_err</a>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_abort">nf95_abort</a>
     </li>
     </ul>
                     </li>
@@ -135,22 +135,28 @@ argument, and some error occurs, then the NetCDF95 procedure will:</p>
 <pre><code>nf95_inq_varid, name = &lt; name of the variable you inquired about &gt;:
 &lt; string produced by nf90_strerror &gt;
 </code></pre>
-<h2 id="handle_err"><code>handle_err</code></h2>
+<h2 id="nf95_abort"><code>nf95_abort</code></h2>
 <p>(additional procedure)</p>
-<pre><code>  subroutine handle_err(message, ncerr, ncid, varid)
-    character(len=*), intent(in):: message
-    integer, intent(in):: ncerr
-    integer, intent(in), optional :: ncid
-    integer, intent(in), optional :: varid
+<pre><code>subroutine nf95_abort(message, ncerr, ncid, varid)
+  character(len=*), intent(in):: message
+  ! (should include name of calling procedure)
+
+  integer, intent(in):: ncerr
+
+  integer, intent(in), optional :: ncid
+  ! This can be the file ncid or a group ncid. Provide this argument
+  ! if you want nf95_abort to try to close the file.
+
+  integer, intent(in), optional :: varid
 </code></pre>
-<p>This is a public procedure which is also used internally in NetCDF95. If
-there is an error (as indicated by the argument <code>ncerr</code>) then
-<code>handle_err</code> prints a message and stops the program. <code>handle_err</code> may be
-useful after calling procedures of the Fortran 90 interface that have
-not been implemented in NetCDF95.</p>
+<p>This is a public procedure which is also used internally in NetCDF95.
+<code>nf95_abort</code> prints a message and stops the program. <code>nf95_abort</code> may
+also be useful after calling procedures of the Fortran 90 interface
+that have not been implemented in NetCDF95.</p>
 <p>You should include the name of the calling procedure in the <code>message</code>
-argument. Provide the <code>ncid</code> argument if you want <code>handle_err</code> to try to
-close the file. Provide <code>varid</code> if you want <code>handle_err</code> to print it.</p>
+argument. Provide the <code>ncid</code> argument if you want <code>nf95_abort</code> to try
+to close the file. Provide <code>varid</code> if you want <code>nf95_abort</code> to print
+it.</p>
               
             </div>
           </div>

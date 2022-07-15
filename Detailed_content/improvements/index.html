@@ -120,10 +120,9 @@
             <div class="section">
               
                 <h1 id="the-four-types-of-improvements">The four types of improvements</h1>
-<p>In the following documentation, we give a <a href="./">description of the
-interface of each NetCDF95 procedure</a>. We will label
-each NetCDF95 procedure with one of the following four (mutually
-exclusive) mnemonics:</p>
+<p>In the following documentation, we give a description of the interface
+of each NetCDF95 procedure. We will label each NetCDF95 procedure with
+one of the following four (mutually exclusive) mnemonics:</p>
 <dl>
 <dt>basic change</dt>
 <dd>Means that there is a corresponding procedure in the Fortran 90
@@ -156,7 +155,10 @@ interface and only the following three changes have been made:</dd>
 <a href="../datasets/"><code>nf95_redef</code></a>, <a href="../datasets/"><code>nf95_sync</code></a>,
 <a href="../groups/"><code>nf95_inq_grp_full_ncid</code></a>,
 <a href="../dimensions/"><code>nf95_inq_dimid</code></a>,
-<a href="../variables/"><code>nf95_inq_varid</code></a></p>
+<a href="../variables/"><code>nf95_inq_varid</code></a>, <a href="../groups/"><code>nf95_inq_grp_parent</code></a></p>
+<p>If you call a NetCDF95 procedure with the optional argument ncerr, you
+can test the resulting value of ncerr against the constant <code>nf95_noerr</code>,
+in the module netcdf95.</p>
 <dl>
 <dt>interface change</dt>
 <dd>Means that there is a corresponding procedure in the Fortran 90
@@ -188,11 +190,10 @@ functionality has also been improved.</dd>
 <dt>additional procedure</dt>
 <dd>Means there is no corresponding procedure in the Fortran 90 interface.</dd>
 </dl>
-<p>Additional procedures: <a href="../datasets/"><code>handle_err</code></a>,
-<a href="../variables/"><code>nf95_gw_var</code></a>,
-<a href="../datasets/"><code>find_coord</code></a>,
-<a href="../attributes/"><code>nf95_get_missing</code></a>,
-<a href="../datasets/"><code>nf95_create_single</code></a></p>
+<p>Additional procedures: <a href="../variables/"><code>nf95_gw_var</code></a>,
+<a href="../datasets/"><code>find_coord</code></a>, <a href="../attributes/"><code>nf95_get_missing</code></a>,
+<a href="../datasets/"><code>nf95_create_single</code></a>,
+<a href="../groups/"><code>nf95_inq_file_ncid</code></a>, <a href="../errors/"><code>nf95_abort</code></a></p>
               
             </div>
           </div>

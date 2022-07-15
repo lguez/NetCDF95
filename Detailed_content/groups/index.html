@@ -69,11 +69,15 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Groups</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_file_ncid">nf95_inq_file_ncid</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grp_full_ncid">nf95_inq_grp_full_ncid</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grpname">nf95_inq_grpname</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grpname_full">nf95_inq_grpname_full</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grp_parent">nf95_inq_grp_parent</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grps">nf95_inq_grps</a>
     </li>
@@ -132,9 +136,20 @@
 <p>See the <a href="../improvements/">improvements page</a> for an
 explanation of the mnemonics "basic change", "interface change",
 "functionality change", "additional procedure".</p>
+<h2 id="nf95_inq_file_ncid"><code>nf95_inq_file_ncid</code></h2>
+<p>(additional procedure)</p>
+<pre><code>subroutine nf95_inq_file_ncid(ncid_file, grpid, ncerr)
+
+  ! Find the ncid of the file (that is, the root group), knowing the
+  ! ncid of a group in the file.
+
+  integer, intent(out):: ncid_file
+  integer, intent(in):: grpid
+  integer, intent(out), optional:: ncerr
+</code></pre>
 <h2 id="nf95_inq_grp_full_ncid"><code>nf95_inq_grp_full_ncid</code></h2>
 <p>(basic change)</p>
-<pre><code>subroutine nf95_inq_grp_full_ncid(ncid, full_name, grpid, ncerr)
+<pre><code>subroutine nf95_inq_grp_full_ncid(ncid, full_name, grp_ncid, ncerr)
 
   integer, intent(in):: ncid ! can be the file id or a group id
 
@@ -143,13 +158,20 @@ explanation of the mnemonics "basic change", "interface change",
   ! root group or a subgroup). Can be an immediate subgroup or a
   ! deeper subgroup.
 
-  integer, intent(out):: grpid
+  integer, intent(out):: grp_ncid
   integer, intent(out), optional:: ncerr
 </code></pre>
+<p>You know the relative path of a group and you want its ncid.</p>
 <p>Reference:
 <a href="https://docs.unidata.ucar.edu/netcdf-c/current/group__groups.html#ga41d2e214f1a880493ed8ea3fbddab806"><code>nc_inq_grp_full_ncid</code></a></p>
 <h2 id="nf95_inq_grpname"><code>nf95_inq_grpname</code></h2>
 <p>(functionality change)</p>
+<pre><code>subroutine nf95_inq_grpname(ncid, name, ncerr)
+
+  integer, intent(in):: ncid ! can be the file id or a group id
+  character(len = :), allocatable, intent(out):: name ! without path
+  integer, intent(out), optional:: ncerr
+</code></pre>
 <p>You know the ncid of a group (which can be the root group) and you
 want the basename of this group. The basename of the group is the last
 part in the absolute path, as in the Unix basename program. The
@@ -165,20 +187,43 @@ group, not the length of the basename of the group.</p>
 <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_groups.html#f90-find-a-groups-name-nf90_inq_grpname"><code>nf90_inq_grpname</code></a></p>
 <h2 id="nf95_inq_grpname_full"><code>nf95_inq_grpname_full</code></h2>
 <p>(functionality change)</p>
+<pre><code>subroutine nf95_inq_grpname_full(ncid, full_name, ncerr)
+
+  integer, intent(in):: ncid
+  character(len = :), allocatable, intent(out):: full_name ! absolute path
+  integer, intent(out), optional:: ncerr
+</code></pre>
 <p>You know the ncid of a group (which can be the root group) and you
 want the absolute path of the group.</p>
-<p>The functionality change is that the argument <code>name</code> has dynamic,
-deferred length, and there is no argument len. Since <code>name</code> is allocated
-to the exact length of the path, the argument len is useless, you can
-just query the length of the actual argument after the call.</p>
-<p>The problem with the Fortran 90 interface: <code>name</code> has assumed length
+<p>The functionality change is that the argument <code>full_name</code> has dynamic,
+deferred length, and there is no length argument. Since <code>full_name</code> is
+allocated to the exact length of the path, the length argument is
+useless, you can just query the length of the actual argument after
+the call.</p>
+<p>The problem with the Fortran 90 interface: the name argument has assumed length
 in the Fortran 90 interface. You have to call <code>nf90_inq_grpname_len</code>
 first to know the length of the actual argument that you will
 associate to name.</p>
 <p>Reference:
 <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_groups.html#f90-find-a-groups-full-name-nf90_inq_grpname_full"><code>nf90_inq_grpname_full</code></a></p>
+<h2 id="nf95_inq_grp_parent"><code>nf95_inq_grp_parent</code></h2>
+<p>(basic change)</p>
+<pre><code>subroutine nf95_inq_grp_parent(ncid, parent_ncid, ncerr)
+
+  integer, intent(in):: ncid
+  integer, intent(out):: parent_ncid
+  integer, intent(out), optional:: ncerr
+</code></pre>
+<p>You know the ncid of a group and you want the ncid of the parent
+group.</p>
 <h2 id="nf95_inq_grps"><code>nf95_inq_grps</code></h2>
 <p>(functionality change)</p>
+<pre><code>subroutine nf95_inq_grps(ncid, ncids, ncerr)
+
+  integer, intent(in):: ncid ! can be the file id or a group id
+  integer, allocatable, intent(out):: ncids(:)
+  integer, intent(out), optional:: ncerr
+</code></pre>
 <p>You know the ncid of a group (which can be the root group) and you
 want the ncids of its immediate subgroups.</p>
 <p>The functionality change is that the argument ncids is allocatable and
