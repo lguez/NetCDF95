@@ -28,7 +28,7 @@ all: ${lib}
 ${lib}: ${lib}(${objects})
 
 depend depend.mk:
-	makedepf90 -free -Wmissing -Wconfused -nosrc -u netcdf -u typesizes ${sources} >depend.mk
+	makedepf90 -free -Wmissing -Wconfused -nosrc -u netcdf -u typesizes ${sources} $(addprefix -I, ${VPATH}) >depend.mk
 
 clean:
 	rm -f ${lib} ${objects}
