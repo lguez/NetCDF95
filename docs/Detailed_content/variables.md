@@ -67,7 +67,7 @@ subroutine nf95_get_var(ncid, varid, values, start, &
   integer, intent(out), optional:: ncerr
 ```
 
-(argument `values` is a scalar then arguments `count_nc`, stride and map
+(if argument `values` is a scalar then arguments `count_nc`, stride and map
 must not be present)
 
 or
@@ -83,7 +83,7 @@ subroutine nf95_get_var(ncid, varid, values, start, &
   integer, intent(out), optional:: ncerr
 ```
 
-(argument `values` is an array then arguments `count_nc`, stride and
+(if argument `values` is an array then arguments `count_nc`, stride and
 map may be present)
 
 The argument for the number of indices selected along each dimension is

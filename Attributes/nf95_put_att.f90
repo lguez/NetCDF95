@@ -29,6 +29,7 @@ contains
     !-------------------
 
     ncerr_not_opt = nf90_put_att(ncid, varid, name, values)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
@@ -55,6 +56,7 @@ contains
     !-------------------
 
     ncerr_not_opt = nf90_put_att(ncid, varid, name, values)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
@@ -82,6 +84,7 @@ contains
     !-------------------
 
     ncerr_not_opt = nf90_put_att(ncid, varid, name, values)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else
