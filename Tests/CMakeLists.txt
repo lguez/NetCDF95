@@ -37,3 +37,7 @@ target_link_libraries(test_inq_grpname PRIVATE NetCDF_Fortran::netcdff netcdf95)
 # test_inq_file_ncid
 add_executable(test_inq_file_ncid test_inq_file_ncid.f90)
 target_link_libraries(test_inq_file_ncid PRIVATE netcdf95)
+
+# test_create_single
+add_executable(test_create_single test_create_single.f90)
+target_link_libraries(test_create_single PRIVATE netcdf95)
