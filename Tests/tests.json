@@ -22,5 +22,10 @@
     {
 	"title": "Inq_grpname", "command": "$build_dir/Tests/test_inq_grpname",
 	"symlink": ["$src_dir/Tests/aerosol_optics.nc"]
+    },
+    {
+	"title": "Inq_file_ncid",
+	"command": "$build_dir/Tests/test_inq_file_ncid",
+	"symlink": ["$src_dir/Tests/aerosol_optics.nc"]
     }
 ]
