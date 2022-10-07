@@ -2,15 +2,16 @@ module netcdf95
 
   ! Author: Lionel GUEZ
 
-  use nf95_find_coord_m
   use nf95_abort_m
   use nf95_close_m
   use nf95_constants
   use nf95_copy_att_m
   use nf95_create_m
+  use nf95_create_single_m
   use nf95_def_dim_m
   use nf95_def_var_m
   use nf95_enddef_m
+  use nf95_find_coord_m
   use nf95_get_att_m
   use nf95_get_missing_m
   use nf95_get_var_m
@@ -32,6 +33,5 @@ module netcdf95
   use nf95_put_var_m
   use nf95_redef_m
   use nf95_sync_m
-  use nf95_create_single_m
 
 end module netcdf95
