@@ -53,7 +53,7 @@ made to mimic the C interface, and this is not optimal in Fortran.)
   interface. These combine several calls to other NetCDF95 procedures
   for common higher-level tasks. See
   [`nf95_gw_var`](Detailed_content/variables.md),
-  [`find_coord`](Detailed_content/datasets.md),
+  [`nf95_find_coord`](Detailed_content/datasets.md),
   [`nf95_create_single`](Detailed_content/datasets.md),
   [`nf95_get_missing`](Detailed_content/attributes.md).
   

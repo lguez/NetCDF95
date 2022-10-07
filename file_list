@@ -1,5 +1,5 @@
 check_start_count.f90
-find_coord.f90
+nf95_find_coord.f90
 inq_numgrps.c
 nc_constants.f90
 nc_inq_grpname_len.f90

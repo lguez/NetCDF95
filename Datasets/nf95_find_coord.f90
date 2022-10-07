@@ -1,10 +1,10 @@
-module find_coord_m
+module nf95_find_coord_m
 
   implicit none
 
 contains
 
-  subroutine find_coord(ncid, name, dimid, varid, std_name)
+  subroutine nf95_find_coord(ncid, name, dimid, varid, std_name)
 
     ! This procedure returns the name, dimension id or variable id of
     ! the NetCDF coordinate with standard name "std_name", if such a
@@ -65,7 +65,7 @@ contains
             "mbar         "]
        exact = .true.
     case default
-       print *, "find_coord: bad value of std_name"
+       print *, "nf95_find_coord: bad value of std_name"
        print *, "std_name = ", std_name
        stop 1
     end select
@@ -107,6 +107,6 @@ contains
        if (present(varid)) varid = 0
     end if
 
-  end subroutine find_coord
+  end subroutine nf95_find_coord
 
-end module find_coord_m
+end module nf95_find_coord_m

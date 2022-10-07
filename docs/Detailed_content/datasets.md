@@ -11,11 +11,11 @@ See the [improvements page](improvements.md) for an
 explanation of the mnemonics \"basic change\", \"interface change\",
 \"functionality change\", \"additional procedure\".
 
-## `find_coord`
+## `nf95_find_coord`
 
 (additional procedure)
 
-      subroutine find_coord(ncid, name, dimid, varid, std_name)
+      subroutine nf95_find_coord(ncid, name, dimid, varid, std_name)
       
         integer, intent(in):: ncid
 
