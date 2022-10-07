@@ -43,13 +43,19 @@ made to mimic the C interface, and this is not optimal in Fortran.)
 - NetCDF95 frees you of assumptions on the size of arrays and the size
   of character strings when you call several inquiry procedures. (It
   does so by making use of allocatable arguments, a Fortran 2003
-  feature.) See `nf95_inquire_variable`, `nf95_inq_grpname`,
-  `nf95_inq_grps`, `nf95_inq_grpname_full`.
+  feature.) See
+  [`nf95_inquire_variable`](Detailed_content/variables.md),
+  [`nf95_inq_grpname`](Detailed_content/groups.md),
+  [`nf95_inq_grps`](Detailed_content/groups.md),
+  [`nf95_inq_grpname_full`](Detailed_content/groups.md).
   
 - NetCDF95 offers procedures that have no counterpart in the official
   interface. These combine several calls to other NetCDF95 procedures
-  for common higher-level tasks. See `nf95_gw_var`, `find_coord`,
-  `nf95_create_single`, `nf95_get_missing`.
+  for common higher-level tasks. See
+  [`nf95_gw_var`](Detailed_content/variables.md),
+  [`find_coord`](Detailed_content/datasets.md),
+  [`nf95_create_single`](Detailed_content/datasets.md),
+  [`nf95_get_missing`](Detailed_content/attributes.md).
   
 - NetCDF95 replaces functions by subroutines. Procedures of the
 official Fortran 90 interface are all functions, and they are all with
@@ -61,8 +67,9 @@ has a different programming style than C and frowns upon side-effects
 in functions. See for example Metcalf and Reid (Fortran 90/95
 Explained, 1999, §§ 5.10 and 6.10).
 
-- They are other improvements such as securing the call to
-  `nf95_get_var` by checking the arguments start and `count_nc`, and
-  renaming badly chosen argument names len and count to nclen and `count_nc`.
+- There are other improvements such as securing the call to
+[`nf95_get_var`](Detailed_content/variables.md) by checking the
+arguments start and `count_nc`, and renaming badly chosen argument
+names len and count to nclen and `count_nc`.
 
   

@@ -60,6 +60,25 @@ Reference: [`nf90_close`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f
 
 Reference: [`nf90_create`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90_datasets.html#f90-nf90_create)
 
+## `nf95_create_single`
+
+(additional procedure)
+
+	subroutine nf95_create_single(name, coordinates, ncid, varid, varid_coord)
+	  character(len = *), intent(in):: name
+      type(coord_def), intent(in):: coordinates(:)
+      integer, intent(out):: ncid, varid, varid_coord(:)
+
+This procedure is a shortcut to create a NetCDF file containing a
+single primary variable, with all its coordinates. The coordinates are
+specified using the derived type `coord_def` :
+
+	type coord_def
+      character(len = NF90_MAX_NAME) name
+	  integer nclen
+	  character(len = :), allocatable:: attr_name(:), attr_val(:)
+	end type coord_def
+
 ## `nf95_enddef`
 
 (basic change)
