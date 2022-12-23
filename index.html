@@ -10,11 +10,9 @@
   <link rel="canonical" href="https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html/">
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>Introduction - NetCDF95 documentation</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
-
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -25,8 +23,9 @@
   
   <script src="js/jquery-2.1.1.min.js" defer></script>
   <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
+  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -40,7 +39,7 @@
         <a href="." class="icon icon-home"> NetCDF95 documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -119,7 +118,6 @@
   
   <hr/>
 </div>
-
           <div role="main">
             <div class="section">
               
@@ -159,14 +157,20 @@ made to mimic the C interface, and this is not optimal in Fortran.)</p>
 <p>NetCDF95 frees you of assumptions on the size of arrays and the size
   of character strings when you call several inquiry procedures. (It
   does so by making use of allocatable arguments, a Fortran 2003
-  feature.) See <code>nf95_inquire_variable</code>, <code>nf95_inq_grpname</code>,
-  <code>nf95_inq_grps</code>, <code>nf95_inq_grpname_full</code>.</p>
+  feature.) See
+  <a href="Detailed_content/variables/"><code>nf95_inquire_variable</code></a>,
+  <a href="Detailed_content/groups/"><code>nf95_inq_grpname</code></a>,
+  <a href="Detailed_content/groups/"><code>nf95_inq_grps</code></a>,
+  <a href="Detailed_content/groups/"><code>nf95_inq_grpname_full</code></a>.</p>
 </li>
 <li>
 <p>NetCDF95 offers procedures that have no counterpart in the official
   interface. These combine several calls to other NetCDF95 procedures
-  for common higher-level tasks. See <code>nf95_gw_var</code>, <code>find_coord</code>,
-  <code>nf95_create_single</code>, <code>nf95_get_missing</code>.</p>
+  for common higher-level tasks. See
+  <a href="Detailed_content/variables/"><code>nf95_gw_var</code></a>,
+  <a href="Detailed_content/datasets/"><code>nf95_find_coord</code></a>,
+  <a href="Detailed_content/datasets/"><code>nf95_create_single</code></a>,
+  <a href="Detailed_content/attributes/"><code>nf95_get_missing</code></a>.</p>
 </li>
 <li>
 <p>NetCDF95 replaces functions by subroutines. Procedures of the
@@ -180,9 +184,10 @@ in functions. See for example Metcalf and Reid (Fortran 90/95
 Explained, 1999, §§ 5.10 and 6.10).</p>
 </li>
 <li>
-<p>They are other improvements such as securing the call to
-  <code>nf95_get_var</code> by checking the arguments start and <code>count_nc</code>, and
-  renaming badly chosen argument names len and count to nclen and <code>count_nc</code>.</p>
+<p>There are other improvements such as securing the call to
+<a href="Detailed_content/variables/"><code>nf95_get_var</code></a> by checking the
+arguments start and <code>count_nc</code>, and renaming badly chosen argument
+names len and count to nclen and <code>count_nc</code>.</p>
 </li>
 </ul>
               
@@ -216,20 +221,17 @@ Explained, 1999, §§ 5.10 and 6.10).</p>
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-    
-      <span><a href="installation/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="installation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
 </div>
     <script>var base_url = '.';</script>
-    <script src="js/theme_extra.js" defer></script>
     <script src="js/theme.js" defer></script>
       <script src="search/main.js" defer></script>
     <script defer>
