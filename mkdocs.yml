@@ -20,4 +20,5 @@ nav:
 markdown_extensions:
    - def_list
    - smarty
+   - footnotes
 theme: readthedocs
