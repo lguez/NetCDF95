@@ -1,5 +1,5 @@
 site_name: NetCDF95 documentation
-site_url: https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html
+site_url: https://lguez.github.io/NetCDF95
 repo_url: https://github.com/lguez/NetCDF95
 site_author: Lionel GUEZ
 nav:

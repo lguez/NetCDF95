@@ -4,13 +4,14 @@
 
 - [CMake](https://cmake.org/download) (version ≥ 3.16)[^1].
 
--  A Fortran compiler. `NetCDF95` is written in Fortran (2003).
+- The [NetCDF C
+  library](https://docs.unidata.ucar.edu/nug/current/getting_and_building_netcdf.html).
 
-- The [NetCDF Fortran
-  library](https://www.unidata.ucar.edu/downloads/netcdf/index.jsp)
-  installed using the same Fortran compiler than the one you are going
-  to use for `NetCDF95`. (Note that the NetCDF Fortran library itself
-  requires prior installation of the NetCDF C library.)
+- The [NetCDF-Fortran
+  library](https://www.unidata.ucar.edu/downloads/netcdf/index.jsp).
+
+- The Fortran compiler that was used to compile your installed
+  NetCDF-Fortran library.
 
 ## Instructions
 
@@ -21,7 +22,7 @@
 		git clone --recurse-submodules https://github.com/lguez/NetCDF95.git
 
 	If you prefer to download a ZIP file then you will also have to
-	download the [cmake subdirectory](https://github.com/lguez/cmake).
+    download the [cmake subdirectory](https://github.com/lguez/cmake).
 
 2.  Create a build subdirectory in the NetCDF95 directory you have
     just downloaded:
@@ -40,8 +41,8 @@
 
         make install
 
-You do not need to keep the downloaded directory (nor the build
-directory) after installation.
+You do not need to keep the downloaded directory NetCDF95 (nor the
+build directory) after installation.
 
 ## Advanced instructions
 
@@ -59,6 +60,16 @@ directory) after installation.
   `ctest` in the build directory. If this test fails then the
   procedures `nf95_inq_grpname`, `nf95_inq_grpname_full` and
   `nf95_inq_grp_full_ncid` are not reliable.
+
+## Troubleshooting
+
+If your installation of NetCDF or NetCDF-Fortran is in a non-standard
+location, and CMake does not find it, then re-run cmake setting the
+variable `CMAKE_PREFIX_PATH` to the directory containing it. CMake
+will then search `${CMAKE_PREFIX_PATH}/lib`,
+`${CMAKE_PREFIX_PATH}/include`, etc. For example:
+
+	cmake . -DCMAKE_PREFIX_PATH:PATH=/path/to/my/favorite/installation
 
 [^1]: On Mac OS, after downloading the application from the CMake web
     site, run it, then click on "How to Install For Command Line Use"
