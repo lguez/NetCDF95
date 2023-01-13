@@ -1,7 +1,3 @@
----
-date: '2012-01-20'
----
-
 # Usage
 
 ## In the source code of the consumer program

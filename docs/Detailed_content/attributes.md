@@ -1,8 +1,3 @@
----
-date: '2019-11-27'
-title: Attributes
----
-
 Attributes
 ===
 

@@ -1,8 +1,3 @@
----
-date: '2010-11-04'
-title: 'Dimensions'
----
-
 Dimensions
 ===
 

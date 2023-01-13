@@ -1,8 +1,3 @@
----
-date: '2020-1-15'
-title: 'Variables'
----
-
 # Variables
 
 This page describles procedures handling NetCDF variables.

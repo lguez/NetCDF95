@@ -1,7 +1,3 @@
----
-date: '2022-06-24'
----
-
 # Introduction
 
 ## What is it?

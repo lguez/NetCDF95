@@ -1,7 +1,3 @@
----
-date: '2019-11-27'
----
-
 # Datasets & co
 
 This page describles procedures handling a whole dataset, or handling

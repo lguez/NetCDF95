@@ -1,7 +1,3 @@
----
-date: '2010-11-04'
----
-
 # Groups
 
 This page describles procedures handling NetCDF groups.

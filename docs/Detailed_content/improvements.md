@@ -1,7 +1,3 @@
----
-date: '2019-11-27'
----
-
 # The four types of improvements
 
 In the following documentation, we give a description of the interface
