@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Lionel GUEZ">
-  <link rel="canonical" href="https://www.lmd.jussieu.fr/~lguez/NetCDF95_site/index.html/installation/">
+  <link rel="canonical" href="https://lguez.github.io/NetCDF95/installation/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Installation - NetCDF95 documentation</title>
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
     // Current page data
     var mkdocs_page_name = "Installation";
     var mkdocs_page_input_path = "installation.md";
-    var mkdocs_page_url = "/~lguez/NetCDF95_site/index.html/installation/";
+    var mkdocs_page_url = "/NetCDF95/installation/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -56,6 +56,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#advanced-instructions">Advanced instructions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
     </li>
     </ul>
                     </li>
@@ -130,14 +132,16 @@
 <p><a href="https://cmake.org/download">CMake</a> (version ≥ 3.16)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 </li>
 <li>
-<p>A Fortran compiler. <code>NetCDF95</code> is written in Fortran (2003).</p>
+<p>The <a href="https://docs.unidata.ucar.edu/nug/current/getting_and_building_netcdf.html">NetCDF C
+  library</a>.</p>
 </li>
 <li>
-<p>The <a href="https://www.unidata.ucar.edu/downloads/netcdf/index.jsp">NetCDF Fortran
-  library</a>
-  installed using the same Fortran compiler than the one you are going
-  to use for <code>NetCDF95</code>. (Note that the NetCDF Fortran library itself
-  requires prior installation of the NetCDF C library.)</p>
+<p>The <a href="https://www.unidata.ucar.edu/downloads/netcdf/index.jsp">NetCDF-Fortran
+  library</a>.</p>
+</li>
+<li>
+<p>The Fortran compiler that was used to compile your installed
+  NetCDF-Fortran library.</p>
 </li>
 </ul>
 <h2 id="instructions">Instructions</h2>
@@ -172,8 +176,8 @@ cd build
 </code></pre>
 </li>
 </ol>
-<p>You do not need to keep the downloaded directory (nor the build
-directory) after installation.</p>
+<p>You do not need to keep the downloaded directory NetCDF95 (nor the
+build directory) after installation.</p>
 <h2 id="advanced-instructions">Advanced instructions</h2>
 <ul>
 <li>
@@ -194,6 +198,14 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
   <code>nf95_inq_grp_full_ncid</code> are not reliable.</p>
 </li>
 </ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If your installation of NetCDF or NetCDF-Fortran is in a non-standard
+location, and CMake does not find it, then re-run cmake setting the
+variable <code>CMAKE_PREFIX_PATH</code> to the directory containing it. CMake
+will then search <code>${CMAKE_PREFIX_PATH}/lib</code>,
+<code>${CMAKE_PREFIX_PATH}/include</code>, etc. For example:</p>
+<pre><code>cmake . -DCMAKE_PREFIX_PATH:PATH=/path/to/my/favorite/installation
+</code></pre>
 <div class="footnote">
 <hr />
 <ol>
