@@ -9,8 +9,7 @@ The name of the module that you must use in your Fortran program is
 
 ## Building the consumer program with CMake
 
-If you installed NetCDF95 with CMake and your program using NetCDF95
-is also built with CMake, then download
+If you build your program using NetCDF95 with CMake, then download
 [`FindNetCDF_Fortran.cmake`](https://github.com/lguez/cmake/blob/master/FindNetCDF_Fortran.cmake)
 into your consumer program directory and add the following lines to
 the file `CMakeLists.txt` for your program:

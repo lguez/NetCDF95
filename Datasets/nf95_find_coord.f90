@@ -25,7 +25,7 @@ contains
 
     character(len=*), intent(out), optional:: name ! blanks if not found
     ! The actual character argument should normally have the length
-    ! "NF90_MAX_NAME".
+    ! "NF95_MAX_NAME".
 
     integer, intent(out), optional:: dimid ! 0 if not found
     integer, intent(out), optional:: varid ! 0 if not found

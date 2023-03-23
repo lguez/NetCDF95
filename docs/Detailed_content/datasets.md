@@ -50,6 +50,9 @@ specified using the derived type `coord_def` :
 	  character(len = :), allocatable:: attr_name(:), attr_val(:)
 	end type coord_def
 
+After the call to `nf95_create_single`, the NetCDF dataset is still in
+define mode, so you can add attributes if appropriate.
+
 ## `nf95_enddef`
 
 (basic change)
