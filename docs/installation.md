@@ -13,6 +13,11 @@
 - The Fortran compiler that was used to compile your installed
   NetCDF-Fortran library.
 
+Under Ubuntu or Linux Mint, you can install all these dependencies
+with the following command:
+
+	apt install libnetcdff-dev gfortran cmake
+
 ## Instructions
 
 1. Get [NetCDF95 from Github](https://github.com/lguez/NetCDF95). As
@@ -61,6 +66,14 @@ build directory) after installation.
   procedures `nf95_inq_grpname`, `nf95_inq_grpname_full` and
   `nf95_inq_grp_full_ncid` are not reliable.
 
+- You do not have to install. You can just use the compiled library in
+  the build directory. So you do not have to specify the option
+  `-DCMAKE_INSTALL_PREFIX=` and you can just type make instead of
+  `make install`.
+
+- You can compile with debugging options by adding the option
+  `-DCMAKE_BUILD_TYPE=Debug` to the command cmake.
+
 ## Troubleshooting
 
 - If your installation of NetCDF or NetCDF-Fortran is in a non-standard
@@ -71,19 +84,20 @@ will then search `${CMAKE_PREFIX_PATH}/lib`,
 
 		cmake . -DCMAKE_PREFIX_PATH:PATH=/path/to/my/favorite/installation
 
-- If you have several Fortran compilers on your machine, it is
-  possible that CMake does not choose the one you want. Note that when
-  you run cmake, it prints a line telling which compiler it is going
+- If you have several Fortran or C compilers on your machine, it is
+  possible that CMake does not choose the ones you want. Note that when
+  you run cmake, it prints lines telling which compilers it is going
   to use. For example :
-  
-		-- The Fortran compiler identification is GNU 6.5.0
 
-	So if you want another one, remove everything in the build
-	directory and run cmake again setting the variable FC to the
-	compiler you want. For example:
-  
+		-- The Fortran compiler identification is GNU 11.3.0
+		-- The C compiler identification is GNU 11.3.0
+
+	So if you want other compilers, remove everything in the build
+	directory and run cmake again setting the variables FC and CC to the
+	compilers you want. For example:
+
 		rm -r * # in the build directory!
-		FC=ifort cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+		FC=ifort CC=icc cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
 
 [^1]: On Mac OS, after downloading the application from the CMake web
     site, run it, then click on "How to Install For Command Line Use"
