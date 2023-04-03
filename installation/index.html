@@ -199,6 +199,8 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
 </li>
 </ul>
 <h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>
 <p>If your installation of NetCDF or NetCDF-Fortran is in a non-standard
 location, and CMake does not find it, then re-run cmake setting the
 variable <code>CMAKE_PREFIX_PATH</code> to the directory containing it. CMake
@@ -206,6 +208,22 @@ will then search <code>${CMAKE_PREFIX_PATH}/lib</code>,
 <code>${CMAKE_PREFIX_PATH}/include</code>, etc. For example:</p>
 <pre><code>cmake . -DCMAKE_PREFIX_PATH:PATH=/path/to/my/favorite/installation
 </code></pre>
+</li>
+<li>
+<p>If you have several Fortran compilers on your machine, it is
+  possible that CMake does not choose the one you want. Note that when
+  you run cmake, it prints a line telling which compiler it is going
+  to use. For example :</p>
+<pre><code>-- The Fortran compiler identification is GNU 6.5.0
+</code></pre>
+<p>So if you want another one, remove everything in the build
+directory and run cmake again setting the variable FC to the
+compiler you want. For example:</p>
+<pre><code>rm -r * # in the build directory!
+FC=ifort cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+</code></pre>
+</li>
+</ul>
 <div class="footnote">
 <hr />
 <ol>

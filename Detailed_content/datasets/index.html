@@ -175,6 +175,8 @@ specified using the derived type <code>coord_def</code> :</p>
   character(len = :), allocatable:: attr_name(:), attr_val(:)
 end type coord_def
 </code></pre>
+<p>After the call to <code>nf95_create_single</code>, the NetCDF dataset is still in
+define mode, so you can add attributes if appropriate.</p>
 <h2 id="nf95_enddef"><code>nf95_enddef</code></h2>
 <p>(basic change)</p>
 <pre><code>  subroutine nf95_enddef(ncid, h_minfree, v_align, v_minfree, r_align, ncerr)
