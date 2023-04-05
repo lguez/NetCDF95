@@ -144,6 +144,10 @@
   NetCDF-Fortran library.</p>
 </li>
 </ul>
+<p>Under Ubuntu or Linux Mint, you can install all these dependencies
+with the following command:</p>
+<pre><code>apt install libnetcdff-dev gfortran cmake
+</code></pre>
 <h2 id="instructions">Instructions</h2>
 <ol>
 <li>
@@ -197,6 +201,16 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
   procedures <code>nf95_inq_grpname</code>, <code>nf95_inq_grpname_full</code> and
   <code>nf95_inq_grp_full_ncid</code> are not reliable.</p>
 </li>
+<li>
+<p>You do not have to install. You can just use the compiled library in
+  the build directory. So you do not have to specify the option
+  <code>-DCMAKE_INSTALL_PREFIX=</code> and you can just type make instead of
+  <code>make install</code>.</p>
+</li>
+<li>
+<p>You can compile with debugging options by adding the option
+  <code>-DCMAKE_BUILD_TYPE=Debug</code> to the command cmake.</p>
+</li>
 </ul>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <ul>
@@ -210,17 +224,18 @@ will then search <code>${CMAKE_PREFIX_PATH}/lib</code>,
 </code></pre>
 </li>
 <li>
-<p>If you have several Fortran compilers on your machine, it is
-  possible that CMake does not choose the one you want. Note that when
-  you run cmake, it prints a line telling which compiler it is going
+<p>If you have several Fortran or C compilers on your machine, it is
+  possible that CMake does not choose the ones you want. Note that when
+  you run cmake, it prints lines telling which compilers it is going
   to use. For example :</p>
-<pre><code>-- The Fortran compiler identification is GNU 6.5.0
+<pre><code>-- The Fortran compiler identification is GNU 11.3.0
+-- The C compiler identification is GNU 11.3.0
 </code></pre>
-<p>So if you want another one, remove everything in the build
-directory and run cmake again setting the variable FC to the
-compiler you want. For example:</p>
+<p>So if you want other compilers, remove everything in the build
+directory and run cmake again setting the variables FC and CC to the
+compilers you want. For example:</p>
 <pre><code>rm -r * # in the build directory!
-FC=ifort cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+FC=ifort CC=icc cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
 </code></pre>
 </li>
 </ul>
