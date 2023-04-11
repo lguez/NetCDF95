@@ -19,22 +19,23 @@ interface](https://www.unidata.ucar.edu/software/netcdf/docs-fortran/f90_The-Net
 NetCDF95 is meant to be friendlier and more secure. Notably:
 
 - NetCDF95 frees you of the cumbersome task of handling the error
-status.  NetCDF95 procedures behave like the Fortran input/output
-statements. That is, the error status is an optional output
-argument. Consider, for example, the Fortran formatted `read`
-statement:
-```
-read([unit=]u, [fmt=]fmt [,iostat=ios] [, err=error-label] &
-[,end=end-label]) [list]
-```
-If the `err`, `end` and `iostat` keywords are not provided, and there
-is a problem in the execution of the `read` statement, then execution
-of the program stops (with an informative error message from the
-compiler). Similarly, NetCDF95 procedures have an optional argument
-for error status. If the optional argument is absent and there is an
-error, then the NetCDF95 procedure produces an error message and stops
-the program. (The official Fortran 90 interface looks like it has been
-made to mimic the C interface, and this is not optimal in Fortran.)
+  status.  NetCDF95 procedures behave like the Fortran input/output
+  statements. That is, the error status is an optional output
+  argument. Consider, for example, the Fortran formatted `read`
+  statement:
+
+		read([unit=]u, [fmt=]fmt [,iostat=ios] [, err=error-label] &
+		   [,end=end-label]) [list]
+
+	If the `err`, `end` and `iostat` keywords are not provided, and
+	there is a problem in the execution of the `read` statement, then
+	execution of the program stops (with an informative error message
+	from the compiler). Similarly, NetCDF95 procedures have an
+	optional argument for error status. If the optional argument is
+	absent and there is an error, then the NetCDF95 procedure produces
+	an error message and stops the program. (The official Fortran 90
+	interface looks like it has been made to mimic the C interface,
+	and this is not optimal in Fortran.)
 
 - NetCDF95 frees you of assumptions on the size of arrays and the size
   of character strings when you call several inquiry procedures. (It
