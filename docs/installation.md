@@ -12,11 +12,12 @@
 
 - The Fortran compiler that was used to compile your installed
   NetCDF-Fortran library.
+- Git (optional, the easiest way to download NetCDF95).
 
-Under Ubuntu or Linux Mint, you can install all these dependencies
-with the following command:
+Under Ubuntu &ge; 20.04 or Linux Mint &ge; 20, you can install all these
+dependencies with the following command:
 
-	apt install libnetcdff-dev gfortran cmake
+	sudo apt install libnetcdff-dev gfortran cmake git
 
 ## Instructions
 
@@ -32,7 +33,7 @@ with the following command:
 2.  Create a build subdirectory in the NetCDF95 directory you have
     just downloaded:
 
-        cd the-directory-you-have-just-downloaded
+        cd NetCDF95
         mkdir build
         cd build
 
