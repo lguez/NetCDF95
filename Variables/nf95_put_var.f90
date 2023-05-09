@@ -9,11 +9,12 @@ module nf95_put_var_m
 
   interface nf95_put_var
      module procedure nf95_put_var_FourByteReal, nf95_put_var_FourByteInt, &
-          nf95_put_var_1D_FourByteReal, nf95_put_var_1D_FourByteInt, &
-          nf95_put_var_1D_EightByteReal, nf95_put_var_2D_FourByteReal, &
-          nf95_put_var_2D_FourByteInt, nf95_put_var_2D_EightByteReal, &
-          nf95_put_var_3D_FourByteReal, nf95_put_var_3D_EightByteReal, &
-          nf95_put_var_4D_FourByteReal, nf95_put_var_4D_EightByteReal
+          nf95_put_var_EightByteReal, nf95_put_var_1D_FourByteReal, &
+          nf95_put_var_1D_FourByteInt, nf95_put_var_1D_EightByteReal, &
+          nf95_put_var_2D_FourByteReal, nf95_put_var_2D_FourByteInt, &
+          nf95_put_var_2D_EightByteReal, nf95_put_var_3D_FourByteReal, &
+          nf95_put_var_3D_EightByteReal, nf95_put_var_4D_FourByteReal, &
+          nf95_put_var_4D_EightByteReal
   end interface
 
   private
@@ -76,6 +77,35 @@ contains
     end if
 
   end subroutine nf95_put_var_FourByteInt
+
+  !***********************
+
+  subroutine nf95_put_var_EightByteReal(ncid, varid, values, start, ncerr)
+
+    use typesizes, only: EightByteReal
+
+    integer, intent(in) :: ncid, varid
+    real(kind = EightByteReal), intent(in) :: values
+    integer, dimension(:), optional, intent(in) :: start
+    integer, intent(out), optional:: ncerr
+
+    ! Variable local to the procedure:
+    integer ncerr_not_opt
+
+    !-------------------
+
+    call check_start_count("nf95_put_var_EightByteReal", ncid, varid, start, &
+         rank_values=0)
+
+    ncerr_not_opt = nf90_put_var(ncid, varid, values, start)
+    if (present(ncerr)) then
+       ncerr = ncerr_not_opt
+    else
+       if (ncerr_not_opt /= nf95_noerr) call &
+            nf95_abort("nf95_put_var_EightByteReal", ncerr_not_opt, ncid, varid)
+    end if
+
+  end subroutine nf95_put_var_EightByteReal
 
   !***********************
 
