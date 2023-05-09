@@ -6,6 +6,8 @@ contains
 
   subroutine nf95_abort(message, ncerr, ncid, varid)
 
+    use, intrinsic:: iso_fortran_env
+
     ! Libraries:
     use netcdf, only: nf90_strerror
 
@@ -28,9 +30,9 @@ contains
 
     !-------------------
 
-    print *, message, ":"
-    if (present(varid)) print *, "varid = ", varid
-    print *, trim(nf90_strerror(ncerr))
+    write(error_unit, fmt = *) message, ":"
+    if (present(varid)) write(error_unit, fmt = *) "varid = ", varid
+    write(error_unit, fmt = *) trim(nf90_strerror(ncerr))
 
     if (present(ncid)) then
        ! Try to close, to leave the file in a consistent state:
