@@ -7,11 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Lionel GUEZ">
+  <link rel="canonical" href="https://lguez.github.io/NetCDF95/Detailed_content/groups/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Groups - NetCDF95 documentation</title>
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -22,7 +23,7 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -33,6 +34,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> NetCDF95 documentation</a>
         <div role="search">
@@ -43,99 +45,53 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Home</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../..">Introduction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../installation/">Installation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../usage/">Usage</a>
-                </li>
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../usage/">Usage</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Detailed content</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../improvements/">The four types of improvements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../datasets/">Datasets & co</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dimensions/">Dimensions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../variables/">Variables</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Groups</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_file_ncid">nf95_inq_file_ncid</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grp_full_ncid">nf95_inq_grp_full_ncid</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grpname">nf95_inq_grpname</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grpname_full">nf95_inq_grpname_full</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grp_parent">nf95_inq_grp_parent</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_grps">nf95_inq_grps</a>
+    </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Detailed content</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../improvements/">The four types of improvements</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../datasets/">Datasets & co</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../dimensions/">Dimensions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../variables/">Variables</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../attributes/">Attributes</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Groups</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#groups">Groups</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#nf95_inq_file_ncid">nf95_inq_file_ncid</a></li>
-        
-            <li><a class="toctree-l4" href="#nf95_inq_grp_full_ncid">nf95_inq_grp_full_ncid</a></li>
-        
-            <li><a class="toctree-l4" href="#nf95_inq_grpname">nf95_inq_grpname</a></li>
-        
-            <li><a class="toctree-l4" href="#nf95_inq_grpname_full">nf95_inq_grpname_full</a></li>
-        
-            <li><a class="toctree-l4" href="#nf95_inq_grp_parent">nf95_inq_grp_parent</a></li>
-        
-            <li><a class="toctree-l4" href="#nf95_inq_grps">nf95_inq_grps</a></li>
-        
-        </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../errors/">Handling of errors</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Notes</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../changes/">Changes</a>
-                </li>
-    </ul>
-	    </li>
-          
-        </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../errors/">Handling of errors</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Notes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../changes/">Changes</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -167,6 +123,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -188,7 +145,6 @@ explanation of the mnemonics "basic change", "interface change",
   integer, intent(in):: grpid
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <h2 id="nf95_inq_grp_full_ncid"><code>nf95_inq_grp_full_ncid</code></h2>
 <p>(basic change)</p>
 <pre><code>subroutine nf95_inq_grp_full_ncid(ncid, full_name, grp_ncid, ncerr)
@@ -203,7 +159,6 @@ explanation of the mnemonics "basic change", "interface change",
   integer, intent(out):: grp_ncid
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>You know the relative path of a group and you want its ncid.</p>
 <p>Reference:
 <a href="https://docs.unidata.ucar.edu/netcdf-c/current/group__groups.html#ga41d2e214f1a880493ed8ea3fbddab806"><code>nc_inq_grp_full_ncid</code></a></p>
@@ -215,7 +170,6 @@ explanation of the mnemonics "basic change", "interface change",
   character(len = :), allocatable, intent(out):: name ! without path
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>You know the ncid of a group (which can be the root group) and you
 want the basename of this group. The basename of the group is the last
 part in the absolute path, as in the Unix basename program. The
@@ -237,7 +191,6 @@ group, not the length of the basename of the group.</p>
   character(len = :), allocatable, intent(out):: full_name ! absolute path
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>You know the ncid of a group (which can be the root group) and you
 want the absolute path of the group.</p>
 <p>The functionality change is that the argument <code>full_name</code> has dynamic,
@@ -259,7 +212,6 @@ associate to name.</p>
   integer, intent(out):: parent_ncid
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>You know the ncid of a group and you want the ncid of the parent
 group.</p>
 <h2 id="nf95_inq_grps"><code>nf95_inq_grps</code></h2>
@@ -270,7 +222,6 @@ group.</p>
   integer, allocatable, intent(out):: ncids(:)
   integer, intent(out), optional:: ncerr
 </code></pre>
-
 <p>You know the ncid of a group (which can be the root group) and you
 want the ncids of its immediate subgroups.</p>
 <p>The functionality change is that the argument ncids is allocatable and
@@ -309,7 +260,7 @@ and
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -319,7 +270,7 @@ and
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -335,6 +286,11 @@ and
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
