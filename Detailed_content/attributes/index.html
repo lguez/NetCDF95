@@ -7,12 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Lionel GUEZ">
-  <link rel="canonical" href="https://lguez.github.io/NetCDF95/Detailed_content/attributes/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Attributes - NetCDF95 documentation</title>
-  <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
@@ -23,7 +22,7 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -34,7 +33,6 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> NetCDF95 documentation</a>
         <div role="search">
@@ -45,51 +43,97 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <p class="caption"><span class="caption-text">Home</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../usage/">Usage</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Detailed content</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../improvements/">The four types of improvements</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../datasets/">Datasets & co</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../dimensions/">Dimensions</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../variables/">Variables</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Attributes</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#nf95_copy_att">nf95_copy_att</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#nf95_get_att">nf95_get_att</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#nf95_get_missing">nf95_get_missing</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#nf95_inquire_attribute">nf95_inquire_attribute</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#nf95_put_att">nf95_put_att</a>
-    </li>
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Home</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../..">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation/">Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../usage/">Usage</a>
+                </li>
     </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../groups/">Groups</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../errors/">Handling of errors</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Notes</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../changes/">Changes</a>
-                    </li>
-                </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Detailed content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../improvements/">The four types of improvements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../datasets/">Datasets & co</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dimensions/">Dimensions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../variables/">Variables</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Attributes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#attributes">Attributes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#nf95_copy_att">nf95_copy_att</a></li>
+        
+            <li><a class="toctree-l4" href="#nf95_get_att">nf95_get_att</a></li>
+        
+            <li><a class="toctree-l4" href="#nf95_get_missing">nf95_get_missing</a></li>
+        
+            <li><a class="toctree-l4" href="#nf95_inquire_attribute">nf95_inquire_attribute</a></li>
+        
+            <li><a class="toctree-l4" href="#nf95_put_att">nf95_put_att</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../groups/">Groups</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../errors/">Handling of errors</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../changes/">Changes</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
       </div>
-    </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -121,7 +165,6 @@
       
     </li>
   </ul>
-  
   <hr/>
 </div>
           <div role="main">
@@ -166,6 +209,7 @@ attribute contains a single value.</p>
   real or double precision or integer or character, intent(out):: missing
   ! missing or fill value
 </code></pre>
+
 <p>Returns the <code>missing_value</code> attribute if present, else the <code>_FillValue</code>
 if present, else <code>nf90_fill_real</code> or <code>nf90_fill_double</code>.</p>
 <h2 id="nf95_inquire_attribute"><code>nf95_inquire_attribute</code></h2>
@@ -178,6 +222,7 @@ if present, else <code>nf90_fill_real</code> or <code>nf90_fill_double</code>.</
   integer, intent(out), optional :: xtype, nclen, attnum
   integer, intent(out), optional:: ncerr
 </code></pre>
+
 <p>The argument for the number of values or characters of the attribute is
 called <code>nclen</code> in <code>nf95_inquire_attribute</code>, instead of <code>len</code> in
 <code>nf90_inquire_attribute</code>. <code>len</code> is not a good choice for a variable name
@@ -192,6 +237,7 @@ because it is the name of a Fortran intrinsic procedure.</p>
   character(len = *) or integer(any kind) or real(any kind), intent(in) :: values
   integer, intent(out), optional:: ncerr
 </code></pre>
+
 <p>Reference:
 <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-create-an-attribute-nf90_put_att"><code>nf90_put_att</code></a></p>
               
@@ -216,7 +262,7 @@ because it is the name of a Fortran intrinsic procedure.</p>
     
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -226,7 +272,7 @@ because it is the name of a Fortran intrinsic procedure.</p>
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/lguez/NetCDF95/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -242,11 +288,6 @@ because it is the name of a Fortran intrinsic procedure.</p>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
 
 </body>
 </html>
