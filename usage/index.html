@@ -127,7 +127,8 @@
 <h2 id="in-the-source-code-of-the-consumer-program">In the source code of the consumer program</h2>
 <p>The name of the module that you must use in your Fortran program is
 <code>netcdf95</code>. For example:</p>
-<pre><code>use netcdf95, only: nf95_open, nf95_inq_varid, nf95_gw_var, nf95_close
+<pre><code>use netcdf95, only: nf95_open, nf95_nowrite, nf95_inq_varid, nf95_gw_var, &amp;
+    nf95_close
 </code></pre>
 <h2 id="building-the-consumer-program-with-cmake">Building the consumer program with CMake</h2>
 <p>If you build your program using NetCDF95 with CMake, then download
