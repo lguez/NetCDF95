@@ -5,7 +5,10 @@
 The name of the module that you must use in your Fortran program is
 `netcdf95`. For example:
 
-    use netcdf95, only: nf95_open, nf95_inq_varid, nf95_gw_var, nf95_close
+```
+use netcdf95, only: nf95_open, nf95_nowrite, nf95_inq_varid, nf95_gw_var, &
+	nf95_close
+```
 
 ## Building the consumer program with CMake
 
