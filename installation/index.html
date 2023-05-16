@@ -133,11 +133,13 @@
 </li>
 <li>
 <p>The <a href="https://docs.unidata.ucar.edu/nug/current/getting_and_building_netcdf.html">NetCDF C
-  library</a>.</p>
+  library</a>
+  (version &ge; 4.6).</p>
 </li>
 <li>
 <p>The <a href="https://www.unidata.ucar.edu/downloads/netcdf/index.jsp">NetCDF-Fortran
-  library</a>.</p>
+  library</a>
+  (version &ge; 4.5).</p>
 </li>
 <li>
 <p>The Fortran compiler that was used to compile your installed
@@ -184,6 +186,7 @@ cd build
 <p>You do not need to keep the downloaded directory NetCDF95 (nor the
 build directory) after installation.</p>
 <h2 id="advanced-instructions">Advanced instructions</h2>
+<p>Most users should not need these advanded instructions.</p>
 <ul>
 <li>
 <p>You can choose any name and any location for the build
@@ -205,7 +208,7 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
 <li>
 <p>You do not have to install. You can just use the compiled library in
   the build directory. So you do not have to specify the option
-  <code>-DCMAKE_INSTALL_PREFIX=</code> and you can just type make instead of
+  <code>-DCMAKE_INSTALL_PREFIX=</code> and you can just type <code>make</code> instead of
   <code>make install</code>.</p>
 </li>
 <li>
@@ -216,12 +219,13 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
 <h2 id="troubleshooting">Troubleshooting</h2>
 <ul>
 <li>
-<p>If your installation of NetCDF or NetCDF-Fortran is in a non-standard
-location, and CMake does not find it, then re-run cmake setting the
-variable <code>CMAKE_PREFIX_PATH</code> to the directory containing it. CMake
-will then search <code>${CMAKE_PREFIX_PATH}/lib</code>,
-<code>${CMAKE_PREFIX_PATH}/include</code>, etc. For example:</p>
-<pre><code>cmake . -DCMAKE_PREFIX_PATH:PATH=/path/to/my/favorite/installation
+<p>If your installation of NetCDF or NetCDF-Fortran is in a
+  non-standard location, and CMake does not find it, then re-run cmake
+  setting the variable <code>CMAKE_PREFIX_PATH</code> to the directory containing
+  it. CMake will then search <code>${CMAKE_PREFIX_PATH}/lib</code>,
+  <code>${CMAKE_PREFIX_PATH}/include</code>, etc. For example, if you want to use
+  the parallel-enabled version of NetCDF-C on Ubuntu or Linux Mint:</p>
+<pre><code>cmake . -DCMAKE_PREFIX_PATH:PATH=/usr/lib/x86_64-linux-gnu/netcdf/mpi
 </code></pre>
 </li>
 <li>
