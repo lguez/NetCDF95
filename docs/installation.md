@@ -2,9 +2,9 @@
 
 ## Dependencies
 
-- [CMake](https://cmake.org/download) (version ≥ 3.16)[^1].
+- [CMake](https://cmake.org/download) (version &ge; 3.16)[^1].
 
-- The [NetCDF C
+- The [NetCDF-C
   library](https://docs.unidata.ucar.edu/nug/current/getting_and_building_netcdf.html)
   (version &ge; 4.6).
 
