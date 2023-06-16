@@ -14,10 +14,11 @@ module nf95_get_var_m
           nf95_get_var_text, nf95_get_var_1D_FourByteReal, &
           nf95_get_var_1D_FourByteInt, nf95_get_var_1D_EightByteReal, &
           nf95_get_var_2D_FourByteReal, nf95_get_var_2D_EightByteReal, &
-          nf95_get_var_2D_FourByteInt, nf95_get_var_3D_FourByteInt, &
-          nf95_get_var_3D_FourByteReal, nf95_get_var_3D_EightByteReal, &
-          nf95_get_var_4D_FourByteReal, nf95_get_var_4D_EightByteReal, &
-          nf95_get_var_5D_FourByteReal, nf95_get_var_5D_EightByteReal
+          nf95_get_var_2D_twoByteInt, nf95_get_var_2D_FourByteInt, &
+          nf95_get_var_3D_FourByteInt, nf95_get_var_3D_FourByteReal, &
+          nf95_get_var_3D_EightByteReal, nf95_get_var_4D_FourByteReal, &
+          nf95_get_var_4D_EightByteReal, nf95_get_var_5D_FourByteReal, &
+          nf95_get_var_5D_EightByteReal
   end interface
 
   private
@@ -215,6 +216,30 @@ contains
     include "nf95_get_var_array.h"
 
   end subroutine nf95_get_var_2D_EightByteReal
+
+  !***********************
+
+  subroutine nf95_get_var_2D_TwoByteInt(ncid, varid, values, start, count_nc, &
+       stride, map, new_missing, ncerr)
+
+    use typesizes, only: TwoByteInt
+
+    integer, intent(in):: ncid, varid
+    integer(kind = TwoByteInt), intent(out):: values(:, :)
+    integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+    integer(kind = TwoByteInt), optional, intent(in):: new_missing
+    integer, intent(out), optional:: ncerr
+
+    ! Local:
+    character(len=*), parameter:: procedure_name = "nf95_get_var_2D_TwoByteInt"
+    integer, parameter:: rank_values = 2
+    integer(kind = TwoByteInt) missing
+
+    !-------------------
+
+    include "nf95_get_var_array.h"
+
+  end subroutine nf95_get_var_2D_TwoByteInt
 
   !***********************
 
