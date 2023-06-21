@@ -23,7 +23,8 @@ endif()
 
 find_package(netCDF REQUIRED)
 find_package(NetCDF_Fortran REQUIRED)
-target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::netcdff netCDF::netcdf)
+target_link_libraries(netcdf95 PUBLIC NetCDF_Fortran::netcdff
+  PRIVATE netCDF::netcdf)
 add_subdirectory(Tests)
 add_library(${PROJECT_NAME}::netcdf95 ALIAS netcdf95)
 configure_file(${PROJECT_NAME}Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
