@@ -31,13 +31,13 @@ configure_file(${PROJECT_NAME}Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
 
 # Start installation part
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES NAG|Intel|PGI)
+if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
+  set(install_include_dir include)
+  install(FILES ${PROJECT_BINARY_DIR}/modules/netcdf95.mod TYPE INCLUDE)
+else()
   set(install_include_dir include/${PROJECT_NAME})
   install(DIRECTORY ${PROJECT_BINARY_DIR}/modules/ DESTINATION
     ${install_include_dir})
-else()
-  set(install_include_dir include)
-  install(FILES ${PROJECT_BINARY_DIR}/modules/netcdf95.mod TYPE INCLUDE)
 endif()
 
 install(TARGETS netcdf95 EXPORT ${PROJECT_NAME}Targets INCLUDES
