@@ -12,9 +12,9 @@ contains
     use netcdf, only: nf90_inquire_attribute
     use nf95_constants, only: nf95_noerr
 
-    integer,             intent( in)           :: ncid, varid
-    character (len = *), intent( in)           :: name
-    integer,             intent(out), optional :: xtype, nclen, attnum
+    integer, intent(in):: ncid, varid
+    character(len = *), intent(in):: name
+    integer, intent(out), optional :: xtype, nclen, attnum
     integer, intent(out), optional:: ncerr
 
     ! Variable local to the procedure:

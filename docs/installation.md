@@ -21,7 +21,6 @@ dependencies with the following command:
 
 	sudo apt install libnetcdff-dev gfortran cmake git
 
-
 ## Instructions
 
 1. Get [NetCDF95 from Github](https://github.com/lguez/NetCDF95). As
