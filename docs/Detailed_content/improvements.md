@@ -75,4 +75,5 @@ additional procedure
 Additional procedures: [`nf95_gw_var`](variables.md),
 [`nf95_find_coord`](datasets.md), [`nf95_get_missing`](attributes.md),
 [`nf95_create_single`](datasets.md),
-[`nf95_inq_file_ncid`](groups.md), [`nf95_abort`](errors.md)
+[`nf95_inq_file_ncid`](groups.md), [`nf95_abort`](errors.md),
+[`nf95_inq_varnatts`](variables.md)

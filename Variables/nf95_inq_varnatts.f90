@@ -35,7 +35,7 @@ contains
 
     if (cncerr == nc_noerr) then
        natts = int(nattsp)
-       if (present(ncerr)) ncerr = cncerr
+       if (present(ncerr)) ncerr = nc_noerr
     else
        if (present(ncerr)) then
           ncerr = cncerr

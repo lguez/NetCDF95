@@ -141,6 +141,29 @@ See [reminder on allocatable arguments](#reminder-on-allocatable-arguments).
 Reference:
 [`nf90_inq_varid`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-the-id-of-a-variable-from-the-name-nf90_inq_varid)
 
+## `nf95_inq_varnatts`
+
+(additional procedure)
+
+	 subroutine nf95_inq_varnatts(ncid, varid, natts, ncerr)
+	   integer, intent(in):: ncid, varid
+       integer, intent(out):: natts
+       integer, intent(out), optional:: ncerr
+
+This procedure tells you how many attributes a variable has, knowing
+the variable ID. You can call it with `varid = nf95_global` to find
+out the number of global attributes.
+
+Strangely, although a procedure `nf90_inq_varnatts` is mentioned in
+the documentation of [`nf90_inquire_attribute` and
+`nf90_inq_attname`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-information-about-an-attribute-nf90_inquire_attribute-and-nf90_inq_attname),
+this procedure does not exist in the Fortran 90 NetCDF interface. So
+it seems the only way to get the number of attributes with the Fortran
+90 NetCDF interface is to loop on `nf90_inq_attname` until it returns
+an error.
+
+Reference: [`nc_inq_varnatts`](https://docs.unidata.ucar.edu/netcdf-c/current/group__variables.html#ga4df3b5bbf48e98cbd6847bd24f072ec8)
+
 ## `nf95_inquire_variable`
 
 (functionality change)
