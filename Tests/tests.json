@@ -40,5 +40,11 @@
     },
     "Create_single": {
         "command": "$build_dir/Tests/test_create_single"
+    },
+    "Inq_varnatts":
+    {
+	"command": "$build_dir/Tests/test_inq_varnatts",
+	"symlink":
+	["$src_dir/Tests/aerosol_optics.nc", "$src_dir/Tests/histhf.nc"]
     }
 }

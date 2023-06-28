@@ -41,3 +41,7 @@ target_link_libraries(test_inq_file_ncid PRIVATE netcdf95)
 # test_create_single
 add_executable(test_create_single test_create_single.f90)
 target_link_libraries(test_create_single PRIVATE netcdf95)
+
+# test_inq_varnatts
+add_executable(test_inq_varnatts test_inq_varnatts.f90)
+target_link_libraries(test_inq_varnatts PRIVATE netcdf95)
