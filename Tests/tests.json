@@ -1,35 +1,44 @@
-[
-    {
-	"title": "Get_missing_char",
-	"symlink": ["$src_dir/Tests/test_char.nc"],
-	"command": "$build_dir/Tests/test_get_missing_char"
+{
+    "Get_missing_char": {
+        "symlink": [
+            "$src_dir/Tests/test_char.nc"
+        ],
+        "command": "$build_dir/Tests/test_get_missing_char"
     },
-    {"title": "Put_var_char", "command": "$build_dir/Tests/test_put_var_char"},
-    {
-	"title": "Get_var_text",
-	"symlink": ["$src_dir/Tests/test_char.nc"],
-	"command": "$build_dir/Tests/test_get_var_text"
+    "Put_var_char": {
+        "command": "$build_dir/Tests/test_put_var_char"
     },
-    {
-	"title": "Inq_grp_full_ncid",
-	"symlink": ["$src_dir/Tests/aerosol_optics.nc"],
-	"command": "$build_dir/Tests/test_inq_grp_full_ncid"
+    "Get_var_text": {
+        "symlink": [
+            "$src_dir/Tests/test_char.nc"
+        ],
+        "command": "$build_dir/Tests/test_get_var_text"
     },
-    {
-	"title": "Inq_grps", "command": "$build_dir/Tests/test_inq_grps",
-	"symlink": ["$src_dir/Tests/aerosol_optics.nc"]
+    "Inq_grp_full_ncid": {
+        "symlink": [
+            "$src_dir/Tests/aerosol_optics.nc"
+        ],
+        "command": "$build_dir/Tests/test_inq_grp_full_ncid"
     },
-    {
-	"title": "Inq_grpname", "command": "$build_dir/Tests/test_inq_grpname",
-	"symlink": ["$src_dir/Tests/aerosol_optics.nc"]
+    "Inq_grps": {
+        "command": "$build_dir/Tests/test_inq_grps",
+        "symlink": [
+            "$src_dir/Tests/aerosol_optics.nc"
+        ]
     },
-    {
-	"title": "Inq_file_ncid",
-	"command": "$build_dir/Tests/test_inq_file_ncid",
-	"symlink": ["$src_dir/Tests/aerosol_optics.nc"]
+    "Inq_grpname": {
+        "command": "$build_dir/Tests/test_inq_grpname",
+        "symlink": [
+            "$src_dir/Tests/aerosol_optics.nc"
+        ]
     },
-    {
-	"title": "Create_single",
-	"command": "$build_dir/Tests/test_create_single"
+    "Inq_file_ncid": {
+        "command": "$build_dir/Tests/test_inq_file_ncid",
+        "symlink": [
+            "$src_dir/Tests/aerosol_optics.nc"
+        ]
+    },
+    "Create_single": {
+        "command": "$build_dir/Tests/test_create_single"
     }
-]
+}
