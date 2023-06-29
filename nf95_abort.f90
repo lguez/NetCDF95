@@ -4,7 +4,7 @@ module nf95_abort_m
 
 contains
 
-  subroutine nf95_abort(message, ncerr, ncid, varid)
+  subroutine nf95_abort(message, ncerr, ncid, varid, attnum)
 
     use, intrinsic:: iso_fortran_env
 
@@ -23,7 +23,7 @@ contains
     ! This can be the file ncid or a group ncid. Provide this argument
     ! if you want nf95_abort to try to close the file.
 
-    integer, intent(in), optional :: varid
+    integer, intent(in), optional :: varid, attnum
 
     ! Local:
     integer ncid_local
@@ -32,6 +32,7 @@ contains
 
     write(error_unit, fmt = *) message, ":"
     if (present(varid)) write(error_unit, fmt = *) "varid = ", varid
+    if (present(attnum)) write(error_unit, fmt = *) "attnum = ", attnum
     if (present(ncerr)) write(error_unit, fmt = *) trim(nf90_strerror(ncerr))
 
     if (present(ncid)) then
