@@ -46,5 +46,10 @@
 	"command": "$build_dir/Tests/test_inq_varnatts",
 	"symlink":
 	["$src_dir/Tests/aerosol_optics.nc", "$src_dir/Tests/histhf.nc"]
+    },
+    "Inq_attname":
+    {
+	"command": "$build_dir/Tests/test_inq_attname",
+	"symlink": ["$src_dir/Tests/histhf.nc"]
     }
 }
