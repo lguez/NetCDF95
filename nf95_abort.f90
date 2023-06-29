@@ -17,7 +17,7 @@ contains
     character(len=*), intent(in):: message
     ! (should include name of calling procedure)
 
-    integer, intent(in):: ncerr
+    integer, intent(in), optional:: ncerr
 
     integer, intent(in), optional :: ncid
     ! This can be the file ncid or a group ncid. Provide this argument
@@ -32,7 +32,7 @@ contains
 
     write(error_unit, fmt = *) message, ":"
     if (present(varid)) write(error_unit, fmt = *) "varid = ", varid
-    write(error_unit, fmt = *) trim(nf90_strerror(ncerr))
+    if (present(ncerr)) write(error_unit, fmt = *) trim(nf90_strerror(ncerr))
 
     if (present(ncid)) then
        ! Try to close, to leave the file in a consistent state:
