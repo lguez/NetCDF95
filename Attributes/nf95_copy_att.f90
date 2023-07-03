@@ -27,7 +27,7 @@ contains
        ncerr = ncerr_not_opt
     else
        if (ncerr_not_opt /= nf95_noerr) call nf95_abort("nf95_copy_att " &
-            // name, ncerr_not_opt, ncid_out)
+            // name, ncerr_not_opt, ncid_out, varid_in)
     end if
 
   end subroutine nf95_copy_att
