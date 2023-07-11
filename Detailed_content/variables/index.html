@@ -74,6 +74,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_varid">nf95_inq_varid</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_varnatts">nf95_inq_varnatts</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_inquire_variable">nf95_inquire_variable</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_put_var">nf95_put_var</a>
@@ -240,6 +242,24 @@ variable: conversion will occur if necessary.</p>
 </code></pre>
 <p>Reference:
 <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-the-id-of-a-variable-from-the-name-nf90_inq_varid"><code>nf90_inq_varid</code></a></p>
+<h2 id="nf95_inq_varnatts"><code>nf95_inq_varnatts</code></h2>
+<p>(additional procedure)</p>
+<pre><code> subroutine nf95_inq_varnatts(ncid, varid, natts, ncerr)
+   integer, intent(in):: ncid, varid
+   integer, intent(out):: natts
+   integer, intent(out), optional:: ncerr
+</code></pre>
+<p>This procedure tells you how many attributes a variable has, knowing
+the variable ID. You can call it with <code>varid = nf95_global</code> to find
+out the number of global attributes.</p>
+<p>Strangely, although a procedure <code>nf90_inq_varnatts</code> is mentioned in
+the documentation of <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-information-about-an-attribute-nf90_inquire_attribute-and-nf90_inq_attname"><code>nf90_inquire_attribute</code> and
+<code>nf90_inq_attname</code></a>,
+this procedure does not exist in the Fortran 90 NetCDF interface. So
+it seems the only way to get the number of attributes with the Fortran
+90 NetCDF interface is to loop on <code>nf90_inq_attname</code> until it returns
+an error.</p>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-c/current/group__variables.html#ga4df3b5bbf48e98cbd6847bd24f072ec8"><code>nc_inq_varnatts</code></a></p>
 <h2 id="nf95_inquire_variable"><code>nf95_inquire_variable</code></h2>
 <p>(functionality change)</p>
 <pre><code>  subroutine nf95_inquire_variable(ncid, varid, name, xtype, ndims, dimids, &amp;
@@ -266,25 +286,23 @@ defined.</p>
 <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-information-about-a-variable-from-its-id-nf90_inquire_variable"><code>nf90_inquire_variable</code></a></p>
 <h2 id="nf95_put_var"><code>nf95_put_var</code></h2>
 <p>(functionality change)</p>
-<pre><code>subroutine nf95_put_var(ncid, varid, values, start, &amp;
-     ncerr)
+<pre><code>subroutine nf95_put_var(ncid, varid, values, start, ncerr)
   integer,                         intent(in) :: ncid, varid
   any type and any kind, intent(in) :: values
-  integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
+  integer, dimension(:), optional, intent(in) :: start
   integer, intent(out), optional:: ncerr
 </code></pre>
-<p>(argument <code>values</code> is a scalar then arguments <code>count_nc</code>, stride and map
-must not be present)</p>
-<p>or</p>
-<pre><code>subroutine nf95_put_var(ncid, varid, values, start, &amp;
-     count_nc, stride, map, ncerr)
+<p>(If argument <code>values</code> is a scalar then arguments <code>count_nc</code>, stride and map
+must not be present.)</p>
+<p>Or:</p>
+<pre><code>subroutine nf95_put_var(ncid, varid, values, start, count_nc, stride, map, ncerr)
   integer,                         intent(in) :: ncid, varid
   any type and any kind, any rank &gt;= 1, intent(in) :: values
   integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
   integer, intent(out), optional:: ncerr
 </code></pre>
-<p>(argument <code>values</code> is an array then arguments <code>count_nc</code>, stride and
-map may be present)</p>
+<p>(If argument <code>values</code> is an array then arguments <code>count_nc</code>, stride and
+map may be present.)</p>
 <p>The argument for the number of indices selected along each dimension is
 called <code>count_nc</code> in <code>nf95_put_var</code>, instead of <code>count</code> in
 <code>nf90_put_var</code>. <code>count</code> is not a good choice for a variable name because

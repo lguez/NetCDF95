@@ -72,6 +72,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_get_missing">nf95_get_missing</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_attname">nf95_inq_attname</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_inquire_attribute">nf95_inquire_attribute</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_put_att">nf95_put_att</a>
@@ -168,6 +170,18 @@ attribute contains a single value.</p>
 </code></pre>
 <p>Returns the <code>missing_value</code> attribute if present, else the <code>_FillValue</code>
 if present, else <code>nf90_fill_real</code> or <code>nf90_fill_double</code>.</p>
+<h2 id="nf95_inq_attname"><code>nf95_inq_attname</code></h2>
+<p>(interface change)</p>
+<pre><code>subroutine nf95_inq_attname(ncid, varid, attnum, name, ncerr)
+
+  integer, intent(in):: ncid, varid, attnum
+  character(len = :), allocatable, intent(out):: name
+  integer, intent(out), optional:: ncerr
+</code></pre>
+<p>The argument name has dynamic (deferred) length in <code>nf95_inq_attname</code>
+instead of assumed length in <code>nf90_inq_attname</code>. So you do not have to
+worry about a maximum length for the corresponding actual argument:
+just declare it also as <code>character(len = :), allocatable</code>.</p>
 <h2 id="nf95_inquire_attribute"><code>nf95_inquire_attribute</code></h2>
 <p>(interface change)</p>
 <pre><code>subroutine nf95_inquire_attribute(ncid, varid, name, xtype, nclen, attnum, &amp;
