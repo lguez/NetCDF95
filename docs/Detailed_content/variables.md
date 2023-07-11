@@ -199,30 +199,28 @@ Reference:
 (functionality change)
 
 ```
-subroutine nf95_put_var(ncid, varid, values, start, &
-     ncerr)
+subroutine nf95_put_var(ncid, varid, values, start, ncerr)
   integer,                         intent(in) :: ncid, varid
   any type and any kind, intent(in) :: values
-  integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
+  integer, dimension(:), optional, intent(in) :: start
   integer, intent(out), optional:: ncerr
 ```
 
-(argument `values` is a scalar then arguments `count_nc`, stride and map
-must not be present)
+(If argument `values` is a scalar then arguments `count_nc`, stride and map
+must not be present.)
 
-or
+Or:
 
 ```
-subroutine nf95_put_var(ncid, varid, values, start, &
-     count_nc, stride, map, ncerr)
+subroutine nf95_put_var(ncid, varid, values, start, count_nc, stride, map, ncerr)
   integer,                         intent(in) :: ncid, varid
   any type and any kind, any rank >= 1, intent(in) :: values
   integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
   integer, intent(out), optional:: ncerr
 ```
 
-(argument `values` is an array then arguments `count_nc`, stride and
-map may be present)
+(If argument `values` is an array then arguments `count_nc`, stride and
+map may be present.)
 
 The argument for the number of indices selected along each dimension is
 called `count_nc` in `nf95_put_var`, instead of `count` in
