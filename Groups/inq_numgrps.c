@@ -1,4 +1,7 @@
-#include <stddef.h>
+/* Extracted from file fortran/nf_lib.c in the library netCDF-Fortran
+   v4.5.4. Renamed function nc_inq_numgrps to inq_numgrps. */
+
+#include <stddef.h>     /* for NULL */
 #include "netcdf.h"
 
 /**
