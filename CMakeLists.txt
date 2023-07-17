@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 list(APPEND CMAKE_MESSAGE_CONTEXT NetCDF95)
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build")
-project(NetCDF95 LANGUAGES Fortran C)
+project(NetCDF95 LANGUAGES Fortran)
 enable_testing()
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)

@@ -22,11 +22,14 @@ contains
     integer(C_INT), allocatable:: cncids(:)
 
     Interface
-       Integer(C_INT) Function inq_numgrps(ncid, numgrps) BIND(C)
-         import c_int
+       Integer(C_INT) Function nc_inq_grps_pointer(ncid, numgrps, ncids) &
+            BIND(C, name = "nc_inq_grps")
+         ! Second Fortran interface for the same C function
+         import c_int, c_ptr
          Integer(C_INT), VALUE, intent(in):: ncid
          Integer(C_INT), Intent(OUT):: numgrps
-       End Function inq_numgrps
+         type(c_ptr), Intent(in), value:: ncids
+       End Function nc_inq_grps_pointer
 
        Integer(C_INT) Function nc_inq_grps(ncid, numgrps, ncids) BIND(C)
          import c_int
@@ -39,9 +42,9 @@ contains
     !------------------------------------------------------------
 
     cncid = ncid
-    cstatus = inq_numgrps(cncid, numgrps)
-    if (cstatus /= nc_noerr) call nf95_abort("nf95_inq_grps -- inq_numgrps", &
-         int(cstatus), ncid)
+    cstatus = nc_inq_grps_pointer(cncid, numgrps, c_null_ptr)
+    if (cstatus /= nc_noerr) call &
+         nf95_abort("nf95_inq_grps -- nc_inq_grps_pointer", int(cstatus), ncid)
 
     if (numgrps >= 1) then
        allocate(cncids(numgrps))
