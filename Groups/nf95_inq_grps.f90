@@ -22,6 +22,13 @@ contains
     integer(C_INT), allocatable:: cncids(:)
 
     Interface
+       Integer(C_INT) Function nc_inq_grps(ncid, numgrps, ncids) BIND(C)
+         import c_int
+         Integer(C_INT), VALUE, intent(in):: ncid
+         Integer(C_INT), Intent(OUT):: numgrps
+         Integer(C_INT), Intent(OUT):: ncids(*)
+       End Function nc_inq_grps
+
        Integer(C_INT) Function nc_inq_grps_pointer(ncid, numgrps, ncids) &
             BIND(C, name = "nc_inq_grps")
          ! Second Fortran interface for the same C function
@@ -30,13 +37,6 @@ contains
          Integer(C_INT), Intent(OUT):: numgrps
          type(c_ptr), Intent(in), value:: ncids
        End Function nc_inq_grps_pointer
-
-       Integer(C_INT) Function nc_inq_grps(ncid, numgrps, ncids) BIND(C)
-         import c_int
-         Integer(C_INT), VALUE, intent(in):: ncid
-         Integer(C_INT), Intent(OUT):: numgrps
-         Integer(C_INT), Intent(OUT):: ncids(*)
-       End Function nc_inq_grps
     End Interface
 
     !------------------------------------------------------------
