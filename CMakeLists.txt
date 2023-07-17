@@ -25,7 +25,7 @@ find_package(netCDF REQUIRED)
 find_package(NetCDF_Fortran REQUIRED)
 target_link_libraries(netcdf95 PRIVATE netCDF::netcdf)
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES NVHPC)
+if(CMAKE_Fortran_COMPILER_ID MATCHES NVHPC|PGI)
   # Circumvent bug of the compiler:
   target_link_libraries(netcdf95 PUBLIC NetCDF_Fortran::netcdff)
 else()
