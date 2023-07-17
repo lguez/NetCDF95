@@ -17,7 +17,7 @@ set_target_properties(netcdf95 PROPERTIES Fortran_MODULE_DIRECTORY
 target_include_directories(netcdf95 PUBLIC
   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/modules>)
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
+if(CMAKE_Fortran_COMPILER_ID STREQUAL NAG)
   target_include_directories(netcdf95 PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
@@ -38,7 +38,7 @@ configure_file(${PROJECT_NAME}Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
 
 # Start installation part
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
+if(CMAKE_Fortran_COMPILER_ID STREQUAL GNU)
   set(install_include_dir include)
   install(FILES ${PROJECT_BINARY_DIR}/modules/netcdf95.mod TYPE INCLUDE)
 else()
