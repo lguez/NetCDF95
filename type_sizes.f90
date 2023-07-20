@@ -11,10 +11,10 @@ module type_sizes
 
   implicit none
 
-  integer, parameter :: OneByteInt = selected_int_kind(2), &
+  integer, parameter:: OneByteInt = selected_int_kind(2), &
        TwoByteInt = selected_int_kind(4), FourByteInt = selected_int_kind(9), &
        EightByteInt = selected_int_kind(18)
-  integer, parameter :: FourByteReal = selected_real_kind(P = 6, R = 37), &
+  integer, parameter:: FourByteReal = selected_real_kind(P = 6, R = 37), &
        EightByteReal = selected_real_kind(P = 13, R = 307)
 
 contains
@@ -28,10 +28,10 @@ contains
     ! distinct.
 
     ! Local:
-    integer (kind = OneByteInt) :: One
-    integer (kind = TwoByteInt) :: Two
-    integer (kind = FourByteInt) :: Four
-    integer (kind = EightByteInt) :: Eight
+    integer(kind = OneByteInt):: One
+    integer(kind = TwoByteInt):: Two
+    integer(kind = FourByteInt):: Four
+    integer(kind = EightByteInt):: Eight
 
     !-----------------------------------------------------------------------
 
