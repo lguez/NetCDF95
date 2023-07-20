@@ -27,16 +27,12 @@ contains
     ! four and eight bytes long, but we can ensure that they are
     ! distinct.
 
-    ! Local:
-    integer(kind = OneByteInt):: One
-    integer(kind = TwoByteInt):: Two
-    integer(kind = FourByteInt):: Four
-    integer(kind = EightByteInt):: Eight
-
     !-----------------------------------------------------------------------
 
-    byteSizesOK = bit_size( One) == 8 .and. bit_size( Two) == 16 &
-         .and. bit_size(Four) == 32 .and. bit_size( Eight) == 64 &
+    byteSizesOK = bit_size(0_OneByteInt) == 8 &
+         .and. bit_size(0_TwoByteInt) == 16 &
+         .and. bit_size(0_FourByteInt) == 32 &
+         .and. bit_size(0_EightByteInt) == 64 &
          .and. FourByteReal > 0 .and. EightByteReal > 0 &
          .and. FourByteReal /= EightByteReal
 
