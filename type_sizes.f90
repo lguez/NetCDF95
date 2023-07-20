@@ -10,7 +10,6 @@ module type_sizes
   ! declarations.
 
   implicit none
-  public
 
   integer, parameter ::   OneByteInt = selected_int_kind(2), &
        TwoByteInt = selected_int_kind(4), &
