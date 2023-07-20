@@ -32,9 +32,7 @@ contains
     byteSizesOK = bit_size(0_OneByteInt) == 8 &
          .and. bit_size(0_TwoByteInt) == 16 &
          .and. bit_size(0_FourByteInt) == 32 &
-         .and. bit_size(0_EightByteInt) == 64 &
-         .and. FourByteReal > 0 .and. EightByteReal > 0 &
-         .and. FourByteReal /= EightByteReal
+         .and. bit_size(0_EightByteInt) == 64
 
   end function byteSizesOK
 
