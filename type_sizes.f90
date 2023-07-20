@@ -35,14 +35,10 @@ contains
 
     !-----------------------------------------------------------------------
 
-    if (bit_size( One) == 8 .and. bit_size( Two) == 16 &
+    byteSizesOK = bit_size( One) == 8 .and. bit_size( Two) == 16 &
          .and. bit_size(Four) == 32 .and. bit_size( Eight) == 64 &
          .and. FourByteReal > 0 .and. EightByteReal > 0 &
-         .and. FourByteReal /= EightByteReal) then
-       byteSizesOK = .true.
-    else
-       byteSizesOK = .false.
-    end if
+         .and. FourByteReal /= EightByteReal
 
   end function byteSizesOK
 
