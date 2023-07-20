@@ -22,10 +22,9 @@ contains
   logical function byteSizesOK()
 
     ! Users may call this function once to ensure that the kind
-    ! parameters the module defines are available with the current
-    ! compiler. We can't ensure that the two REAL kinds are actually
-    ! four and eight bytes long, but we can ensure that they are
-    ! distinct.
+    ! parameters the module defines correspond to the right number of
+    ! bytes. We can't ensure that the two REAL kinds are actually four
+    ! and eight bytes long.
 
     !-----------------------------------------------------------------------
 
