@@ -43,7 +43,7 @@ contains
 
   subroutine nf95_put_att_one_FourByteInt(ncid, varid, name, values, ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer, intent(in) :: ncid, varid
     character(len = *), intent(in) :: name
@@ -71,7 +71,7 @@ contains
 
   subroutine nf95_put_att_one_FourByteReal(ncid, varid, name, values, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer, intent(in) :: ncid, varid
     character(len = *), intent(in) :: name

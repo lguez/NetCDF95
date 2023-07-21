@@ -31,7 +31,7 @@ contains
   subroutine nf95_get_var_FourByteReal(ncid, varid, values, start, &
        new_missing, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer, intent(in):: ncid, varid
     real(kind = FourByteReal), intent(out):: values
@@ -54,7 +54,7 @@ contains
   subroutine nf95_get_var_FourByteInt(ncid, varid, values, start, new_missing, &
        ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer, intent(in):: ncid, varid
     integer(kind = FourByteInt), intent(out):: values
@@ -97,7 +97,7 @@ contains
   subroutine nf95_get_var_1D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer,                         intent(in):: ncid, varid
     real(kind = FourByteReal), intent(out):: values(:)
@@ -122,7 +122,7 @@ contains
   subroutine nf95_get_var_1D_FourByteInt(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer,                         intent(in):: ncid, varid
     integer(kind = FourByteInt), intent(out):: values(:)
@@ -147,7 +147,7 @@ contains
   subroutine nf95_get_var_1D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: eightByteReal
+    use type_sizes, only: eightByteReal
 
     integer,                         intent(in):: ncid, varid
     real(kind = EightByteReal),     intent(out):: values(:)
@@ -172,7 +172,7 @@ contains
   subroutine nf95_get_var_2D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer,                         intent(in):: ncid, varid
     real(kind = FourByteReal), intent(out):: values(:, :)
@@ -197,7 +197,7 @@ contains
   subroutine nf95_get_var_2D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: EightByteReal
+    use type_sizes, only: EightByteReal
 
     integer,                         intent(in):: ncid, varid
     real(kind = EightByteReal), intent(out):: values(:, :)
@@ -222,7 +222,7 @@ contains
   subroutine nf95_get_var_2D_TwoByteInt(ncid, varid, values, start, count_nc, &
        stride, map, new_missing, ncerr)
 
-    use typesizes, only: TwoByteInt
+    use type_sizes, only: TwoByteInt
 
     integer, intent(in):: ncid, varid
     integer(kind = TwoByteInt), intent(out):: values(:, :)
@@ -246,7 +246,7 @@ contains
   subroutine nf95_get_var_2D_FourByteInt(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer, intent(in):: ncid, varid
     integer(kind = FourByteInt), intent(out):: values(:, :)
@@ -271,7 +271,7 @@ contains
   subroutine nf95_get_var_3D_FourByteInt(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer, intent(in):: ncid, varid
     integer(kind = FourByteInt), intent(out):: values(:, :, :)
@@ -296,7 +296,7 @@ contains
   subroutine nf95_get_var_3D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer,                         intent(in):: ncid, varid
     real(kind = FourByteReal), intent(out):: values(:, :, :)
@@ -321,7 +321,7 @@ contains
   subroutine nf95_get_var_3D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: eightByteReal
+    use type_sizes, only: eightByteReal
 
     integer,                         intent(in):: ncid, varid
     real(kind = EightByteReal),     intent(out):: values(:, :, :)
@@ -346,7 +346,7 @@ contains
   subroutine nf95_get_var_4D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer,                         intent(in):: ncid, varid
     real(kind = FourByteReal), intent(out):: values(:, :, :, :)
@@ -371,7 +371,7 @@ contains
   subroutine nf95_get_var_4D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: EightByteReal
+    use type_sizes, only: EightByteReal
 
     integer, intent(in):: ncid, varid
     real(kind = EightByteReal), intent(out):: values(:, :, :, :)
@@ -396,7 +396,7 @@ contains
   subroutine nf95_get_var_5D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer, intent(in):: ncid, varid
     real(kind = FourByteReal), intent(out):: values(:, :, :, :, :)
@@ -421,7 +421,7 @@ contains
   subroutine nf95_get_var_5D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, new_missing, ncerr)
 
-    use typesizes, only: EightByteReal
+    use type_sizes, only: EightByteReal
 
     integer, intent(in):: ncid, varid
     real(kind = EightByteReal), intent(out):: values(:, :, :, :, :)

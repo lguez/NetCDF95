@@ -24,7 +24,7 @@ contains
 
   subroutine nf95_put_var_FourByteReal(ncid, varid, values, start, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer, intent(in) :: ncid, varid
     real(kind = FourByteReal), intent(in) :: values
@@ -53,7 +53,7 @@ contains
 
   subroutine nf95_put_var_FourByteInt(ncid, varid, values, start, ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer, intent(in) :: ncid, varid
     integer(kind = FourByteInt), intent(in) :: values
@@ -82,7 +82,7 @@ contains
 
   subroutine nf95_put_var_EightByteReal(ncid, varid, values, start, ncerr)
 
-    use typesizes, only: EightByteReal
+    use type_sizes, only: EightByteReal
 
     integer, intent(in) :: ncid, varid
     real(kind = EightByteReal), intent(in) :: values
@@ -112,7 +112,7 @@ contains
   subroutine nf95_put_var_1D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer,                         intent(in) :: ncid, varid
     real(kind = FourByteReal), intent(in) :: values(:)
@@ -144,7 +144,7 @@ contains
   subroutine nf95_put_var_1D_FourByteInt(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer,                         intent(in) :: ncid, varid
     integer(kind = FourByteInt), intent(in) :: values(:)
@@ -176,7 +176,7 @@ contains
   subroutine nf95_put_var_1D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: eightByteReal
+    use type_sizes, only: eightByteReal
 
     integer,                         intent(in) :: ncid, varid
     real (kind = EightByteReal),     intent(in) :: values(:)
@@ -208,7 +208,7 @@ contains
   subroutine nf95_put_var_2D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer,                         intent(in) :: ncid, varid
     real (kind = FourByteReal), intent(in) :: values(:, :)
@@ -240,7 +240,7 @@ contains
   subroutine nf95_put_var_2D_FourByteint(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer,                         intent(in) :: ncid, varid
     integer(kind = FourByteInt), intent(in) :: values(:, :)
@@ -272,7 +272,7 @@ contains
   subroutine nf95_put_var_2D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: EightByteReal
+    use type_sizes, only: EightByteReal
 
     integer,                         intent(in) :: ncid, varid
     real (kind = EightByteReal), intent(in) :: values(:, :)
@@ -304,7 +304,7 @@ contains
   subroutine nf95_put_var_3D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer,                         intent(in) :: ncid, varid
     real (kind = FourByteReal), intent(in) :: values(:, :, :)
@@ -336,7 +336,7 @@ contains
   subroutine nf95_put_var_3D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: eightByteReal
+    use type_sizes, only: eightByteReal
 
     integer,                         intent(in) :: ncid, varid
     real (kind = EightByteReal),     intent(in) :: values(:, :, :)
@@ -368,7 +368,7 @@ contains
   subroutine nf95_put_var_4D_FourByteReal(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer,                         intent(in) :: ncid, varid
     real (kind = FourByteReal), intent(in) :: values(:, :, :, :)
@@ -400,7 +400,7 @@ contains
   subroutine nf95_put_var_4D_EightByteReal(ncid, varid, values, start, &
        count_nc, stride, map, ncerr)
 
-    use typesizes, only: EightByteReal
+    use type_sizes, only: EightByteReal
 
     integer, intent(in):: ncid, varid
     real(kind = EightByteReal), intent(in):: values(:, :, :, :)

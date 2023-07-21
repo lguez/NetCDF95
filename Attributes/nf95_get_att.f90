@@ -69,7 +69,7 @@ contains
 
   subroutine nf95_get_att_one_TwoByteInt(ncid, varid, name, values, ncerr)
 
-    use typesizes, only: TwoByteInt
+    use type_sizes, only: TwoByteInt
 
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
@@ -111,7 +111,7 @@ contains
 
   subroutine nf95_get_att_one_FourByteInt(ncid, varid, name, values, ncerr)
 
-    use typesizes, only: FourByteInt
+    use type_sizes, only: FourByteInt
 
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
@@ -153,7 +153,7 @@ contains
 
   subroutine nf95_get_att_one_FourByteReal(ncid, varid, name, values, ncerr)
 
-    use typesizes, only: FourByteReal
+    use type_sizes, only: FourByteReal
 
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
@@ -195,7 +195,7 @@ contains
 
   subroutine nf95_get_att_one_EightByteReal(ncid, varid, name, values, ncerr)
 
-    use typesizes, only: EightByteReal
+    use type_sizes, only: EightByteReal
 
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
