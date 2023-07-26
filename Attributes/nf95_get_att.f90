@@ -1,9 +1,10 @@
 module nf95_get_att_m
 
-  use nf95_abort_m, only: nf95_abort
   use netcdf, only: nf90_get_att, nf90_noerr
-  use nf95_inquire_attribute_m, only: nf95_inquire_attribute
+
+  use nf95_abort_m, only: nf95_abort
   use nf95_constants, only: nf95_noerr
+  use nf95_inquire_attribute_m, only: nf95_inquire_attribute
 
   implicit none
 
