@@ -90,20 +90,19 @@ Most users should not need these advanded instructions.
 
 		cmake . -DCMAKE_PREFIX_PATH:PATH=/usr/lib/x86_64-linux-gnu/netcdf/mpi
 
-- If you have several Fortran or C compilers on your machine, it is
-  possible that CMake does not choose the ones you want. Note that when
-  you run cmake, it prints lines telling which compilers it is going
+- If you have several Fortran compilers on your machine, it is
+  possible that CMake does not choose the one you want. Note that when
+  you run cmake, it prints a line telling which compiler it is going
   to use. For example :
 
 		-- The Fortran compiler identification is GNU 11.3.0
-		-- The C compiler identification is GNU 11.3.0
 
-	So if you want other compilers, remove everything in the build
-	directory and run cmake again setting the variables FC and CC to the
-	compilers you want. For example:
+	So if you want another compiler, remove everything in the build
+	directory and run cmake again setting the variable FC to the
+	compiler you want. For example:
 
 		rm -r * # in the build directory!
-		FC=ifort CC=icc cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+		FC=ifort cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
 
 [^1]: On Mac OS, after downloading the application from the CMake web
     site, run it, then click on "How to Install For Command Line Use"
