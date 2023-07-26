@@ -1,6 +1,6 @@
 module nf95_get_att_m
 
-  use netcdf, only: nf90_get_att, nf90_noerr
+  use netcdf, only: nf90_get_att
 
   use nf95_abort_m, only: nf95_abort
   use nf95_constants, only: nf95_noerr
@@ -38,7 +38,7 @@ contains
     ! Check that the length of "values" is large enough:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
-    if (ncerr_not_opt == nf90_noerr) then
+    if (ncerr_not_opt == nf95_noerr) then
        if (len(values) < att_len) then
           print *, "nf95_get_att_text"
           print *, "varid = ", varid
@@ -59,7 +59,7 @@ contains
             // trim(name), ncerr_not_opt, ncid, varid)
     end if
 
-    if (att_len >= 1 .and. ncerr_not_opt == nf90_noerr) then
+    if (att_len >= 1 .and. ncerr_not_opt == nf95_noerr) then
        ! Remove null terminator, if any:
        if (iachar(values(att_len:att_len)) == 0) values(att_len:att_len) = " "
     end if
@@ -86,7 +86,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
-    if (ncerr_not_opt == nf90_noerr) then
+    if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_TwoByteInt"
           print *, "varid = ", varid
@@ -128,7 +128,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
-    if (ncerr_not_opt == nf90_noerr) then
+    if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_FourByteInt"
           print *, "varid = ", varid
@@ -170,7 +170,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
-    if (ncerr_not_opt == nf90_noerr) then
+    if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_Fourbytereal"
           print *, "varid = ", varid
@@ -212,7 +212,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
-    if (ncerr_not_opt == nf90_noerr) then
+    if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_Eightbytereal"
           print *, "varid = ", varid

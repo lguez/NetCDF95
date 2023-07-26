@@ -1,6 +1,6 @@
 module nf95_get_var_m
 
-  use netcdf, only: nf90_get_var, NF90_NOERR
+  use netcdf, only: nf90_get_var
   
   use check_start_count_m, only: check_start_count
   use nf95_abort_m, only: nf95_abort

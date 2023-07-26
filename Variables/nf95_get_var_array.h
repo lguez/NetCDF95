@@ -15,7 +15,7 @@
           ncerr_not_opt, ncid, varid)
   end if
 
-  if (ncerr_not_opt == NF90_NOERR .and. present(new_missing)) then
+  if (ncerr_not_opt == NF95_NOERR .and. present(new_missing)) then
      call nf95_get_missing(ncid, varid, missing)
      where (values == missing) values = new_missing
   end if

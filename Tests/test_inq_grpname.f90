@@ -1,7 +1,7 @@
 program test_inq_grpname
 
-  use netcdf, only: nf90_nowrite
-  use netcdf95, only: nf95_open, nf95_close, nf95_inq_grpname, nf95_inq_grps
+  use netcdf95, only: nf95_open, nf95_close, nf95_inq_grpname, nf95_inq_grps, &
+       nf95_nowrite
 
   implicit none
 
@@ -11,7 +11,7 @@ program test_inq_grpname
 
   !-------------------------------------------------------------------
 
-  call nf95_open("aerosol_optics.nc", nf90_nowrite, ncid)
+  call nf95_open("aerosol_optics.nc", nf95_nowrite, ncid)
   call nf95_inq_grpname(ncid, name)
   print *, "name = ", name
   call nf95_inq_grps(ncid, ncids)

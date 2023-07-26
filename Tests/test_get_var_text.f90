@@ -1,7 +1,7 @@
 program test_get_var_text
 
-  use netcdf, only: nf90_nowrite
-  use netcdf95, only: nf95_open, nf95_close, nf95_get_var, nf95_inq_varid
+  use netcdf95, only: nf95_open, nf95_close, nf95_get_var, nf95_inq_varid, &
+       nf95_nowrite
 
   implicit none
 
@@ -10,7 +10,7 @@ program test_get_var_text
 
   !------------------------------------------------
 
-  call nf95_open("test_char.nc", nf90_nowrite, ncid)
+  call nf95_open("test_char.nc", nf95_nowrite, ncid)
 
   ! Read from a scalar variable:
   call nf95_inq_varid(ncid, "aa", varid)

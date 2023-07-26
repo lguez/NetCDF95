@@ -1,8 +1,8 @@
 program test_inq_grp_full_ncid
 
-  use netcdf, only: nf90_nowrite, nf90_noerr, nf90_strerror
+  use netcdf, only: nf90_strerror
   use netcdf95, only: nf95_open, nf95_close, nf95_inq_grp_full_ncid, &
-       nf95_inq_grpname_full
+       nf95_inq_grpname_full, nf95_nowrite, nf95_noerr
 
   implicit none
 
@@ -11,7 +11,7 @@ program test_inq_grp_full_ncid
 
   !-------------------------------------------------------------------
 
-  call nf95_open("aerosol_optics.nc", nf90_nowrite, ncid)
+  call nf95_open("aerosol_optics.nc", nf95_nowrite, ncid)
 
   print *, "Absolute from root should work..."
   call nf95_inq_grp_full_ncid(ncid, "/Hydrophilic/SW_bands", grpid)
@@ -29,7 +29,7 @@ program test_inq_grp_full_ncid
 
   call nf95_inq_grp_full_ncid(ncid, "SW_bands", grpid, ncerr)
 
-  if (ncerr /= nf90_noerr) then
+  if (ncerr /= nf95_noerr) then
      print *, trim(nf90_strerror(ncerr))
   else
      call nf95_inq_grpname_full(grpid, name)
@@ -41,7 +41,7 @@ program test_inq_grp_full_ncid
 
   call nf95_inq_grp_full_ncid(grpid, "/Hydrophilic/SW_bands", grpid_2, ncerr)
 
-  if (ncerr /= nf90_noerr) then
+  if (ncerr /= nf95_noerr) then
      print *, trim(nf90_strerror(ncerr))
   else
      call nf95_inq_grpname_full(grpid_2, name)
@@ -53,7 +53,7 @@ program test_inq_grp_full_ncid
   call nf95_inq_grp_full_ncid(ncid, "Hydrophilic", grpid)
   call nf95_inq_grp_full_ncid(grpid, "SW_bands", grpid_2, ncerr)
 
-  if (ncerr /= nf90_noerr) then
+  if (ncerr /= nf95_noerr) then
      print *, trim(nf90_strerror(ncerr))
   else
      call nf95_inq_grpname_full(grpid_2, name)
@@ -65,7 +65,7 @@ program test_inq_grp_full_ncid
 
   call nf95_inq_grp_full_ncid(grpid, "Hydrophilic/SW_bands", grpid_2, ncerr)
 
-  if (ncerr /= nf90_noerr) then
+  if (ncerr /= nf95_noerr) then
      print *, trim(nf90_strerror(ncerr))
   else
      call nf95_inq_grpname_full(grpid_2, name)
