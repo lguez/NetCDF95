@@ -11,7 +11,7 @@ program test_netcdf95
 
   !-----------------------------------------------------------------------
 
-  print *, "NetCDF library version: ", trim(nf90_inq_libvers())
+  print *, "NetCDF-C library version: ", trim(nf90_inq_libvers())
   call nf95_open("plouf.nc", nf95_nowrite, ncid)
   call nf95_close(ncid)
 

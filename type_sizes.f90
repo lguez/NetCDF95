@@ -5,7 +5,7 @@ module type_sizes
 
   ! Provide named kind parameters for use in declarations of real and
   ! integer variables with specific byte sizes (i.e. one, two, four,
-  ! and eight byte integers; four and eight byte reals). The
+  ! and eight-byte integers; four and eight-byte reals). The
   ! parameters can then be used in (KIND = XX) modifiers in
   ! declarations.
 
