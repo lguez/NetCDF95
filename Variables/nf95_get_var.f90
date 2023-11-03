@@ -11,14 +11,14 @@ module nf95_get_var_m
 
   interface nf95_get_var
      module procedure nf95_get_var_FourByteReal, nf95_get_var_FourByteInt, &
-          nf95_get_var_text, nf95_get_var_1D_FourByteReal, &
-          nf95_get_var_1D_FourByteInt, nf95_get_var_1D_EightByteReal, &
-          nf95_get_var_2D_FourByteReal, nf95_get_var_2D_EightByteReal, &
-          nf95_get_var_2D_twoByteInt, nf95_get_var_2D_FourByteInt, &
-          nf95_get_var_3D_FourByteInt, nf95_get_var_3D_FourByteReal, &
-          nf95_get_var_3D_EightByteReal, nf95_get_var_4D_FourByteReal, &
-          nf95_get_var_4D_EightByteReal, nf95_get_var_5D_FourByteReal, &
-          nf95_get_var_5D_EightByteReal
+          nf95_get_var_EightByteReal, nf95_get_var_text, &
+          nf95_get_var_1D_FourByteReal, nf95_get_var_1D_FourByteInt, &
+          nf95_get_var_1D_EightByteReal, nf95_get_var_2D_FourByteReal, &
+          nf95_get_var_2D_EightByteReal, nf95_get_var_2D_twoByteInt, &
+          nf95_get_var_2D_FourByteInt, nf95_get_var_3D_FourByteInt, &
+          nf95_get_var_3D_FourByteReal, nf95_get_var_3D_EightByteReal, &
+          nf95_get_var_4D_FourByteReal, nf95_get_var_4D_EightByteReal, &
+          nf95_get_var_5D_FourByteReal, nf95_get_var_5D_EightByteReal
   end interface
 
   private
@@ -71,6 +71,29 @@ contains
     include "nf95_get_var_scalar.h"
 
   end subroutine nf95_get_var_FourByteInt
+
+  !***********************
+
+  subroutine nf95_get_var_EightByteReal(ncid, varid, values, start, &
+       new_missing, ncerr)
+
+    use type_sizes, only: EightByteReal
+
+    integer, intent(in):: ncid, varid
+    real(kind = EightByteReal), intent(out):: values
+    integer, dimension(:), optional, intent(in):: start
+    real(kind = EightByteReal), optional, intent(in):: new_missing
+    integer, intent(out), optional:: ncerr
+
+    ! Local:
+    character(len=*), parameter:: procedure_name = "nf95_get_var_EightByteReal"
+    real(kind = EightByteReal) missing
+
+    !-------------------
+
+    include "nf95_get_var_scalar.h"
+
+  end subroutine nf95_get_var_EightByteReal
 
   !***********************
 
