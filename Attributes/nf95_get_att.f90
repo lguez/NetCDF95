@@ -38,6 +38,7 @@ contains
     ! Check that the length of "values" is large enough:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
+
     if (ncerr_not_opt == nf95_noerr) then
        if (len(values) < att_len) then
           print *, "nf95_get_att_text"
@@ -52,6 +53,7 @@ contains
 
     values = "" ! useless in NetCDF version 3.6.2 or better
     ncerr_not_opt = nf90_get_att(ncid, varid, name, values)
+
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else

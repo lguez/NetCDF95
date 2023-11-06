@@ -19,6 +19,9 @@ module nf95_get_var_m
           nf95_get_var_3D_FourByteReal, nf95_get_var_3D_EightByteReal, &
           nf95_get_var_4D_FourByteReal, nf95_get_var_4D_EightByteReal, &
           nf95_get_var_5D_FourByteReal, nf95_get_var_5D_EightByteReal
+     ! The interface of nf95_get_var_FourByteInt is distinguishable
+     ! from the interface of nf95_get_var_[1-4]D_FourByteInt because
+     ! of the rank of `values`.
   end interface
 
   private
@@ -147,7 +150,7 @@ contains
 
     use type_sizes, only: FourByteInt
 
-    integer,                         intent(in):: ncid, varid
+    integer, intent(in):: ncid, varid
     integer(kind = FourByteInt), intent(out):: values(:)
     integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
     integer(kind = FourByteInt), optional, intent(in):: new_missing

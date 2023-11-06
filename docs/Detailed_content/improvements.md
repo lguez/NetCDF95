@@ -54,9 +54,6 @@ Procedures with interface change:
 [`nf95_def_var`](variables.md) and
 [`nf95_def_var_scalar`](variables.md),
 [`nf95_inquire_attribute`](attributes.md),
-[`nf95_inq_grpname`](groups.md),
-[`nf95_inq_grpname_full`](groups.md),
-[`nf95_inq_grps`](groups.md)
 
 functionality change
 : Means that there is a corresponding procedure in the Fortran 90
@@ -67,7 +64,10 @@ Procedures with functionality change:
 [`nf95_get_var`](variables.md),
 [`nf95_inquire_variable`](variables.md),
 [`nf95_put_var`](variables.md),
-[`nf95_get_att`](attributes.md)
+[`nf95_get_att`](attributes.md),
+[`nf95_inq_grpname`](groups.md),
+[`nf95_inq_grpname_full`](groups.md),
+[`nf95_inq_grps`](groups.md)
 
 additional procedure
 : Means there is no corresponding procedure in the Fortran 90 interface.
