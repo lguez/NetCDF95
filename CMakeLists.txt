@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.16...3.27)
 list(APPEND CMAKE_MESSAGE_CONTEXT NetCDF95)
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build")
 project(NetCDF95 LANGUAGES Fortran)

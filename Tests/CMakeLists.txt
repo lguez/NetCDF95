@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.16...3.27)
 project(NetCDF95_tests LANGUAGES Fortran)
 find_package(NetCDF_Fortran REQUIRED)
 
