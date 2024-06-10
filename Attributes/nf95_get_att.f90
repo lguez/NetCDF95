@@ -1,7 +1,5 @@
 module nf95_get_att_m
 
-  use netcdf, only: nf90_get_att
-
   use nf95_abort_m, only: nf95_abort
   use nf95_constants, only: nf95_noerr
   use nf95_inquire_attribute_m, only: nf95_inquire_attribute
@@ -24,6 +22,9 @@ contains
 
   subroutine nf95_get_att_text(ncid, varid, name, values, ncerr)
 
+    use nc_constants, only: nc_noerr
+    use, intrinsic:: ISO_C_BINDING
+
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
     character(len = *), intent(out):: values
@@ -32,6 +33,17 @@ contains
     ! Variables local to the procedure:
     integer ncerr_not_opt
     integer att_len
+    Integer(C_INT) cncerr
+
+    Interface
+       Integer(C_INT) Function nc_get_att_text(ncid, varid, name, values) &
+            BIND(C)
+         import C_INT, C_CHAR
+         Integer(C_INT), VALUE, Intent(IN):: ncid, varid
+         Character(KIND=C_CHAR), Intent(IN):: name(*)
+         Character(KIND=C_CHAR), Intent(OUT):: values(*)
+       End Function nc_get_att_text
+    End Interface
 
     !-------------------
 
@@ -51,17 +63,18 @@ contains
        end if
     end if
 
-    values = "" ! useless in NetCDF version 3.6.2 or better
-    ncerr_not_opt = nf90_get_att(ncid, varid, name, values)
+    values = ""
+    cncerr = nc_get_att_text(int(ncid, c_int), int(varid - 1, c_int), &
+         name // c_null_char, values)
 
     if (present(ncerr)) then
-       ncerr = ncerr_not_opt
+       ncerr = cncerr
     else
-       if (ncerr_not_opt /= nf95_noerr) call nf95_abort("nf95_get_att_text " &
-            // trim(name), ncerr_not_opt, ncid, varid)
+       if (cncerr /= nc_noerr) call nf95_abort("nf95_get_att_text " &
+            // trim(name), int(cncerr), ncid, varid)
     end if
 
-    if (att_len >= 1 .and. ncerr_not_opt == nf95_noerr) then
+    if (att_len >= 1 .and. cncerr == nc_noerr) then
        ! Remove null terminator, if any:
        if (iachar(values(att_len:att_len)) == 0) values(att_len:att_len) = " "
     end if
@@ -72,6 +85,7 @@ contains
 
   subroutine nf95_get_att_one_TwoByteInt(ncid, varid, name, values, ncerr)
 
+    use netcdf, only: nf90_get_att
     use type_sizes, only: TwoByteInt
 
     integer, intent(in):: ncid, varid
@@ -114,6 +128,7 @@ contains
 
   subroutine nf95_get_att_one_FourByteInt(ncid, varid, name, values, ncerr)
 
+    use netcdf, only: nf90_get_att
     use type_sizes, only: FourByteInt
 
     integer, intent(in):: ncid, varid
@@ -156,6 +171,7 @@ contains
 
   subroutine nf95_get_att_one_FourByteReal(ncid, varid, name, values, ncerr)
 
+    use netcdf, only: nf90_get_att
     use type_sizes, only: FourByteReal
 
     integer, intent(in):: ncid, varid
@@ -198,6 +214,7 @@ contains
 
   subroutine nf95_get_att_one_EightByteReal(ncid, varid, name, values, ncerr)
 
+    use netcdf, only: nf90_get_att
     use type_sizes, only: EightByteReal
 
     integer, intent(in):: ncid, varid
