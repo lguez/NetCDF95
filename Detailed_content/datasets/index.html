@@ -170,13 +170,15 @@ explanation of the mnemonics "basic change", "interface change",
 single primary variable, with all its coordinates. The coordinates are
 specified using the derived type <code>coord_def</code> :</p>
 <pre><code>type coord_def
-  character(len = NF90_MAX_NAME) name
+  character(len = NF95_MAX_NAME) name
   integer nclen
   character(len = :), allocatable:: attr_name(:), attr_val(:)
 end type coord_def
 </code></pre>
-<p>After the call to <code>nf95_create_single</code>, the NetCDF dataset is still in
-define mode, so you can add attributes if appropriate.</p>
+<p>The arrays <code>attr_name</code> and <code>attr_val</code> must have the same size. They
+define the attributes of the coordinate. After the call to
+<code>nf95_create_single</code>, the NetCDF dataset is still in define mode, so
+you can add attributes to the primary variable if appropriate.</p>
 <h2 id="nf95_enddef"><code>nf95_enddef</code></h2>
 <p>(basic change)</p>
 <pre><code>  subroutine nf95_enddef(ncid, h_minfree, v_align, v_minfree, r_align, ncerr)

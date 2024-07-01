@@ -202,8 +202,8 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
   as the C character kind (the official NetCDF-Fortran interface makes
   the same assumption). You can test this by running the command
   <code>ctest</code> in the build directory. If this test fails then the
-  procedures <code>nf95_inq_grpname</code>, <code>nf95_inq_grpname_full</code> and
-  <code>nf95_inq_grp_full_ncid</code> are not reliable.</p>
+  procedures <code>nf95_inq_grpname</code>, <code>nf95_inq_grpname_full</code>,
+  <code>nf95_inq_grp_full_ncid</code> and <code>nf95_get_att_text</code> are not reliable.</p>
 </li>
 <li>
 <p>You do not have to install. You can just use the compiled library in
@@ -229,18 +229,17 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
 </code></pre>
 </li>
 <li>
-<p>If you have several Fortran or C compilers on your machine, it is
-  possible that CMake does not choose the ones you want. Note that when
-  you run cmake, it prints lines telling which compilers it is going
+<p>If you have several Fortran compilers on your machine, it is
+  possible that CMake does not choose the one you want. Note that when
+  you run cmake, it prints a line telling which compiler it is going
   to use. For example :</p>
 <pre><code>-- The Fortran compiler identification is GNU 11.3.0
--- The C compiler identification is GNU 11.3.0
 </code></pre>
-<p>So if you want other compilers, remove everything in the build
-directory and run cmake again setting the variables FC and CC to the
-compilers you want. For example:</p>
+<p>So if you want another compiler, remove everything in the build
+directory and run cmake again setting the variable FC to the
+compiler you want. For example:</p>
 <pre><code>rm -r * # in the build directory!
-FC=ifort CC=icc cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+FC=ifort cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
 </code></pre>
 </li>
 </ul>
