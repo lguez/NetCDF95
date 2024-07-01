@@ -1,6 +1,6 @@
 module nf95_get_missing_m
 
-  use netcdf, only: nf90_noerr
+  use nf95_constants, only: nf95_noerr
   use nf95_get_att_m, only: nf95_get_att
 
   implicit none
@@ -18,7 +18,7 @@ contains
 
   subroutine nf95_get_missing_real(ncid, varid, missing)
 
-    use netcdf, only: NF90_FILL_REAL
+    use nf95_constants, only: NF95_FILL_REAL
 
     integer, intent(in)::  ncid, varid
     real, intent(out):: missing ! missing or fill value
@@ -31,10 +31,10 @@ contains
     call nf95_get_att(ncid, varid, name = "missing_value", values = missing, &
          ncerr = ncerr)
 
-    if (ncerr /= nf90_noerr) then
+    if (ncerr /= nf95_noerr) then
        call nf95_get_att(ncid, varid, name = "_FillValue", values = missing, &
             ncerr = ncerr)
-       if (ncerr /= nf90_noerr) missing = NF90_FILL_REAL
+       if (ncerr /= nf95_noerr) missing = NF95_FILL_REAL
     end if
 
   end subroutine nf95_get_missing_real
@@ -43,7 +43,7 @@ contains
 
   subroutine nf95_get_missing_dble(ncid, varid, missing)
 
-    use netcdf, only: NF90_FILL_double
+    use nf95_constants, only: NF95_FILL_double
 
     integer, intent(in)::  ncid, varid
     double precision, intent(out):: missing ! missing or fill value
@@ -56,10 +56,10 @@ contains
     call nf95_get_att(ncid, varid, name = "missing_value", values = missing, &
          ncerr = ncerr)
 
-    if (ncerr /= nf90_noerr) then
+    if (ncerr /= nf95_noerr) then
        call nf95_get_att(ncid, varid, name = "_FillValue", values = missing, &
             ncerr = ncerr)
-       if (ncerr /= nf90_noerr) missing = NF90_FILL_double
+       if (ncerr /= nf95_noerr) missing = NF95_FILL_double
     end if
 
   end subroutine nf95_get_missing_dble
@@ -68,8 +68,8 @@ contains
 
   subroutine nf95_get_missing_short_int(ncid, varid, missing)
 
-    use netcdf, only: NF90_FILL_short
-    use typesizes, only: TwoByteInt
+    use nf95_constants, only: NF95_FILL_short
+    use type_sizes, only: TwoByteInt
 
     integer, intent(in)::  ncid, varid
     integer(kind = TwoByteInt), intent(out):: missing ! missing or fill value
@@ -82,10 +82,10 @@ contains
     call nf95_get_att(ncid, varid, name = "missing_value", values = missing, &
          ncerr = ncerr)
 
-    if (ncerr /= nf90_noerr) then
+    if (ncerr /= nf95_noerr) then
        call nf95_get_att(ncid, varid, name = "_FillValue", values = missing, &
             ncerr = ncerr)
-       if (ncerr /= nf90_noerr) missing = NF90_FILL_short
+       if (ncerr /= nf95_noerr) missing = NF95_FILL_short
     end if
 
   end subroutine nf95_get_missing_short_int
@@ -94,7 +94,7 @@ contains
 
   subroutine nf95_get_missing_int(ncid, varid, missing)
 
-    use netcdf, only: NF90_FILL_INT
+    use nf95_constants, only: NF95_FILL_INT
 
     integer, intent(in)::  ncid, varid
     integer, intent(out):: missing ! missing or fill value
@@ -107,10 +107,10 @@ contains
     call nf95_get_att(ncid, varid, name = "missing_value", values = missing, &
          ncerr = ncerr)
 
-    if (ncerr /= nf90_noerr) then
+    if (ncerr /= nf95_noerr) then
        call nf95_get_att(ncid, varid, name = "_FillValue", values = missing, &
             ncerr = ncerr)
-       if (ncerr /= nf90_noerr) missing = NF90_FILL_INT
+       if (ncerr /= nf95_noerr) missing = NF95_FILL_INT
     end if
 
   end subroutine nf95_get_missing_int
@@ -119,7 +119,7 @@ contains
 
   subroutine nf95_get_missing_char(ncid, varid, missing)
 
-    use netcdf, only: NF90_FILL_char
+    use nf95_constants, only: NF95_FILL_char
 
     integer, intent(in)::  ncid, varid
 
@@ -134,10 +134,10 @@ contains
 
     call nf95_get_att(ncid, varid, name = "missing_value", values = missing, &
          ncerr = ncerr)
-    if (ncerr /= nf90_noerr) then
+    if (ncerr /= nf95_noerr) then
        call nf95_get_att(ncid, varid, name = "_FillValue", values = missing, &
             ncerr = ncerr)
-       if (ncerr /= nf90_noerr) missing = NF90_FILL_char
+       if (ncerr /= nf95_noerr) missing = NF95_FILL_char
     end if
 
   end subroutine nf95_get_missing_char

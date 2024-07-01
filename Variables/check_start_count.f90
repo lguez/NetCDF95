@@ -18,7 +18,7 @@ contains
 
     use nf95_close_m, only: nf95_close
     use nf95_inquire_variable_m, only: nf95_inquire_variable
-    use netcdf, only: nf90_noerr
+    use nf95_constants, only: nf95_noerr
 
     character(len=*), intent(in):: name_calling ! name of calling procedure
     integer, intent(in):: ncid, varid
@@ -31,7 +31,7 @@ contains
     !-------------------
 
     call nf95_inquire_variable(ncid, varid, ndims=ndims, ncerr=ncerr_not_opt)
-    if (ncerr_not_opt == nf90_noerr) then
+    if (ncerr_not_opt == nf95_noerr) then
        call check_one_arg(name_calling, "start", ncid, varid, ndims, start)
        call check_one_arg(name_calling, "count_nc", ncid, varid, ndims, &
             count_nc)

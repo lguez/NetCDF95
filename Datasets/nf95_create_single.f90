@@ -1,16 +1,16 @@
 module nf95_create_single_m
 
-  use netcdf, only: NF90_MAX_NAME
+  use nf95_constants, only: NF95_MAX_NAME
 
   implicit none
 
   type coord_def
-     character(len = NF90_MAX_NAME) name
+     character(len = NF95_MAX_NAME) name
      integer nclen
      character(len = :), allocatable:: attr_name(:), attr_val(:)
   end type coord_def
 
-  private NF90_MAX_NAME
+  private NF95_MAX_NAME
 
 contains
 
@@ -18,8 +18,7 @@ contains
 
     ! Shortcut to create a file containing a single primary variable.
 
-    use netcdf, only: NF90_CLOBBER, NF90_FLOAT
-
+    use nf95_constants, only: NF95_CLOBBER, NF95_FLOAT
     use nf95_create_m, only: nf95_create
     use nf95_def_dim_m, only: nf95_def_dim
     use nf95_def_var_m, only: nf95_def_var
@@ -35,12 +34,12 @@ contains
 
     !----------------------------------------------------------------------
 
-    call nf95_create(name // ".nc", NF90_CLOBBER, ncid)
+    call nf95_create(name // ".nc", NF95_CLOBBER, ncid)
 
     do i = 1, size(coordinates)
        call nf95_def_dim(ncid, coordinates(i)%name, coordinates(i)%nclen, &
             dimids(i))
-       call nf95_def_var(ncid, coordinates(i)%name, NF90_FLOAT, dimids(i), &
+       call nf95_def_var(ncid, coordinates(i)%name, NF95_FLOAT, dimids(i), &
             varid_coord(i))
 
        do j = 1, size(coordinates(i)%attr_name)
@@ -49,7 +48,7 @@ contains
        end do
     end do
 
-    call nf95_def_var(ncid, name, NF90_FLOAT, dimids, varid)
+    call nf95_def_var(ncid, name, NF95_FLOAT, dimids, varid)
 
   end subroutine nf95_create_single
 

@@ -15,8 +15,8 @@ contains
     ! This procedure allocates and defines "dimids" if it is present.
 
     use nf95_abort_m, only: nf95_abort
-    use netcdf, only: nf90_inquire_variable, nf90_max_var_dims
-    use nf95_constants, only: nf95_noerr
+    use netcdf, only: nf90_inquire_variable
+    use nf95_constants, only: nf95_noerr, nf95_max_var_dims
 
     integer, intent(in):: ncid, varid
     character(len = *), optional, intent(out):: name
@@ -27,7 +27,7 @@ contains
 
     ! Variable local to the procedure:
     integer ncerr_not_opt
-    integer dimids_local(nf90_max_var_dims)
+    integer dimids_local(nf95_max_var_dims)
     integer ndims_not_opt
 
     !-------------------

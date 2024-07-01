@@ -1,8 +1,9 @@
 program test_put_var_char
   
-  use netcdf, only: nf90_noclobber, nf90_put_var, nf90_char
+  use netcdf, only: nf90_put_var
+
   use netcdf95, only: nf95_abort, nf95_close, nf95_create, nf95_def_dim, &
-       nf95_def_var, nf95_enddef, nf95_noerr
+       nf95_def_var, nf95_enddef, nf95_noerr, nf95_noclobber, nf95_char
 
   implicit none
 
@@ -12,9 +13,9 @@ program test_put_var_char
 
   !----------------------------------------------------------------------
   
-  call nf95_create("foo.nc", nf90_noclobber, ncid)
+  call nf95_create("foo.nc", nf95_noclobber, ncid)
   call nf95_def_dim(ncid, "oceanStrLen", maxoceannamelen, oceanstrlenid)
-  call nf95_def_var(ncid, "ocean", nf90_char, (/ oceanstrlenid /), oceanid)
+  call nf95_def_var(ncid, "ocean", nf95_char, (/ oceanstrlenid /), oceanid)
   ! Leave define mode, which prefills netCDF variables with fill values
   call nf95_enddef(ncid)
   ! Note that this assignment adds blank fill

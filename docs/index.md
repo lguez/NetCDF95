@@ -27,15 +27,15 @@ NetCDF95 is meant to be friendlier and more secure. Notably:
 		read([unit=]u, [fmt=]fmt [,iostat=ios] [, err=error-label] &
 		   [,end=end-label]) [list]
 
-	If the `err`, `end` and `iostat` keywords are not provided, and
-	there is a problem in the execution of the `read` statement, then
-	execution of the program stops (with an informative error message
-	from the compiler). Similarly, NetCDF95 procedures have an
-	optional argument for error status. If the optional argument is
-	absent and there is an error, then the NetCDF95 procedure produces
-	an error message and stops the program. (The official Fortran 90
-	interface looks like it has been made to mimic the C interface,
-	and this is not optimal in Fortran.)
+  If the `err`, `end` and `iostat` keywords are not provided, and
+  there is a problem in the execution of the `read` statement, then
+  execution of the program stops (with an informative error message
+  from the compiler). Similarly, NetCDF95 procedures have an optional
+  argument for error status. If the optional argument is absent and
+  there is an error, then the NetCDF95 procedure produces an error
+  message and stops the program. (The official Fortran 90 interface
+  looks like it has been made to mimic the C interface, and this is
+  not optimal in Fortran.)
 
 - NetCDF95 frees you of assumptions on the size of arrays and the size
   of character strings when you call several inquiry procedures. (It
@@ -44,7 +44,8 @@ NetCDF95 is meant to be friendlier and more secure. Notably:
   [`nf95_inquire_variable`](Detailed_content/variables.md),
   [`nf95_inq_grpname`](Detailed_content/groups.md),
   [`nf95_inq_grps`](Detailed_content/groups.md),
-  [`nf95_inq_grpname_full`](Detailed_content/groups.md).
+  [`nf95_inq_grpname_full`](Detailed_content/groups.md),
+  [`nf95_inq_attname`](Detailed_content/attributes.md).
   
 - NetCDF95 offers procedures that have no counterpart in the official
   interface. These combine several calls to other NetCDF95 procedures
@@ -53,20 +54,25 @@ NetCDF95 is meant to be friendlier and more secure. Notably:
   [`nf95_find_coord`](Detailed_content/datasets.md),
   [`nf95_create_single`](Detailed_content/datasets.md),
   [`nf95_get_missing`](Detailed_content/attributes.md).
-  
+
 - NetCDF95 replaces functions by subroutines. Procedures of the
-official Fortran 90 interface are all functions, and they are all with
-side effects. First, they have `intent(out)` arguments. Furthermore,
-there is obviously data transfer inside the procedures. Any data
-transfer inside a function is considered as a side effect. In this
-respect, the Fortran 90 interface mimics the C interface. But Fortran
-has a different programming style than C and frowns upon side-effects
-in functions. See for example Metcalf and Reid (Fortran 90/95
-Explained, 1999, §§ 5.10 and 6.10).
+  official Fortran 90 interface are all functions, and they are all
+  with side effects. First, they have `intent(out)`
+  arguments. Furthermore, there is obviously data transfer inside the
+  procedures. Any data transfer inside a function is considered as a
+  side effect. In this respect, the Fortran 90 interface mimics the C
+  interface. But Fortran has a different programming style than C and
+  frowns upon side-effects in functions. See for example Metcalf and
+  Reid (Fortran 90/95 Explained, 1999, §§ 5.10 and 6.10).
+
+- NetCDF95 provides the procedure `nf95_inq_varnatts`, corresponding
+  to the strangely missing
+  [`nf90_inq_varnatts`](Detailed_content/variables.md) in the official
+  Fortran 90 interface.
 
 - There are other improvements such as securing the call to
-[`nf95_get_var`](Detailed_content/variables.md) by checking the
-arguments start and `count_nc`, and renaming badly chosen argument
-names len and count to nclen and `count_nc`.
+  [`nf95_get_var`](Detailed_content/variables.md) by checking the
+  arguments start and `count_nc`, and renaming badly chosen argument
+  names len and count to nclen and `count_nc`.
 
   

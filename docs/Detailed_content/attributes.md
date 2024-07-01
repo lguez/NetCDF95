@@ -1,5 +1,4 @@
-Attributes
-===
+# Attributes
 
 This page describles procedures handling NetCDF attributes.
 
@@ -7,8 +6,7 @@ See the [improvements page](improvements.md) for an explanation of
 the mnemonics "basic change", "interface change", "functionality
 change", "additional procedure".
 
-`nf95_copy_att`
----
+## `nf95_copy_att`
 
 (basic change)
 
@@ -21,8 +19,7 @@ change", "additional procedure".
 Reference:
 [`nf90_copy_att`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-copy-attribute-from-one-netcdf-to-another-nf90_copy_att)
 
-`nf95_get_att`
----
+## `nf95_get_att`
 
 (functionality change)
 
@@ -41,8 +38,7 @@ attribute contains a single value.
 Reference:
 [`nf90_get_att`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-attributes-values-nf90_get_att)
 
-`nf95_get_missing`
----
+## `nf95_get_missing`
 
 (additional procedure)
 
@@ -58,8 +54,24 @@ subroutine nf95_get_missing(ncid, varid, missing)
 Returns the `missing_value` attribute if present, else the `_FillValue`
 if present, else `nf90_fill_real` or `nf90_fill_double`.
 
-`nf95_inquire_attribute`
----
+## `nf95_inq_attname`
+
+(interface change)
+
+```
+subroutine nf95_inq_attname(ncid, varid, attnum, name, ncerr)
+
+  integer, intent(in):: ncid, varid, attnum
+  character(len = :), allocatable, intent(out):: name
+  integer, intent(out), optional:: ncerr
+```
+
+The argument name has dynamic (deferred) length in `nf95_inq_attname`
+instead of assumed length in `nf90_inq_attname`. So you do not have to
+worry about a maximum length for the corresponding actual argument:
+just declare it also as `character(len = :), allocatable`.
+
+## `nf95_inquire_attribute`
 
 (interface change)
 
@@ -81,8 +93,7 @@ because it is the name of a Fortran intrinsic procedure.
 Reference:
 [`nf90_inquire_attribute`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-information-about-an-attribute-nf90_inquire_attribute-and-nf90_inq_attname)
 
-`nf95_put_att`
----
+## `nf95_put_att`
 
 (basic change)
 

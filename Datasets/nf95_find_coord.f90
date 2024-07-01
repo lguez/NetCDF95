@@ -14,7 +14,7 @@ contains
     ! the NetCDF variable one looks for does not need to have the
     ! attribute "std_name".
 
-    use netcdf, only: NF90_MAX_NAME, NF90_NOERR
+    use nf95_constants, only: NF95_MAX_NAME, NF95_NOERR
     use nf95_get_att_m, only: nf95_get_att
     use nf95_inq_varid_m, only: nf95_inq_varid
     use nf95_inquire_dimension_m, only: nf95_inquire_dimension
@@ -39,7 +39,7 @@ contains
     logical exact ! "units" must be matched exactly
 
     integer ncerr, nDimensions, dimid_local, varid_local
-    character(len=NF90_MAX_NAME) name_local
+    character(len=NF95_MAX_NAME) name_local
     integer, allocatable:: dimids(:)
     character(len=80) values
     logical found
@@ -79,13 +79,13 @@ contains
        dimid_local = dimid_local + 1
        call nf95_inquire_dimension(ncid, dimid_local, name_local)
        call nf95_inq_varid(ncid, name_local, varid_local, ncerr)
-       if (ncerr == NF90_NOERR) then
+       if (ncerr == NF95_NOERR) then
           call nf95_inquire_variable(ncid, varid_local, dimids=dimids)
           if (size(dimids) == 1) then
              if (dimids(1) == dimid_local) then
                 ! We have found a coordinate
                 call nf95_get_att(ncid, varid_local, "units", values, ncerr)
-                if (ncerr == NF90_NOERR)then
+                if (ncerr == NF95_NOERR)then
                    if (exact) then
                       found = any(values == units)
                    else

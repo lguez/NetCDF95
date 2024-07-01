@@ -45,13 +45,15 @@ single primary variable, with all its coordinates. The coordinates are
 specified using the derived type `coord_def` :
 
 	type coord_def
-      character(len = NF90_MAX_NAME) name
+      character(len = NF95_MAX_NAME) name
 	  integer nclen
 	  character(len = :), allocatable:: attr_name(:), attr_val(:)
 	end type coord_def
 
-After the call to `nf95_create_single`, the NetCDF dataset is still in
-define mode, so you can add attributes if appropriate.
+The arrays `attr_name` and `attr_val` must have the same size. They
+define the attributes of the coordinate. After the call to
+`nf95_create_single`, the NetCDF dataset is still in define mode, so
+you can add attributes to the primary variable if appropriate.
 
 ## `nf95_enddef`
 
