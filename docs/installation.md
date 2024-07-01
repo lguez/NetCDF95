@@ -68,8 +68,8 @@ Most users should not need these advanded instructions.
   as the C character kind (the official NetCDF-Fortran interface makes
   the same assumption). You can test this by running the command
   `ctest` in the build directory. If this test fails then the
-  procedures `nf95_inq_grpname`, `nf95_inq_grpname_full` and
-  `nf95_inq_grp_full_ncid` are not reliable.
+  procedures `nf95_inq_grpname`, `nf95_inq_grpname_full`,
+  `nf95_inq_grp_full_ncid` and `nf95_get_att_text` are not reliable.
 
 - You do not have to install. You can just use the compiled library in
   the build directory. So you do not have to specify the option

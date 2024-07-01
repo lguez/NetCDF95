@@ -64,6 +64,8 @@ contains
     end if
 
     values = ""
+    ! We assume that the C character kind is the same as the default
+    ! character kind:
     cncerr = nc_get_att_text(int(ncid, c_int), int(varid - 1, c_int), &
          name // c_null_char, values)
 
