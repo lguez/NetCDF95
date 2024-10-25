@@ -1,7 +1,7 @@
 module nf95_constants
 
   use nc_constants, only: NC_NOERR, NC_ENOGRP
-  use type_sizes, only: EightByteReal, TwoByteInt
+  use type_sizes, only: EightByteReal, TwoByteInt, onebyteint
 
   implicit none
 
@@ -11,7 +11,8 @@ module nf95_constants
   integer, parameter:: nf95_unlimited = 0
 
   ! External netcdf data types:
-  integer, parameter:: nf95_float = 5, nf95_double = 6, nf95_char = 2
+  integer, parameter:: nf95_byte = 1, nf95_short  = 3, nf95_int = 4, &
+       nf95_float = 5, nf95_double = 6, nf95_char = 2
 
   ! Mode flags for opening and creating a netcdf dataset:
   integer, parameter:: nf95_nowrite = 0, nf95_clobber = 0
@@ -24,6 +25,7 @@ module nf95_constants
   ! Default fill values:
   integer, parameter:: nf95_fill_int = - 2147483647
   integer(kind =  TwoByteInt), parameter:: nf95_fill_short = -32767
+  integer(onebyteint), parameter:: nf95_fill_byte  = -127
   real, parameter:: nf95_fill_real = 9.9692099683868690e+36
   real(kind = EightByteReal), parameter:: nf95_fill_double &
        = 9.9692099683868690e36
