@@ -105,6 +105,24 @@ rather than `NF90_FILL_REAL`.
 Reference:
 [`nf90_get_var`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-reading-data-values-nf90_get_var)
 
+## `nf95_gunp_var`
+
+(additional procedure)
+
+```
+subroutine nf95_gunp_var_real(ncid, varid, values, new_missing)
+  integer, intent(in):: ncid, varid
+  real or double precision, intent(out):: values(:, :, :)
+  real or double precision, optional, intent(in):: new_missing
+```
+
+`nf95_gunp_var` stands for "NetCDF95 get unpacked variable". This
+procedure looks for attributes `scale_factor` or `add_offset` for the
+variable with given varid. If any of these attributes are found then
+`nf95_gunp_var` reads and unpacks the variable, else it has the same
+result as `nf95_get_var`. Note that unpacked values can only be real
+or double precision.
+
 ## `nf95_gw_var`
 
 (additional procedure)

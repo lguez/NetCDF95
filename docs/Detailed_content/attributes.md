@@ -26,7 +26,7 @@ Reference:
       subroutine nf95_get_att(ncid, varid, name, values, ncerr)
         integer,                          intent( in) :: ncid, varid
         character(len = *),               intent( in) :: name
-        character(len = *), integer or real(any kind), intent(out) :: values
+        character(len = *), integer(any kind) or real(any kind), intent(out) :: values
         integer, intent(out), optional:: ncerr
 
 `nf95_get_att` is more secure than `nf90_get_att`. For an argument
