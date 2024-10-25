@@ -104,6 +104,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
+
     if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_TwoByteInt"
@@ -147,6 +148,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
+
     if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_oneByteInt"
@@ -190,6 +192,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
+
     if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_FourByteInt"
@@ -233,6 +236,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
+
     if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_Fourbytereal"
@@ -276,6 +280,7 @@ contains
     ! Check that the attribute contains a single value:
     call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
          ncerr=ncerr_not_opt)
+
     if (ncerr_not_opt == nf95_noerr) then
        if (att_len /= 1) then
           print *, "nf95_get_att_one_Eightbytereal"
