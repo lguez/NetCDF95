@@ -51,8 +51,10 @@ subroutine nf95_get_missing(ncid, varid, missing)
   ! missing or fill value
 ```
 
-Returns the `missing_value` attribute if present, else the `_FillValue`
-if present, else `nf90_fill_real` or `nf90_fill_double`.
+Returns the `missing_value` attribute if present, else the
+`_FillValue` if present, else `nf90_fill_real`, `nf90_fill_double`,
+`nf95_fill_int` or `nf95_fill_char` depending on the type of the
+`missing` arugment.
 
 ## `nf95_inq_attname`
 
