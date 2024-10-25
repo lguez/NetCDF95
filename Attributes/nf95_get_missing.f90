@@ -8,7 +8,7 @@ module nf95_get_missing_m
   interface nf95_get_missing
      module procedure nf95_get_missing_real, nf95_get_missing_dble, &
           nf95_get_missing_short_int, nf95_get_missing_int, &
-          nf95_get_missing_char
+          nf95_get_missing_char, nf95_get_missing_byte_int
   end interface nf95_get_missing
 
   private
@@ -141,5 +141,31 @@ contains
     end if
 
   end subroutine nf95_get_missing_char
+
+  !**************************************************************************
+
+  subroutine nf95_get_missing_byte_int(ncid, varid, missing)
+
+    use nf95_constants, only: NF95_FILL_byte
+    use type_sizes, only: oneByteInt
+
+    integer, intent(in)::  ncid, varid
+    integer(kind = oneByteInt), intent(out):: missing ! missing or fill value
+
+    ! Local:
+    integer ncerr
+
+    !-------------------------------------------------------------------
+
+    call nf95_get_att(ncid, varid, name = "missing_value", values = missing, &
+         ncerr = ncerr)
+
+    if (ncerr /= nf95_noerr) then
+       call nf95_get_att(ncid, varid, name = "_FillValue", values = missing, &
+            ncerr = ncerr)
+       if (ncerr /= nf95_noerr) missing = NF95_FILL_byte
+    end if
+
+  end subroutine nf95_get_missing_byte_int
 
 end module nf95_get_missing_m
