@@ -32,9 +32,9 @@ contains
 
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
-    else
-       if (ncerr_not_opt /= nf95_noerr) call nf95_abort("nf95_put_att_text " &
-            // trim(name), ncerr_not_opt, ncid, varid)
+    else if (ncerr_not_opt /= nf95_noerr) then
+       call nf95_abort("nf95_put_att_text " // trim(name), ncerr_not_opt, &
+            ncid, varid)
     end if
 
   end subroutine nf95_put_att_text
@@ -59,9 +59,8 @@ contains
 
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
-    else
-       if (ncerr_not_opt /= nf95_noerr) call &
-            nf95_abort("nf95_put_att_one_FourByteInt " // trim(name), &
+    else if (ncerr_not_opt /= nf95_noerr) then
+       call nf95_abort("nf95_put_att_one_FourByteInt " // trim(name), &
             ncerr_not_opt, ncid, varid)
     end if
 
@@ -87,9 +86,8 @@ contains
 
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
-    else
-       if (ncerr_not_opt /= nf95_noerr) call &
-            nf95_abort("nf95_put_att_one_FourByteReal " // trim(name), &
+    else if (ncerr_not_opt /= nf95_noerr) then
+       call nf95_abort("nf95_put_att_one_FourByteReal " // trim(name), &
             ncerr_not_opt, ncid, varid)
     end if
 
