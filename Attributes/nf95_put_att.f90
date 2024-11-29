@@ -27,6 +27,7 @@ contains
 
     ! Variable local to the procedure:
     integer ncerr_not_opt
+    character(len=*), parameter:: procedure_name = "nf95_put_att_text"
 
     !-------------------
 
@@ -37,7 +38,7 @@ contains
     else if (ncerr_not_opt /= nf95_noerr) then
        write(error_unit, fmt = *) "name = ", name
        write(error_unit, fmt = *) "values = ", values
-       call nf95_abort("nf95_put_att_text ", ncerr_not_opt, ncid, varid)
+       call nf95_abort(procedure_name, ncerr_not_opt, ncid, varid)
     end if
 
   end subroutine nf95_put_att_text
@@ -55,6 +56,8 @@ contains
 
     ! Variable local to the procedure:
     integer ncerr_not_opt
+    character(len=*), parameter:: procedure_name &
+         = "nf95_put_att_one_FourByteInt"
 
     !-------------------
 
@@ -65,8 +68,7 @@ contains
     else if (ncerr_not_opt /= nf95_noerr) then
        write(error_unit, fmt = *) "name = ", name
        write(error_unit, fmt = *) "values = ", values
-       call nf95_abort("nf95_put_att_one_FourByteInt ", ncerr_not_opt, ncid, &
-            varid)
+       call nf95_abort(procedure_name, ncerr_not_opt, ncid, varid)
     end if
 
   end subroutine nf95_put_att_one_FourByteInt
@@ -84,6 +86,8 @@ contains
 
     ! Variable local to the procedure:
     integer ncerr_not_opt
+    character(len=*), parameter:: procedure_name &
+         = "nf95_put_att_one_FourByteReal"
 
     !-------------------
 
@@ -94,8 +98,7 @@ contains
     else if (ncerr_not_opt /= nf95_noerr) then
        write(error_unit, fmt = *) "name = ", name
        write(error_unit, fmt = *) "values = ", values
-       call nf95_abort("nf95_put_att_one_FourByteReal ", ncerr_not_opt, ncid, &
-            varid)
+       call nf95_abort(procedure_name, ncerr_not_opt, ncid, varid)
     end if
 
   end subroutine nf95_put_att_one_FourByteReal
