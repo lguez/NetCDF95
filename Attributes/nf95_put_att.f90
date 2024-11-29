@@ -1,5 +1,7 @@
 module nf95_put_att_m
 
+  use, intrinsic:: iso_fortran_env, only: error_unit
+
   use netcdf, only: nf90_put_att
   use nf95_abort_m, only: nf95_abort
   use nf95_constants, only: nf95_noerr
@@ -33,8 +35,8 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else if (ncerr_not_opt /= nf95_noerr) then
-       call nf95_abort("nf95_put_att_text " // trim(name), ncerr_not_opt, &
-            ncid, varid)
+       write(error_unit, fmt = *) "name = ", name
+       call nf95_abort("nf95_put_att_text ", ncerr_not_opt, ncid, varid)
     end if
 
   end subroutine nf95_put_att_text
@@ -60,8 +62,9 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else if (ncerr_not_opt /= nf95_noerr) then
-       call nf95_abort("nf95_put_att_one_FourByteInt " // trim(name), &
-            ncerr_not_opt, ncid, varid)
+       write(error_unit, fmt = *) "name = ", name
+       call nf95_abort("nf95_put_att_one_FourByteInt ", ncerr_not_opt, ncid, &
+            varid)
     end if
 
   end subroutine nf95_put_att_one_FourByteInt
@@ -87,8 +90,9 @@ contains
     if (present(ncerr)) then
        ncerr = ncerr_not_opt
     else if (ncerr_not_opt /= nf95_noerr) then
-       call nf95_abort("nf95_put_att_one_FourByteReal " // trim(name), &
-            ncerr_not_opt, ncid, varid)
+       write(error_unit, fmt = *) "name = ", name
+       call nf95_abort("nf95_put_att_one_FourByteReal ", ncerr_not_opt, ncid, &
+            varid)
     end if
 
   end subroutine nf95_put_att_one_FourByteReal
