@@ -134,6 +134,7 @@ contains
 
     call nf95_get_att(ncid, varid, name = "missing_value", values = missing, &
          ncerr = ncerr)
+
     if (ncerr /= nf95_noerr) then
        call nf95_get_att(ncid, varid, name = "_FillValue", values = missing, &
             ncerr = ncerr)
