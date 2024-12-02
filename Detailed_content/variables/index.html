@@ -218,7 +218,7 @@ rather than <code>NF90_FILL_REAL</code>.</p>
 <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-reading-data-values-nf90_get_var"><code>nf90_get_var</code></a></p>
 <h2 id="nf95_gunp_var"><code>nf95_gunp_var</code></h2>
 <p>(additional procedure)</p>
-<pre><code>subroutine nf95_gunp_var_real(ncid, varid, values, new_missing)
+<pre><code>subroutine nf95_gunp_var(ncid, varid, values, new_missing)
   integer, intent(in):: ncid, varid
   real or double precision, intent(out):: values(:, :, :)
   real or double precision, optional, intent(in):: new_missing
@@ -227,8 +227,15 @@ rather than <code>NF90_FILL_REAL</code>.</p>
 procedure looks for attributes <code>scale_factor</code> or <code>add_offset</code> for the
 variable with given varid. If any of these attributes are found then
 <code>nf95_gunp_var</code> reads and unpacks the variable, else it has the same
-result as <code>nf95_get_var</code>. Note that unpacked values can only be real
-or double precision.</p>
+result as <code>nf95_get_var</code>. If the attributes <code>scale_factor</code> and
+<code>add_offset</code> are absent then the cost of <code>nf95_gunp_var</code> compared to
+<code>nf95_get_var</code> is just the cost of checking the presence of these
+attributes.</p>
+<p>Note that unpacked values can only be real or double precision.</p>
+<p>If the packed variable has missing values then you can choose a
+missing value for the unpacked variable. If you do not specify the
+<code>new_missing</code> argument then the default missing value,
+<code>NF95_FILL_REAL</code> or <code>NF95_FILL_double</code>, will be used.</p>
 <h2 id="nf95_gw_var"><code>nf95_gw_var</code></h2>
 <p>(additional procedure)</p>
 <pre><code>  subroutine nf95_gw_var(ncid, varid, values)

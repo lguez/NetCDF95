@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>variables.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+</head>
+
+<body>
+
+<h1 id="variables">Variables</h1>
+<p>This page describles procedures handling NetCDF variables.</p>
+<p>See the <a href="improvements.md">improvements page</a> for an explanation of the mnemonics “basic change”, “interface change”, “functionality change”, “additional procedure”.</p>
+<h2 id="reminder-on-allocatable-arguments">Reminder on allocatable arguments</h2>
+<p>Some NetCDF95 procedures below have a dummy argument with attributes allocatable and <code>intent(out)</code>. Recall that in this case the associated actual argument must also have the allocatable attribute. If it is allocated before the call, it will automatically be deallocated and reallocated in the NetCDF95 procedure.</p>
+<h2 id="nf95_def_var-and-nf95_def_var_scalar"><code>nf95_def_var</code> and <code>nf95_def_var_scalar</code></h2>
+<p>(interface change)</p>
+<pre><code>subroutine nf95_def_var_scalar(ncid, name, xtype, varid, ncerr)
+  integer,               intent( in) :: ncid
+  character (len = *),   intent( in) :: name
+  integer,               intent( in) :: xtype
+  integer,               intent(out) :: varid
+ integer, intent(out), optional:: ncerr</code></pre>
+<pre><code>subroutine nf95_def_var(ncid, name, xtype, dimids, varid, ncerr)
+  integer,               intent( in) :: ncid
+  character (len = *),   intent( in) :: name
+  integer,               intent( in) :: xtype
+  integer[, dimension(:)], intent( in) :: dimids
+  integer,               intent(out) :: varid
+  integer, intent(out), optional:: ncerr</code></pre>
+<p>(<code>dimids</code> may be either a scalar or a rank 1 array.)</p>
+<p>Because of the additional optional argument <code>ncerr</code>, the generic procedure name <code>nf95_def_var</code> cannot include the case of a scalar variable. So there is a specific public procedure <code>nf95_def_var_scalar</code> for this case.</p>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-create-a-variable-nf90_def_var"><code>nf90_def_var</code></a></p>
+<h2 id="nf95_get_var"><code>nf95_get_var</code></h2>
+<p>(functionality change)</p>
+<pre><code>subroutine nf95_get_var(ncid, varid, values, start, &amp;
+     new_missing, ncerr)
+
+  integer, intent(in) :: ncid, varid
+  any type, intent(out):: values
+  integer, dimension(:), optional, intent(in):: start
+  same type as values, optional, intent(in):: new_missing
+  integer, intent(out), optional:: ncerr</code></pre>
+<p>(if argument <code>values</code> is a scalar then arguments <code>count_nc</code>, stride and map must not be present)</p>
+<p>or</p>
+<pre><code>subroutine nf95_get_var(ncid, varid, values, start, &amp;
+     count_nc, stride, map, new_missing, ncerr)
+
+  integer, intent(in) :: ncid, varid
+  any type and any rank &gt;= 1, intent(out):: values
+  integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+  same type as values, optional, intent(in):: new_missing
+  integer, intent(out), optional:: ncerr</code></pre>
+<p>(if argument <code>values</code> is an array then arguments <code>count_nc</code>, stride and map may be present)</p>
+<p>The argument for the number of indices selected along each dimension is called <code>count_nc</code> in <code>nf95_get_var</code>, instead of <code>count</code> in <code>nf90_get_var</code>. <code>count</code> is not a good choice for a variable name because it is the name of a Fortran intrinsic procedure.</p>
+<p><code>nf95_get_var</code> checks that :</p>
+<ul>
+<li>the size of arguments <code>start</code> and <code>count_nc</code> equals the rank of the NetCDF variable ;</li>
+<li>if <code>count_nc</code> is absent, the rank of argument <code>values</code> is lower than or equal to the rank of the NetCDF variable.</li>
+</ul>
+<p>There is an optional argument, <code>new_missing</code>, which is not in the <a href="https://www.unidata.ucar.edu/software/netcdf/docs-fortran/f90_The-NetCDF-Fortran-90-Interface-Guide.html">Fortran 90 NetCDF interface</a>. If the argument <code>new_missing</code> is present then, in the returned <code>values</code>, the missing value from the NetCDF variable is replaced by <code>new_missing</code>. This may be useful for example if, in your program, you need the missing value to be <code>ieee_value(0., IEEE_QUIET_NAN)</code> rather than <code>NF90_FILL_REAL</code>.</p>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-reading-data-values-nf90_get_var"><code>nf90_get_var</code></a></p>
+<h2 id="nf95_gunp_var"><code>nf95_gunp_var</code></h2>
+<p>(additional procedure)</p>
+<pre><code>subroutine nf95_gunp_var(ncid, varid, values, new_missing)
+  integer, intent(in):: ncid, varid
+  real or double precision, intent(out):: values(:, :, :)
+  real or double precision, optional, intent(in):: new_missing</code></pre>
+<p><code>nf95_gunp_var</code> stands for “NetCDF95 get unpacked variable”. This procedure looks for attributes <code>scale_factor</code> or <code>add_offset</code> for the variable with given varid. If any of these attributes are found then <code>nf95_gunp_var</code> reads and unpacks the variable, else it has the same result as <code>nf95_get_var</code>. If the attributes <code>scale_factor</code> and <code>add_offset</code> are absent then the cost of <code>nf95_gunp_var</code> compared to <code>nf95_get_var</code> is just the cost of checking the presence of these attributes.</p>
+<p>Note that unpacked values can only be real or double precision.</p>
+<p>If the packed variable has missing values then you can choose a missing value for the unpacked variable. If you do not specify the <code>new_missing</code> argument then the default missing value, <code>NF95_FILL_REAL</code> or <code>NF95_FILL_double</code>, will be used.</p>
+<h2 id="nf95_gw_var"><code>nf95_gw_var</code></h2>
+<p>(additional procedure)</p>
+<pre><code>  subroutine nf95_gw_var(ncid, varid, values)
+    integer, intent(in):: ncid
+    integer, intent(in):: varid
+    any type and kind, any rank, allocatable, intent(out):: values</code></pre>
+<p><code>nf95_gw_var</code> stands for “NetCDF95 get whole variable”. This procedure reads a whole NetCDF variable into an array. When you want all the values of the NetCDF variable, this procedure is a shortcut to: inquiring about the dimension IDs of the variable, inquiring about the length of each dimension found, allocating the Fortran variable, reading the values from the NetCDF variable.</p>
+<p>The procedure checks that the rank of the argument <code>values</code> equals the rank of the NetCDF variable. The procedure does not require nor check that the type of <code>values</code> corresponds to the type of the NetCDF variable: conversion will occur if necessary.</p>
+<p>See <a href="#reminder-on-allocatable-arguments">reminder on allocatable arguments</a>.</p>
+<h2 id="nf95_inq_varid"><code>nf95_inq_varid</code></h2>
+<p>(basic change)</p>
+<pre><code>  subroutine nf95_inq_varid(ncid, name, varid, ncerr)
+    integer,             intent(in) :: ncid
+    character (len = *), intent(in) :: name
+    integer,             intent(out) :: varid
+    integer, intent(out), optional:: ncerr</code></pre>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-the-id-of-a-variable-from-the-name-nf90_inq_varid"><code>nf90_inq_varid</code></a></p>
+<h2 id="nf95_inq_varnatts"><code>nf95_inq_varnatts</code></h2>
+<p>(additional procedure)</p>
+<pre><code> subroutine nf95_inq_varnatts(ncid, varid, natts, ncerr)
+   integer, intent(in):: ncid, varid
+   integer, intent(out):: natts
+   integer, intent(out), optional:: ncerr</code></pre>
+<p>This procedure tells you how many attributes a variable has, knowing the variable ID. You can call it with <code>varid = nf95_global</code> to find out the number of global attributes.</p>
+<p>Strangely, although a procedure <code>nf90_inq_varnatts</code> is mentioned in the documentation of <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-information-about-an-attribute-nf90_inquire_attribute-and-nf90_inq_attname"><code>nf90_inquire_attribute</code> and <code>nf90_inq_attname</code></a>, this procedure does not exist in the Fortran 90 NetCDF interface. So it seems the only way to get the number of attributes with the Fortran 90 NetCDF interface is to loop on <code>nf90_inq_attname</code> until it returns an error.</p>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-c/current/group__variables.html#ga4df3b5bbf48e98cbd6847bd24f072ec8"><code>nc_inq_varnatts</code></a></p>
+<h2 id="nf95_inquire_variable"><code>nf95_inquire_variable</code></h2>
+<p>(functionality change)</p>
+<pre><code>  subroutine nf95_inquire_variable(ncid, varid, name, xtype, ndims, dimids, &amp;
+       nAtts, ncerr)
+    integer, intent(in):: ncid, varid
+    character(len = *), optional, intent(out):: name
+    integer, optional, intent(out) :: xtype, ndims
+    integer, dimension(:), optional, allocatable, intent(out) :: dimids
+    integer, optional, intent(out) :: nAtts
+    integer, intent(out), optional :: ncerr</code></pre>
+<p>In the “new” <code>nf95_inquire_variable</code>, the argument <code>dimids</code> has the allocatable attribute. The procedure <code>nf95_inquire_variable</code> allocates and defines <code>dimids</code> if the argument is present. <code>dimids</code> is defined as a zero-sized array if the NetCDF variable is a scalar with no dimension.</p>
+<p>In the “old” <code>nf90_inquire_variable</code>, <code>dimids</code> was an assumed-size array. This was Fortran 77 style, not optimal. You had to allocate <code>dimids</code> in the calling procedure with a maximum possible number of dimensions. You also needed to call <code>nf90_inquire_variable</code> with the argument <code>ndims</code> present, to tell you which part of <code>dimids</code> was defined.</p>
+<p>See <a href="#reminder-on-allocatable-arguments">reminder on allocatable arguments</a>.</p>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-get-information-about-a-variable-from-its-id-nf90_inquire_variable"><code>nf90_inquire_variable</code></a></p>
+<h2 id="nf95_put_var"><code>nf95_put_var</code></h2>
+<p>(functionality change)</p>
+<pre><code>subroutine nf95_put_var(ncid, varid, values, start, ncerr)
+  integer,                         intent(in) :: ncid, varid
+  any type and any kind, intent(in) :: values
+  integer, dimension(:), optional, intent(in) :: start
+  integer, intent(out), optional:: ncerr</code></pre>
+<p>(If argument <code>values</code> is a scalar then arguments <code>count_nc</code>, stride and map must not be present.)</p>
+<p>Or:</p>
+<pre><code>subroutine nf95_put_var(ncid, varid, values, start, count_nc, stride, map, ncerr)
+  integer,                         intent(in) :: ncid, varid
+  any type and any kind, any rank &gt;= 1, intent(in) :: values
+  integer, dimension(:), optional, intent(in) :: start, count_nc, stride, map
+  integer, intent(out), optional:: ncerr</code></pre>
+<p>(If argument <code>values</code> is an array then arguments <code>count_nc</code>, stride and map may be present.)</p>
+<p>The argument for the number of indices selected along each dimension is called <code>count_nc</code> in <code>nf95_put_var</code>, instead of <code>count</code> in <code>nf90_put_var</code>. <code>count</code> is not a good choice for a variable name because it is the name of a Fortran intrinsic procedure.</p>
+<p><code>nf95_put_var</code> checks that :</p>
+<ul>
+<li>the size of arguments <code>start</code> and <code>count_nc</code> equals the rank of the NetCDF variable ;</li>
+<li>if <code>count_nc</code> is absent, the rank of argument <code>values</code> is lower than or equal to the rank of the NetCDF variable.</li>
+</ul>
+<p>Reference: <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-writing-data-values-nf90_put_var"><code>nf90_put_var</code></a></p>
+
+</body>
+</html>
