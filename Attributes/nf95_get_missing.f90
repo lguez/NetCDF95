@@ -1,5 +1,8 @@
 module nf95_get_missing_m
 
+  use, intrinsic:: iso_fortran_env, only: error_unit
+
+  use nf95_abort_m, only: nf95_abort
   use nf95_constants, only: nf95_noerr
   use nf95_get_att_m, only: nf95_get_att
 
@@ -24,7 +27,8 @@ contains
     real, intent(out):: missing ! missing or fill value
 
     ! Local:
-    integer ncerr
+    integer ncerr_1, ncerr_2
+    real missing_1
 
     !-------------------------------------------------------------------
 
@@ -42,7 +46,8 @@ contains
     double precision, intent(out):: missing ! missing or fill value
 
     ! Local:
-    integer ncerr
+    integer ncerr_1, ncerr_2
+    double precision missing_1
 
     !-------------------------------------------------------------------
 
@@ -61,7 +66,8 @@ contains
     integer(kind = TwoByteInt), intent(out):: missing ! missing or fill value
 
     ! Local:
-    integer ncerr
+    integer ncerr_1, ncerr_2
+    integer(kind = TwoByteInt) missing_1
 
     !-------------------------------------------------------------------
 
@@ -79,7 +85,8 @@ contains
     integer, intent(out):: missing ! missing or fill value
 
     ! Local:
-    integer ncerr
+    integer ncerr_1, ncerr_2
+    integer missing_1
 
     !-------------------------------------------------------------------
 
@@ -100,7 +107,8 @@ contains
     ! a NetCDF character variable should be a single character
 
     ! Local:
-    integer ncerr
+    integer ncerr_1, ncerr_2
+    character missing_1
 
     !-------------------------------------------------------------------
 
@@ -119,7 +127,8 @@ contains
     integer(kind = oneByteInt), intent(out):: missing ! missing or fill value
 
     ! Local:
-    integer ncerr
+    integer ncerr_1, ncerr_2
+    integer(kind = oneByteInt) missing_1
 
     !-------------------------------------------------------------------
 
