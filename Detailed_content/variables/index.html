@@ -70,6 +70,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_get_var">nf95_get_var</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nf95_gunp_var">nf95_gunp_var</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_gw_var">nf95_gw_var</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#nf95_inq_varid">nf95_inq_varid</a>
@@ -214,6 +216,19 @@ you need the missing value to be <code>ieee_value(0., IEEE_QUIET_NAN)</code>
 rather than <code>NF90_FILL_REAL</code>.</p>
 <p>Reference:
 <a href="https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-variables.html#f90-reading-data-values-nf90_get_var"><code>nf90_get_var</code></a></p>
+<h2 id="nf95_gunp_var"><code>nf95_gunp_var</code></h2>
+<p>(additional procedure)</p>
+<pre><code>subroutine nf95_gunp_var_real(ncid, varid, values, new_missing)
+  integer, intent(in):: ncid, varid
+  real or double precision, intent(out):: values(:, :, :)
+  real or double precision, optional, intent(in):: new_missing
+</code></pre>
+<p><code>nf95_gunp_var</code> stands for &ldquo;NetCDF95 get unpacked variable&rdquo;. This
+procedure looks for attributes <code>scale_factor</code> or <code>add_offset</code> for the
+variable with given varid. If any of these attributes are found then
+<code>nf95_gunp_var</code> reads and unpacks the variable, else it has the same
+result as <code>nf95_get_var</code>. Note that unpacked values can only be real
+or double precision.</p>
 <h2 id="nf95_gw_var"><code>nf95_gw_var</code></h2>
 <p>(additional procedure)</p>
 <pre><code>  subroutine nf95_gw_var(ncid, varid, values)

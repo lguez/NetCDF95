@@ -149,7 +149,7 @@ change&rdquo;, &ldquo;additional procedure&rdquo;.</p>
 <pre><code>  subroutine nf95_get_att(ncid, varid, name, values, ncerr)
     integer,                          intent( in) :: ncid, varid
     character(len = *),               intent( in) :: name
-    character(len = *), integer or real(any kind), intent(out) :: values
+    character(len = *), integer(any kind) or real(any kind), intent(out) :: values
     integer, intent(out), optional:: ncerr
 </code></pre>
 <p><code>nf95_get_att</code> is more secure than <code>nf90_get_att</code>. For an argument
@@ -165,11 +165,15 @@ attribute contains a single value.</p>
 
   integer, intent(in)::  ncid, varid
 
-  real or double precision or integer or character, intent(out):: missing
+  real or double precision or integer of any kind, or character, intent(out):: missing
   ! missing or fill value
 </code></pre>
-<p>Returns the <code>missing_value</code> attribute if present, else the <code>_FillValue</code>
-if present, else <code>nf90_fill_real</code> or <code>nf90_fill_double</code>.</p>
+<p>The procedure first checks that the type of argument <code>missing</code> is the
+same as the type of the NetCDF variable. The procedure returns the
+<code>missing_value</code> or <code>_FillValue</code> attribute if one of them is present,
+else the <code>nf95_fill_type</code> constant corresponding to the type of
+argument <code>missing</code>. If both <code>missing_value</code> and <code>_FillValue</code> are
+present then the procedure checks that they are equal.</p>
 <h2 id="nf95_inq_attname"><code>nf95_inq_attname</code></h2>
 <p>(interface change)</p>
 <pre><code>subroutine nf95_inq_attname(ncid, varid, attnum, name, ncerr)
