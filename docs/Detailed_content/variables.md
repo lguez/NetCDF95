@@ -110,7 +110,7 @@ Reference:
 (additional procedure)
 
 ```
-subroutine nf95_gunp_var_real(ncid, varid, values, new_missing)
+subroutine nf95_gunp_var(ncid, varid, values, new_missing)
   integer, intent(in):: ncid, varid
   real or double precision, intent(out):: values(:, :, :)
   real or double precision, optional, intent(in):: new_missing
@@ -118,10 +118,19 @@ subroutine nf95_gunp_var_real(ncid, varid, values, new_missing)
 
 `nf95_gunp_var` stands for "NetCDF95 get unpacked variable". This
 procedure looks for attributes `scale_factor` or `add_offset` for the
-variable with given varid. If any of these attributes are found then
+variable with given varid. If any of these attributes is found then
 `nf95_gunp_var` reads and unpacks the variable, else it has the same
-result as `nf95_get_var`. Note that unpacked values can only be real
-or double precision.
+result as `nf95_get_var`. If the attributes `scale_factor` and
+`add_offset` are absent then the cost of `nf95_gunp_var` compared to
+`nf95_get_var` is just the cost of checking the presence of these
+attributes.
+
+Note that unpacked values can only be real or double precision.
+
+If the packed variable has missing values then you can choose a
+missing value for the unpacked variable. If you do not specify the
+`new_missing` argument then the default missing value,
+`NF95_FILL_REAL` or `NF95_FILL_double`, will be used.
 
 ## `nf95_gw_var`
 
@@ -177,8 +186,8 @@ the documentation of [`nf90_inquire_attribute` and
 `nf90_inq_attname`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-information-about-an-attribute-nf90_inquire_attribute-and-nf90_inq_attname),
 this procedure does not exist in the Fortran 90 NetCDF interface. So
 it seems the only way to get the number of attributes with the Fortran
-90 NetCDF interface is to loop on `nf90_inq_attname` until it returns
-an error.
+90 NetCDF interface was to loop on `nf90_inq_attname` until it
+returned an error.
 
 Reference: [`nc_inq_varnatts`](https://docs.unidata.ucar.edu/netcdf-c/current/group__variables.html#ga4df3b5bbf48e98cbd6847bd24f072ec8)
 

@@ -47,14 +47,16 @@ subroutine nf95_get_missing(ncid, varid, missing)
 
   integer, intent(in)::  ncid, varid
   
-  real or double precision or integer or character, intent(out):: missing
+  real or double precision or integer of any kind, or character, intent(out):: missing
   ! missing or fill value
 ```
 
-Returns the `missing_value` attribute if present, else the
-`_FillValue` if present, else `nf90_fill_real`, `nf90_fill_double`,
-`nf95_fill_int` or `nf95_fill_char` depending on the type of the
-`missing` arugment.
+The procedure first checks that the type of argument `missing` is the
+same as the type of the NetCDF variable. The procedure returns the
+`missing_value` or `_FillValue` attribute if one of them is present,
+else the `nf95_fill_type` constant corresponding to the type of
+argument `missing`. If both `missing_value` and `_FillValue` are
+present then the procedure checks that they are equal.
 
 ## `nf95_inq_attname`
 

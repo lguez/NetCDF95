@@ -53,7 +53,8 @@ NetCDF95 is meant to be friendlier and more secure. Notably:
   [`nf95_gw_var`](Detailed_content/variables.md),
   [`nf95_find_coord`](Detailed_content/datasets.md),
   [`nf95_create_single`](Detailed_content/datasets.md),
-  [`nf95_get_missing`](Detailed_content/attributes.md).
+  [`nf95_get_missing`](Detailed_content/attributes.md),
+  [`nf95_gunp_var`](Detailed_content/variables.md).
 
 - NetCDF95 replaces functions by subroutines. Procedures of the
   official Fortran 90 interface are all functions, and they are all
