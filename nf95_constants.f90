@@ -13,6 +13,8 @@ module nf95_constants
   ! External netcdf data types:
   integer, parameter:: nf95_byte = 1, nf95_char = 2, nf95_short  = 3, &
        nf95_int = 4, nf95_float = 5, nf95_double = 6
+  character(len=*), parameter:: type_name(6) = [character(len = 6):: "byte", &
+       "char", "short", "int", "float", "double"]
 
   ! Mode flags for opening and creating a netcdf dataset:
   integer, parameter:: nf95_nowrite = 0, nf95_clobber = 0

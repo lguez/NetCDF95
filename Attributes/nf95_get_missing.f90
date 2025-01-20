@@ -3,7 +3,7 @@ module nf95_get_missing_m
   use, intrinsic:: iso_fortran_env, only: error_unit
 
   use nf95_abort_m, only: nf95_abort
-  use nf95_constants, only: nf95_noerr
+  use nf95_constants, only: nf95_noerr, type_name
   use nf95_get_att_m, only: nf95_get_att
   use nf95_inquire_attribute_m, only: nf95_inquire_attribute
 

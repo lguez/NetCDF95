@@ -10,9 +10,10 @@
 
      if (xtype /= nf95_type) then
         write(error_unit, fmt = *) "Warning: nf95_get_missing: type mismatch"
-        write(error_unit, fmt = *) "type of `missing` argument: ", nf95_type
+        write(error_unit, fmt = *) "type of `missing` argument: ", &
+             type_name(nf95_type)
         write(error_unit, fmt = *) "type of NetCDF attribute missing_value: ", &
-             xtype
+             type_name(xtype)
         write(error_unit, fmt = *) "Converted missing_value:", missing_1
         write(error_unit, fmt = *) "varid = ", varid
         write(error_unit, fmt = *) "End of warning"
@@ -27,9 +28,10 @@
 
      if (xtype /= nf95_type) then
         write(error_unit, fmt = *) "Warning: nf95_get_missing: type mismatch"
-        write(error_unit, fmt = *) "type of `missing` argument: ", nf95_type
+        write(error_unit, fmt = *) "type of `missing` argument: ", &
+             type_name(nf95_type)
         write(error_unit, fmt = *) "type of NetCDF attribute _FillValue: ", &
-             xtype
+             type_name(xtype)
         write(error_unit, fmt = *) "Converted _FillValue:", missing
         write(error_unit, fmt = *) "varid = ", varid
         write(error_unit, fmt = *) "End of warning"
