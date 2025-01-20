@@ -13,7 +13,7 @@ module nf95_gunp_var_m
 
   interface nf95_gunp_var
      ! Get unpacked variable
-     module procedure nf95_gunp_var_real, nf95_gunp_var_dble
+     module procedure nf95_gunp_var_real_3d, nf95_gunp_var_dble
   end interface nf95_gunp_var
 
   private
@@ -21,7 +21,7 @@ module nf95_gunp_var_m
 
 contains
 
-  subroutine nf95_gunp_var_real(ncid, varid, values, new_missing)
+  subroutine nf95_gunp_var_real_3d(ncid, varid, values, new_missing)
 
     use nf95_constants, only: NF95_FILL_REAL
 
@@ -50,7 +50,7 @@ contains
        call nf95_inquire_variable(ncid, varid, xtype = xtype)
 
        if (all(xtype /= [NF95_BYTE, NF95_SHORT, NF95_INT])) then
-          write(error_unit, fmt = *) "nf95_gunp_var_real: type of packed " &
+          write(error_unit, fmt = *) "nf95_gunp_var_real_3d: type of packed " &
                // "variable must be integer (any kind)"
           stop 1
        end if
@@ -94,7 +94,7 @@ contains
        call nf95_get_var(ncid, varid, values, new_missing = new_missing)
     end if
 
-  end subroutine nf95_gunp_var_real
+  end subroutine nf95_gunp_var_real_3d
 
   !**************************************************************************
 
