@@ -29,7 +29,8 @@ module nf95_constants
   integer(TwoByteInt), parameter:: nf95_fill_short = -32767
   integer(onebyteint), parameter:: nf95_fill_byte  = -127
   real, parameter:: nf95_fill_real = 9.9692099683868690e+36
-  real(EightByteReal), parameter:: nf95_fill_double = 9.9692099683868690e36
+  real(EightByteReal), parameter:: nf95_fill_double &
+       = 9.9692099683868690e36_EightByteReal
   character, parameter:: nf95_fill_char = achar(0)
 
   private NC_NOERR, NC_ENOGRP, EightByteReal, TwoByteInt
