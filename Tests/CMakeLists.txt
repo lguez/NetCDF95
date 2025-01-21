@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.16...3.27)
 project(NetCDF95_tests LANGUAGES Fortran)
+enable_testing()
 find_package(NetCDF_Fortran REQUIRED)
 
 if(NOT TARGET netcdf95)
@@ -44,3 +45,7 @@ foreach(my_exe IN ITEMS test_netcdf95 test_abort test_put_var_char
     test_inq_varnatts test_inq_attname test_get_att_text)
   target_link_libraries(${my_exe} PRIVATE NetCDF95::netcdf95)
 endforeach()
+
+# test_c_char
+add_executable(test_c_char test_c_char.f90)
+add_test(NAME default_c_char COMMAND test_c_char)

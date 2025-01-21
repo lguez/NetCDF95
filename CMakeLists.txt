@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.16...3.27)
 list(APPEND CMAKE_MESSAGE_CONTEXT NetCDF95)
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build")
 project(NetCDF95 LANGUAGES Fortran)
-enable_testing()
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 add_library(netcdf95 nf95_abort.f90 netcdf95.f90 nf95_def_dim.f90
