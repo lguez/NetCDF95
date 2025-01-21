@@ -27,11 +27,6 @@ program test_get_missing_char
   call nf95_get_missing(ncid, varid, missing)
   print *, 'missing y = "', missing, '"'
   
-  ! z, this should fail:
-!!$  call nf95_inq_varid(ncid, "z", varid)
-!!$  call nf95_get_missing(ncid, varid, missing)
-!!$  print *, 'missing z = "', missing, '"'
-  
   call nf95_close(ncid)
 
 end program test_get_missing_char
