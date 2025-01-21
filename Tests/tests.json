@@ -55,5 +55,11 @@
         "symlink": [
             "$src_dir/Tests/histhf.nc"
         ]
+    },
+    "Gunp_var": {
+        "command": "$build_dir/Tests/test_gunp_var",
+        "symlink": [
+            "$src_dir/Tests/adt.nc"
+        ]
     }
 }
