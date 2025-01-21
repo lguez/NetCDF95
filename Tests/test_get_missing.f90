@@ -1,4 +1,4 @@
-program test_get_missing_char
+program test_get_missing
 
   use netcdf95, only: nf95_open, nf95_close, nf95_get_missing, nf95_inq_varid, &
        nf95_nowrite, nf95_global
@@ -29,4 +29,4 @@ program test_get_missing_char
   
   call nf95_close(ncid)
 
-end program test_get_missing_char
+end program test_get_missing
