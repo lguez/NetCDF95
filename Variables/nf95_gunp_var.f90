@@ -22,13 +22,14 @@ module nf95_gunp_var_m
 
 contains
 
-  subroutine nf95_gunp_var_real_2d(ncid, varid, values, start, new_missing)
+  subroutine nf95_gunp_var_real_2d(ncid, varid, values, start, count_nc, &
+       new_missing)
 
     use nf95_constants, only: NF95_FILL_REAL
 
     integer, intent(in):: ncid, varid
     real, intent(out):: values(:, :)
-    integer, optional, intent(in):: start(:)
+    integer, optional, intent(in):: start(:), count_nc(:)
     real, optional, intent(in):: new_missing
 
     ! Local:
@@ -58,7 +59,7 @@ contains
        end if
 
        allocate(packed_values(size(values, 1), size(values, 2)))
-       call nf95_get_var(ncid, varid, packed_values, start)
+       call nf95_get_var(ncid, varid, packed_values, start, count_nc)
 
        ! We cannot just call nf95_get_missing with argument
        ! missing_packed because we want to get the right nf95_fill_*
@@ -92,20 +93,22 @@ contains
           values = packed_values * scale_factor + add_offset
        end where
     else
-       call nf95_get_var(ncid, varid, values, start, new_missing = new_missing)
+       call nf95_get_var(ncid, varid, values, start, count_nc, &
+            new_missing = new_missing)
     end if
 
   end subroutine nf95_gunp_var_real_2d
 
   !**************************************************************************
 
-  subroutine nf95_gunp_var_real_3d(ncid, varid, values, start, new_missing)
+  subroutine nf95_gunp_var_real_3d(ncid, varid, values, start, count_nc, &
+       new_missing)
 
     use nf95_constants, only: NF95_FILL_REAL
 
     integer, intent(in):: ncid, varid
     real, intent(out):: values(:, :, :)
-    integer, optional, intent(in):: start(:)
+    integer, optional, intent(in):: start(:), count_nc(:)
     real, optional, intent(in):: new_missing
 
     ! Local:
@@ -136,7 +139,7 @@ contains
 
        allocate(packed_values(size(values, 1), size(values, 2), &
             size(values, 3)))
-       call nf95_get_var(ncid, varid, packed_values, start)
+       call nf95_get_var(ncid, varid, packed_values, start, count_nc)
 
        ! We cannot just call nf95_get_missing with argument
        ! missing_packed because we want to get the right nf95_fill_*
@@ -170,20 +173,22 @@ contains
           values = packed_values * scale_factor + add_offset
        end where
     else
-       call nf95_get_var(ncid, varid, values, start, new_missing = new_missing)
+       call nf95_get_var(ncid, varid, values, start, count_nc, &
+            new_missing = new_missing)
     end if
 
   end subroutine nf95_gunp_var_real_3d
 
   !**************************************************************************
 
-  subroutine nf95_gunp_var_dble(ncid, varid, values, start, new_missing)
+  subroutine nf95_gunp_var_dble(ncid, varid, values, start, count_nc, &
+       new_missing)
 
     use nf95_constants, only: NF95_FILL_double
 
     integer, intent(in):: ncid, varid
     double precision, intent(out):: values(:, :, :)
-    integer, optional, intent(in):: start(:)
+    integer, optional, intent(in):: start(:), count_nc(:)
     double precision, optional, intent(in):: new_missing
 
     ! Local:
@@ -214,7 +219,7 @@ contains
 
        allocate(packed_values(size(values, 1), size(values, 2), &
             size(values, 3)))
-       call nf95_get_var(ncid, varid, packed_values, start)
+       call nf95_get_var(ncid, varid, packed_values, start, count_nc)
 
        ! We cannot just call nf95_get_missing with argument
        ! missing_packed because we want to get the right nf95_fill_*
@@ -248,7 +253,8 @@ contains
           values = packed_values * scale_factor + add_offset
        end where
     else
-       call nf95_get_var(ncid, varid, values, start, new_missing = new_missing)
+       call nf95_get_var(ncid, varid, values, start, count_nc, &
+            new_missing = new_missing)
     end if
 
   end subroutine nf95_gunp_var_dble
