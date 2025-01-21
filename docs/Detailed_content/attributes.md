@@ -47,16 +47,31 @@ subroutine nf95_get_missing(ncid, varid, missing)
 
   integer, intent(in)::  ncid, varid
   
-  real or double precision or integer of any kind, or character, intent(out):: missing
+  real or double precision or integer, of any kind, or character, intent(out):: missing
   ! missing or fill value
 ```
 
-The procedure first checks that the type of argument `missing` is the
-same as the type of the NetCDF variable. The procedure returns the
-`missing_value` or `_FillValue` attribute if one of them is present,
-else the `nf95_fill_type` constant corresponding to the type of
-argument `missing`. If both `missing_value` and `_FillValue` are
-present then the procedure checks that they are equal.
+The procedure returns the `missing_value` or `_FillValue` attribute if
+one of them is present, else the `nf95_fill_type` constant
+corresponding to the type of argument `missing`. If both
+`missing_value` and `_FillValue` are present then the procedure checks
+that they are equal.
+
+If the type of the `missing_value` or `_FillValue` attribute is
+different than the type of argument `missing` then conversion will
+occur. The procedure prints a warning as this is dangerous
+usage. Indeed, if you read values of the corresponding NetCDF variable
+without conversion then the converted missing value from the attribute
+may not correspond to the un-converted value in the NetCDF
+variable. And if you read values of the NetCDF variable with the same
+conversion as for the attribute, then values which are valid but close
+to the missing value in the NetCDF variable may become equal to the
+missing value after conversion. See the (admittedly contrived)
+examples in file `Tests/test_get_missing.f90` which demonstrate this
+risk. Concluding advice: if you convert missing value from double
+precision real to single precision real, for example, be sure to
+convert also values of the NetCDF variable, and make sure that there
+are no values close to the missing value in the NetCDF variable.
 
 ## `nf95_inq_attname`
 
