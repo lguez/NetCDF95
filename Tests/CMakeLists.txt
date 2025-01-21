@@ -17,11 +17,9 @@ target_link_libraries(test_put_var_char PRIVATE NetCDF_Fortran::netcdff)
 
 # test_get_missing_char
 add_executable(test_get_missing_char test_get_missing_char.f90)
-target_link_libraries(test_get_missing_char PRIVATE NetCDF_Fortran::netcdff)
 
 # test_get_var_text
 add_executable(test_get_var_text test_get_var_text.f90)
-target_link_libraries(test_get_var_text PRIVATE NetCDF_Fortran::netcdff)
 
 # test_inq_grp_full_ncid
 add_executable(test_inq_grp_full_ncid test_inq_grp_full_ncid.f90)
@@ -29,7 +27,6 @@ target_link_libraries(test_inq_grp_full_ncid PRIVATE NetCDF_Fortran::netcdff)
 
 # test_inq_grpname
 add_executable(test_inq_grpname test_inq_grpname.f90)
-target_link_libraries(test_inq_grpname PRIVATE NetCDF_Fortran::netcdff)
 
 add_executable(test_abort test_abort.f90)
 add_executable(test_inq_grps test_inq_grps.f90)
