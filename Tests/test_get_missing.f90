@@ -7,6 +7,7 @@ program test_get_missing
 
   integer ncid, varid
   character missing
+  real missing_real
 
   !-------------------------------------------------------------------
 
@@ -27,6 +28,11 @@ program test_get_missing
   call nf95_get_missing(ncid, varid, missing)
   print *, 'missing y = "', missing, '"'
   
+  call nf95_close(ncid)
+  call nf95_open("histhf.nc", nf95_nowrite, ncid)
+  call nf95_inq_varid(ncid, "temp", varid)
+  call nf95_get_missing(ncid, varid, missing_real)
+  print *, 'missing temp = ', missing_real
   call nf95_close(ncid)
 
 end program test_get_missing

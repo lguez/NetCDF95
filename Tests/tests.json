@@ -1,7 +1,8 @@
 {
     "Get_missing_char": {
         "symlink": [
-            "$src_dir/Tests/test_char.nc"
+            "$src_dir/Tests/test_char.nc",
+            "$src_dir/Tests/histhf.nc"
         ],
         "command": "$build_dir/Tests/test_get_missing"
     },
