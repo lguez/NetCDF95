@@ -2,7 +2,8 @@
     "Get_missing": {
         "symlink": [
             "$src_dir/Tests/test_char.nc",
-            "$src_dir/Tests/histhf.nc"
+            "$src_dir/Tests/histhf.nc",
+            "$src_dir/Tests/plouf.nc"
         ],
         "command": "$build_dir/Tests/test_get_missing"
     },

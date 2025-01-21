@@ -1,13 +1,14 @@
 program test_get_missing
 
   use netcdf95, only: nf95_open, nf95_close, nf95_get_missing, nf95_inq_varid, &
-       nf95_nowrite, nf95_global
+       nf95_nowrite, nf95_global, nf95_get_var
 
   implicit none
 
   integer ncid, varid
   character missing
-  real missing_real
+  real missing_real, adt_real(5)
+  double precision adt(5)
 
   !-------------------------------------------------------------------
 
@@ -33,6 +34,22 @@ program test_get_missing
   call nf95_inq_varid(ncid, "temp", varid)
   call nf95_get_missing(ncid, varid, missing_real)
   print *, 'missing temp = ', missing_real
+  call nf95_close(ncid)
+  call nf95_open("plouf.nc", nf95_nowrite, ncid)
+  call nf95_inq_varid(ncid, "adt", varid)
+  call nf95_get_missing(ncid, varid, missing_real)
+  call nf95_get_var(ncid, varid, adt)
+  print *, "adt = ", adt
+
+  ! Second value is not recognized as missing:
+  print *, "adt == missing:", adt == missing_real
+  print *, "adt == dle(missing):", adt == dble(missing_real)
+
+  call nf95_get_var(ncid, varid, adt_real)
+  print *, "adt_real = ", adt_real
+  ! Fourth value is wrongly identified as missing:
+  print *, "adt_real == missing:", adt_real == missing_real
+
   call nf95_close(ncid)
 
 end program test_get_missing
