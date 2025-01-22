@@ -22,13 +22,14 @@ module nf95_gunp_var_m
 
 contains
 
-  subroutine nf95_gunp_var_real_1d(ncid, varid, values, start, count_nc, &
-       new_missing)
+  subroutine nf95_gunp_var_real_1d(ncid, varid, values, was_packed, start, &
+       count_nc, new_missing)
 
     use nf95_constants, only: NF95_FILL_REAL
 
     integer, intent(in):: ncid, varid
     real, intent(out):: values(:)
+    logical, optional, intent(out):: was_packed
     integer, optional, intent(in):: start(:), count_nc(:)
     real, optional, intent(in):: new_missing
 
@@ -97,17 +98,21 @@ contains
             new_missing = new_missing)
     end if
 
+    if (present(was_packed)) was_packed = ncerr_scale == nf95_noerr &
+         .or. ncerr_offset == nf95_noerr
+
   end subroutine nf95_gunp_var_real_1d
 
   !**************************************************************************
 
-  subroutine nf95_gunp_var_real_2d(ncid, varid, values, start, count_nc, &
-       new_missing)
+  subroutine nf95_gunp_var_real_2d(ncid, varid, values, was_packed, start, &
+       count_nc, new_missing)
 
     use nf95_constants, only: NF95_FILL_REAL
 
     integer, intent(in):: ncid, varid
     real, intent(out):: values(:, :)
+    logical, optional, intent(out):: was_packed
     integer, optional, intent(in):: start(:), count_nc(:)
     real, optional, intent(in):: new_missing
 
@@ -176,17 +181,21 @@ contains
             new_missing = new_missing)
     end if
 
+    if (present(was_packed)) was_packed = ncerr_scale == nf95_noerr &
+         .or. ncerr_offset == nf95_noerr
+
   end subroutine nf95_gunp_var_real_2d
 
   !**************************************************************************
 
-  subroutine nf95_gunp_var_real_3d(ncid, varid, values, start, count_nc, &
-       new_missing)
+  subroutine nf95_gunp_var_real_3d(ncid, varid, values, was_packed, start, &
+       count_nc, new_missing)
 
     use nf95_constants, only: NF95_FILL_REAL
 
     integer, intent(in):: ncid, varid
     real, intent(out):: values(:, :, :)
+    logical, optional, intent(out):: was_packed
     integer, optional, intent(in):: start(:), count_nc(:)
     real, optional, intent(in):: new_missing
 
@@ -256,17 +265,21 @@ contains
             new_missing = new_missing)
     end if
 
+    if (present(was_packed)) was_packed = ncerr_scale == nf95_noerr &
+         .or. ncerr_offset == nf95_noerr
+
   end subroutine nf95_gunp_var_real_3d
 
   !**************************************************************************
 
-  subroutine nf95_gunp_var_dble(ncid, varid, values, start, count_nc, &
-       new_missing)
+  subroutine nf95_gunp_var_dble(ncid, varid, values, was_packed, start, &
+       count_nc, new_missing)
 
     use nf95_constants, only: NF95_FILL_double
 
     integer, intent(in):: ncid, varid
     double precision, intent(out):: values(:, :, :)
+    logical, optional, intent(out):: was_packed
     integer, optional, intent(in):: start(:), count_nc(:)
     double precision, optional, intent(in):: new_missing
 
@@ -335,6 +348,9 @@ contains
        call nf95_get_var(ncid, varid, values, start, count_nc, &
             new_missing = new_missing)
     end if
+
+    if (present(was_packed)) was_packed = ncerr_scale == nf95_noerr &
+         .or. ncerr_offset == nf95_noerr
 
   end subroutine nf95_gunp_var_dble
 
