@@ -110,9 +110,11 @@ Reference:
 (additional procedure)
 
 ```
-subroutine nf95_gunp_var(ncid, varid, values, new_missing)
+subroutine nf95_gunp_var(ncid, varid, values, was_packed, start, count_nc, new_missing)
   integer, intent(in):: ncid, varid
   real or double precision, intent(out):: values(:, :, :)
+  logical, optional, intent(out):: was_packed
+  integer, optional, intent(in):: start(:), count_nc(:)
   real or double precision, optional, intent(in):: new_missing
 ```
 
@@ -130,7 +132,14 @@ Note that unpacked values can only be real or double precision.
 If the packed variable has missing values then you can choose a
 missing value for the unpacked variable. If you do not specify the
 `new_missing` argument then the default missing value,
-`NF95_FILL_REAL` or `NF95_FILL_double`, will be used.
+`nf95_fill_real` or `nf95_fill_double`, will be used.
+
+If you need to check missing values, in an application which can
+process both packed and unpacked variables, and if you do not use
+argument `new_missing`, then use argument `was_packed`. If
+`was_packed` is true then the missing value is `nf95_fill_real` or
+`nf95_fill_double`, else you need to find out what the missing value
+is by calling `nf95_get_missing`.
 
 ## `nf95_gw_var`
 
