@@ -61,5 +61,11 @@
         "symlink": [
             "$src_dir/Tests/adt.nc"
         ]
+    },
+    "Inq_libvers": {
+        "command": "$build_dir/Tests/test_netcdf95",
+        "symlink": [
+            "$src_dir/Tests/plouf.nc"
+        ]
     }
 }
