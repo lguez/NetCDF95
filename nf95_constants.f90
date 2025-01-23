@@ -21,7 +21,11 @@ module nf95_constants
   integer, parameter:: nf95_write = 1, nf95_noclobber = 4
 
   ! Implementation limits:
+
   integer, parameter:: nf95_max_name = 256
+  ! maximum number of characters for the length of a name in the
+  ! classic netCDF model
+
   integer, parameter:: nf95_max_var_dims = 1024
 
   ! Default fill values:

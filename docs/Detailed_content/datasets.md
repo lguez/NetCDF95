@@ -1,7 +1,7 @@
 # Datasets & co
 
 This page describles procedures handling a whole dataset, or handling
-a combination of NetCDF variables and dimensions.
+a combination of NetCDF variables, dimensions or attributes.
 
 See the [improvements page](improvements.md) for an
 explanation of the mnemonics \"basic change\", \"interface change\",

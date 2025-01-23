@@ -8,11 +8,12 @@ contains
 
     ! This procedure returns the name, dimension id or variable id of
     ! the NetCDF coordinate with standard name "std_name", if such a
-    ! coordinate exists. The standard name is only used to know what
-    ! to search, it is not used for the search itself. The search
-    ! itself is done via a string match on the attribute "units". So
-    ! the NetCDF variable one looks for does not need to have the
-    ! attribute "std_name".
+    ! coordinate exists. A NetCDF coordinate is defined as a rank-one
+    ! variable with the same name as its dimension. The standard name
+    ! is only used to know what to search, it is not used for the
+    ! search itself. The search itself is done via a string match on
+    ! the attribute "units". So the NetCDF variable one looks for does
+    ! not need to have the attribute "std_name".
 
     use nf95_constants, only: NF95_MAX_NAME, NF95_NOERR
     use nf95_get_att_m, only: nf95_get_att

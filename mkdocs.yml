@@ -2,23 +2,24 @@ site_name: NetCDF95 documentation
 site_url: https://lguez.github.io/NetCDF95
 repo_url: https://github.com/lguez/NetCDF95
 site_author: Lionel GUEZ
-nav:
-   - Home:
-      - 'index.md'
-      - 'installation.md'
-      - 'usage.md'
-   - 'Detailed content':
-      - 'Detailed_content/improvements.md'
-      - 'Detailed_content/datasets.md'
-      - 'Detailed_content/dimensions.md'
-      - 'Detailed_content/variables.md'
-      - 'Detailed_content/attributes.md'
-      - 'Detailed_content/groups.md'
-      - 'Detailed_content/errors.md'
-   - Notes:
-      - 'changes.md'
+nav: 
+- 'index.md'
+- 'installation.md'
+- 'usage.md'
+- Detailed content:
+  - 'Detailed_content/improvements.md'
+  - 'Detailed_content/datasets.md'
+  - 'Detailed_content/dimensions.md'
+  - 'Detailed_content/variables.md'
+  - 'Detailed_content/attributes.md'
+  - 'Detailed_content/groups.md'
+  - 'Detailed_content/errors.md'
+  - 'Detailed_content/version.md'
+- 'changes.md'
 markdown_extensions:
-   - def_list
    - smarty
    - footnotes
-theme: readthedocs
+theme:
+  name: material
+  features:
+    - navigation.footer

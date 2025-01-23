@@ -36,7 +36,7 @@ contains
        call check_one_arg(name_calling, "count_nc", ncid, varid, ndims, &
             count_nc)
        if (.not. present(count_nc) .and. rank_values > ndims) then
-          print *, name_calling, ":"
+          print *, name_calling, "::check_start_count:"
           print *, "varid = ", varid
           print *, "Argument count_nc is absent and rank of argument values " &
                // "is greater than rank of NetCDF variable"
@@ -65,7 +65,7 @@ contains
 
     if (present(checked_arg)) then
        if (size(checked_arg) /= ndims) then
-          print *, name_calling, ":"
+          print *, name_calling, "::check_start_count::check_one_arg:"
           print *, "varid = ", varid
           print *, 'size of ' // arg_name // ' does not match rank of ' &
                // 'NetCDF variable'

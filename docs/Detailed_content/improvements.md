@@ -4,8 +4,9 @@ In the following documentation, we give a description of the interface
 of each NetCDF95 procedure. We will label each NetCDF95 procedure with
 one of the following four (mutually exclusive) mnemonics:
 
-basic change
-: Means that there is a corresponding procedure in the Fortran 90
+## Basic change
+
+Means that there is a corresponding procedure in the Fortran 90
 interface and only the following three changes have been made:
 
 -   change of the name of the procedure, `nf95_` instead of `nf90_`;
@@ -42,8 +43,9 @@ If you call a NetCDF95 procedure with the optional argument ncerr, you
 can test the resulting value of ncerr against the constant `nf95_noerr`,
 in the module netcdf95.
 
-interface change
-: Means that there is a corresponding procedure in the Fortran 90
+## Interface change
+
+Means that there is a corresponding procedure in the Fortran 90
 interface, and the interface of the procedure has been changed beyond
 the "basic" change described above, but there is no change in
 functionality.
@@ -55,22 +57,22 @@ Procedures with interface change:
 [`nf95_def_var_scalar`](variables.md),
 [`nf95_inquire_attribute`](attributes.md),
 
-functionality change
-: Means that there is a corresponding procedure in the Fortran 90
+## Functionality change
+
+Means that there is a corresponding procedure in the Fortran 90
 interface, the interface of the procedure has been changed and the
 functionality has also been improved.
 
-Procedures with functionality change:
+Procedures with functionality change: [`nf95_get_att`](attributes.md),
 [`nf95_get_var`](variables.md),
 [`nf95_inquire_variable`](variables.md),
-[`nf95_put_var`](variables.md),
-[`nf95_get_att`](attributes.md),
-[`nf95_inq_grpname`](groups.md),
-[`nf95_inq_grpname_full`](groups.md),
-[`nf95_inq_grps`](groups.md)
+[`nf95_inq_grpname`](groups.md), [`nf95_inq_grpname_full`](groups.md),
+[`nf95_inq_grps`](groups.md), [`nf95_inq_libvers`](version.md),
+[`nf95_put_var`](variables.md)
 
-additional procedure
-: Means there is no corresponding procedure in the Fortran 90 interface.
+## Additional procedure
+
+Means there is no corresponding procedure in the Fortran 90 interface.
 
 Additional procedures: [`nf95_gw_var`](variables.md),
 [`nf95_find_coord`](datasets.md), [`nf95_get_missing`](attributes.md),

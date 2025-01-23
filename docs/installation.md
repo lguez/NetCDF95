@@ -40,8 +40,9 @@ dependencies with the following command:
         cd build
 
 3.  Decide in which directory you want to install NetCDF95 after
-    compilation and type the command below with your choice after
-    `-DCMAKE_INSTALL_PREFIX=` (enter an absolute path). For example:
+    compilation and type the command below with your choice of
+    directory after `-DCMAKE_INSTALL_PREFIX=` (enter an absolute
+    path). For example:
 
         cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
 
