@@ -6,7 +6,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 add_library(netcdf95 nf95_abort.f90 netcdf95.f90 nf95_def_dim.f90
   nf95_inq_dimid.f90 nf95_inquire_dimension.f90 nf95_constants.f90
-  nc_constants.f90 type_sizes.f90)
+  nc_constants.f90 type_sizes.f90 nf95_inq_libvers.f90)
 add_subdirectory(Attributes)
 add_subdirectory(Datasets)
 add_subdirectory(Groups)
