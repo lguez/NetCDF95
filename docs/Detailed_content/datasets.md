@@ -71,7 +71,7 @@ Reference: [`nf90_enddef`](https://docs.unidata.ucar.edu/netcdf-fortran/current/
 (additional procedure)
 
 ```fortran
-subroutine nf95_find_coord(ncid, name, dimid, varid, std_name)
+subroutine nf95_find_coord(ncid, name, dimid, varid, std_name, ncerr)
 
   integer, intent(in):: ncid
 
@@ -84,6 +84,8 @@ subroutine nf95_find_coord(ncid, name, dimid, varid, std_name)
 
   character(len=*), intent(in):: std_name
   ! standard name : "plev", "latitude", "longitude" or "time"
+
+  integer, intent(out), optional:: ncerr ! nf95_noerr if found
 ```
 
 This procedure returns the name, dimension id or variable id of the
@@ -93,7 +95,8 @@ same name as its dimension. The standard name is only used to know
 what to search, it is not used for the search itself. The search
 itself is done via a string match on the attribute \"units\". So the
 NetCDF variable one looks for does not need to have the attribute
-`std_name`.
+`std_name`. The procedure aborts if the coordinate is not found and
+argument ncerr is not present.
 
 ## `nf95_inquire`
 

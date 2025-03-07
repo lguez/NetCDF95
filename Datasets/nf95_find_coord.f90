@@ -4,7 +4,7 @@ module nf95_find_coord_m
 
 contains
 
-  subroutine nf95_find_coord(ncid, name, dimid, varid, std_name)
+  subroutine nf95_find_coord(ncid, name, dimid, varid, std_name, ncerr)
 
     ! This procedure returns the name, dimension id or variable id of
     ! the NetCDF coordinate with standard name "std_name", if such a
@@ -15,7 +15,8 @@ contains
     ! the attribute "units". So the NetCDF variable one looks for does
     ! not need to have the attribute "std_name".
 
-    use nf95_constants, only: NF95_MAX_NAME, NF95_NOERR
+    use nf95_abort_m, only: nf95_abort
+    use nf95_constants, only: NF95_MAX_NAME, NF95_NOERR, Nf95_ENOTVAR
     use nf95_get_att_m, only: nf95_get_att
     use nf95_inq_varid_m, only: nf95_inq_varid
     use nf95_inquire_dimension_m, only: nf95_inquire_dimension
@@ -33,6 +34,8 @@ contains
 
     character(len=*), intent(in):: std_name
     ! standard name : "plev", "latitude", "longitude" or "time"
+
+    integer, intent(out), optional:: ncerr
 
     ! Variables local to the procedure:
 
@@ -102,10 +105,16 @@ contains
        if (present(name)) name = name_local
        if (present(dimid)) dimid = dimid_local
        if (present(varid)) varid = varid_local
+       if (present(ncerr)) ncerr = nf95_noerr
     else
-       if (present(name)) name = ""
-       if (present(dimid)) dimid = 0
-       if (present(varid)) varid = 0
+       if (present(ncerr)) then
+          ncerr = Nf95_ENOTVAR
+          if (present(name)) name = ""
+          if (present(dimid)) dimid = 0
+          if (present(varid)) varid = 0
+       else
+          call nf95_abort("nf95_find_coord " // std_name, Nf95_ENOTVAR, ncid)
+       end if
     end if
 
   end subroutine nf95_find_coord

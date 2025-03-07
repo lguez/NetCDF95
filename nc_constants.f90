@@ -6,6 +6,7 @@ module nc_constants
 
   Integer(C_INT), Parameter:: NC_NOERR = 0
   Integer(C_INT), Parameter:: NC_ENOGRP = - 125 ! no group found
+  Integer(C_INT), Parameter:: NC_ENOTVAR = -49 ! variable not found
 
   private c_int
 

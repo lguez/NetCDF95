@@ -1,12 +1,13 @@
 module nf95_constants
 
-  use nc_constants, only: NC_NOERR, NC_ENOGRP
+  use nc_constants, only: NC_NOERR, NC_ENOGRP, NC_ENOTVAR
   use type_sizes, only: EightByteReal, TwoByteInt, onebyteint
 
   implicit none
 
   Integer, Parameter:: Nf95_NOERR = NC_NOERR
   Integer, Parameter:: Nf95_ENOGRP = NC_ENOGRP
+  Integer, Parameter:: Nf95_ENOTVAR = NC_ENOTVAR
   integer, parameter:: nf95_global = 0
   integer, parameter:: nf95_unlimited = 0
 
