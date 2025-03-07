@@ -39,7 +39,7 @@ contains
     character(len=13), allocatable:: units(:)
     logical exact ! "units" must be matched exactly
 
-    integer ncerr, nDimensions, dimid_local, varid_local
+    integer ncerr_2, nDimensions, dimid_local, varid_local
     character(len=NF95_MAX_NAME) name_local
     integer, allocatable:: dimids(:)
     character(len=80) values
@@ -79,14 +79,14 @@ contains
     do while (.not. found .and. dimid_local < nDimensions)
        dimid_local = dimid_local + 1
        call nf95_inquire_dimension(ncid, dimid_local, name_local)
-       call nf95_inq_varid(ncid, name_local, varid_local, ncerr)
-       if (ncerr == NF95_NOERR) then
+       call nf95_inq_varid(ncid, name_local, varid_local, ncerr_2)
+       if (ncerr_2 == NF95_NOERR) then
           call nf95_inquire_variable(ncid, varid_local, dimids=dimids)
           if (size(dimids) == 1) then
              if (dimids(1) == dimid_local) then
                 ! We have found a coordinate
-                call nf95_get_att(ncid, varid_local, "units", values, ncerr)
-                if (ncerr == NF95_NOERR)then
+                call nf95_get_att(ncid, varid_local, "units", values, ncerr_2)
+                if (ncerr_2 == NF95_NOERR)then
                    if (exact) then
                       found = any(values == units)
                    else
