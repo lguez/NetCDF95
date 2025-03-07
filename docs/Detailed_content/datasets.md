@@ -70,26 +70,30 @@ Reference: [`nf90_enddef`](https://docs.unidata.ucar.edu/netcdf-fortran/current/
 
 (additional procedure)
 
-      subroutine nf95_find_coord(ncid, name, dimid, varid, std_name)
+```fortran
+subroutine nf95_find_coord(ncid, name, dimid, varid, std_name)
 
-        integer, intent(in):: ncid
+  integer, intent(in):: ncid
 
-        character(len=*), intent(out), optional:: name ! blanks if not found
-        ! The actual character argument should normally have the length
-        ! "NF90_MAX_NAME".
+  character(len=*), intent(out), optional:: name ! blanks if not found
+  ! The actual character argument should normally have the length
+  ! "NF90_MAX_NAME".
 
-        integer, intent(out), optional:: dimid ! 0 if not found
-        integer, intent(out), optional:: varid ! 0 if not found
+  integer, intent(out), optional:: dimid ! 0 if not found
+  integer, intent(out), optional:: varid ! 0 if not found
 
-        character(len=*), intent(in):: std_name
-        ! standard name : "plev", "latitude", "longitude" or "time"
+  character(len=*), intent(in):: std_name
+  ! standard name : "plev", "latitude", "longitude" or "time"
+```
 
 This procedure returns the name, dimension id or variable id of the
 NetCDF coordinate with standard name `std_name`, if such a coordinate
-exists. The standard name is only used to know what to search, it is not
-used for the search itself. The search itself is done via a string match
-on the attribute \"units\". So the NetCDF variable one looks for does
-not need to have the attribute `std_name`.
+exists. A NetCDF coordinate is defined as a rank-one variable with the
+same name as its dimension. The standard name is only used to know
+what to search, it is not used for the search itself. The search
+itself is done via a string match on the attribute \"units\". So the
+NetCDF variable one looks for does not need to have the attribute
+`std_name`.
 
 ## `nf95_inquire`
 
