@@ -43,7 +43,7 @@ program test_get_missing
 
   ! Second value is not recognized as missing:
   print *, "adt == missing:", adt == missing_real
-  print *, "adt == dle(missing):", adt == dble(missing_real)
+  print *, "adt == dble(missing):", adt == dble(missing_real)
 
   call nf95_get_var(ncid, varid, adt_real)
   print *, "adt_real = ", adt_real
