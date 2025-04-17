@@ -112,7 +112,7 @@ Reference:
 ```
 subroutine nf95_gunp_var(ncid, varid, values, was_packed, start, count_nc, new_missing)
   integer, intent(in):: ncid, varid
-  real or double precision, intent(out):: values(:, :, :)
+  real or double precision, any rank >= 1:: values
   logical, optional, intent(out):: was_packed
   integer, optional, intent(in):: start(:), count_nc(:)
   real or double precision, optional, intent(in):: new_missing
