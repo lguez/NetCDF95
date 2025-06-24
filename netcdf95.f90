@@ -36,6 +36,7 @@ module netcdf95
   use nf95_put_att_m
   use nf95_put_var_m
   use nf95_redef_m
+  use nf95_strerror_m
   use nf95_sync_m
 
 end module netcdf95
