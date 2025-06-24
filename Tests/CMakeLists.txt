@@ -3,6 +3,10 @@ project(NetCDF95_tests LANGUAGES Fortran)
 enable_testing()
 find_package(NetCDF_Fortran REQUIRED)
 
+if(NOT TARGET jumble)
+  find_package(Jumble REQUIRED)
+endif()
+
 if(NOT TARGET netcdf95)
   find_package(NetCDF95 CONFIG REQUIRED)
 endif()
@@ -10,7 +14,7 @@ endif()
 set(test_list abort c_char create_single find_coord get_att_text
    get_missing get_missing_2 get_var_text gunp_var inq_attname
    inq_file_ncid inq_grp_full_ncid inq_grpname inq_grps inq_varnatts
-   netcdf95 put_var_char)
+   netcdf95 put_var_char inquire_attribute)
 
 foreach(my_test IN LISTS test_list)
   add_executable(test_${my_test} test_${my_test}.f90)
@@ -19,6 +23,7 @@ endforeach()
 
 target_link_libraries(test_put_var_char PRIVATE NetCDF_Fortran::netcdff)
 target_link_libraries(test_inq_grp_full_ncid PRIVATE NetCDF_Fortran::netcdff)
+target_link_libraries(test_inquire_attribute PRIVATE Jumble::jumble)
 
 # test_get_missing_2
 add_test(NAME get_missing_2 COMMAND test_get_missing_2 WORKING_DIRECTORY
