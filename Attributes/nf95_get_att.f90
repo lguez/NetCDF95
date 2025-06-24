@@ -22,8 +22,9 @@ contains
 
   subroutine nf95_get_att_text(ncid, varid, name, values, ncerr)
 
-    use nf95_constants, only: nc_noerr
     use, intrinsic:: ISO_C_BINDING
+
+    use nf95_constants, only: nc_noerr
 
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
