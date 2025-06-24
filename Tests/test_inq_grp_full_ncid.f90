@@ -1,8 +1,7 @@
 program test_inq_grp_full_ncid
 
-  use netcdf, only: nf90_strerror
   use netcdf95, only: nf95_open, nf95_close, nf95_inq_grp_full_ncid, &
-       nf95_inq_grpname_full, nf95_nowrite, nf95_noerr
+       nf95_inq_grpname_full, nf95_nowrite, nf95_noerr, nf95_strerror
 
   implicit none
 
@@ -30,7 +29,7 @@ program test_inq_grp_full_ncid
   call nf95_inq_grp_full_ncid(ncid, "SW_bands", grpid, ncerr)
 
   if (ncerr /= nf95_noerr) then
-     print *, trim(nf90_strerror(ncerr))
+     print *, nf95_strerror(ncerr)
   else
      call nf95_inq_grpname_full(grpid, name)
      print *, "name = ", name
@@ -42,7 +41,7 @@ program test_inq_grp_full_ncid
   call nf95_inq_grp_full_ncid(grpid, "/Hydrophilic/SW_bands", grpid_2, ncerr)
 
   if (ncerr /= nf95_noerr) then
-     print *, trim(nf90_strerror(ncerr))
+     print *, nf95_strerror(ncerr)
   else
      call nf95_inq_grpname_full(grpid_2, name)
      print *, "name = ", name
@@ -54,7 +53,7 @@ program test_inq_grp_full_ncid
   call nf95_inq_grp_full_ncid(grpid, "SW_bands", grpid_2, ncerr)
 
   if (ncerr /= nf95_noerr) then
-     print *, trim(nf90_strerror(ncerr))
+     print *, nf95_strerror(ncerr)
   else
      call nf95_inq_grpname_full(grpid_2, name)
      print *, "name = ", name
@@ -66,7 +65,7 @@ program test_inq_grp_full_ncid
   call nf95_inq_grp_full_ncid(grpid, "Hydrophilic/SW_bands", grpid_2, ncerr)
 
   if (ncerr /= nf95_noerr) then
-     print *, trim(nf90_strerror(ncerr))
+     print *, nf95_strerror(ncerr)
   else
      call nf95_inq_grpname_full(grpid_2, name)
      print *, "name = ", name

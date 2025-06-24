@@ -11,10 +11,9 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
-    use netcdf, only: nf90_strerror
-
     use nc_constants, only: NC_NOERR
     use nf95_constants, only: nf95_noerr
+    use nf95_strerror_m, only: nf95_strerror
 
     integer, intent(in):: ncid
     integer, intent(out):: parent_ncid
@@ -44,7 +43,7 @@ contains
           ncerr = cncerr
        else
           print *, "nf95_inq_grp_parent:"
-          print *, trim(nf90_strerror(int(cncerr)))
+          print *, nf95_strerror(int(cncerr))
           stop 1
        end if
     end if

@@ -8,11 +8,9 @@ contains
 
     use, intrinsic:: iso_fortran_env
 
-    ! Libraries:
-    use netcdf, only: nf90_strerror
-
     use nf95_close_m, only: nf95_close
     use nf95_inq_file_ncid_m, only: nf95_inq_file_ncid
+    use nf95_strerror_m, only: nf95_strerror
 
     character(len=*), intent(in):: message
     ! (should include name of calling procedure)
@@ -33,7 +31,7 @@ contains
     write(error_unit, fmt = *) message, ":"
     if (present(varid)) write(error_unit, fmt = *) "varid = ", varid
     if (present(attnum)) write(error_unit, fmt = *) "attnum = ", attnum
-    if (present(ncerr)) write(error_unit, fmt = *) trim(nf90_strerror(ncerr))
+    if (present(ncerr)) write(error_unit, fmt = *) nf95_strerror(ncerr)
 
     if (present(ncid)) then
        ! Try to close, to leave the file in a consistent state:

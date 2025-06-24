@@ -12,11 +12,9 @@ contains
 
     use, intrinsic:: iso_fortran_env
 
-    ! Libraries:
-    use netcdf, only: nf90_strerror
-
     use nf95_constants, only: Nf95_ENOGRP, nf95_noerr
     use nf95_inq_grp_parent_m, only: nf95_inq_grp_parent
+    use nf95_strerror_m, only: nf95_strerror
 
     integer, intent(out):: ncid_file
     integer, intent(in):: grpid
@@ -44,7 +42,7 @@ contains
        else
           write(error_unit, fmt = *) &
                "nf95_inq_file_ncid: nf95_inq_grp_parent failed"
-          write(error_unit, fmt = *) trim(nf90_strerror(ncerr_local))
+          write(error_unit, fmt = *) nf95_strerror(ncerr_local)
           stop 1
        end if
     end if

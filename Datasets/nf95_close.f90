@@ -9,9 +9,10 @@ contains
     ! Note that this procedure is called by nf95_abort, so it cannot
     ! call it.
 
-    use netcdf, only: nf90_close, nf90_strerror
+    use netcdf, only: nf90_close
 
     use nf95_constants, only: nf95_noerr
+    use nf95_strerror_m, only: nf95_strerror
 
     integer, intent(in):: ncid
     integer, intent(out), optional:: ncerr
@@ -28,7 +29,7 @@ contains
     else
        if (ncerr_not_opt /= nf95_noerr) then
           print *, "nf95_close:"
-          print *, trim(nf90_strerror(ncerr_not_opt))
+          print *, nf95_strerror(ncerr_not_opt)
           stop 1
        end if
     end if
