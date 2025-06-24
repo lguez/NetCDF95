@@ -22,6 +22,7 @@ foreach(my_test IN LISTS test_list)
 endforeach()
 
 target_link_libraries(test_put_var_char PRIVATE NetCDF_Fortran::netcdff)
+target_link_libraries(test_get_att_text PRIVATE Jumble::jumble)
 target_link_libraries(test_inquire_attribute PRIVATE Jumble::jumble)
 
 # test_get_missing_2
