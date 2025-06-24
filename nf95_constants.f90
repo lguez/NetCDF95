@@ -41,6 +41,6 @@ module nf95_constants
        = 9.9692099683868690e36_EightByteReal
   character, parameter:: nf95_fill_char = achar(0)
 
-  private EightByteReal, TwoByteInt, c_int
+  private EightByteReal, TwoByteInt, onebyteint, c_int
 
 end module nf95_constants
