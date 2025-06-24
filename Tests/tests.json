@@ -99,5 +99,13 @@
             "3",
             "units"
         ]
+    },
+    "Get_att_unknown": {
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/histhf.nc",
+            "plouf"
+        ],
+        "input": "&main_nml/\n"
     }
 }
