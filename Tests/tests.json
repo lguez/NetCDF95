@@ -83,5 +83,21 @@
             "units"
         ],
         "input": "&main_nml varid=3/\n"
+    },
+    "Inquire_attribute_text": {
+        "command": [
+            "$build_dir/Tests/test_inquire_attribute",
+            "$src_dir/Tests/histhf.nc",
+            "0",
+            "CDO"
+        ]
+    },
+    "Inquire_attribute_string": {
+        "command": [
+            "$build_dir/Tests/test_inquire_attribute",
+            "$src_dir/Tests/Agulhas.nc",
+            "3",
+            "units"
+        ]
     }
 }
