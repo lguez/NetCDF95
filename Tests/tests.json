@@ -67,5 +67,21 @@
         "symlink": [
             "$src_dir/Tests/plouf.nc"
         ]
+    },
+    "Get_att_text": {
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/histhf.nc",
+            "CDO"
+        ],
+        "input": "&main_nml/\n"
+    },
+    "Get_att_string": {
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/Agulhas.nc",
+            "units"
+        ],
+        "input": "&main_nml varid=3/\n"
     }
 }
