@@ -8,10 +8,9 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
-    use nc_constants, only: NC_NOERR
     use nc_inq_grpname_len_m, only: nc_inq_grpname_len
     use nf95_abort_m, only: nf95_abort
-    use nf95_constants, only: nf95_noerr
+    use nf95_constants, only: NC_NOERR, nf95_noerr
 
     integer, intent(in):: ncid
     character(len = :), allocatable, intent(out):: full_name ! absolute path

@@ -10,8 +10,8 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
-    use nc_constants, only: NC_NOERR
     use nf95_abort_m, only: nf95_abort
+    use nf95_constants, only: NC_NOERR
 
     integer, intent(in):: ncid, varid
     integer, intent(out):: natts

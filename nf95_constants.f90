@@ -1,13 +1,16 @@
 module nf95_constants
 
-  use nc_constants, only: NC_NOERR, NC_ENOGRP, NC_ENOTVAR
+  use, intrinsic:: ISO_C_BINDING, only: c_int
+
   use type_sizes, only: EightByteReal, TwoByteInt, onebyteint
 
   implicit none
 
+  ! Error codes:
+  Integer(C_INT), Parameter:: NC_NOERR = 0
   Integer, Parameter:: Nf95_NOERR = NC_NOERR
-  Integer, Parameter:: Nf95_ENOGRP = NC_ENOGRP
-  Integer, Parameter:: Nf95_ENOTVAR = NC_ENOTVAR
+  Integer, Parameter:: NF95_ENOGRP = - 125 ! no group found
+  Integer, Parameter:: NF95_ENOTVAR = -49 ! variable not found
   integer, parameter:: nf95_global = 0
   integer, parameter:: nf95_unlimited = 0
 
@@ -38,6 +41,6 @@ module nf95_constants
        = 9.9692099683868690e36_EightByteReal
   character, parameter:: nf95_fill_char = achar(0)
 
-  private NC_NOERR, NC_ENOGRP, EightByteReal, TwoByteInt
+  private EightByteReal, TwoByteInt, c_int
 
 end module nf95_constants

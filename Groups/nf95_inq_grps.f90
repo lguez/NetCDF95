@@ -8,9 +8,8 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
-    use nc_constants, only: nc_noerr
     use nf95_abort_m, only: nf95_abort
-    use nf95_constants, only: nf95_noerr
+    use nf95_constants, only: nc_noerr, nf95_noerr
 
     integer, intent(in):: ncid ! can be the file id or a group id
     integer, allocatable, intent(out):: ncids(:) ! immediate subgroups

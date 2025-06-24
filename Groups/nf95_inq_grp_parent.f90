@@ -11,8 +11,7 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
-    use nc_constants, only: NC_NOERR
-    use nf95_constants, only: nf95_noerr
+    use nf95_constants, only: nf95_noerr, NC_NOERR
     use nf95_strerror_m, only: nf95_strerror
 
     integer, intent(in):: ncid
