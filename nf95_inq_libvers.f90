@@ -10,6 +10,8 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
+    use strlen_m, only: strlen
+
     ! Local:
     Character, Pointer :: c_lib_version(:)
     type(c_ptr) p_version
@@ -18,11 +20,6 @@ contains
        TYPE(c_ptr) function nc_inq_libvers() bind(c)
          import c_ptr
        end function nc_inq_libvers
-
-       INTEGER(C_INT) function strlen(str) bind(c)
-         import c_ptr, c_int
-         TYPE(c_ptr), intent(in), value:: str
-       end function strlen
     end interface
 
     !----------------------------------------------------------------------
