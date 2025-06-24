@@ -53,7 +53,26 @@ contains
          ncerr=ncerr_not_opt)
 
     if (ncerr_not_opt == nf95_noerr) then
-       if (len(values) < att_len) then
+       if (len(values) >= att_len) then
+          values = ""
+          ! We assume that the C character kind is the same as the default
+          ! character kind:
+          cncerr = nc_get_att_text(int(ncid, c_int), int(varid - 1, c_int), &
+               name // c_null_char, values)
+
+          if (present(ncerr)) then
+             ncerr = cncerr
+          else
+             if (cncerr /= nc_noerr) call nf95_abort("nf95_get_att_text " &
+                  // trim(name), int(cncerr), ncid, varid)
+          end if
+
+          if (att_len >= 1 .and. cncerr == nc_noerr) then
+             ! Remove null terminator, if any:
+             if (iachar(values(att_len:att_len)) == 0) &
+                  values(att_len:att_len) = " "
+          end if
+       else
           print *, "nf95_get_att_text"
           print *, "varid = ", varid
           print *, "attribute name: ", name
@@ -61,25 +80,6 @@ contains
           print *, "len(values) = ", len(values)
           print *, "number of characters in attribute: ", att_len
           stop 1
-       end if
-
-       values = ""
-       ! We assume that the C character kind is the same as the default
-       ! character kind:
-       cncerr = nc_get_att_text(int(ncid, c_int), int(varid - 1, c_int), &
-            name // c_null_char, values)
-
-       if (present(ncerr)) then
-          ncerr = cncerr
-       else
-          if (cncerr /= nc_noerr) call nf95_abort("nf95_get_att_text " &
-               // trim(name), int(cncerr), ncid, varid)
-       end if
-
-       if (att_len >= 1 .and. cncerr == nc_noerr) then
-          ! Remove null terminator, if any:
-          if (iachar(values(att_len:att_len)) == 0) &
-               values(att_len:att_len) = " "
        end if
     else
        if (present(ncerr)) then
