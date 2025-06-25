@@ -24,7 +24,7 @@ contains
 
     use, intrinsic:: ISO_C_BINDING
 
-    use nf95_constants, only: nc_noerr
+    use nf95_constants, only: nc_noerr, nf95_ests
 
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
@@ -77,13 +77,17 @@ contains
              end if
           end if
        else
-          print *, "nf95_get_att_text"
-          print *, "varid = ", varid
-          print *, "attribute name: ", name
-          print *, 'length of "values" is not large enough'
-          print *, "len(values) = ", len(values)
-          print *, "number of characters in attribute: ", att_len
-          stop 1
+          if (present(ncerr)) then
+             ncerr = nf95_ests
+          else
+             print *, "nf95_get_att_text"
+             print *, "varid = ", varid
+             print *, "attribute name: ", name
+             print *, 'length of "values" is not large enough'
+             print *, "len(values) = ", len(values)
+             print *, "number of characters in attribute: ", att_len
+             stop 1
+          end if
        end if
     else
        if (present(ncerr)) then

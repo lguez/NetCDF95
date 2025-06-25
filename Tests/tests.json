@@ -77,7 +77,6 @@
         "input": "&main_nml/\n"
     },
     "Get_att_short": {
-        "xfail": true,
         "command": [
             "$build_dir/Tests/test_get_att_text",
             "$src_dir/Tests/histhf.nc",
