@@ -25,7 +25,7 @@ contains
     use, intrinsic:: ISO_C_BINDING
     use, intrinsic:: ISO_fortran_env
 
-    use nf95_constants, only: nc_noerr, nf95_ests, Nf95_ECHAR, nf95_char
+    use nf95_constants, only: nc_noerr, nf95_ests, nf95_char
 
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
@@ -33,9 +33,10 @@ contains
     integer, intent(out), optional:: ncerr
 
     ! Variables local to the procedure:
-    integer ncerr_inquire
+    integer ncerr_inquire, i
     integer xtype, att_len
     Integer(C_INT) cncerr
+    integer(c_size_t) c_att_len
 
     Interface
        Integer(C_INT) Function nc_get_att_text(ncid, varid, name, values) &
@@ -45,6 +46,16 @@ contains
          Character(KIND=C_CHAR), Intent(IN):: name(*)
          Character(KIND=C_CHAR), Intent(OUT):: values(*)
        End Function nc_get_att_text
+
+       Integer(C_INT) Function nc_get_att_1_string(ncid, varid, name, values, &
+            c_att_len, size_values) BIND(C)
+         import C_INT, C_CHAR, C_size_t
+         Integer(C_INT), VALUE, Intent(IN):: ncid, varid
+         Character(KIND=C_CHAR), Intent(IN):: name(*)
+         Character(KIND=C_CHAR), Intent(OUT):: values(*)
+         integer(c_size_t), intent(out):: c_att_len
+         Integer(C_size_t), VALUE, Intent(IN):: size_values
+       End Function nc_get_att_1_string
     End Interface
 
     !-------------------
@@ -91,12 +102,30 @@ contains
              end if
           end if
        else test_xtype
-          if (present(ncerr)) then
-             ncerr = Nf95_ECHAR
+          ! Assume string type
+
+          values = ""
+          ! We assume that the C character kind is the same as the default
+          ! character kind:
+          cncerr = nc_get_att_1_string(int(ncid, c_int), &
+               int(varid - 1, c_int), name // c_null_char, values, c_att_len, &
+               size_values = len(values, c_size_t))
+
+          if (cncerr == nc_noerr) then
+             ! Remove null terminator, if any:
+             i = c_att_len + 1
+             if (values(i:i) == c_null_char) values(i:i) = " "
+
+             if (present(ncerr)) ncerr = nf95_noerr
           else
-             write(error_unit, fmt = *) "attribute name: ", name
-             write(error_unit, fmt = *) "type of attribute: ", xtype
-             call nf95_abort("nf95_get_att_text", Nf95_ECHAR, ncid, varid)
+             if (present(ncerr)) then
+                ncerr = cncerr
+             else
+                write(error_unit, fmt = *) "attribute name: ", name
+                write(error_unit, fmt = *) "type of attribute: ", xtype
+                call nf95_abort("nf95_get_att_text -> nc_get_att_1_string ", &
+                     int(cncerr), ncid, varid)
+             end if
           end if
        end if test_xtype
     else test_ncerr_inquire
