@@ -23,6 +23,7 @@ contains
   subroutine nf95_get_att_text(ncid, varid, name, values, ncerr)
 
     use, intrinsic:: ISO_C_BINDING
+    use, intrinsic:: ISO_fortran_env
 
     use nf95_constants, only: nc_noerr, nf95_ests
 
@@ -80,10 +81,12 @@ contains
           if (present(ncerr)) then
              ncerr = nf95_ests
           else
-             print *, "attribute name: ", name
-             print *, 'length of "values" is not large enough'
-             print *, "len(values) = ", len(values)
-             print *, "number of characters in attribute: ", att_len
+             write(error_unit, fmt = *) "attribute name: ", name
+             write(error_unit, fmt = *) &
+                  'length of "values" is not large enough'
+             write(error_unit, fmt = *) "len(values) = ", len(values)
+             write(error_unit, fmt = *) "number of characters in attribute: ", &
+                  att_len
              call nf95_abort("nf95_get_att_text", nf95_ests, ncid, varid)
           end if
        end if
