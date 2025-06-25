@@ -64,7 +64,7 @@ contains
              if (cncerr == nc_noerr) then
                 if (att_len >= 1) then
                    ! Remove null terminator, if any:
-                   if (iachar(values(att_len:att_len)) == 0) &
+                   if (values(att_len:att_len) == c_null_char) &
                         values(att_len:att_len) = " "
                 end if
 
