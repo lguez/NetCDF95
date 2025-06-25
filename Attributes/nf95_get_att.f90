@@ -33,7 +33,7 @@ contains
     integer, intent(out), optional:: ncerr
 
     ! Variables local to the procedure:
-    integer ncerr_not_opt
+    integer ncerr_inquire
     integer xtype, att_len
     Integer(C_INT) cncerr
 
@@ -50,9 +50,9 @@ contains
     !-------------------
 
     call nf95_inquire_attribute(ncid, varid, name, xtype, att_len, &
-         ncerr=ncerr_not_opt)
+         ncerr=ncerr_inquire)
 
-    if (ncerr_not_opt == nf95_noerr) then
+    if (ncerr_inquire == nf95_noerr) then
        if (xtype == nf95_char) then
           if (len(values) >= att_len) then
              values = ""
@@ -101,10 +101,10 @@ contains
        end if
     else
        if (present(ncerr)) then
-          ncerr = ncerr_not_opt
+          ncerr = ncerr_inquire
        else
           call nf95_abort("nf95_get_att_text -> nf95_inquire_attribute " &
-               // trim(name), ncerr_not_opt, ncid, varid)
+               // trim(name), ncerr_inquire, ncid, varid)
        end if
     end if
 
