@@ -80,13 +80,11 @@ contains
           if (present(ncerr)) then
              ncerr = nf95_ests
           else
-             print *, "nf95_get_att_text"
-             print *, "varid = ", varid
              print *, "attribute name: ", name
              print *, 'length of "values" is not large enough'
              print *, "len(values) = ", len(values)
              print *, "number of characters in attribute: ", att_len
-             stop 1
+             call nf95_abort("nf95_get_att_text", nf95_ests, ncid, varid)
           end if
        end if
     else
