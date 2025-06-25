@@ -103,8 +103,9 @@ contains
        if (present(ncerr)) then
           ncerr = ncerr_inquire
        else
-          call nf95_abort("nf95_get_att_text -> nf95_inquire_attribute " &
-               // trim(name), ncerr_inquire, ncid, varid)
+          write(error_unit, fmt = *) "attribute name: ", name
+          call nf95_abort("nf95_get_att_text -> nf95_inquire_attribute ", &
+               ncerr_inquire, ncid, varid)
        end if
     end if test_ncerr_inquire
 
