@@ -76,6 +76,25 @@
         ],
         "input": "&main_nml/\n"
     },
+    "Get_att_short": {
+        "xfail": true,
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/histhf.nc",
+            "CDO"
+        ],
+        "input": "&main_nml len_values=5/\n"
+    },
+    "Get_att_short_no_rec": {
+        "description": "Same as Get_att_short, except without recovery.",
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/histhf.nc",
+            "CDO"
+        ],
+        "input": "&main_nml len_values=5 recovery=f/\n",
+        "xfail": true
+    },
     "Get_att_string": {
         "command": [
             "$build_dir/Tests/test_get_att_text",
@@ -83,6 +102,16 @@
             "units"
         ],
         "input": "&main_nml varid=3/\n"
+    },
+    "Get_att_string_no_rec": {
+        "description": "Same as Get_att_string, except without recovery.",
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/Agulhas.nc",
+            "units"
+        ],
+        "input": "&main_nml varid=3 recovery=f/\n",
+        "xfail": true
     },
     "Inquire_attribute_text": {
         "command": [
@@ -107,5 +136,14 @@
             "plouf"
         ],
         "input": "&main_nml/\n"
+    },
+    "Get_att_unknown_no_rec": {
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/histhf.nc",
+            "plouf"
+        ],
+        "input": "&main_nml recovery=f/\n",
+        "xfail": true
     }
 }
