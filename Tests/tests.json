@@ -111,6 +111,16 @@
         ],
         "input": "&main_nml varid=3 recovery=f/\n"
     },
+    "String_no_rec_short": {
+        "description": "Same as Get_att_string_no_rec, except with a short actual argument values.",
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/Agulhas.nc",
+            "units"
+        ],
+        "input": "&main_nml varid=3 len_values=5 recovery=f/\n",
+        "xfail": true
+    },
     "Inquire_attribute_text": {
         "command": [
             "$build_dir/Tests/test_inquire_attribute",
