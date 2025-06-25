@@ -72,8 +72,8 @@ contains
              if (present(ncerr)) then
                 ncerr = cncerr
              else
-                call nf95_abort("nf95_get_att_text " // trim(name), &
-                     int(cncerr), ncid, varid)
+                call nf95_abort("nf95_get_att_text -> nc_get_att_text " &
+                     // trim(name), int(cncerr), ncid, varid)
              end if
           end if
        else
