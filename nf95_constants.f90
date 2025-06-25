@@ -7,6 +7,7 @@ module nf95_constants
   implicit none
 
   ! Error codes:
+  ! {{{
   Integer(C_INT), Parameter:: NC_NOERR = 0
   Integer, Parameter:: Nf95_NOERR = NC_NOERR
   Integer, Parameter:: NF95_ENOGRP = - 125 ! no group found
@@ -15,6 +16,7 @@ module nf95_constants
 
   Integer, Parameter:: NF95_echar = -56
   ! Attempt to convert between text & numbers
+  ! }}}
 
   integer, parameter:: nf95_global = 0
   integer, parameter:: nf95_unlimited = 0
