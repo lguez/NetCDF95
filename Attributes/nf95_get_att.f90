@@ -60,17 +60,21 @@ contains
           cncerr = nc_get_att_text(int(ncid, c_int), int(varid - 1, c_int), &
                name // c_null_char, values)
 
-          if (present(ncerr)) then
-             ncerr = cncerr
-          else
-             if (cncerr /= nc_noerr) call nf95_abort("nf95_get_att_text " &
-                  // trim(name), int(cncerr), ncid, varid)
-          end if
+          if (cncerr == nc_noerr) then
+             if (att_len >= 1) then
+                ! Remove null terminator, if any:
+                if (iachar(values(att_len:att_len)) == 0) &
+                     values(att_len:att_len) = " "
+             end if
 
-          if (att_len >= 1 .and. cncerr == nc_noerr) then
-             ! Remove null terminator, if any:
-             if (iachar(values(att_len:att_len)) == 0) &
-                  values(att_len:att_len) = " "
+             if (present(ncerr)) ncerr = nf95_noerr
+          else
+             if (present(ncerr)) then
+                ncerr = cncerr
+             else
+                call nf95_abort("nf95_get_att_text " // trim(name), &
+                     int(cncerr), ncid, varid)
+             end if
           end if
        else
           print *, "nf95_get_att_text"
