@@ -35,8 +35,14 @@ argument is long enough and removes the null terminator, if any. For a
 numeric scalar `values` argument, `nf95_get_att` checks that the
 attribute contains a single value.
 
+Besides, with an argument `values` of type `character`, `nf95_get_att`
+can read NetCDF attributes of both types character and
+[string](https://docs.unidata.ucar.edu/netcdf-c/current/md__2home_2vagrant_2Desktop_2netcdf-c_2docs_2nczarr.html#autotoc_md146)
+(the official `nf90_get_att` procedure, version $\leq$ 4.6.2, fails
+with a string).
+
 Reference:
-[`nf90_get_att`](https://docs.unidata.ucar.edu/netcdf-fortran/current/f90-attributes.html#f90-get-attributes-values-nf90_get_att)
+[`nc_get_att`](https://docs.unidata.ucar.edu/netcdf-c/current/group__attributes.html#ga19cae92a58e1bf7f999c3eeab5404189)
 
 ## `nf95_get_missing`
 

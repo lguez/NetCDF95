@@ -19,7 +19,13 @@ nav:
 markdown_extensions:
    - smarty
    - footnotes
+   - pymdownx.arithmatex:
+       generic: true
 theme:
   name: material
   features:
     - navigation.footer
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
