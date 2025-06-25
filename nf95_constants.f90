@@ -13,6 +13,9 @@ module nf95_constants
   Integer, Parameter:: NF95_ENOTVAR = -49 ! variable not found
   Integer, Parameter:: NF95_Ests = -52 ! In Fortran, string too short
 
+  Integer, Parameter:: NF95_echar = -56
+  ! Attempt to convert between text & numbers
+
   integer, parameter:: nf95_global = 0
   integer, parameter:: nf95_unlimited = 0
 

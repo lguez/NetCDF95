@@ -25,7 +25,7 @@ contains
     use, intrinsic:: ISO_C_BINDING
     use, intrinsic:: ISO_fortran_env
 
-    use nf95_constants, only: nc_noerr, nf95_ests
+    use nf95_constants, only: nc_noerr, nf95_ests, Nf95_ECHAR, nf95_char
 
     integer, intent(in):: ncid, varid
     character(len = *), intent(in):: name
@@ -34,7 +34,7 @@ contains
 
     ! Variables local to the procedure:
     integer ncerr_not_opt
-    integer att_len
+    integer xtype, att_len
     Integer(C_INT) cncerr
 
     Interface
@@ -49,45 +49,54 @@ contains
 
     !-------------------
 
-    ! Check that the length of "values" is large enough:
-    call nf95_inquire_attribute(ncid, varid, name, nclen=att_len, &
+    call nf95_inquire_attribute(ncid, varid, name, xtype, att_len, &
          ncerr=ncerr_not_opt)
 
     if (ncerr_not_opt == nf95_noerr) then
-       if (len(values) >= att_len) then
-          values = ""
-          ! We assume that the C character kind is the same as the default
-          ! character kind:
-          cncerr = nc_get_att_text(int(ncid, c_int), int(varid - 1, c_int), &
-               name // c_null_char, values)
+       if (xtype == nf95_char) then
+          if (len(values) >= att_len) then
+             values = ""
+             ! We assume that the C character kind is the same as the default
+             ! character kind:
+             cncerr = nc_get_att_text(int(ncid, c_int), int(varid - 1, c_int), &
+                  name // c_null_char, values)
 
-          if (cncerr == nc_noerr) then
-             if (att_len >= 1) then
-                ! Remove null terminator, if any:
-                if (iachar(values(att_len:att_len)) == 0) &
-                     values(att_len:att_len) = " "
+             if (cncerr == nc_noerr) then
+                if (att_len >= 1) then
+                   ! Remove null terminator, if any:
+                   if (iachar(values(att_len:att_len)) == 0) &
+                        values(att_len:att_len) = " "
+                end if
+
+                if (present(ncerr)) ncerr = nf95_noerr
+             else
+                if (present(ncerr)) then
+                   ncerr = cncerr
+                else
+                   call nf95_abort("nf95_get_att_text -> nc_get_att_text " &
+                        // trim(name), int(cncerr), ncid, varid)
+                end if
              end if
-
-             if (present(ncerr)) ncerr = nf95_noerr
           else
              if (present(ncerr)) then
-                ncerr = cncerr
+                ncerr = nf95_ests
              else
-                call nf95_abort("nf95_get_att_text -> nc_get_att_text " &
-                     // trim(name), int(cncerr), ncid, varid)
+                write(error_unit, fmt = *) "attribute name: ", name
+                write(error_unit, fmt = *) &
+                     'length of "values" is not large enough'
+                write(error_unit, fmt = *) "len(values) = ", len(values)
+                write(error_unit, fmt = *) &
+                     "number of characters in attribute: ", att_len
+                call nf95_abort("nf95_get_att_text", nf95_ests, ncid, varid)
              end if
           end if
        else
           if (present(ncerr)) then
-             ncerr = nf95_ests
+             ncerr = Nf95_ECHAR
           else
              write(error_unit, fmt = *) "attribute name: ", name
-             write(error_unit, fmt = *) &
-                  'length of "values" is not large enough'
-             write(error_unit, fmt = *) "len(values) = ", len(values)
-             write(error_unit, fmt = *) "number of characters in attribute: ", &
-                  att_len
-             call nf95_abort("nf95_get_att_text", nf95_ests, ncid, varid)
+             write(error_unit, fmt = *) "type of attribute: ", xtype
+             call nf95_abort("nf95_get_att_text", Nf95_ECHAR, ncid, varid)
           end if
        end if
     else
