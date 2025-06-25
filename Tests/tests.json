@@ -143,5 +143,24 @@
         ],
         "input": "&main_nml recovery=f/\n",
         "xfail": true
+    },
+    "Get_att_text_number": {
+	"description": "Trying to read a number into a character string.",
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/histhf.nc",
+            "nco_openmp_thread_number"
+        ],
+        "input": "&main_nml/\n"
+    },
+    "Att_text_number_no_rec": {
+	"description": "Same as Get_att_text_number, except without recovery.",
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/histhf.nc",
+            "nco_openmp_thread_number"
+        ],
+        "input": "&main_nml recovery=f/\n",
+        "xfail": true
     }
 }
