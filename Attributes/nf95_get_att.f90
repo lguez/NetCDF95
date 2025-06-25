@@ -52,8 +52,8 @@ contains
     call nf95_inquire_attribute(ncid, varid, name, xtype, att_len, &
          ncerr=ncerr_inquire)
 
-    if (ncerr_inquire == nf95_noerr) then
-       if (xtype == nf95_char) then
+    test_ncerr_inquire: if (ncerr_inquire == nf95_noerr) then
+       test_xtype: if (xtype == nf95_char) then
           if (len(values) >= att_len) then
              values = ""
              ! We assume that the C character kind is the same as the default
@@ -90,7 +90,7 @@ contains
                 call nf95_abort("nf95_get_att_text", nf95_ests, ncid, varid)
              end if
           end if
-       else
+       else test_xtype
           if (present(ncerr)) then
              ncerr = Nf95_ECHAR
           else
@@ -98,15 +98,15 @@ contains
              write(error_unit, fmt = *) "type of attribute: ", xtype
              call nf95_abort("nf95_get_att_text", Nf95_ECHAR, ncid, varid)
           end if
-       end if
-    else
+       end if test_xtype
+    else test_ncerr_inquire
        if (present(ncerr)) then
           ncerr = ncerr_inquire
        else
           call nf95_abort("nf95_get_att_text -> nf95_inquire_attribute " &
                // trim(name), ncerr_inquire, ncid, varid)
        end if
-    end if
+    end if test_ncerr_inquire
 
   end subroutine nf95_get_att_text
 
