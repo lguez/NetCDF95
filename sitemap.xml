@@ -2,50 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://lguez.github.io/NetCDF95/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/changes/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/installation/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/usage/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/Detailed_content/attributes/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/Detailed_content/datasets/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/Detailed_content/dimensions/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/Detailed_content/errors/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/Detailed_content/groups/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/Detailed_content/improvements/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/Detailed_content/variables/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lguez.github.io/NetCDF95/Detailed_content/version/</loc>
-         <lastmod>2025-04-17</lastmod>
+         <lastmod>2025-06-26</lastmod>
+         <changefreq>daily</changefreq>
     </url>
 </urlset>
