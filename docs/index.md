@@ -83,8 +83,7 @@ NetCDF95 also fills gaps in the official Fortran 90 interface:
   with procedure
   [`nf95_get_att`](Detailed_content/attributes.md). There is no way to
   read these with the official Fortran 90 interface, version $\leq$
-  4.6.2. See an [example of data at
-  Copenicus](https://doi.org/10.48670/moi-00148), with string
-  attributes.
-
-  
+  4.6.2. See [example
+  file](https://github.com/lguez/NetCDF95/blob/master/Tests/Agulhas.nc)
+  extracted from [Copernicus marine
+  data](https://doi.org/10.48670/moi-00148), with string attributes.
