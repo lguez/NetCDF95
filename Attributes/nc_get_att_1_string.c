@@ -29,9 +29,11 @@ int nc_get_att_1_string(int ncid, int varid, const char *name, char *values,
 
 	  if (stat == NC_NOERR)
 	    {
-	      if (size_values > strlen(string_attr[0]))
+	      *att_len = strlen(string_attr[0]);
+
+	      if (size_values > *att_len)
 		{
-		  *att_len = strlcpy(values, string_attr[0], size_values);
+		  memcpy(values, string_attr[0], *att_len);
 		  stat = nc_free_string(n_strings, string_attr);
 		}
 	      else
