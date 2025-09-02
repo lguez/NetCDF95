@@ -29,7 +29,7 @@ contains
 
     p_version = nc_inq_libvers()
     Call C_F_POINTER(p_version, c_lib_version, shape = [strlen(p_version)])
-    print *, "Version v0.12 of NetCDF95"
+    print *, "Version v0.13 of NetCDF95"
     print *, "Compiled with NetCDF-C library version: ", c_lib_version
 
   End subroutine nf95_inq_libvers
