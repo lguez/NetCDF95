@@ -31,7 +31,12 @@ else()
   target_link_libraries(netcdf95 PRIVATE NetCDF_Fortran::netcdff)
 endif()
 
-add_subdirectory(Tests)
+option(ENABLE_TESTS "Enable building tests")
+
+if(ENABLE_TESTS)
+  add_subdirectory(Tests)
+endif()
+
 add_library(${PROJECT_NAME}::netcdf95 ALIAS netcdf95)
 configure_file(${PROJECT_NAME}Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
 
