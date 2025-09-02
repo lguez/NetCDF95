@@ -19,7 +19,7 @@ contains
     integer, intent(out), optional:: ncerr
 
     ! Variables local to the procedure:
-    integer ncerr_inquire, i
+    integer ncerr_inquire
     integer xtype, att_len
     Integer(C_INT) cncerr
     integer(c_size_t) c_att_len
@@ -98,10 +98,6 @@ contains
                size_values = len(values, c_size_t))
 
           if (cncerr == nc_noerr) then
-             ! Remove null terminator, if any:
-             i = c_att_len + 1
-             if (values(i:i) == c_null_char) values(i:i) = " "
-
              if (present(ncerr)) ncerr = nf95_noerr
           else
              if (present(ncerr)) then
