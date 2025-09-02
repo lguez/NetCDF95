@@ -1,9 +1,11 @@
 /*
   We need a C function to extract only the first string in the array
-  of strings returned by nc_get_att_string. We cannot call
-  nc_get_att_string from Fortran because of the ** char argument. Note
-  that we check that size_values is greater than the length of the
-  string, else we return NC_ESTS.
+  of strings returned by `nc_get_att_string`. We cannot call
+  `nc_get_att_string` from Fortran because of the `** char`
+  argument. Note that we check that `size_values` is greater than the
+  length of the string, else we return
+  `NC_ESTS`. `nc_get_att_1_string` does not include the null
+  terminator in the characters written to `values`.
 */
 
 #include <stdlib.h>
