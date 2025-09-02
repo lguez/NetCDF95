@@ -172,5 +172,14 @@
         ],
         "input": "&main_nml recovery=f/\n",
         "xfail": true
+    },
+    "Padding": {
+	"description": "Read a short attribute of type text into a longer variable to test padding. We also have padding in test Get_att_string but the attribute is of type string.",
+        "command": [
+            "$build_dir/Tests/test_get_att_text",
+            "$src_dir/Tests/histhf.nc",
+            "units"
+        ],
+        "input": "&main_nml varid=1/\n"
     }
 }
