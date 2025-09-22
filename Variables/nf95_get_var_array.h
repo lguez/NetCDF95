@@ -11,8 +11,16 @@
   if (present(ncerr)) then
      ncerr = ncerr_not_opt
   else
-     if (ncerr_not_opt /= nf95_noerr) call nf95_abort(procedure_name, &
-          ncerr_not_opt, ncid, varid)
+     if (ncerr_not_opt /= nf95_noerr) then
+        if (present(start)) write(error_unit, fmt = *) "start = ", start
+        if (present(count_nc)) write(error_unit, fmt = *) "count_nc = ", &
+             count_nc
+        if (present(stride)) write(error_unit, fmt = *) "stride = ", stride
+        if (present(map)) write(error_unit, fmt = *) "map = ", map
+        if (present(new_missing)) write(error_unit, fmt = *) "new_missing = ", &
+             new_missing
+        call nf95_abort(procedure_name, ncerr_not_opt, ncid, varid)
+     end if
   end if
 
   if (ncerr_not_opt == NF95_NOERR .and. present(new_missing)) then

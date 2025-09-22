@@ -1,5 +1,7 @@
 module nf95_get_var_m
 
+  use, intrinsic:: iso_fortran_env, only: error_unit
+
   use netcdf, only: nf90_get_var
   
   use check_start_count_m, only: check_start_count
