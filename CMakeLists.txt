@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.21...3.27)
 list(APPEND CMAKE_MESSAGE_CONTEXT NetCDF95)
+get_property(isMultiConfig GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+
+if(isMultiConfig)
+  message(FATAL_ERROR "Multi-configuration generator not supported")
+endif()
+
 project(NetCDF95 LANGUAGES Fortran C)
 
 if(PROJECT_IS_TOP_LEVEL)
