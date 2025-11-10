@@ -64,8 +64,7 @@ endif()
 add_library(${PROJECT_NAME}::netcdf95 ALIAS netcdf95)
 configure_file(${PROJECT_NAME}Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
 
-# Start installation part
-
+# {{{ Installation part
 if(CMAKE_Fortran_COMPILER_ID STREQUAL GNU)
   set(install_include_dir include)
   install(FILES ${PROJECT_BINARY_DIR}/modules/netcdf95.mod TYPE INCLUDE)
@@ -86,7 +85,6 @@ install(
   EXPORT ${PROJECT_NAME}Targets
   DESTINATION lib/cmake/${PROJECT_NAME}
   NAMESPACE ${PROJECT_NAME}::)
-
-# End installation part
+# }}}
 
 export(EXPORT ${PROJECT_NAME}Targets NAMESPACE ${PROJECT_NAME}::)
