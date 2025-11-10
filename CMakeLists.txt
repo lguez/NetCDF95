@@ -63,6 +63,7 @@ endif()
 
 add_library(${PROJECT_NAME}::netcdf95 ALIAS netcdf95)
 configure_file(${PROJECT_NAME}Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
+configure_file(cmake/FindNetCDF_Fortran.cmake FindNetCDF_Fortran.cmake COPYONLY)
 
 # {{{ Installation part
 if(CMAKE_Fortran_COMPILER_ID STREQUAL GNU)
@@ -80,6 +81,7 @@ install(
   INCLUDES
   DESTINATION ${install_include_dir})
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+              ${CMAKE_CURRENT_BINARY_DIR}/FindNetCDF_Fortran.cmake
         DESTINATION lib/cmake/${PROJECT_NAME})
 install(
   EXPORT ${PROJECT_NAME}Targets
