@@ -38,8 +38,8 @@ contains
 
     ! We assume that the C character kind is the same as the default
     ! character kind:
-    cncerr = nc_inq_grp_full_ncid(int(ncid, c_int), full_name // c_null_char, &
-         cgrp_ncid)
+    cncerr = nc_inq_grp_full_ncid(int(ncid, c_int), &
+         trim(full_name) // c_null_char, cgrp_ncid)
 
     if (cncerr == NC_NOERR) then
        grp_ncid = cgrp_ncid
