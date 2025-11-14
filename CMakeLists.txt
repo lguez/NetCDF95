@@ -6,7 +6,10 @@ if(isMultiConfig)
   message(FATAL_ERROR "Multi-configuration generator not supported")
 endif()
 
-project(NetCDF95 LANGUAGES Fortran C)
+project(
+  NetCDF95
+  VERSION 0.15.0
+  LANGUAGES Fortran C)
 
 if(PROJECT_IS_TOP_LEVEL)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
