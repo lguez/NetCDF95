@@ -19,6 +19,7 @@ if(PROJECT_IS_TOP_LEVEL)
 endif()
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+configure_file(nf95_inq_libvers.f90.in nf95_inq_libvers.f90 @ONLY)
 add_library(
   netcdf95
   nf95_abort.f90
@@ -28,7 +29,7 @@ add_library(
   nf95_inquire_dimension.f90
   nf95_constants.f90
   type_sizes.f90
-  nf95_inq_libvers.f90
+  ${CMAKE_CURRENT_BINARY_DIR}/nf95_inq_libvers.f90
   strlen.f90
   nf95_strerror.f90)
 add_subdirectory(Attributes)
