@@ -16,7 +16,10 @@ contains
 
   subroutine nf95_create_single(name, coordinates, ncid, varid, varid_coord)
 
-    ! Shortcut to create a file containing a single primary variable.
+    ! Shortcut to create a file containing a single primary
+    ! variable. Assuming there is a coordinate variable for each
+    ! dimension of the primary variable and assuming all the
+    ! coordinate variables are of type real.
 
     use nf95_constants, only: NF95_CLOBBER, NF95_FLOAT
     use nf95_create_m, only: nf95_create
