@@ -8,6 +8,7 @@ module netcdf95
   use nf95_copy_att_m
   use nf95_create_m
   use nf95_create_single_m
+  use nf95_create_snc_m
   use nf95_def_dim_m
   use nf95_def_var_m
   use nf95_enddef_m
