@@ -155,7 +155,7 @@
         "xfail": true
     },
     "Get_att_text_number": {
-	"description": "Trying to read a number into a character string.",
+        "description": "Trying to read a number into a character string.",
         "command": [
             "$build_dir/Tests/test_get_att_text",
             "$src_dir/Tests/histhf.nc",
@@ -164,7 +164,7 @@
         "input": "&main_nml/\n"
     },
     "Att_text_number_no_rec": {
-	"description": "Same as Get_att_text_number, except without recovery.",
+        "description": "Same as Get_att_text_number, except without recovery.",
         "command": [
             "$build_dir/Tests/test_get_att_text",
             "$src_dir/Tests/histhf.nc",
@@ -174,7 +174,7 @@
         "xfail": true
     },
     "Padding": {
-	"description": "Read a short attribute of type text into a longer variable to test padding. We also have padding in test Get_att_string but the attribute is of type string.",
+        "description": "Read a short attribute of type text into a longer variable to test padding. We also have padding in test Get_att_string but the attribute is of type string.",
         "command": [
             "$build_dir/Tests/test_get_att_text",
             "$src_dir/Tests/histhf.nc",

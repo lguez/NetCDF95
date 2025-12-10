@@ -41,8 +41,10 @@ Reference: [`nf90_create`](https://docs.unidata.ucar.edu/netcdf-fortran/current/
       integer, intent(out):: ncid, varid, varid_coord(:)
 
 This procedure is a shortcut to create a NetCDF file containing a
-single primary variable, with all its coordinates. The coordinates are
-specified using the derived type `coord_def` :
+single primary variable, with all its coordinates. Assuming there is a
+coordinate variable for each dimension of the primary variable and
+assuming all the coordinate variables are of type real. The
+coordinates are specified using the derived type `coord_def` :
 
 	type coord_def
       character(len = NF95_MAX_NAME) name
@@ -54,6 +56,31 @@ The arrays `attr_name` and `attr_val` must have the same size. They
 define the attributes of the coordinate. After the call to
 `nf95_create_single`, the NetCDF dataset is still in define mode, so
 you can add attributes to the primary variable if appropriate.
+
+See also `nf95_create_snc` below.
+
+## `nf95_create_snc`
+
+(additional procedure)
+
+```
+  subroutine nf95_create_snc(ncid, varid, var_name, dim_name, nclen)
+
+	integer, intent(out):: ncid, varid
+    character(len = *), intent(in):: var_name
+    character(len = *), intent(in):: dim_name(:) ! (nDimensions)
+    integer, intent(in):: nclen(:) ! (nDimensions)
+```
+
+The name of this procedure, `nf95_create_snc`, stands for "NetCDF95
+create single no coordinate". This procedure is a shortcut to create a
+NetCDF file containing a single primary variable, without associated
+coordinate variables (unlike `nf95_create_single`). So it wraps calls
+to `nf95_create`, `nf95_def_dim` and `nf95_def_var`. It leaves the
+file in define mode. This procedure should be mainly useful for
+debugging. It can also be useful if `nf95_create_single` cannot be
+called because some of the dimensions do not have an associated
+coordinate variable or some coordinate variables are not of type real.
 
 ## `nf95_enddef`
 

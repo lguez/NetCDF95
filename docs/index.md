@@ -70,6 +70,7 @@ NetCDF95 also fills gaps in the official Fortran 90 interface:
   [`nf95_gw_var`](Detailed_content/variables.md),
   [`nf95_find_coord`](Detailed_content/datasets.md),
   [`nf95_create_single`](Detailed_content/datasets.md),
+  [`nf95_create_snc`](Detailed_content/datasets.md),
   [`nf95_get_missing`](Detailed_content/attributes.md),
   [`nf95_gunp_var`](Detailed_content/variables.md).
 
