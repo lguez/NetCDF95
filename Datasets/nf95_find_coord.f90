@@ -54,12 +54,12 @@ contains
 
     select case (std_name)
     case("longitude")
-       allocate(units(1))
-       units(1)="degrees_east"
+       units=[character(len=13):: "degrees_east", "degree_east", "degree_E", &
+            "degrees_E", "degreeE", "degreesE"]
        exact=.true.
     case("latitude")
-       allocate(units(1))
-       units(1)="degrees_north"
+       units=[character(len=13):: "degrees_north", "degree_north", "degree_N", &
+            "degrees_N", "degreeN", "degreesN"]
        exact=.true.
     case("time")
        allocate(units(1))
