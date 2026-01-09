@@ -67,8 +67,7 @@ contains
        exact=.false.
     case("plev")
        allocate(units(4))
-       units = ["Pa           ", "hPa          ", "millibar     ", &
-            "mbar         "]
+       units = [character(len=13):: "Pa", "hPa", "millibar", "mbar"]
        exact = .true.
     case default
        print *, "nf95_find_coord: bad value of std_name"
