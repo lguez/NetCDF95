@@ -15,6 +15,8 @@ contains
     ! the attribute "units". So the NetCDF variable one looks for does
     ! not need to have the attribute "std_name".
 
+    use, intrinsic:: iso_fortran_env, only: error_unit
+
     use nf95_abort_m, only: nf95_abort
     use nf95_constants, only: NF95_MAX_NAME, NF95_NOERR, Nf95_ENOTVAR
     use nf95_get_att_m, only: nf95_get_att
@@ -113,6 +115,8 @@ contains
           if (present(dimid)) dimid = 0
           if (present(varid)) varid = 0
        else
+          write(error_unit, fmt = *) "Note: nf95_find_coord looks at the " &
+               // "units attribute to find a coordinate"
           call nf95_abort("nf95_find_coord " // std_name, Nf95_ENOTVAR, ncid)
        end if
     end if
