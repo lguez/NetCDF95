@@ -66,7 +66,6 @@ contains
        units(1)=" since"
        exact=.false.
     case("plev")
-       allocate(units(4))
        units = [character(len=13):: "Pa", "hPa", "millibar", "mbar"]
        exact = .true.
     case default
