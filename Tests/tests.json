@@ -209,5 +209,13 @@
         "symlink": [
             "$src_dir/Tests/adt.nc"
         ]
+    },
+    "Find_coord_fail": {
+        "command": "$build_dir/Tests/test_find_coord",
+        "input": "&main_nml std_name='plev'/\n",
+        "symlink": [
+            "$src_dir/Tests/adt.nc"
+        ],
+        "xfail": true
     }
 }
