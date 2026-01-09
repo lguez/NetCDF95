@@ -32,23 +32,22 @@ dependencies with the following command:
 	If you prefer to download a ZIP file then you will also have to
     download the [cmake subdirectory](https://github.com/lguez/cmake).
 
-2.  Create a build subdirectory in the NetCDF95 directory you have
-    just downloaded:
-
-        cd NetCDF95
-        mkdir build
-        cd build
-
 3.  Decide in which directory you want to install NetCDF95 after
     compilation and type the command below with your choice of
     directory after `-DCMAKE_INSTALL_PREFIX=` (enter an absolute
     path). For example:
 
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+        cmake -B build -S NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
 
-4.  Type:
+	The command above will create a directory named build.
 
-        make install
+4.  Compile:
+
+		cmake --build build
+
+4.  Install:
+
+        cmake --install build
 
 You do not need to keep the downloaded directory NetCDF95 (nor the
 build directory) after installation.
@@ -57,13 +56,14 @@ build directory) after installation.
 
 Most users should not need these advanded instructions.
 
-- You can choose any name and any location for the build
-  directory. You have to refer to the source directory when you run
-  cmake from the build directory:
+- You can choose any name and any location for the build directory at
+  the configuration step. You have to refer to the build directory at
+  the compilation and installation steps:
 
-		mkdir /wherever/any/name
-		cd /wherever/any/name
-		cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+        cmake -B /wherever/any/name -S NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+		cmake --build /wherever/any/name
+		cmake --install /wherever/any/name
+
 
 - NetCDF95 assumes that the Fortran default character kind is the same
   as the C character kind (the official NetCDF-Fortran interface makes
@@ -74,8 +74,8 @@ Most users should not need these advanded instructions.
 
 - You do not have to install. You can just use the compiled library in
   the build directory. So you do not have to specify the option
-  `-DCMAKE_INSTALL_PREFIX=` and you can just type `make` instead of
-  `make install`.
+  `-DCMAKE_INSTALL_PREFIX=` and you can just skip the installation
+  step.
 
 - You can compile with debugging options by adding the option
   `-DCMAKE_BUILD_TYPE=Debug` to the command cmake.
@@ -89,7 +89,7 @@ Most users should not need these advanded instructions.
   `${CMAKE_PREFIX_PATH}/include`, etc. For example, if you want to use
   the parallel-enabled version of NetCDF-C on Ubuntu or Linux Mint:
 
-		cmake . -DCMAKE_PREFIX_PATH:PATH=/usr/lib/x86_64-linux-gnu/netcdf/mpi
+		cmake -B build -DCMAKE_PREFIX_PATH:PATH=/usr/lib/x86_64-linux-gnu/netcdf/mpi
 
 - If you have several Fortran compilers on your machine, it is
   possible that CMake does not choose the one you want. Note that when
@@ -102,8 +102,8 @@ Most users should not need these advanded instructions.
 	directory and run cmake again setting the variable FC to the
 	compiler you want. For example:
 
-		rm -r * # in the build directory!
-		FC=ifort cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+		rm -r build # the build directory!
+		FC=ifort cmake -B build -DCMAKE_INSTALL_PREFIX=~/.local
 
 [^1]: On Mac OS, after downloading the application from the CMake web
     site, run it, then click on "How to Install For Command Line Use"

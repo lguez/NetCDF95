@@ -27,46 +27,46 @@ contains
 
     integer, intent(in):: ncid
 
-    character(len=*), intent(out), optional:: name ! blanks if not found
+    character(len = *), intent(out), optional:: name ! blanks if not found
     ! The actual character argument should normally have the length
     ! "NF95_MAX_NAME".
 
     integer, intent(out), optional:: dimid ! 0 if not found
     integer, intent(out), optional:: varid ! 0 if not found
 
-    character(len=*), intent(in):: std_name
+    character(len = *), intent(in):: std_name
     ! standard name : "plev", "latitude", "longitude" or "time"
 
     integer, intent(out), optional:: ncerr
 
     ! Variables local to the procedure:
 
-    character(len=13), allocatable:: units(:)
+    character(len = 13), allocatable:: units(:)
     logical exact ! "units" must be matched exactly
 
     integer ncerr_2, nDimensions, dimid_local, varid_local
-    character(len=NF95_MAX_NAME) name_local
+    character(len = NF95_MAX_NAME) name_local
     integer, allocatable:: dimids(:)
-    character(len=80) values
+    character(len = 80) values
     logical found
 
     !----------------------------------------------
 
     select case (std_name)
     case("longitude")
-       units=[character(len=13):: "degrees_east", "degree_east", "degree_E", &
-            "degrees_E", "degreeE", "degreesE"]
-       exact=.true.
+       units = [character(len = 13):: "degrees_east", "degree_east", &
+            "degree_E", "degrees_E", "degreeE", "degreesE"]
+       exact = .true.
     case("latitude")
-       units=[character(len=13):: "degrees_north", "degree_north", "degree_N", &
-            "degrees_N", "degreeN", "degreesN"]
-       exact=.true.
+       units = [character(len = 13):: "degrees_north", "degree_north", &
+            "degree_N", "degrees_N", "degreeN", "degreesN"]
+       exact = .true.
     case("time")
        allocate(units(1))
-       units(1)=" since"
-       exact=.false.
+       units(1) = " since"
+       exact = .false.
     case("plev")
-       units = [character(len=13):: "Pa", "hPa", "millibar", "mbar"]
+       units = [character(len = 13):: "Pa", "hPa", "millibar", "mbar"]
        exact = .true.
     case default
        print *, "nf95_find_coord: bad value of std_name"
@@ -84,7 +84,7 @@ contains
        call nf95_inquire_dimension(ncid, dimid_local, name_local)
        call nf95_inq_varid(ncid, name_local, varid_local, ncerr_2)
        if (ncerr_2 == NF95_NOERR) then
-          call nf95_inquire_variable(ncid, varid_local, dimids=dimids)
+          call nf95_inquire_variable(ncid, varid_local, dimids = dimids)
           if (size(dimids) == 1) then
              if (dimids(1) == dimid_local) then
                 ! We have found a coordinate
