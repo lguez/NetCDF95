@@ -117,7 +117,8 @@ contains
        else
           write(error_unit, fmt = *) "Note: nf95_find_coord looks at the " &
                // "units attribute to find a coordinate"
-          call nf95_abort("nf95_find_coord " // std_name, Nf95_ENOTVAR, ncid)
+          write(error_unit, fmt = *) "std_name = ", trim(std_name)
+          call nf95_abort("nf95_find_coord", Nf95_ENOTVAR, ncid)
        end if
     end if
 
