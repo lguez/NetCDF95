@@ -181,5 +181,25 @@
             "units"
         ],
         "input": "&main_nml varid=1/\n"
+    },
+    "Abort": {
+        "command": "$build_dir/Tests/test_abort",
+        "xfail": true
+    },
+    "C_char": {
+        "command": "$build_dir/Tests/test_c_char"
+    },
+    "Find_coord": {
+        "command": "$build_dir/Tests/test_find_coord",
+        "symlink": [
+            "$src_dir/Tests/adt.nc"
+        ]
+    },
+    "Get_missing_2": {
+        "command": "$build_dir/Tests/test_get_missing_2",
+        "symlink": [
+            "$src_dir/Tests/test_char.nc"
+        ],
+        "xfail": true
     }
 }
