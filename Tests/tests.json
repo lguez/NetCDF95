@@ -191,6 +191,7 @@
     },
     "Find_coord": {
         "command": "$build_dir/Tests/test_find_coord",
+        "input": "&main_nml std_name='longitude'/\n",
         "symlink": [
             "$src_dir/Tests/adt.nc"
         ]
@@ -201,5 +202,12 @@
             "$src_dir/Tests/test_char.nc"
         ],
         "xfail": true
+    },
+    "Find_coord_plev": {
+        "command": "$build_dir/Tests/test_find_coord",
+        "input": "&main_nml std_name='plev' recovery=t/\n",
+        "symlink": [
+            "$src_dir/Tests/adt.nc"
+        ]
     }
 }
