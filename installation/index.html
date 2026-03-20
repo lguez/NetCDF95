@@ -633,7 +633,7 @@
 <h2 id="dependencies">Dependencies</h2>
 <ul>
 <li>
-<p><a href="https://cmake.org/download">CMake</a> (version &ge; 3.16)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p><a href="https://cmake.org/download">CMake</a> (version &ge; 3.21)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 </li>
 <li>
 <p>The <a href="https://docs.unidata.ucar.edu/nug/current/getting_and_building_netcdf.html">NetCDF-C
@@ -651,7 +651,7 @@
 </li>
 <li>Git (optional, the easiest way to download NetCDF95).</li>
 </ul>
-<p>Under Ubuntu &ge; 20.04 or Linux Mint &ge; 20, you can install all these
+<p>Under Ubuntu &ge; 22.04 or Linux Mint &ge; 21, you can install all these
 dependencies with the following command:</p>
 <pre><code>sudo apt install libnetcdff-dev gfortran cmake git
 </code></pre>
@@ -667,24 +667,22 @@ dependencies with the following command:</p>
 download the <a href="https://github.com/lguez/cmake">cmake subdirectory</a>.</p>
 </li>
 <li>
-<p>Create a build subdirectory in the NetCDF95 directory you have
-    just downloaded:</p>
-<pre><code>cd NetCDF95
-mkdir build
-cd build
-</code></pre>
-</li>
-<li>
 <p>Decide in which directory you want to install NetCDF95 after
     compilation and type the command below with your choice of
     directory after <code>-DCMAKE_INSTALL_PREFIX=</code> (enter an absolute
     path). For example:</p>
-<pre><code>cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+<pre><code>cmake -B build -S NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+</code></pre>
+<p>The command above will create a directory named build.</p>
+</li>
+<li>
+<p>Compile:</p>
+<pre><code>cmake --build build
 </code></pre>
 </li>
 <li>
-<p>Type:</p>
-<pre><code>make install
+<p>Install:</p>
+<pre><code>cmake --install build
 </code></pre>
 </li>
 </ol>
@@ -694,12 +692,12 @@ build directory) after installation.</p>
 <p>Most users should not need these advanded instructions.</p>
 <ul>
 <li>
-<p>You can choose any name and any location for the build
-  directory. You have to refer to the source directory when you run
-  cmake from the build directory:</p>
-<pre><code>mkdir /wherever/any/name
-cd /wherever/any/name
-cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+<p>You can choose any name and any location for the build directory at
+  the configuration step. You have to refer to the build directory at
+  the compilation and installation steps:</p>
+<pre><code>cmake -B /wherever/any/name -S NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+cmake --build /wherever/any/name
+cmake --install /wherever/any/name
 </code></pre>
 </li>
 <li>
@@ -713,8 +711,8 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
 <li>
 <p>You do not have to install. You can just use the compiled library in
   the build directory. So you do not have to specify the option
-  <code>-DCMAKE_INSTALL_PREFIX=</code> and you can just type <code>make</code> instead of
-  <code>make install</code>.</p>
+  <code>-DCMAKE_INSTALL_PREFIX=</code> and you can just skip the installation
+  step.</p>
 </li>
 <li>
 <p>You can compile with debugging options by adding the option
@@ -730,7 +728,7 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
   it. CMake will then search <code>${CMAKE_PREFIX_PATH}/lib</code>,
   <code>${CMAKE_PREFIX_PATH}/include</code>, etc. For example, if you want to use
   the parallel-enabled version of NetCDF-C on Ubuntu or Linux Mint:</p>
-<pre><code>cmake . -DCMAKE_PREFIX_PATH:PATH=/usr/lib/x86_64-linux-gnu/netcdf/mpi
+<pre><code>cmake -B build -DCMAKE_PREFIX_PATH:PATH=/usr/lib/x86_64-linux-gnu/netcdf/mpi
 </code></pre>
 </li>
 <li>
@@ -743,8 +741,8 @@ cmake /where/I/downloaded/NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
 <p>So if you want another compiler, remove everything in the build
 directory and run cmake again setting the variable FC to the
 compiler you want. For example:</p>
-<pre><code>rm -r * # in the build directory!
-FC=ifort cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+<pre><code>rm -r build # the build directory!
+FC=ifort cmake -B build -DCMAKE_INSTALL_PREFIX=~/.local
 </code></pre>
 </li>
 </ul>
