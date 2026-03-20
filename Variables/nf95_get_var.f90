@@ -20,7 +20,8 @@ module nf95_get_var_m
           nf95_get_var_2D_FourByteInt, nf95_get_var_3D_FourByteInt, &
           nf95_get_var_3D_FourByteReal, nf95_get_var_3D_EightByteReal, &
           nf95_get_var_4D_FourByteReal, nf95_get_var_4D_EightByteReal, &
-          nf95_get_var_5D_FourByteReal, nf95_get_var_5D_EightByteReal
+          nf95_get_var_4D_FourByteInt, nf95_get_var_5D_FourByteReal, &
+          nf95_get_var_5D_EightByteReal
      ! The interface of nf95_get_var_FourByteInt is distinguishable
      ! from the interface of nf95_get_var_[1-4]D_FourByteInt because
      ! of the rank of `values`.
@@ -318,6 +319,31 @@ contains
     include "nf95_get_var_array.h"
 
   end subroutine nf95_get_var_3D_FourByteInt
+
+  !***********************
+
+  subroutine nf95_get_var_4D_FourByteInt(ncid, varid, values, start, &
+       count_nc, stride, map, new_missing, ncerr)
+
+    use type_sizes, only: FourByteInt
+
+    integer, intent(in):: ncid, varid
+    integer(kind = FourByteInt), intent(out):: values(:, :, :, :)
+    integer, dimension(:), optional, intent(in):: start, count_nc, stride, map
+    integer(kind = FourByteInt), optional, intent(in):: new_missing
+    integer, intent(out), optional:: ncerr
+
+    ! Local:
+    character(len=*), parameter:: procedure_name = &
+         "nf95_get_var_4D_FourByteInt"
+    integer, parameter:: rank_values = 4
+    integer(kind = FourByteInt) missing
+
+    !-------------------
+
+    include "nf95_get_var_array.h"
+
+  end subroutine nf95_get_var_4D_FourByteInt
 
   !***********************
 
