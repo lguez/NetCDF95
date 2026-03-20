@@ -398,6 +398,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nf95_create_snc" class="md-nav__link">
+    nf95_create_snc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nf95_enddef" class="md-nav__link">
     nf95_enddef
   </a>
@@ -642,6 +649,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nf95_create_snc" class="md-nav__link">
+    nf95_create_snc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nf95_enddef" class="md-nav__link">
     nf95_enddef
   </a>
@@ -733,8 +747,10 @@ explanation of the mnemonics "basic change", "interface change",
   integer, intent(out):: ncid, varid, varid_coord(:)
 </code></pre>
 <p>This procedure is a shortcut to create a NetCDF file containing a
-single primary variable, with all its coordinates. The coordinates are
-specified using the derived type <code>coord_def</code> :</p>
+single primary variable, with all its coordinates. Assuming there is a
+coordinate variable for each dimension of the primary variable and
+assuming all the coordinate variables are of type real. The
+coordinates are specified using the derived type <code>coord_def</code> :</p>
 <pre><code>type coord_def
   character(len = NF95_MAX_NAME) name
   integer nclen
@@ -745,6 +761,25 @@ end type coord_def
 define the attributes of the coordinate. After the call to
 <code>nf95_create_single</code>, the NetCDF dataset is still in define mode, so
 you can add attributes to the primary variable if appropriate.</p>
+<p>See also <code>nf95_create_snc</code> below.</p>
+<h2 id="nf95_create_snc"><code>nf95_create_snc</code></h2>
+<p>(additional procedure)</p>
+<pre><code>  subroutine nf95_create_snc(ncid, varid, var_name, dim_name, nclen)
+
+    integer, intent(out):: ncid, varid
+    character(len = *), intent(in):: var_name
+    character(len = *), intent(in):: dim_name(:) ! (nDimensions)
+    integer, intent(in):: nclen(:) ! (nDimensions)
+</code></pre>
+<p>The name of this procedure, <code>nf95_create_snc</code>, stands for &ldquo;NetCDF95
+create single no coordinate&rdquo;. This procedure is a shortcut to create a
+NetCDF file containing a single primary variable, without associated
+coordinate variables (unlike <code>nf95_create_single</code>). So it wraps calls
+to <code>nf95_create</code>, <code>nf95_def_dim</code> and <code>nf95_def_var</code>. It leaves the
+file in define mode. This procedure should be mainly useful for
+debugging. It can also be useful if <code>nf95_create_single</code> cannot be
+called because some of the dimensions do not have an associated
+coordinate variable or some coordinate variables are not of type real.</p>
 <h2 id="nf95_enddef"><code>nf95_enddef</code></h2>
 <p>(basic change)</p>
 <pre><code>  subroutine nf95_enddef(ncid, h_minfree, v_align, v_minfree, r_align, ncerr)
