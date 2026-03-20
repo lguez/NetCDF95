@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-- [CMake](https://cmake.org/download) (version &ge; 3.16)[^1].
+- [CMake](https://cmake.org/download) (version &ge; 3.21)[^1].
 
 - The [NetCDF-C
   library](https://docs.unidata.ucar.edu/nug/current/getting_and_building_netcdf.html)
@@ -16,7 +16,7 @@
   NetCDF-Fortran library.
 - Git (optional, the easiest way to download NetCDF95).
 
-Under Ubuntu &ge; 20.04 or Linux Mint &ge; 20, you can install all these
+Under Ubuntu &ge; 22.04 or Linux Mint &ge; 21, you can install all these
 dependencies with the following command:
 
 	sudo apt install libnetcdff-dev gfortran cmake git
