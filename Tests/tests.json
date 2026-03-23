@@ -62,6 +62,14 @@
             "$src_dir/Tests/adt.nc"
         ]
     },
+    "Gunp_2": {
+        "description": "Test some overloaded procedures.",
+        "command": [
+            "$build_dir/Tests/test_gunp_var_2",
+            "$src_dir/Tests/ta.197901.aphei.GLOBAL_1125.nc",
+            "ta"
+        ]
+    },
     "Inq_libvers": {
         "command": "$build_dir/Tests/test_netcdf95",
         "symlink": [
