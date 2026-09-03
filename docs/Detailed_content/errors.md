@@ -1,5 +1,10 @@
 # Handling of errors
 
+If you call a NetCDF95 procedure with the optional `ncerr` argument
+then, after the call, you can test whether an error occurred by
+comparing `ncerr` to the constant `nf95_noerr`, defined in the module
+netcdf95.
+
 If you call a NetCDF95 procedure without the optional `ncerr`
 argument, and some error occurs, then the NetCDF95 procedure will:
 
