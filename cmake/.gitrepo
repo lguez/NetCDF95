@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/lguez/cmake.git
+	branch = master
+	commit = 517d97c3585aecc3fa4abc68fcd6a04c559bd511
+	parent = 8687329b9663a553125705be1ec9ff9e59457ceb
+	method = merge
+	cmdver = 0.4.9
