@@ -14,43 +14,41 @@
 
 - The Fortran compiler that was used to compile your installed
   NetCDF-Fortran library.
-- Git (optional, the easiest way to download NetCDF95).
 
 Under Ubuntu &ge; 22.04 or Linux Mint &ge; 21, you can install all these
 dependencies with the following command:
 
-	sudo apt install libnetcdff-dev gfortran cmake git
+	sudo apt install libnetcdff-dev gfortran cmake
 
 ## Instructions
 
-1. Get [NetCDF95 from Github](https://github.com/lguez/NetCDF95). As
-   the Git repository contains a submodule, the easiest way is to
-   type:
+1.	Download
+	[NetCDF95](https://github.com/lguez/NetCDF95/archive/refs/heads/master.zip).
 
-		git clone --recurse-submodules https://github.com/lguez/NetCDF95.git
+2.	Unzip it:
 
-	If you prefer to download a ZIP file then you will also have to
-    download the [cmake subdirectory](https://github.com/lguez/cmake).
+		unzip NetCDF95-master.zip
 
-3.  Decide in which directory you want to install NetCDF95 after
-    compilation and type the command below with your choice of
-    directory after `-DCMAKE_INSTALL_PREFIX=` (enter an absolute
-    path). For example:
+3.	Decide in which directory you want to install NetCDF95 after
+	compilation and type the command below with your choice of
+	directory after `-DCMAKE_INSTALL_PREFIX=` (enter an absolute
+	path). For example:
 
-        cmake -B build -S NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+        cmake -B build -S NetCDF95-master -DCMAKE_INSTALL_PREFIX=~/.local
 
-	The command above will create a directory named build.
+	The command above is the configuration command. It will create a
+	directory named build.
 
-4.  Compile:
+4.	Compile:
 
 		cmake --build build
 
-4.  Install:
+5.	Install:
 
         cmake --install build
 
-You do not need to keep the downloaded directory NetCDF95 (nor the
-build directory) after installation.
+You do not need to keep the downloaded directory NetCDF95-master nor
+the build directory after installation.
 
 ## Advanced instructions
 
@@ -60,7 +58,7 @@ Most users should not need these advanded instructions.
   the configuration step. You have to refer to the build directory at
   the compilation and installation steps:
 
-        cmake -B /wherever/any/name -S NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+        cmake -B /wherever/any/name -S NetCDF95-master -DCMAKE_INSTALL_PREFIX=~/.local
 		cmake --build /wherever/any/name
 		cmake --install /wherever/any/name
 
