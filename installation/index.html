@@ -531,15 +531,8 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
+              
+                
   
   
   
@@ -553,6 +546,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -649,31 +650,31 @@
 <p>The Fortran compiler that was used to compile your installed
   NetCDF-Fortran library.</p>
 </li>
-<li>Git (optional, the easiest way to download NetCDF95).</li>
 </ul>
 <p>Under Ubuntu &ge; 22.04 or Linux Mint &ge; 21, you can install all these
 dependencies with the following command:</p>
-<pre><code>sudo apt install libnetcdff-dev gfortran cmake git
+<pre><code>sudo apt install libnetcdff-dev gfortran cmake
 </code></pre>
 <h2 id="instructions">Instructions</h2>
 <ol>
 <li>
-<p>Get <a href="https://github.com/lguez/NetCDF95">NetCDF95 from Github</a>. As
-   the Git repository contains a submodule, the easiest way is to
-   type:</p>
-<pre><code>git clone --recurse-submodules https://github.com/lguez/NetCDF95.git
+<p>Download
+    <a href="https://github.com/lguez/NetCDF95/archive/refs/heads/master.zip">NetCDF95</a>.</p>
+</li>
+<li>
+<p>Unzip it:</p>
+<pre><code>unzip NetCDF95-master.zip
 </code></pre>
-<p>If you prefer to download a ZIP file then you will also have to
-download the <a href="https://github.com/lguez/cmake">cmake subdirectory</a>.</p>
 </li>
 <li>
 <p>Decide in which directory you want to install NetCDF95 after
     compilation and type the command below with your choice of
     directory after <code>-DCMAKE_INSTALL_PREFIX=</code> (enter an absolute
     path). For example:</p>
-<pre><code>cmake -B build -S NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+<pre><code>cmake -B build -S NetCDF95-master -DCMAKE_INSTALL_PREFIX=~/.local
 </code></pre>
-<p>The command above will create a directory named build.</p>
+<p>The command above is the configuration command. It will create a
+directory named build.</p>
 </li>
 <li>
 <p>Compile:</p>
@@ -686,8 +687,8 @@ download the <a href="https://github.com/lguez/cmake">cmake subdirectory</a>.</p
 </code></pre>
 </li>
 </ol>
-<p>You do not need to keep the downloaded directory NetCDF95 (nor the
-build directory) after installation.</p>
+<p>You do not need to keep the downloaded directory NetCDF95-master nor
+the build directory after installation.</p>
 <h2 id="advanced-instructions">Advanced instructions</h2>
 <p>Most users should not need these advanded instructions.</p>
 <ul>
@@ -695,7 +696,7 @@ build directory) after installation.</p>
 <p>You can choose any name and any location for the build directory at
   the configuration step. You have to refer to the build directory at
   the compilation and installation steps:</p>
-<pre><code>cmake -B /wherever/any/name -S NetCDF95 -DCMAKE_INSTALL_PREFIX=~/.local
+<pre><code>cmake -B /wherever/any/name -S NetCDF95-master -DCMAKE_INSTALL_PREFIX=~/.local
 cmake --build /wherever/any/name
 cmake --install /wherever/any/name
 </code></pre>
@@ -833,7 +834,7 @@ in the Tools menu.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump 
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "content.code.copy"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
