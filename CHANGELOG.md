@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.16 (2026-10-16)
+
+### Changed
+
+- Replace submodule cmake by subrepo
+
 ## 0.15 (2026-03-20)
 
 ### Added
