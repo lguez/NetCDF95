@@ -8,7 +8,7 @@ endif()
 
 project(
   NetCDF95
-  VERSION 0.15
+  VERSION 0.16
   LANGUAGES Fortran C)
 
 if(PROJECT_IS_TOP_LEVEL)
